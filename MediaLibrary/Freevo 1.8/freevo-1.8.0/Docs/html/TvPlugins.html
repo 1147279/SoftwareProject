@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>TvPlugins - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/TvPlugins?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/TvPlugins?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">TvPlugins</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>Site Index: </p>
+<ol>
+
+<li>
+<a href="#head-3d51b34b4d48d2dc9a04b41f4de5899074ba1d7b">Intro</a>
+</li>
+
+<li>
+<a href="#head-227c4990e1500cfa9e16a37c5d4ac43b52e125ac">TvTime</a>
+</li>
+
+<li>
+<a href="#head-6b0c7a71d42b1e84328c75047b2abb24b0f08261">Xine</a>
+</li>
+
+<li>
+<a href="#head-44fbbb7ac7aa8e8448bacd6f551592cc74bd1cf7">Third Party</a>
+<ol>
+
+<li>
+<a href="#head-e493b94dfa0ab15cbac28198d075aa4362a20853">FreevoGenial &amp; PluginXmlRpc</a>
+</li>
+
+</ol>
+
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-3d51b34b4d48d2dc9a04b41f4de5899074ba1d7b">Intro</h2>
+
+<p>Here you will find info for all kind of plugins for watching and recording TV. By default the Mplayer TV plugin is loaded. To use other applications you will need to remove this plugin and add other plugins. </p>
+
+<h2 id="head-227c4990e1500cfa9e16a37c5d4ac43b52e125ac">TvTime</h2>
+
+<p>This plugin allows you to use <a class="external" href="http://tvtime.sourceforge.net"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> TvTime</a> to watch tv instead of mplayer. It has a better OSD than mplayer and tends to have better audio sync, but at the moment it is working only with tv cards that are <a class="external" href="http://bytesex.org/bttv/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> v4l</a> or <a class="external" href="http://bytesex.org/bttv/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> v4l2</a> compatible, so you cannot use it with budget DVB cards. </p>
+<p>To use it put the following into your <em>local_conf.py</em>: 
+</p>
+<pre>
+plugin.remove('tv.mplayer')
+plugin.activate('tv.tvtime')
+</pre>
+<p><strong>PLEASE NOTE</strong>: the first time you run tvtime. it will attempt to flip through all of your channels be patient it is setting up some of its own internal data. After the flip through you can edit $HOME/.tvtime/stationlist.xml so that you can see your station names from freevo's TV_CHANNEL variable in your tvtime OSD. There is a script in freevo/src/helpers to build this file. </p>
+
+<h2 id="head-6b0c7a71d42b1e84328c75047b2abb24b0f08261">Xine</h2>
+
+<p>This plugin is an alternative for people who have a budget DVB card. Currently it is only working with DVB.  It also has a better OSD then mplayer and tends to have a better audio sync. But for some reason xine needs the teletext pids in its channels.conf, whereas mplayer    just needs video and audio pids. So make sure to provide this additional information. </p>
+<p>To use xine for watching tv put the following into your <em>local_conf.py</em>: 
+</p>
+<pre>
+plugin.remove('tv.mplayer')
+plugin.activate('tv.xine')
+</pre>
+
+<h2 id="head-44fbbb7ac7aa8e8448bacd6f551592cc74bd1cf7">Third Party</h2>
+
+
+<h3 id="head-e493b94dfa0ab15cbac28198d075aa4362a20853">FreevoGenial &amp; PluginXmlRpc</h3>
+
+<p>FreevoGenial is a small commandline client application sending scheduleRecording and remove ScheduledRecording requests to Freevo from any computer using XMLRPC. It was made for use with PluginXmlRpc is the server part written for Freevo 1.5.x. More information and the download at <a class="external" href="http://demmer.ipax.at/blog/?static=/wiki/&amp;page=ProjectFreevoGenial"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://demmer.ipax.at</a>. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-09-28 14:12:04 by <span title="sls407-gate.alcatel.de">FDemmer</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/TvPlugins">http://freevo.sourceforge.net/cgi-bin/doc/TvPlugins</a></p>
+</div> <!-- end page -->
+</body>
+</html>

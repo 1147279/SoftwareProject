@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>MovieConfig - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/MovieConfig?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/MovieConfig?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">MovieConfig</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<ol>
+
+<li>
+<a href="#head-0ffe168dbe69333b69cdda987a49a659ec1d4db7">Basic Configuration</a>
+</li>
+
+<li>
+<a href="#head-7cd5bffe01a6fcd2577762580abd981e9faed8bb">Streaming web tv / video</a>
+</li>
+
+<li>
+<a href="#head-4453a8d440e4c091b152ca354f9e70af376a4880">Mplayer configuration</a>
+<ol>
+
+<li>
+<a href="#head-92be88fc9d6258325087087583183d83e92003c0">AV-Sync problems with AVI files</a>
+</li>
+
+<li>
+<a href="#head-3acde0ad9f689d8942cbc7d43079981062736ecb">Mixing the LFE Channel into the front speakers for 4.1 audio output</a>
+</li>
+
+</ol>
+
+<li>
+<a href="#head-3415d141aebae5a624db784df4c78fd731c9803c">Xine configuration</a>
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-0ffe168dbe69333b69cdda987a49a659ec1d4db7">Basic Configuration</h2>
+
+<p>You should tell freevo where to look for movie files This is a list of items (e.g. directories, fxd files). The items themselves can also be a list of (title, file) 
+</p>
+<pre>
+VIDEO_ITEMS = [ ('action movies', '/files/movies/action'),
+                ('funny stuff', '/files/movies/comedy') ]
+</pre>
+<p>Some people access movies on a different machine using an automounter. To avoid timeouts, you can specify the machine name in the directory to check if the machine is alive first Directory myserver:/files/server-stuff will show the item for the directory /files/server-stuff if the computer myserver is alive. </p>
+<p>You can use mplayer or xine for watching movies. The default player is mplayer, but you can change that with the variable VIDEO_PREFERED_PLAYER = 'xine' in your local config. If you want support for DVD menus you will have to use xine. Also you will probably need to install libdvdcss, this is left to the user to figure out. </p>
+<p>You can choose which player will play which files. The list of filename suffixes that are used to match the files that are played with MPlayer. 
+</p>
+<pre>
+VIDEO_MPLAYER_SUFFIX = [ 'avi', 'mpg', 'mpeg', 'wmv', 'bin', 'rm',
+                         'divx', 'ogm', 'vob', 'asf', 'm2v', 'm2p',
+                         'mp4', 'viv', 'nuv', 'mov', 'iso',
+                         'nsv', 'mkv' ]
+</pre>
+<p>The list of filename suffixes that are used to match the files that are played with Xine. 
+</p>
+<pre>
+VIDEO_XINE_SUFFIX = [ 'avi', 'mpg', 'mpeg', 'rm', 'divx', 'ogm',
+                       'asf', 'm2v', 'm2p', 'mp4', 'mov', 'cue' ]
+</pre>
+
+<h2 id="head-7cd5bffe01a6fcd2577762580abd981e9faed8bb">Streaming web tv / video</h2>
+
+<p>Using fxd files you can configure freevo to stream video from the web just like it streams web radio. You'll need to create a fxd file and add this to your VIDEO_ITEMS in local_conf.py </p>
+<p>Here's an example: </p>
+
+<pre>
+VIDEO_ITEMS = [ ('Speelfilms', '/home/freevo/media/films/'),
+                ('Muziek', '/home/freevo/media/video/muziek_video/'),
+                 '/home/freevo/.freevo/webtv.fxd' ]
+</pre>
+<p>So in this case you would have a file /home/freevo/.freevo/webtv.fxd that looks like this: </p>
+
+<pre>
+&lt;?xml version="1.0" ?&gt;
+&lt;freevo&gt;
+  &lt;container title="Internet TV" type="news"&gt;
+  
+    &lt;movie title="Laatste Journaal"&gt;
+      &lt;video&gt;
+        &lt;url id="p1"&gt;
+            mms://streams10.omroep.nl/tv/nos/journaal/bb.laatste.asf      
+          &lt;player&gt;mplayer&lt;/player&gt;
+        &lt;/url&gt;
+      &lt;/video&gt;
+      &lt;info&gt;
+        &lt;description&gt;Altijd het laatste NOS journaal.&lt;/description&gt;
+      &lt;/info&gt;
+    &lt;/movie&gt;
+
+    &lt;movie title="NASA-TV"&gt;
+      &lt;video&gt;
+        &lt;url id="p1"&gt;
+          http://science.ksc.nasa.gov/cgi-bin/rrg2.pl?encoder/nasatv.rm
+          &lt;player&gt;xine&lt;/player&gt;
+        &lt;/url&gt;
+      &lt;/video&gt;
+      &lt;info&gt;
+        &lt;description&gt;Follow every step of NASA with NASA TV LIVE&lt;/description&gt;
+      &lt;/info&gt;
+    &lt;/movie&gt;
+
+  &lt;/container&gt;
+&lt;/freevo&gt;
+</pre>
+<p>Another neat example of this is to stream a movie playing on your PC with Xine/Kaffeine's broadcast feature. As URL in the above XML file use slave://host:port to point to the PC doing the broadcasting. </p>
+<p>Freevo will stream anything that mplayer or xine are capable of streaming. </p>
+
+<h2 id="head-4453a8d440e4c091b152ca354f9e70af376a4880">Mplayer configuration</h2>
+
+<p>PleaseUpdate: describe the important mplayer options here </p>
+
+<h3 id="head-92be88fc9d6258325087087583183d83e92003c0">AV-Sync problems with AVI files</h3>
+
+<p>Some avi files are out of sync when played with mplayer but ok with other player. This is a problem with mplayer not reading the audio delay field in such files. Mmpython can parse this data and Freevo can correct the audio delay based on the Mmpython information. To activate this, set MPLAYER_SET_AUDIO_DELAY = 1 in your local_conf.py. </p>
+
+<h3 id="head-3acde0ad9f689d8942cbc7d43079981062736ecb">Mixing the LFE Channel into the front speakers for 4.1 audio output</h3>
+
+<p>If you have a Soundcard like the SBLive Value Edition which has 2 stereo output (front and rear) it happens that you only get 4.0 output from mplayer.   The LFE channel is lost. This can be fixed by changing the MPLAYER_AO_DEV option in your local_config.py: 
+</p>
+<pre>
+MPLAYER_AO_DEV       = 'alsa1x:surround51 -channels 6 -af pan=6:100:0:0:0:100:100:0:100:0:0:100:100:0:0:100:0:0:0:0:0:0:100:0:0 '
+</pre>
+<p>The pan filter mixes the LFE channel to the front speaker output. </p>
+
+<h2 id="head-3415d141aebae5a624db784df4c78fd731c9803c">Xine configuration</h2>
+
+<p>Freevo as default adds some extra setting to xine: 
+</p>
+<pre>
+--no-lirc --post=pp:quality=10;expand
+</pre>
+<p>This might cause xine to use more CPU (goes from around 30% to 70% on my system). But if you edit your local_conf.py, and add the following, Freevo will launch xine without any extra settings: </p>
+
+<pre>
+XINE_ARGS_DEF = ''
+</pre>
+<p>If you want to expriment with the image quality, and have some spare cpu power ,look at <a class="external" href="http://sourceforge.net/mailarchive/message.php?msg_id=7815777"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> this thread</a> and add the settings to your local_conf.py as follows: </p>
+
+<pre>
+XINE_ARGS_DEF = '--post tvtime:method=LineDoubler,enabled=1,pulldown=none,framerate_mode=half_top,judder_correction=0,use_progressive_frame_flag=1,chroma_filter=0,cheap_mode=1'
+</pre>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-05-21 17:16:07 by <span title="dD5E0008E.access.telenet.be">GerritHannaert</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/MovieConfig">http://freevo.sourceforge.net/cgi-bin/doc/MovieConfig</a></p>
+</div> <!-- end page -->
+</body>
+</html>

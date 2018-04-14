@@ -1,0 +1,13 @@
+Metadata-Version: 1.0
+Name: freevo
+Version: 1.9.0
+Summary: Freevo
+Home-page: http://www.freevo.org
+Author: Krister Lagerstrom, et al.
+Author-email: freevo-devel@lists.sourceforge.net
+License: GPL
+Download-URL: https://sourceforge.net/project/showfiles.php?group_id=46652&package_id=39526
+Description: Freevo Multimedia System
+Platform: Linux
+Platform: FreeBSD
+Platform: Unix

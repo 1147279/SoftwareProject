@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>ImageUsage - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/ImageUsage?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/ImageUsage?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">ImageUsage</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h2 id="head-62776462c8711441f248aec0ffb6098e10874c3f">Navigation</h2>
+
+<p>If you view an image you can use UP and DOWN to view the next/prev image. LEFT and RIGHT rotates the image. You can press record button (REC) on rotated JPEG images and the image will be stored with this rotation (lossless transformation). By pressing DISPLAY you get some information about the picture. Freevo is able to read and display information from the EXIF tag (Exchangeable Image File Format) of digital photos. </p>
+
+<h2 id="head-850e2de0f8b819a55c16fb5152d8ccd03dbfdecf">Slideshows</h2>
+
+<p>In addition to the builtin slideshow function (see <a href="ImageConfig.html">ImageConfig</a>), you can have explicit slideshow files. They are simple text files (<tt>*.ssr&nbsp;</tt>) that start with a line containing <tt>[Slides]</tt> and continue with each line of the file being an image in the slide show. The exact format is:  
+</p>
+<pre>
+FileName: "quoted_filename"; Caption: "quoted_caption"; Delay: "quoted_seconds"
+</pre>
+<p>This approach has the advantage that you can determine a different sequence of your images and that the slideshow continues with the next image automatically after the delay, so that you do not have to press NEXT anytime. See <a href="TipsAndTricks.html">TipsAndTricks</a> for a small script to create such slideshow files. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-04-25 21:18:02 by <span title="p508725B0.dip0.t-ipconnect.de">TanjaStriepling</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/ImageUsage">http://freevo.sourceforge.net/cgi-bin/doc/ImageUsage</a></p>
+</div> <!-- end page -->
+</body>
+</html>

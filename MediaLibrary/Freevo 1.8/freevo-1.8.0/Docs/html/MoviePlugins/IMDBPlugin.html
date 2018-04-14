@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>MoviePlugins/IMDBPlugin - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="../modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="../modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="../modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/MoviePlugins/IMDBPlugin?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/MoviePlugins/IMDBPlugin?action=print">
+<link rel="Up" href="/cgi-bin/doc/MoviePlugins">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="../Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">MoviePlugins/IMDBPlugin</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h2 id="head-67753fc796b4abb501502846fd262943e3e30630">IMDB Plugin</h2>
+
+<p>This is a plugin to create movie fxd files (see <a href="../MovieFxd.html">Movie FXD files</a>) </p>
+<p><strong>Plugin broken in release before freevo 1.5.3</strong> </p>
+<p>To activate this plugin add this to your local_conf.py: 
+</p>
+<pre>
+plugin.activate('video.imdb')
+</pre>
+<p>There are some options for this plugin, you can change these in local_conf.py: 
+</p>
+<pre>
+# list of regexp to be ignored on a disc label
+IMDB_REMOVE_FROM_LABEL = ('season[\._ -][0-9]+', 'disc[\._ -][0-9]+',
+                          'd[\._ -][0-9]+', 'german')
+
+# list of words to ignore when searching based on a filename
+IMDB_REMOVE_FROM_SEARCHSTRING = ('the', 'a')
+
+# When searching for a movie title in imdb, should the result be
+# autoaccepted if it is only one hit?
+# 0 = show menu even if it is only one hit (gives you an opportunity to cancel)
+# 1 = autoaccept
+IMDB_AUTOACCEPT_SINGLE_HIT = True
+</pre>
+<p>To use this plugin, select a movie press 'e' or 'enter' button on the remote and you will see an option to search info about this movie for the selected movie. A active internet conection is required of course. </p>
+<p>You can also use <strong>imdb.py</strong> in the helpers directory.  </p>
+<p>How to use imdb.py is a bit non obvious. Firstly you need to look for your movie, lets say we want to get the data for 'Romancing the Stone'. </p>
+<pre>
+%freevo imdb -s romancing 
+342943 Romancing Along (1937, Movie)
+0114293 Romancing Sara (1995, Movie)
+0088011 Romancing the Stone (1984, Movie)
+0093056 Fu xing jia qi (1987, Movie)
+0095404 Jing zhuong zhui nu zi zhi er (1988, Movie)
+0098217 Lang zhi yi zu (1989, Movie)
+</pre>
+<p>Now we can download the actual data into movies-data (you may need to add this directory). Notice the number, this number can also be obtained by performing a search on <a class="external" href="http://www.imdb.com"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> IMDB</a> and copying the number from the url.  </p>
+<p>If you want to use the information for a DVD use the following: </p>
+<pre>
+%freevo imdb 0088011 movie-data/romance dvd 
+</pre>
+<p>If you have a collection of files use: </p>
+<pre>
+%freevo imdb 0088011 romance.fxd romance-cd1.avi romance-cd2.avi 
+</pre>
+<p>Use <strong>imdb.py --help</strong> to see more options </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-02-24 22:26:31 by <span title="someone.aub.auc.dk">HenrikFarre</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/MoviePlugins/IMDBPlugin">http://freevo.sourceforge.net/cgi-bin/doc/MoviePlugins/IMDBPlugin</a></p>
+</div> <!-- end page -->
+</body>
+</html>

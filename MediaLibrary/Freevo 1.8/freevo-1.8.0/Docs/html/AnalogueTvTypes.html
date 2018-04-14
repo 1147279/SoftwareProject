@@ -1,0 +1,276 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>AnalogueTvTypes - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/AnalogueTvTypes?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/AnalogueTvTypes?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">AnalogueTvTypes</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>Site Index: </p>
+<ol>
+
+<li>
+<a href="#head-beef4aa89ce360854daf40345190634b2fb919fb">Types of Analogue TV cards</a>
+</li>
+
+<li>
+<a href="#head-3c2672f15642c49794f298d5af5ac52d55defd5c">Types of audio input</a>
+<ol>
+
+<li>
+<a href="#head-8bb79382018da02017296f63f8129d52c5fcf990">Btaudio</a>
+</li>
+
+<li>
+<a href="#head-21152ecff8d1259f3e0b7740026767e32e7c7085">TV Line In</a>
+<ol>
+
+<li>
+<a href="#head-2281c7dfab37570138c753c1f128f08b11442c0f">Description</a>
+</li>
+
+<li>
+<a href="#head-a293edee14e2d2812a19e4b5cffe44973c046155">OSS instructions</a>
+</li>
+
+<li>
+<a href="#head-d271665ec1362c7ed6e4cbdb616274507a99a6fb">ALSA</a>
+</li>
+
+</ol>
+
+</li>
+
+</ol>
+
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-beef4aa89ce360854daf40345190634b2fb919fb">Types of Analogue TV cards</h2>
+
+<p>Analogue TV viewing uses tradtional analogue TV signal with a PC based viewing card to display TV on your output device (Monitor, TV, plasma). There are two main types of cards in this market. The 1st card is simply a decoder, these cards are usually based on the BT878? chipset with the bttv drivers and have fairly good support in linux (e.g. The PCTV card by Pinnacle, better/other example?). This card takes care of TV viewing only, any recording done from this must be done in a separate software application (e.g. mencoder). The 2nd type of card carries a mpeg2 encoder as well as the decoder, the most popular use the ? chipset with the IVTV driver (e.g. the WinTV-PVR-250 from hauppauge). This means the same divice will take care of TV viewing and recording for you using it's own hardware. It will record a file to the mpeg2 format and from reports produces very good results.  </p>
+
+<h2 id="head-3c2672f15642c49794f298d5af5ac52d55defd5c">Types of audio input</h2>
+
+<p>There are three different types of audio input for recording. Line In, Btaudio and ivtv. The first two depend on using the bttv module for your tv card. The third is for use only with the ivtv module for the wintv PVR type cards. </p>
+
+<h3 id="head-8bb79382018da02017296f63f8129d52c5fcf990">Btaudio</h3>
+
+<p>This process uses the sound from btaudio kernel module and the pictures from your bttv module. This is the preffered freevo setup for recording and the default settings in VCR_CMD reflect this. </p>
+<p>This setup is problematic though since the majority of cards do not support btaudio and some cards only thought to work in certain configurations. Btaudio setup is its own topic and help can be found <a class="external" href="FAQ.html"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> here</a>. </p>
+<p>Once you have that setup you can change the default VCR_CMD's adevice to point to it. </p>
+<p>This is also the best setup for doing timeshifting, thus it is recommended to try hard to get this setup to work for you. </p>
+<p>Note: There are limited cards that support the use of the btaudio module, in fact they are the distinct <span class="u">minority</span> please make sure your card supports this before you try to configure. </p>
+
+<h3 id="head-21152ecff8d1259f3e0b7740026767e32e7c7085">TV Line In</h3>
+
+
+<h4 id="head-2281c7dfab37570138c753c1f128f08b11442c0f">Description</h4>
+
+<p>This process using the line out sound from your tv card into the line in of your sound card for the sound and bttv for your pictures. This is a common bttv setup. </p>
+<p>It has a couple inherit problems. First you will hear the program in the background when you are recording. And Second, You cannot run any apps that use the soundcard while recording (which pretty rules out everything except images and maybe running some scripts in commands plugin). </p>
+<p>Another problem is that depending on your sound system you have to do different things to setup the recording. </p>
+<p>VIA USERS: Note that if you have a VIA-based on-board sound card, you should uninstall the current drivers in your system and install the appropriate drivers found at <a href="http://www.viaarena.com"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.viaarena.com</a> . Then increase your IGain setting on your audio mixer to something greater than zero (ie: # aumix -l 0 -l R -i 35). </p>
+
+<h4 id="head-a293edee14e2d2812a19e4b5cffe44973c046155">OSS instructions</h4>
+
+<p>Typically you need to use something like the following to mute and unmute the audio: </p>
+
+<pre>
+# to unmute the audio
+aumix -l 80 -l R
+
+# to mute the audio
+aumix -l 0
+</pre>
+<p>Unfortunately some Sound Blaster cards also need another variable tweaked when used with OSS. The soundblasters cards need and extra parameter (IGAIN) added to the aumix calls. for example: </p>
+
+<pre>
+# to unmute the audio
+aumix -l 80 -l R -i 1
+
+# to mute the audio
+aumix -l 0 -i 0
+</pre>
+<p>Another variable that needs to change in the VCR_CMD is the adevice to /dev/dsp. You can do this by changing your VCR_CMD to a script setup similar to one <a class="external" href="http://cvs.sourceforge.net/viewcvs.py/freevo/freevo/contrib/record_without_btaudio/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> here</a>. (One good thing about controlling recording from a script is that it makes it easy to experiment from the command line.)  </p>
+<p>This can be done by using VCR_PRE_REC = 'command opts' and VCR_POST_REC = 'commands opts' </p>
+<p>before freevo 1.5.x we could use </p>
+<pre>
+VCR_CMD = ( 'aumix -l 80 -l R; '+ 
+            CONF.mencoder + ' ' +
+            blah
+</pre>
+<p>This doens't work anymore. An example how it should be confgred now 
+</p>
+<pre>
+VCR_PRE_REC = ('aumix -l 80 -l R; ')
+VCR_CMD = ( CONF.mencoder + ' ' +
+            'tv:// ' +                      # New mplayer requires this.
+            '-tv driver=v4l:input=0' +      # Input 0 = TV, Input 1 = Comp. V. in
+            ':norm=%s' % CONF.tv +
+            ':channel=%(channel)s' +        # Filled in by Freevo
+            ':chanlist=us-cable' +          # Change
+            ':width=%d:height=%d' % (TV_REC_SIZE[0], TV_REC_SIZE[1]) +
+            ':outfmt=%s' % TV_REC_OUTFMT +
+            ':device=%s' % TV_DEVICE +
+            ':adevice=/dev/dsp' +           
+            ':audiorate=32000' +            # 44100 for better sound
+            ':forceaudio:forcechan=1:' +    # Forced mono for bug in my driver
+            'buffersize=64' +               # 64 Megabyte capture buffer, change?
+            ' -ovc lavc -lavcopts ' +       # Mencoder lavcodec video codec
+            'vcodec=mpeg4' +                # lavcodec mpeg-4
+            ':vbitrate=1200:' +             # Change lower/higher, bitrate
+            'keyint=30 ' +                  # Keyframe every 10 secs, change?
+            '-oac mp3lame -lameopts ' +     # Use Lame for MP3 encoding
+            'br=128:cbr:mode=3 ' +          # MP3 const. bitrate, 128 kbit/s
+            '-ffourcc divx ' +              # Force 'divx' ident, better compat.
+            '-endpos %(seconds)s ' +        # only mencoder uses this so do it here.
+            '-o %(filename)s.avi ')         # Filled in by Freevo
+VCR_POST_REC = ('aumix -l 0')
+</pre>
+<p>On a FreeBSD machine, use the following configuration: 
+</p>
+<pre>
+VCR_PRE_REC = ('mixer =rec line rec 100 line 80')
+VCR_CMD = ( CONF.mencoder + ' ' +
+            'tv:// ' +                      # New mplayer requires this.
+            '-tv driver=bsdbt848:input=1' +      # Input 0 = TV, Input 1 = Comp. V. in
+            ':norm=%s' % CONF.tv +
+            ':channel=%(channel)s' +        # Filled in by Freevo
+            ':chanlist=us-cable' +          # Change
+            ':width=%d:height=%d' % (TV_REC_SIZE[0], TV_REC_SIZE[1]) +
+            ':outfmt=%s' % TV_REC_OUTFMT +
+            ':device=%s' % TV_DEVICE +
+            ' -ovc lavc -lavcopts ' +       # Mencoder lavcodec video codec
+            'vcodec=mpeg4' +                # lavcodec mpeg-4
+            ':vbitrate=1200:' +             # Change lower/higher, bitrate
+            'keyint=30 ' +                  # Keyframe every 10 secs, change?
+            '-oac mp3lame -lameopts ' +     # Use Lame for MP3 encoding
+            'br=128:cbr:mode=3 ' +          # MP3 const. bitrate, 128 kbit/s
+            '-ffourcc divx ' +              # Force 'divx' ident, better compat.
+            '-endpos %(seconds)s ' +        # only mencoder uses this so do it here.
+            '-o %(filename)s.avi ')         # Filled in by Freevo
+VCR_POST_REC = ('mixer rec 0')
+</pre>
+
+<h4 id="head-d271665ec1362c7ed6e4cbdb616274507a99a6fb">ALSA</h4>
+
+<p>To use alsa, the best way is to create to scripts that do the necessary changes for the sound before and after the vcr command. You can use the config variables VCR_PRE_REC and VCR_POST_REC for this. The two scripts, don't forget to make them executable (example : chmod +x /usr/local/freevo/scripts/vcr_pre_rec.sh) </p>
+
+<pre>
+#!/bin/bash
+# VCR_PRE_REC script to set the line in volume and mute the sound so you don't hear it wehen recording
+
+AMIXER=/usr/bin/amixer          # path to amixer
+
+$AMIXER -q sset CD 87% mute
+$AMIXER -q sset Capture 87%
+$AMIXER -q cset numid=30 1      # select capture source, 30 is capture source control, 1 = CD, 3 =aux 4 = line
+$AMIXER -q cset numid=31 1      # set capture source switch to 1 (= on)
+</pre>
+
+<pre>
+#!/bin/bash
+# VCR_POST_REC script : unmute cd again to hear sound when using watching tv after recording
+
+AMIXER=/usr/bin/amixer          # path to amixer
+
+$AMIXER -q sset CD 87% unmute   # unmute cd again to hear sound when using watching tv after recording
+</pre>
+<p>The numid used are <strong>specific to the my sound card</strong> (Epia M onboard sound card), You will most likely need to change these variables. For my soundcard 'ceset numdid=30 1 ' is to select the CD as capture source (0 = mic, 1 = cd,3 = aux 4 = line) and numid=31 is the capture switch. Run "amixer controls" to get the numid's. Run "amixer cset numid=30" to get the capture source items (change numid=30 with yor capture source), Most people will use #4, the "line in". So  use 'amixer cset numid=30 4' to select "line in" as capture. amixer cget numid=30 to see the devices you can select for capture (change numid=30 with yor capture source). </p>
+<p>The next example shows you how to use these scripts with freevo and a vcr command example. 
+</p>
+<pre>
+VCR_PRE_REC = ('/usr/local/freevo/scripts/vcr_pre_rec.sh')
+VCR_CMD = ( CONF.mencoder + ' ' +
+            'tv:// ' +                        # New mplayer requires this.
+            '-tv driver=v4l:input=0' +        # Input 0 = TV, Input 1 = Comp. V. in
+            ':norm=%s' % CONF.tv +            # TV norm (pal, ntsc, ..) from freevo.conf
+            ':channel=%(channel)s' +          # Filled in by Freevo
+            ':chanlist=%s' % CONF.chanlist +  # Change
+            ':width=%d:height=%d' % (TV_REC_SIZE[0], TV_REC_SIZE[1]) +
+            ':outfmt=%s' % TV_REC_OUTFMT +
+            ':device=%s' % TV_DEVICE +
+            ':adevice=/dev/sound/dsp' +           
+            ':audiorate=32000' +            # 44100 for better sound
+            'buffersize=64' +               # 64 Megabyte capture buffer, change?
+            ' -ovc lavc -lavcopts ' +       # Mencoder lavcodec video codec
+            'vcodec=mpeg4' +                # lavcodec mpeg-4
+            ':vbitrate=1200:' +             # Change lower/higher, bitrate
+            'keyint=30 ' +                  # Keyframe every 10 secs, change?
+            '-oac mp3lame -lameopts ' +     # Use Lame for MP3 encoding
+            'br=128:cbr:mode=3 ' +          # MP3 const. bitrate, 128 kbit/s
+            '-ffourcc divx ' +              # Force 'divx' ident, better compat.
+            '-endpos %(seconds)s ' +        # Filled in by Freevo
+            '-o %(filename)s.avi ')         # Filled in by Freevo
+VCR_POST_REC = ('/usr/local/freevo/scripts/vcr_post_rec.sh')
+</pre>
+<p>Example scripts for soundblaster live 5.1 </p>
+
+<pre>
+#!/bin/bash
+# VCR_PRE_REC script to set the line in volume and mute the sound so you don't hear it wehen recording
+
+AMIXER=/usr/bin/amixer          # path to amixer
+
+$AMIXER -q sset Line 87% mute 
+$AMIXER -q sset Capture 87% 
+$AMIXER -q cset numid=63 4      # select capture source, 63 is capture source control, 1 = CD and 4 = line 
+$AMIXER -q cset numid=64 1      # set capture source switch to 1 (= on) 
+
+</pre>
+
+<pre>
+#!/bin/bash
+# VCR_POST_REC script : unmute cd again to hear sound when using watching tv after recording
+
+AMIXER=/usr/bin/amixer          # path to amixer
+
+$AMIXER -q sset Line 87% unmute   # unmute cd again to hear sound when using watching tv after recording 
+</pre>
+<p>See <a class="external" href="FAQ.html"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> btaudio page</a> for using alsa with snd-bt87x module (the alsa btaudio equivalent) </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-06-01 02:55:57 by <span title="S010600045a5aa2ce.ed.shawcable.net">JohnCrummy</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/AnalogueTvTypes">http://freevo.sourceforge.net/cgi-bin/doc/AnalogueTvTypes</a></p>
+</div> <!-- end page -->
+</body>
+</html>

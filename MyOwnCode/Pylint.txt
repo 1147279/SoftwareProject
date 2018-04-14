@@ -1,0 +1,423 @@
+************* Module Algorithm1
+C:  6, 0: Trailing whitespace (trailing-whitespace)
+W:  7, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W:  8, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C:  9, 0: Trailing whitespace (trailing-whitespace)
+W: 10, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 13, 0: Trailing whitespace (trailing-whitespace)
+W: 13, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W: 14, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 15, 0: Trailing whitespace (trailing-whitespace)
+W: 15, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W: 16, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 16, 0: Exactly one space required after comma
+				iM,jM,valueM =  line.split()
+      ^ (bad-whitespace)
+C: 16, 0: Exactly one space required after comma
+				iM,jM,valueM =  line.split()
+         ^ (bad-whitespace)
+C: 16, 0: Exactly one space required after assignment
+				iM,jM,valueM =  line.split()
+                 ^ (bad-whitespace)
+W: 18, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 18, 0: Exactly one space required after comma
+				for k in range(0,int(columnsN)):
+                    ^ (bad-whitespace)
+W: 19, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 19, 0: Exactly one space required after comma
+				        yield (int(iM),int(k)),('M',int(jM),int(valueM))
+                          ^ (bad-whitespace)
+C: 19, 0: Exactly one space required after comma
+				        yield (int(iM),int(k)),('M',int(jM),int(valueM))
+                                  ^ (bad-whitespace)
+C: 19, 0: Exactly one space required after comma
+				        yield (int(iM),int(k)),('M',int(jM),int(valueM))
+                                       ^ (bad-whitespace)
+C: 19, 0: Exactly one space required after comma
+				        yield (int(iM),int(k)),('M',int(jM),int(valueM))
+                                               ^ (bad-whitespace)
+W: 21, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W: 22, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 22, 0: Exactly one space required after comma
+				jN,kN,valueN =  line.split()
+      ^ (bad-whitespace)
+C: 22, 0: Exactly one space required after comma
+				jN,kN,valueN =  line.split()
+         ^ (bad-whitespace)
+C: 22, 0: Exactly one space required after assignment
+				jN,kN,valueN =  line.split()
+                 ^ (bad-whitespace)
+W: 23, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 23, 0: Exactly one space required after comma
+				for i in range(0,int(rowsM)):
+                    ^ (bad-whitespace)
+W: 24, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 24, 0: Exactly one space required after comma
+					yield (int(i),int(kN)),('N',int(jN),int(valueN))
+                  ^ (bad-whitespace)
+C: 24, 0: Exactly one space required after comma
+					yield (int(i),int(kN)),('N',int(jN),int(valueN))
+                           ^ (bad-whitespace)
+C: 24, 0: Exactly one space required after comma
+					yield (int(i),int(kN)),('N',int(jN),int(valueN))
+                                ^ (bad-whitespace)
+C: 24, 0: Exactly one space required after comma
+					yield (int(i),int(kN)),('N',int(jN),int(valueN))
+                                        ^ (bad-whitespace)
+W: 28, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W: 29, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W: 30, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 31, 0: Trailing whitespace (trailing-whitespace)
+W: 32, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W: 33, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 33, 0: Exactly one space required around comparison
+			if i[0]=='M':
+          ^^ (bad-whitespace)
+W: 34, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 34, 0: Exactly one space required after comma
+				oldlistM.append([i[1],i[2]])
+                         ^ (bad-whitespace)
+W: 35, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W: 36, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 36, 0: Exactly one space required after comma
+				oldlistN.append([i[1],i[2]])
+                         ^ (bad-whitespace)
+W: 39, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 39, 0: Exactly one space required after :
+		listM = sorted(oldlistM, key=lambda x:x[1])
+                                       ^ (bad-whitespace)
+W: 40, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 40, 0: Exactly one space required after :
+		listN = sorted(oldlistN, key=lambda x:x[1])
+                                       ^ (bad-whitespace)
+W: 43, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W: 44, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 44, 0: Exactly one space required around assignment
+		k=0;
+   ^ (bad-whitespace)
+W: 44, 0: Unnecessary semicolon (unnecessary-semicolon)
+W: 46, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W: 47, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 47, 0: Exactly one space required after comma
+			for l in range(0,len(listN)):
+                   ^ (bad-whitespace)
+C: 48, 0: Trailing whitespace (trailing-whitespace)
+W: 48, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 48, 0: Exactly one space required around comparison
+				if listN[l][0]==i[0]:			
+                  ^^ (bad-whitespace)
+W: 49, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W: 50, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 50, 0: Exactly one space required around assignment
+					k=k+1
+      ^ (bad-whitespace)
+W: 51, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W: 52, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 53, 0: Trailing whitespace (trailing-whitespace)
+W: 55, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 55, 0: Exactly one space required around assignment
+		sumofP=sum(P)
+        ^ (bad-whitespace)
+W: 56, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W: 57, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 57, 0: Exactly one space required after comma
+			yield key,sumofP
+            ^ (bad-whitespace)
+W: 58, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 58, 0: Exactly one space required around assignment
+			f=""
+    ^ (bad-whitespace)
+W: 59, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 59, 0: Exactly one space required around assignment
+			g=""
+    ^ (bad-whitespace)
+W: 60, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 60, 0: Exactly one space required around assignment
+			keystr=str(key).split(',')
+         ^ (bad-whitespace)
+W: 61, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 61, 0: Exactly one space required after comma
+			for i in range(1,len(keystr[0])):
+                   ^ (bad-whitespace)
+W: 62, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 62, 0: Exactly one space required around assignment
+				f+=keystr[0][i]
+     ^^ (bad-whitespace)
+W: 63, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 63, 0: Exactly one space required after comma
+			for i in range(0,len(keystr[1])-1):
+                   ^ (bad-whitespace)
+W: 64, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 64, 0: Exactly one space required around assignment
+				g+=keystr[1][i]
+     ^^ (bad-whitespace)
+W: 65, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W: 66, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 67, 0: Trailing whitespace (trailing-whitespace)
+C: 70, 0: Trailing whitespace (trailing-whitespace)
+W: 74, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 74, 0: Exactly one space required after comma
+	matrixM = open("outA1.list","r")
+                            ^ (bad-whitespace)
+W: 75, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 75, 0: Exactly one space required after comma
+	rowsM,columnsM = matrixM.readline().split()
+      ^ (bad-whitespace)
+W: 76, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 76, 0: Exactly one space required after comma
+	matrixN = open("outB1.list","r")
+                            ^ (bad-whitespace)
+W: 77, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 77, 0: Exactly one space required after comma
+	rowsN,columnsN = matrixN.readline().split()
+      ^ (bad-whitespace)
+W: 78, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 78, 0: Exactly one space required after comma
+	print rowsN," ", columnsN
+            ^ (bad-whitespace)
+W: 79, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W: 81, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 81, 0: Exactly one space required after comma
+		tempFile = open('Temp.txt','w')
+                            ^ (bad-whitespace)
+W: 82, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 83, 0: Trailing whitespace (trailing-whitespace)
+W: 83, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 83, 0: Exactly one space required around assignment
+		count=0	
+       ^ (bad-whitespace)
+W: 84, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 85, 0: Trailing whitespace (trailing-whitespace)
+W: 86, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W: 87, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 87, 0: Exactly one space required after comma
+			i,val = line.split()
+    ^ (bad-whitespace)
+W: 88, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W: 89, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W: 90, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 91, 0: Trailing whitespace (trailing-whitespace)
+W: 92, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W: 93, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 93, 0: Exactly one space required after comma
+		reWrite = open('outB1.list','w')
+                             ^ (bad-whitespace)
+W: 94, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W: 95, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 95, 0: Exactly one space required after comma
+		tempFile = open('Temp.txt','r')
+                            ^ (bad-whitespace)
+W: 96, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 96, 0: No space allowed before bracket
+		for iterator in range (0,int(rowsN)+1):
+                        ^ (bad-whitespace)
+C: 96, 0: Exactly one space required after comma
+		for iterator in range (0,int(rowsN)+1):
+                          ^ (bad-whitespace)
+W: 97, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W: 98, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C: 99, 0: Trailing whitespace (trailing-whitespace)
+W:101, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C:101, 0: Exactly one space required after comma
+	outputFile = open('Output.txt','w')
+                               ^ (bad-whitespace)
+C:102, 0: Trailing whitespace (trailing-whitespace)
+W:102, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C:103, 0: Trailing whitespace (trailing-whitespace)
+W:103, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W:104, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W:105, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W:106, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C:107, 0: Trailing whitespace (trailing-whitespace)
+W:107, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W:108, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W:109, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+W:110, 0: Found indentation with tabs instead of spaces (mixed-indentation)
+C:111, 0: Trailing whitespace (trailing-whitespace)
+C:120, 0: Trailing newlines (trailing-newlines)
+C:  1, 0: Missing module docstring (missing-docstring)
+C:  5, 0: Invalid class name "matrixMultiply" (invalid-name)
+C:  5, 0: Missing class docstring (missing-docstring)
+W:  5, 0: Method 'combiner' is abstract in class 'MRJob' but is not overridden (abstract-method)
+W:  5, 0: Method 'combiner_cmd' is abstract in class 'MRJob' but is not overridden (abstract-method)
+W:  5, 0: Method 'combiner_final' is abstract in class 'MRJob' but is not overridden (abstract-method)
+W:  5, 0: Method 'combiner_init' is abstract in class 'MRJob' but is not overridden (abstract-method)
+W:  5, 0: Method 'combiner_pre_filter' is abstract in class 'MRJob' but is not overridden (abstract-method)
+W:  5, 0: Method 'mapper_cmd' is abstract in class 'MRJob' but is not overridden (abstract-method)
+W:  5, 0: Method 'mapper_final' is abstract in class 'MRJob' but is not overridden (abstract-method)
+W:  5, 0: Method 'mapper_init' is abstract in class 'MRJob' but is not overridden (abstract-method)
+W:  5, 0: Method 'mapper_pre_filter' is abstract in class 'MRJob' but is not overridden (abstract-method)
+W:  5, 0: Method 'reducer_cmd' is abstract in class 'MRJob' but is not overridden (abstract-method)
+W:  5, 0: Method 'reducer_final' is abstract in class 'MRJob' but is not overridden (abstract-method)
+W:  5, 0: Method 'reducer_init' is abstract in class 'MRJob' but is not overridden (abstract-method)
+W:  5, 0: Method 'reducer_pre_filter' is abstract in class 'MRJob' but is not overridden (abstract-method)
+W:  5, 0: Method 'spark' is abstract in class 'MRJob' but is not overridden (abstract-method)
+C:  7, 1: Invalid method name "sortbyJ" (invalid-name)
+C:  7, 1: Invalid argument name "listItem" (invalid-name)
+C:  7, 1: Missing method docstring (missing-docstring)
+E:  7, 1: Method should have "self" as first argument (no-self-argument)
+E:  8, 9: Value 'listItem' is unsubscriptable (unsubscriptable-object)
+W: 23, 8: Redefining name 'i' from outer scope (line 87) (redefined-outer-name)
+W: 10,21: Redefining name 'line' from outer scope (line 84) (redefined-outer-name)
+W: 10, 1: Parameters differ from overridden 'mapper' method (arguments-differ)
+C: 14, 3: Invalid variable name "nameFile" (invalid-name)
+C: 16, 4: Invalid variable name "iM" (invalid-name)
+C: 16, 7: Invalid variable name "jM" (invalid-name)
+C: 16,10: Invalid variable name "valueM" (invalid-name)
+C: 22, 4: Invalid variable name "jN" (invalid-name)
+C: 22, 7: Invalid variable name "kN" (invalid-name)
+C: 22,10: Invalid variable name "valueN" (invalid-name)
+W: 32, 6: Redefining name 'i' from outer scope (line 87) (redefined-outer-name)
+R: 28, 1: Too many local variables (16/15) (too-many-locals)
+C: 29, 2: Invalid variable name "oldlistM" (invalid-name)
+C: 30, 2: Invalid variable name "oldlistN" (invalid-name)
+C: 39, 2: Invalid variable name "listM" (invalid-name)
+C: 40, 2: Invalid variable name "listN" (invalid-name)
+C: 43, 2: Invalid variable name "P" (invalid-name)
+C: 47, 7: Invalid variable name "l" (invalid-name)
+C: 55, 2: Invalid variable name "sumofP" (invalid-name)
+C: 58, 3: Invalid variable name "f" (invalid-name)
+C: 59, 3: Invalid variable name "g" (invalid-name)
+C: 62, 4: Invalid variable name "f" (invalid-name)
+C: 64, 4: Invalid variable name "g" (invalid-name)
+C: 65, 3: Invalid variable name "stringOut" (invalid-name)
+C: 74, 1: Invalid constant name "matrixM" (invalid-name)
+C: 75, 1: Invalid constant name "rowsM" (invalid-name)
+C: 75, 7: Invalid constant name "columnsM" (invalid-name)
+C: 76, 1: Invalid constant name "matrixN" (invalid-name)
+C: 77, 1: Invalid constant name "rowsN" (invalid-name)
+C: 77, 7: Invalid constant name "columnsN" (invalid-name)
+C: 81, 2: Invalid constant name "tempFile" (invalid-name)
+C: 83, 2: Invalid constant name "count" (invalid-name)
+C: 84, 2: Invalid constant name "line" (invalid-name)
+C: 87, 5: Invalid constant name "val" (invalid-name)
+C: 89, 3: Invalid constant name "count" (invalid-name)
+C: 90, 3: Invalid constant name "line" (invalid-name)
+C: 93, 2: Invalid constant name "reWrite" (invalid-name)
+C: 95, 2: Invalid constant name "tempFile" (invalid-name)
+C:101, 1: Invalid constant name "outputFile" (invalid-name)
+C:103, 1: Invalid constant name "starttime" (invalid-name)
+C:105, 1: Invalid constant name "endtime" (invalid-name)
+C:106, 1: Invalid constant name "duration" (invalid-name)
+C:  2, 0: standard import "import os" should be placed before "from mrjob.job import MRJob" (wrong-import-order)
+C:  3, 0: standard import "import time" should be placed before "from mrjob.job import MRJob" (wrong-import-order)
+
+
+Report
+======
+78 statements analysed.
+
+Statistics by type
+------------------
+
++---------+-------+-----------+-----------+------------+---------+
+|type     |number |old number |difference |%documented |%badname |
++=========+=======+===========+===========+============+=========+
+|module   |1      |1          |=          |0.00        |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|class    |1      |1          |=          |0.00        |100.00   |
++---------+-------+-----------+-----------+------------+---------+
+|method   |3      |3          |=          |66.67       |33.33    |
++---------+-------+-----------+-----------+------------+---------+
+|function |0      |0          |=          |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+
+
+
+External dependencies
+---------------------
+::
+
+    mrjob 
+      \-job (Algorithm1)
+
+
+
+Raw metrics
+-----------
+
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |82     |67.77 |82       |=          |
++----------+-------+------+---------+-----------+
+|docstring |0      |0.00  |0        |=          |
++----------+-------+------+---------+-----------+
+|comment   |14     |11.57 |16       |-2.00      |
++----------+-------+------+---------+-----------+
+|empty     |25     |20.66 |23       |+2.00      |
++----------+-------+------+---------+-----------+
+
+
+
+Duplication
+-----------
+
++-------------------------+------+---------+-----------+
+|                         |now   |previous |difference |
++=========================+======+=========+===========+
+|nb duplicated lines      |0     |0        |=          |
++-------------------------+------+---------+-----------+
+|percent duplicated lines |0.000 |0.000    |=          |
++-------------------------+------+---------+-----------+
+
+
+
+Messages by category
+--------------------
+
++-----------+-------+---------+-----------+
+|type       |number |previous |difference |
++===========+=======+=========+===========+
+|convention |110    |108      |+2.00      |
++-----------+-------+---------+-----------+
+|refactor   |1      |1        |=          |
++-----------+-------+---------+-----------+
+|warning    |95     |95       |=          |
++-----------+-------+---------+-----------+
+|error      |2      |2        |=          |
++-----------+-------+---------+-----------+
+
+
+
+Messages
+--------
+
++-----------------------+------------+
+|message id             |occurrences |
++=======================+============+
+|mixed-indentation      |76          |
++-----------------------+------------+
+|bad-whitespace         |47          |
++-----------------------+------------+
+|invalid-name           |40          |
++-----------------------+------------+
+|trailing-whitespace    |17          |
++-----------------------+------------+
+|abstract-method        |14          |
++-----------------------+------------+
+|redefined-outer-name   |3           |
++-----------------------+------------+
+|missing-docstring      |3           |
++-----------------------+------------+
+|wrong-import-order     |2           |
++-----------------------+------------+
+|unsubscriptable-object |1           |
++-----------------------+------------+
+|unnecessary-semicolon  |1           |
++-----------------------+------------+
+|trailing-newlines      |1           |
++-----------------------+------------+
+|too-many-locals        |1           |
++-----------------------+------------+
+|no-self-argument       |1           |
++-----------------------+------------+
+|arguments-differ       |1           |
++-----------------------+------------+
+
+
+
+
+----------------------------------------------------------------------
+Your code has been rated at -17.69/10 (previous run: -17.44/10, -0.26)
+

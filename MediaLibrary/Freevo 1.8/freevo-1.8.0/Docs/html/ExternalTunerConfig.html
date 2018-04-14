@@ -1,0 +1,305 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>ExternalTunerConfig - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/ExternalTunerConfig?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/ExternalTunerConfig?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">ExternalTunerConfig</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<ol>
+
+<li>
+<a href="#head-f88fb4f00e100b2e46d97b1d18f75898f8594cad">External Tuner</a>
+<ol>
+
+<li>
+<a href="#head-697c09d722294fdcae2d51b2e5d24dd5e1375ba9">Motorola DCT2XXX Series Set Top Box</a>
+<ol>
+
+<li>
+<a href="#head-5d01efb9a48ac523d9cc30244069913da8f65ad0">Prerequisites</a>
+</li>
+
+<li>
+<a href="#head-8ddab859fe1bc7236d43b77de99d8b375183090f">Installation</a>
+</li>
+
+<li>
+<a href="#head-12b30e0e01302f71a3a65bdbe7cdd91e1f5bfcae">Configuration</a>
+</li>
+
+<li>
+<a href="#head-57e374d583870c3c12adc252c0f01b333bed70da">Troubleshooting</a>
+</li>
+
+</ol>
+
+<li>
+<a href="#head-a658b45812ae23ccabd4e3f07fafaa8b0c405038">EchoStar Satellite Box</a>
+<ol>
+
+<li>
+<a href="#head-2a6c8b41d61b59dbc14b38d3e21397768dec4c83">Building Lirc</a>
+</li>
+
+<li>
+<a href="#head-5de57e907c928ded532c0559b299a90ece44c0a1">Configuring LIRC for Transmit/Blasting</a>
+</li>
+
+<li>
+<a href="#head-57e374d583870c3c12adc252c0f01b333bed70da-2">Troubleshooting</a>
+</li>
+
+</ol>
+
+</li>
+
+</ol>
+
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-f88fb4f00e100b2e46d97b1d18f75898f8594cad">External Tuner</h2>
+
+<p>For situations where an external tuner i.e. a cable box or satellite receiver is being used. Channel changes are made by either executing an external application or by sending IR events. </p>
+
+<h3 id="head-697c09d722294fdcae2d51b2e5d24dd5e1375ba9">Motorola DCT2XXX Series Set Top Box</h3>
+
+<p>If you have a Motorola DCT2XXXX (eg, DCT2224) and a serial cable, you can use the dct2xxx external tuner plugin to change channels on the set top box.  It can be downloaded from the Add-Ons section of the main freevo website: <a class="external" href="http://freevo.sourceforge.net/addons/index.php?action=downloadfile&amp;filename=dct2xxx.tgz&amp;directory=Plugins"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> DCT2XXXSerialTuner</a>. </p>
+
+<h4 id="head-5d01efb9a48ac523d9cc30244069913da8f65ad0">Prerequisites</h4>
+
+<ol type="1">
+<li><p>Install pySerial into your python runtime.  If you use Debian and used apt-get to install python, you can use apt-get to install pySerial as well: </p>
+</li>
+</ol>
+<ul>
+<li style="list-style-type:none">
+<pre>
+apt-get install pyserial
+</pre>
+</li>
+</ul>
+<ol start="2" type="1">
+<li><p>Make sure you are running Freevo version 1.5.2 or above. </p>
+</li>
+</ol>
+
+<h4 id="head-8ddab859fe1bc7236d43b77de99d8b375183090f">Installation</h4>
+
+<ol type="1">
+<li><p>Extract the serialtuner.tar.gz archive (included in the gzipped tar file you can download using the link above) into your python runtime's site-packages directory. </p>
+</li>
+<li class="gap"><p>Copy the dct2224serial.py file into your Freevo installation's freevo/tv/plugins directory.  This directory could be in many places, depending on how you installed freevo.  For Debian and apt-get, the above directory can be found in /usr/lib/python2.3/site-packages. </p>
+</li>
+</ol>
+
+<h4 id="head-12b30e0e01302f71a3a65bdbe7cdd91e1f5bfcae">Configuration</h4>
+
+<ol type="1">
+<li><p>Add the following line to your local_conf.py file: </p>
+</li>
+</ol>
+<ul>
+<li style="list-style-type:none">
+<pre>
+plugin_external_tuner = plugin.activate("tv.dct2224serial")
+</pre>
+</li>
+</ul>
+<ol start="2" type="1">
+<li><p>Make sure you have configured Freevo to use an external tuner.  You will need a <tt>VIDEO_GROUPS</tt> setting something like the following: </p>
+</li>
+</ol>
+<ul>
+<li style="list-style-type:none">
+<pre>
+VIDEO_GROUPS = [
+     VideoGroup(vdev=TV_DEVICE,
+        adev=AUDIO_DEVICE,
+        input_type='tuner',
+        tuner_type='external',
+        input_num=4,
+        tuner_norm=CONF.tv,
+        tuner_chan=3,
+        tuner_chanlist=CONF.chanlist,
+        desc='IVTV Video Group',
+        group_type='ivtv',
+        recordable=True),
+ ]
+</pre>
+<p>The above settings work for an WinPVR-250 card using the ivtv drivers.  The important parts are the tuner_type='external' setting and the input_num setting.  The tuner_type must be set to 'external' in order to ensure the external tuner plugin gets invoked.  The input_num setting controls which input of the WinPVR card is receiving the signal from your cable set top box.  For my particular card and using the coaxial cable input of the WinPVR card, input_num happens to be 4. </p>
+</li>
+</ul>
+<p>That's it. As long as the serial port on your set top box is active, Freevo will change the channel when recording a show or selecting a channel from the program guide. However, trying to change channels while watching a current show does not work.  In this situation, you have to exit back to the tv guide and select the new channel for viewing. </p>
+
+<h4 id="head-57e374d583870c3c12adc252c0f01b333bed70da">Troubleshooting</h4>
+
+<p>The main problem with using the serial port of your Motorola set top box is that it may not be on.  Check out this web page: <a class="external" href="http://www.dseifert.net/code/serialtuner/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> DCT2XXXSerialTunerHome</a> for some tips and links to get help. </p>
+<hr class="hr1">
+<p> </p>
+
+<h3 id="head-a658b45812ae23ccabd4e3f07fafaa8b0c405038">EchoStar Satellite Box</h3>
+
+<p><strong>System</strong>: Haupauge PVR 350 with remote and Bell Express Vu Satellite. </p>
+
+<h4 id="head-2a6c8b41d61b59dbc14b38d3e21397768dec4c83">Building Lirc</h4>
+
+<p>Lirc has two jobs on my system:  </p>
+<ol type="1">
+<li><p>Receive signals from the Hauppauge remote to pass on to Freevo </p>
+</li>
+<li><p>Transmit IR signals to my satellite box so that Freevo can change channels. </p>
+</li>
+</ol>
+<p>In <a class="external" href="http://losdos.dyndns.org:8080/public/mythtv-info/MythTV_DISH_IR_LED_TX_via_Modified_LIRC.html"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> MythTV DISH IR LED TX via Modified LIRC</a> they suggest modifying lirc build files to produce a "lirc-transmit" mdoule that won't interfer with  your regular lirc receiving module. I haven't done this. </p>
+<p>Since I use Gentoo I followed the similar, but simpler, advice found at <a class="external" href="http://pvrguide.no-ip.com/bbs-old/viewtopic/12176.html"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> use multiple lirc drivers simultaneously</a>. Basically you build two lirc modules (lirc-hauppauge and lirc-serial) one after the other. Then you modify your init scripts to start both modules instead of the regular lirc init.  </p>
+<ul>
+<li style="list-style-type:none"><p><strong>HACKS</strong>: The kernel had already grabbed control of my com port and therefore regular loading of lirc-serial fails. To get around this I call setserial in my local start script and then modprobe lirc-serial explicitly. I also make sure dev/lirc1 is writeable for everyone. These hacks can likely be worked around by configuring your kernel/bios to not grab the com port and by setting up devfs/udev/pam to grant the correct permissions for lirc1. I haven't done this yet. </p>
+</li>
+</ul>
+
+<pre>
+# file /etc/conf.d/local.start
+
+# This is a good place to load any misc.
+# programs on startup ( 1&gt;&amp;2 )
+
+# let go of the serial port and THEN load lirc_serial
+/bin/setserial /dev/ttyS0 uart none
+/sbin/modprobe lirc_serial
+/bin/chmod 666 /dev/lirc1
+</pre>
+<ul>
+<li style="list-style-type:none"><p><strong>Important</strong>: My init script for lirc-serial includes a niceness parameter (-N -10), this was necessary to get channel changing to work reliably. The whole init script for lircd-serial looks like: </p>
+</li>
+</ul>
+
+<pre>
+start() {
+    ebegin "Starting lircd serial"
+       
+    start-stop-daemon --start --quiet -N -10 -p /var/run/lircd-serial.pid -a /usr/sbin/lircd -- -o /dev/lircd1 -d /dev/lirc1 -p 777 -P /var/run/lircd-serial.pid
+    eend $?
+}
+stop() {
+    ebegin "Stopping lircd serial"
+    start-stop-daemon --stop --quiet -p /var/run/lircd-serial.pid
+    eend $?
+}
+
+</pre>
+
+<h4 id="head-5de57e907c928ded532c0559b299a90ece44c0a1">Configuring LIRC for Transmit/Blasting</h4>
+
+<p>1) First set up up the recieving side, see <a class="interwiki" title="Self" href="Lirc.html"><img src="modern/img/moin-inter.png" alt="[Self]" height="16" width="16">Lirc</a> </p>
+<p>2) Install your IR blaster hardware (I bought one from <a class="external" href="http://www.irblaster.info"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> irblaster</a> it works great). </p>
+<p>3) Configure /etc/lircd.conf for your transmit codes.  </p>
+<p>I started with <a class="external" href="http://lirc.sourceforge.net/remotes/echostar/SAT_301"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> echostar 3100</a>. Make sure you can at least turn your tuner box on and off with irsend, e.g., <tt>irsend&nbsp;-d&nbsp;/dev/lircd1&nbsp;SEND_ONCE&nbsp;&lt;your_remote&gt;&nbsp;power</tt> </p>
+<p>I used the following script to test channel changing from the command line: 
+</p>
+<pre>
+#! /bin/sh
+remote=3100_2
+/usr/bin/irsend -d /dev/lircd1 SEND_ONCE $remote $1
+sleep 0.3
+/usr/bin/irsend -d /dev/lircd1 SEND_ONCE $remote $2
+sleep 0.3
+/usr/bin/irsend -d /dev/lircd1 SEND_ONCE $remote $3
+exit 0
+</pre>
+<ul>
+<li style="list-style-type:none"><p><strong>Note</strong>: I tweaked the original 3100 settings until I got better response. </p>
+</li>
+</ul>
+<p>4) Configure Freevo </p>
+<p>First setup your video group in <tt>local_conf.py</tt> for an external tuner, e.g., 
+</p>
+<pre>
+VIDEO_GROUPS = [
+    VideoGroup(vdev='/dev/video0',
+                adev=None,
+                input_type = 'tuner', 
+                input_num=6,
+                tuner_norm='NTSC',
+                tuner_type='external',
+                desc='ExpressVu',
+                group_type="ivtv",
+                recordable=True)
+ ]
+</pre>
+<p>Next configure a pluging for channel changing: 
+</p>
+<pre>
+# plugin for ir blasting for channel change
+plugin_external_tuner = plugin.activate('tv.irsend_generic2',
+        args=('/usr/bin/irsend -d /dev/lircd1 SEND_ONCE 3100_2'))
+</pre>
+<ul>
+<li style="list-style-type:none"><p><em>HACK</em>: I couldn't get tv/irsend_generic or irsend_echostar to work for me so I hacked irsend_generic to mimic the behaviour of my send script. I called it irsend_generic2. </p>
+<p><strong>NOTE</strong>: the name of the variable, <tt>plugin_external_tuner</tt>, seems to be important for recordserver (oddly enough it doesn't seem to be important for watching TV). </p>
+</li>
+</ul>
+
+<h4 id="head-57e374d583870c3c12adc252c0f01b333bed70da-2">Troubleshooting</h4>
+
+<ul>
+<li><p> First make sure lirc works for both transmitting and receiving <em>outside</em> of Freevo. </p>
+</li>
+<li><p> Depending on your system you may have tweak:  </p>
+<ul>
+<li><p> the niceness of of lirc-serial  </p>
+</li>
+<li><p> the time between irsend commands (the sleep)t </p>
+</li>
+<li><p> the actual lircd.conf parameters </p>
+</li>
+</ul>
+</li>
+</ul>
+<p>PleaseUpdate: Howto set up other external tuners (eg, IR Remotes) properly. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-01-25 09:59:10 by <span title="HSE-Ottawa-ppp238527.sympatico.ca">ToddMacCulloch</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/ExternalTunerConfig">http://freevo.sourceforge.net/cgi-bin/doc/ExternalTunerConfig</a></p>
+</div> <!-- end page -->
+</body>
+</html>

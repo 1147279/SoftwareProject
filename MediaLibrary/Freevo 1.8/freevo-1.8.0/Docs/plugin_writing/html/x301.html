@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>i18n support</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Freevo Plugin Writing HOWTO"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Notes for writing a plugin"
+HREF="c223.html"><LINK
+REL="PREVIOUS"
+TITLE="User Configuartion"
+HREF="x276.html"><LINK
+REL="NEXT"
+TITLE="Plugin Distribution"
+HREF="c314.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Freevo Plugin Writing HOWTO: Writing your own plugins for Freevo</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x276.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 4. Notes for writing a plugin</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c314.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN301"
+>4.5. i18n support</A
+></H1
+><P
+>	Please keep in mind that Freevo has i18n support, meaning that the
+	plugin can be translated into different languages. To support that,
+	please add <CODE
+CLASS="FUNCTION"
+>_()</CODE
+> to each visible text string. 
+      </P
+><P
+>	If your plugin is an external plugin and not distributed with Freevo,
+	please use <CODE
+CLASS="FUNCTION"
+>self._()</CODE
+> for the translation and set
+	the module for the translation with the function
+	<CODE
+CLASS="FUNCTION"
+>translation</CODE
+>. This function exists for items and
+	plugins. A item will inherit the translation settings from it's
+	parent, so you only need to load it once.
+	<PRE
+CLASS="PROGRAMLISTING"
+>class PluginInterface(plugin.Plugin):
+    def __init__(self):
+        plugin.Plugin.__init__(self)
+        self.translation('my_app')
+
+    def foo(self):
+        return self._('Text to translate')
+	</PRE
+>
+      </P
+><P
+>	To update the translation you need to call the script
+	<TT
+CLASS="FILENAME"
+>update.py</TT
+> in the i18n directory of Freevo or
+	when you have an external plugin, call <TT
+CLASS="FILENAME"
+>setup.py</TT
+>
+	(see <A
+HREF="c314.html#EXTERNAL"
+>Plugin Distribution</A
+> for details).
+      </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x276.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c314.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>User Configuartion</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c223.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Plugin Distribution</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

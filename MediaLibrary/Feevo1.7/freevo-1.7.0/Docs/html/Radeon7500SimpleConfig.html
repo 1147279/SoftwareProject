@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>Radeon7500SimpleConfig - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/Radeon7500SimpleConfig?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/Radeon7500SimpleConfig?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">Radeon7500SimpleConfig</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<pre>
+#/etc/X11/XF86Config-4 for AIW Radeon7500 using Gatos 
+#with tv output and 3D with 2 layout -- "Monitor" and "TV"
+
+Section "ServerLayout"
+        Identifier     "Monitor"
+        Screen      0  "MonitorScreen"
+        InputDevice    "Mouse0" "CorePointer"
+        InputDevice    "Keyboard0" "CoreKeyboard"
+EndSection
+
+Section "ServerLayout"
+        Identifier     "TV"
+        Screen      0  "TVScreen"
+        InputDevice    "Mouse0" "CorePointer"
+        InputDevice    "Keyboard0" "CoreKeyboard"
+EndSection
+
+Section "Files"
+        RgbPath      "/usr/X11R6/lib/X11/rgb"
+        ModulePath   "/usr/X11R6/lib/modules"
+        FontPath     "/usr/X11R6/lib/X11/fonts/misc/"
+        FontPath     "/usr/X11R6/lib/X11/fonts/Speedo/"
+        FontPath     "/usr/X11R6/lib/X11/fonts/Type1/"
+        FontPath     "/usr/X11R6/lib/X11/fonts/CID/"
+        FontPath     "/usr/X11R6/lib/X11/fonts/75dpi/"
+EndSection
+
+Section "Module"
+        Load  "record"
+        Load  "extmod"
+        Load  "dbe"
+        Load  "GLcore"
+        Load  "dri"
+        Load  "glx"
+        Load  "xtrap"
+        Load  "speedo"
+        Load  "v4l"
+        Load  "type1"
+        Load  "freetype"
+        # This loads the miscellaneous extensions module, and disables
+        # initialisation of the XFree86-DGA extension within that module.
+        SubSection  "extmod"
+           Option  "omit xfree86-dga"
+        EndSubSection
+EndSection
+
+Section "InputDevice"
+        Identifier  "Keyboard0"
+        Driver      "keyboard"
+EndSection
+
+Section "InputDevice"
+        Identifier  "Mouse0"
+        Driver      "mouse"
+        Option      "Protocol" "ImPS/2"
+        Option      "Device" "/dev/psaux"
+        Option      "Emulate3Buttons" "true"
+        Option      "ZAxisMapping" "4 5"
+EndSection
+
+Section "Monitor"
+        Identifier   "Monitor"
+        VendorName   "AIC"
+        ModelName    "F-17"
+        HorizSync    30-80
+        VertRefresh  50-75
+        Option       "DPMS"
+EndSection
+
+Section "Monitor"
+        Identifier   "TV"
+        HorizSync    30-50
+        VertRefresh  60
+EndSection
+
+Section "Device"
+        Option     "AGPMode" "4"                # &lt;i&gt;
+        Option     "AGPFastWrite" "True"        # [&lt;bool&gt;]
+        Option     "VideoRam"  "64672"          # VideoRam - GATOS_mem
+        Identifier  "Card0"
+        Driver      "ati"
+        VendorName  "ATI Technologies Inc"
+        BoardName   "Radeon RV200 QW [Radeon 7500]"
+        BusID       "PCI:1:5:0"
+EndSection
+
+Section "Device"
+        Option     "AGPMode" "4"                # &lt;i&gt;
+        Option     "AGPFastWrite" "True"        # [&lt;bool&gt;]
+        Option     "TVOutput" "PAL"             # [&lt;str&gt;]
+        Option     "VideoRam"  "64672"          # VideoRam - GATOS_mem
+        Identifier  "Card1"
+        Driver      "ati"
+        VendorName  "ATI Technologies Inc"
+        BoardName   "Radeon RV200 QW [Radeon 7500]"
+        BusID       "PCI:1:5:0"
+EndSection
+
+Section "Screen"
+        Identifier "MonitorScreen"
+        Device     "Card0"
+        Monitor    "Monitor"
+        DefaultDepth  16
+        SubSection "Display"
+                Depth     8
+                Modes     "800x600"
+        EndSubSection
+        SubSection "Display"
+                Depth     16
+                Modes     "1024x768" "800x600"  
+        EndSubSection
+        SubSection "Display"
+                Depth     24
+                Modes     "1280x1024" "1024x768" "800x600" 
+        EndSubSection
+EndSection
+
+Section "Screen"
+        Identifier "TVScreen"
+        Device     "Card1"
+        Monitor    "TV"
+        DefaultDepth  16
+        SubSection "Display"
+                Depth     8
+                Modes     "800x600"  "640x480" 
+        EndSubSection
+        SubSection "Display"
+                Depth     16
+                Modes     "800x600" "640x480"  
+        EndSubSection
+        SubSection "Display"
+                Depth     24
+                Modes     "800x600" "640x480"  
+        EndSubSection
+EndSection
+
+Section "DRI"
+        Mode 0666
+EndSection
+
+</pre>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-03-07 14:04:33 by <span title="sand.gla.ac.uk">KhairulmizamSamsudin</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/Radeon7500SimpleConfig">http://freevo.sourceforge.net/cgi-bin/doc/Radeon7500SimpleConfig</a></p>
+</div> <!-- end page -->
+</body>
+</html>

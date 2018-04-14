@@ -1,0 +1,11 @@
+To run the code for Matrix outAi.list and Matrix outBi.list you need to edit a few lines in the code. 
+
+The first line is line 15 where the name of the text file is. That's where you put outAi.list. 
+
+The second line to edit is line 74 where the name of the text file is again. You need to put outAi.list there too. 
+
+The third line to edit is line 76 where the name of the other text file is. You need to put outBi.list there 
+
+Then lastly in line 93 where the text file is. You need to put outBi.list as well. 
+
+That is all. 

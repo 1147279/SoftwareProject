@@ -1,0 +1,292 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>IdlebarPlugins - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/IdlebarPlugins?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/IdlebarPlugins?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">IdlebarPlugins</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<ol>
+
+<li>
+<a href="#head-3fec0f3e825d46af4d3cf33aa66af331170f2a41">Overview</a>
+</li>
+
+<li>
+<a href="#head-c13961cf98389297255c80e3ef5e2fe7eb756edc">Weather</a>
+</li>
+
+<li>
+<a href="#head-d6dedbfc19aa78ce784cfee8ad3e28b2840e3d45">Clock</a>
+</li>
+
+<li>
+<a href="#head-365df77a9788b338f86348198f622f50b89d4c70">Holidays</a>
+</li>
+
+<li>
+<a href="#head-575b39bf4a412de7ccc6ac89c097b32e91963c77">Mail</a>
+</li>
+
+<li>
+<a href="#head-3ef482dbad3e331b8d8e9e96be9a7062ea688b10">Multi Mail</a>
+</li>
+
+<li>
+<a href="#head-66ff31dc82d50093cb106b3f4a656969b698d4d9">TV</a>
+</li>
+
+<li>
+<a href="#head-bc5c39e99b1e11ed2250816e6a292f84d509c4b6">Volume</a>
+</li>
+
+<li>
+<a href="#head-a44a79a7d8eb8a56259e54e9d55f72aeabd62466">CD status</a>
+</li>
+
+<li>
+<a href="#head-2c81336c8130c9a988f3c019c933a7cadeaebf24">Sensors</a>
+</li>
+
+<li>
+<a href="#head-1a6bd4d5591f8a45a01174eaaba3a14f52996649">Procstats</a>
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-3fec0f3e825d46af4d3cf33aa66af331170f2a41">Overview</h2>
+
+<p>This plugin puts an empty bar at the top of the screen which can be used by other plugins to display their information. There are quite a lot of different idlebar plugins. If you want to use any of them, you first need to activate the idlebar plugin itself. All the others on this page depend on this plugin </p>
+<p>To activate it, put the following in your local_conf.py. 
+</p>
+<pre>
+plugin.activate( 'idlebar' ) 
+</pre>
+<p>This activates the bar, but puts nothing in there, so you need to add more plugins.  Note that plugins inside the idlebar are sorted based on the <tt>&lt;LEVEL&gt;&nbsp;</tt>(except the clock, it's always on the right side) </p>
+
+<h2 id="head-c13961cf98389297255c80e3ef5e2fe7eb756edc">Weather</h2>
+
+<p>This plugin will show the weather to you as an icon.  It's based on your location code (take a look at <a href="http://www.nws.noaa.gov/tg/siteloc.shtml"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.nws.noaa.gov/tg/siteloc.shtml</a> to know yours). You can also set the temperature unit as second parameter in args ('C', 'F' or 'K'). Please note some users have reported issues with slow responsivness when using this idlebar, especially with lirc. If you are having duficulties please try the excellent Weather Plugin which can be downloaded from the addons section of the main site. </p>
+<p>To activate the idle bar weather, put the following in your local_conf.py. 
+</p>
+<pre>
+plugin.activate( 'idlebar.weather', level=&lt;LEVEL&gt;, args=('&lt;4 letter location code&gt;', ) ) 
+</pre>
+<p>Example: New York City Weather 
+</p>
+<pre>
+plugin.activate( 'idlebar.weather', level=30, args=( 'KOKX') ) 
+</pre>
+<p>Example: New York City Weather in Fahrenheit 
+</p>
+<pre>
+plugin.activate( 'idlebar.weather', level=30, args=( 'KOKX', 'F') ) 
+</pre>
+<p>Example: New York City Weather in Kelvin 
+</p>
+<pre>
+plugin.activate( 'idlebar.weather', level=30, args=( 'KOKX', 'K') ) 
+</pre>
+
+<h2 id="head-d6dedbfc19aa78ce784cfee8ad3e28b2840e3d45">Clock</h2>
+
+<p>This plugin displays a clock in the idlebar, which shows the current time. </p>
+<p>To activate it, put the following in your <em>local_conf.py</em>. 
+</p>
+<pre>
+plugin.activate( 'idlebar.clock' ) 
+</pre>
+<p>The clock will always be displayed on the right bar. </p>
+<p>The default display format of the clock is: <tt>&lt;Abbreviated&nbsp;weekday&gt;&nbsp;&lt;12hour&gt;:&lt;minutes&gt;&nbsp;&lt;AM/PM&gt;</tt>.  If you do not like the format, you can easily change the format by specifing the format as an argument, such as: 
+</p>
+<pre>
+plugin.activate( 'idlebar.clock', level=50, args=('%a %H:%M')) 
+</pre>
+<p>This give <tt>&lt;Abbreviated&nbsp;weekday&gt;&nbsp;&lt;24hour&gt;:&lt;minutes&gt;</tt>.  
+</p>
+<pre>
+%A - Full weekday name.
+%a - Abbreviated weekday name.
+%B - Full month name
+%b - Abbreviated month name
+%I - Hour (12-hour clock) as a decimal number [01,12].
+%H - Hour (24-hour clock) as a decimal number [00,23].
+%M - Minute as a decimal number [00,59].
+%m - Month as a decimal number [01,12].
+%b - Name of Month
+%d - Day of the month as a decimal number [01,31].
+%p - Locale's equivalent of either AM or PM.
+%y - Year without century as a decimal number [00,99].          
+%Y - Year with century as a decimal number.
+</pre>
+
+<h2 id="head-365df77a9788b338f86348198f622f50b89d4c70">Holidays</h2>
+
+<p>This plugin checks if the current date is a holiday and will display a user specified icon for that holiday. If no holiday is found, nothing will be displayed. So unfortunately most of the time you won't see this plugin. </p>
+<p>To activate the holidays plugin, put the following in your <em>local_conf.py</em>. 
+</p>
+<pre>
+plugin.activate( 'idlebar.holidays' ) 
+</pre>
+<p>Then you must specify your holidays and their icons in <em>local_conf.py</em>. There are some dates  defined in <em>freevo_config.py</em>, but you should NOT alter <em>freevo_config.py</em>, instead you must define your own array in <em>local_conf.py</em>. It should be like: </p>
+
+<pre>
+HOLIDAYS = [ ('01-01',  'newyear.png'), 
+             ('02-14',  'valentine.png'), 
+             ('05-07',  'freevo_bday.png'), 
+             ('07-03',  'usa_flag.png'), 
+             ('07-04',  'usa_flag.png'), 
+             ('10-30',  'ghost.png'), 
+             ('10-31',  'pumpkin.png'), 
+             ('12-21',  'snowman.png'), 
+             ('12-25',  'christmas.png') 
+           ] 
+</pre>
+<p>You must have those icons (ie: <em>newyear.png</em>) in <tt>&lt;FREEVO_PATH&gt;</tt><em>/skins/images/holidays/</em>, these listed above are already there, but if you add more holidays (or someone's birthday), you must put the related icons to <tt>&lt;FREEVO_PATH&gt;</tt><em>/skins/images/holidays/</em> yourself. </p>
+
+<h2 id="head-575b39bf4a412de7ccc6ac89c097b32e91963c77">Mail</h2>
+
+<p>This plugin checks for mail in your local Unix mailbox. Usually that box is in <em>/var/spool/mail/<tt>&lt;USER&gt;</tt></em>. If you use a pop3 or imap email, you have to use some program like fetchmail (<a href="http://catb.org/~esr/fetchmail/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://catb.org/~esr/fetchmail/</a>) to download your mail to your local box. </p>
+<p>To activate the idlebar mail plugin, put the following in your <em>local_conf.py</em>. 
+</p>
+<pre>
+plugin.activate('idlebar.mail', level=&lt;LEVEL&gt;, args=('&lt;/path/to/your/mailbox&gt;')) 
+</pre>
+<p>Example: User dmeyer 
+</p>
+<pre>
+plugin.activate('idlebar.mail', level=10, args=('/var/spool/mail/dmeyer')) 
+</pre>
+
+<h2 id="head-3ef482dbad3e331b8d8e9e96be9a7062ea688b10">Multi Mail</h2>
+
+<p>PleaseUpdate: Can someone who is using this plugin check this </p>
+<p>This plugin is similar to the simple mail plugin, but it does more. It displays an icon in the idlebar representing the number of emails for a specified account.  In the case of IMAP, it only lists unread messages </p>
+<p>Activate with: 
+</p>
+<pre>
+plugin.activate('idlebar.MultiMail.Imap', level=10, args=('username', 'password', 'host', 'port', 'folder')) 
+plugin.activate('idlebar.MultiMail.Pop3',    level=10, args=('username', 'password', 'host', 'port')) 
+plugin.activate('idlebar.MultiMail.Mbox',    level=10, args=('path to mailbox file')
+</pre>
+<p>(port and folder are optional) </p>
+
+<h2 id="head-66ff31dc82d50093cb106b3f4a656969b698d4d9">TV</h2>
+
+<p>This plugin alerts you if you need to download your <a href="XMLTV.html">XMLTV</a> again (in case you don't use cron for that). It's based on <tt>&lt;listing_threshold&gt;</tt>, which is the number of hours before your xmltv listing run out when the TV icon will present you a warning. Once your xmltv data is expired, it will present a more severe warning. If no args are given, then no warnings will be given. </p>
+<p>To activate the idlebar tv plugin, put the following in your local_conf.py. 
+</p>
+<pre>
+plugin.activate( 'idlebar.tv', level=&lt;LEVEL&gt;, args=(&lt;listings_threshold&gt; ) ) 
+</pre>
+<p>Example: 12 hours before <em>xmltv</em> data expires 
+</p>
+<pre>
+plugin.activate( 'idlebar.tv', level=20, args=( 12) ) 
+</pre>
+
+<h2 id="head-bc5c39e99b1e11ed2250816e6a292f84d509c4b6">Volume</h2>
+
+<p>This plugin shows the current volume level on the idlebar. Activate it with: 
+</p>
+<pre>
+plugin.activate('idlebar.volume', level=0)
+</pre>
+
+<h2 id="head-a44a79a7d8eb8a56259e54e9d55f72aeabd62466">CD status</h2>
+
+<p>This small plugin will show you the state of all ROM drives available to Freevo. </p>
+<p>To activate the idle bar cd status, put the following in your local_conf.py. 
+</p>
+<pre>
+plugin.activate( 'idlebar.cdstatus' ) 
+</pre>
+
+<h2 id="head-2c81336c8130c9a988f3c019c933a7cadeaebf24">Sensors</h2>
+
+<p>This plugin can display your cpu and case temperatures and ram usage. This requires a properly configured lm_sensors.  If the standard sensors frontend delivered with lm_sensors works you're OK.  The sensors plugin can also read kernel 2.6 sensors (located in the /sys filesystem).  This doesn't require lm_sensors installed, but needs the proper kernel Chip &amp; Bus driver enabled (and loaded if you compiled them as modules).  When one of your temperatures goes over the lm_sensors specified maximum temperature, the font color of all text on the idlebar changes to red,  so you will notice when your freevo box is starting to fry :).  If you want to adjust these maximums, have a look at the lm_sensors documentation. The defaults are sane (60°C). </p>
+<p>To activate the idle bar sensors, put the following in your local_conf.py. 
+</p>
+<pre>
+plugin.activate('idlebar.system.sensors', level=40, args=('&lt;cpusensor&gt;', '&lt;casesensor&gt;', '&lt;meminfo&gt;')) 
+</pre>
+<p><tt>&lt;cpusensor&gt;</tt> and <tt>&lt;casesensor&gt;</tt> are the corresponding lm_sensors: they should be <tt>temp1</tt>, <tt>temp2</tt> or <tt>temp3</tt>.  The default values are <tt>temp3</tt> for <tt>&lt;cpusensor&gt;</tt> and <tt>temp2</tt> for <tt>&lt;casesensor&gt;</tt>. You can choose which meminfo you want, the types are the same as in <em>/proc/meminfo</em>: 
+</p>
+<pre>
+MemTotal , MemFree, MemShared, Buffers, Cached, SwapCached, Active, Inactive, 
+HighTotal, HighFree, LowTotal, LowFree, SwapTotal and SwapFree 
+</pre>
+<p>The default is:<tt>MemTotal</tt>. These names are case-sensitive, so be carefull. </p>
+<p><tt>&lt;casesensor&gt;</tt> and <tt>&lt;meminfo&gt;</tt> arguments can be set to None if you don't want them. <tt>&lt;cpusensor&gt;</tt> cannot be turned off at the moment. </p>
+<p>Example: CPU is <tt>temp3</tt> in lm_sensors, I want no case info and I want to display the free memory (<tt>MemFree</tt>): 
+</p>
+<pre>
+plugin.activate('idlebar.sensors', level=40, args=('temp3', None, 'MemFree')) 
+</pre>
+
+<h2 id="head-1a6bd4d5591f8a45a01174eaaba3a14f52996649">Procstats</h2>
+
+<p>This plugin retrieves information from <em>/proc/stat</em> and shows them in the idlebar. This plugin can show semi-accurate cpu usage stats and free memory in megabytes (calculated approx. as <tt>MemFree+Cached?</tt>) </p>
+<p>Activate with 
+</p>
+<pre>
+plugin.activate('idlebar.system.procstats',level=20)
+</pre>
+<p>for defaults or 
+</p>
+<pre>
+plugin.activate('idlebar.system.procstats',level=20,args=(Mem,Cpu,Prec))
+</pre>
+<p>where </p>
+<ul>
+<li><p>  <tt>Mem</tt>:  Draw memfree  (default=1, -1 to disable) </p>
+</li>
+<li><p>  <tt>Cpu</tt>:  Draw cpuusage (default=1, -1 to disable) </p>
+</li>
+<li><p>  <tt>Prec</tt>: Precision used when drawing cpu usage (default=1) </p>
+</li>
+</ul>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-01-27 21:36:19 by <span title="dsl-35-189.dsl.netsource.ie">JohnMolohan</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/IdlebarPlugins">http://freevo.sourceforge.net/cgi-bin/doc/IdlebarPlugins</a></p>
+</div> <!-- end page -->
+</body>
+</html>

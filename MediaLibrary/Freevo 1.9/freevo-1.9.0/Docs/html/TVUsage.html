@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>TVUsage - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/TVUsage?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/TVUsage?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">TVUsage</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<ol>
+
+<li>
+<a href="#head-9a933ce42d793a499e4a25b0a8d909439ceabb87">General</a>
+</li>
+
+<li>
+<a href="#head-1119b6d41201add5b6f397189f33232382384290">TV Guide</a>
+</li>
+
+<li>
+<a href="#head-8d94d89e1254f301fdb0b3217adfec0d40fe626c">Recorded Shows</a>
+</li>
+
+<li>
+<a href="#head-b20a25839b5b5b707a3c99a48f29611550323926">Scheduled Recordings</a>
+</li>
+
+<li>
+<a href="#head-b6b92cbcb4482684c961e82321d6cfa5420e187f">View Favorites</a>
+</li>
+
+<li>
+<a href="#head-9701d9128282b1236532eb1b3cb704641027b909">Manual Record</a>
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-9a933ce42d793a499e4a25b0a8d909439ceabb87">General</h2>
+
+<p>The "Watch Tv" menu entry in the main menu contains everything which is associated to Tv (tv guide, recording and recorded shows). Unfortunately there is no entry at the moment to start watching TV directly, but you can start TV from within the guide. (This should even work, when your guide is not filled with useful information.) While watching TV, you can change channels by pressing CH+ and CH-.  Depending on the application you use for TV, there may be other features you can use with freevo. For example, it might be that information on the running show is displayed when you press DISPLAY. This is at least working for DVB with mplayer or xine.     </p>
+
+<h2 id="head-1119b6d41201add5b6f397189f33232382384290">TV Guide</h2>
+
+<p>You can fetch a tv guide for your channels with <a href="XMLTV.html"> xmltv</a>. </p>
+<p>If you select the menu entry "tv guide" this guide is displayed. You can browse through the shows with the LEFT, RIGHT, DOWN and UP keys.  If you select a show which is already running, your program for tv watching will be launched. If you press SELECT on a show, which start time is still in the future, freevo will ask you if you like to schedule this show for recording. The same will happen if you press REC. REC will always bring up the recording menu, even for shows that are already running. Moreover you can ask freevo to search for more of that show or add it to favorites. </p>
+<p>If your recordserver is not yet configured, have a look at: <a href="Recordserver.html">Recordserver</a>.  </p>
+
+<h2 id="head-8d94d89e1254f301fdb0b3217adfec0d40fe626c">Recorded Shows</h2>
+
+<p>This menu entry will show you the containt of the directory, where all you recorded shows are saved (<tt>TV_RECORD_DIR&nbsp;</tt> in <em>local_conf.py</em>). You can choose one and just start watching. You will also see some information, such as length of the show, date when it was recorded and additional information from the tv guide if available. This extra information is saved in an <a href="FXDFiles.html">fxd file</a>, which the recordserver creates when it starts recording something. It is named the same way as the file which contains the show, but with '.fxd' as ending. Moreover freevo can create a preview image of the show, if configured to do so. The context menu, you reach by pressing ENTER on a highlighted file, gives you the possibility to create the preview image manually, toggle if the show should be played interlaced or not, delete the file itself, its additional information file (the fxd file) or the preview image.  </p>
+
+<h2 id="head-b20a25839b5b5b707a3c99a48f29611550323926">Scheduled Recordings</h2>
+
+<p>This menu entry shows you a list of all scheduled recordings. You can remove shows from schedule here. You can also add shows to favorites or just let freevo search for more of a special show. The submenu you reach here is the same, as if you press REC on a show in the TV guide.  </p>
+
+<h2 id="head-b6b92cbcb4482684c961e82321d6cfa5420e187f">View Favorites</h2>
+
+<p>This menu shows you a list of all your favorites. Favorites are automatically scheduled for recording. If you find that your favorite programs are not being picked up automatically, you need to do one of either of the following two things - either ensure you are picking up the <a href="XMLTV.html">xmltv</a> guide info via the command <tt>freevo&nbsp;tv_grab&nbsp;</tt> ( which looks for XMLTV_GRABBER in ~/.freevo/local_conf.py ) or you need to run the helper script <tt>freevo&nbsp;schedulefavorites&nbsp;</tt> after manually loading up the latest TV.xml to your freevo box. Check your config files for XMLTV_FILE to find the location. </p>
+
+<h2 id="head-9701d9128282b1236532eb1b3cb704641027b909">Manual Record</h2>
+
+<p>If you do not want to use the tv guide for some reason, you also can schedule your recordings manually. But be warned this is not very comfortable. Maybe you are the right person to introduce some improvements here? </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-03-21 20:00:26 by <span title="tuxick.xs4all.nl">tuxick</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/TVUsage">http://freevo.sourceforge.net/cgi-bin/doc/TVUsage</a></p>
+</div> <!-- end page -->
+</body>
+</html>

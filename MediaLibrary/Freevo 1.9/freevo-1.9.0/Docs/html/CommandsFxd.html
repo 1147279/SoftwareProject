@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>CommandsFxd - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/CommandsFxd?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/CommandsFxd?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">CommandsFxd</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h2 id="head-59fb4bb1e615fcd6bdd8749a58688b348efc08d4">Commands</h2>
+
+<p>This is to support commands run directly in freevo. I.E. run your favortie web browser, email application, or other application. In order to run XBased apps you must have an X based setup. This command does not allow framebuffer setups to run X applications. Likewise if your application is framebuffer based, it won't allow it to run in X11. </p>
+<p>a simple example: 
+</p>
+<pre>
+&lt;?xml version="1.0" ?&gt;
+&lt;freevo&gt;
+    &lt;command title="Mozilla"&gt;
+        &lt;cmd&gt;/usr/bin/MozillaFirebird&lt;/cmd&gt;
+        &lt;stoposd /&gt;
+        &lt;spawnwm /&gt;
+        &lt;info&gt;
+            &lt;content&gt;It is just a test&lt;/content&gt;
+        &lt;/info&gt;
+    &lt;/command&gt;
+&lt;/freevo&gt;
+</pre>
+<p>The <em>title</em> attribute of the <em>command</em> element is what shows in the Main Menu if using A Command Main Menu Item or it is the name of the entry if you have the fxd in your COMMANDS_DIR. THe <em>cmd</em> element is the actual command to run in full, including arguments if there are any. Please do not use '&amp;' to background a task, and should you need a '&amp;' as a character in an argument then you should escape it as &amp;amp; because this is required for xml to work properly. If you want this to fork something into the background then i reccomend a shell script that starts a subshell and puts that command into the background. The <em>stoposd</em> element is optional and tells freevo to the stop the freevo environment and let the application take over the whole screen. Typically you want this only for apps that are UI based like a web browser or email app. The <em>spawnwm</em> element is optional and tells freevo start a window manager for the duration of this command. It uses the COMMAND_SPAWN_WM and COMMAND_KILL_WM to start and stop the window manager. The best window manager i have found that fits with freevo for this limited purpose is <a class="external" href="http://ratpoison.sourceforge.net/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> ratpoison</a>. </p>
+<p>To run a command in the commands dir, just simply put the FXD file in the directory. You can then select it by its title in the menu. </p>
+<p>To run a command as a mainmenu item. then do the following in your local_conf.py: 
+</p>
+<pre>
+plugin.activate('command.CommandMainMenuItem', args=('/usr/local/freevo_data/Commands/Mozilla.fxd', ), level=45)
+</pre>
+<p>where level influences the ordering of the menu. and you give the full path to the fxd file as the first arg. You may have as many of these lines in your local_conf.py as you like but it will enlarge your main menu. I have two myself, one for the web browser and another for displaying nasatv in real player. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2004-12-11 00:39:13 by <span title="p508D5765.dip0.t-ipconnect.de">TanjaStriepling</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/CommandsFxd">http://freevo.sourceforge.net/cgi-bin/doc/CommandsFxd</a></p>
+</div> <!-- end page -->
+</body>
+</html>

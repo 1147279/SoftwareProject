@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>BasicConfig - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/BasicConfig?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/BasicConfig?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">BasicConfig</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>You WILL need to make a few customizations to suit your system. So open your local_conf.py with an editor, and have a look what you might want to change. The file is well commented, and for most things there are examples.  </p>
+<p>Most people will change at least the following variables: </p>
+<ul>
+<li><p> <tt>VIDEO_ITEMS&nbsp;</tt>: Directories where your movies are </p>
+</li>
+<li><p> <tt>AUDIO_ITEMS&nbsp;</tt>: Directories where your audio files are </p>
+</li>
+<li><p> <tt>IMAGE_ITEMS&nbsp;</tt>: Directories where your images are </p>
+</li>
+</ul>
+<p>Directories that do not start with a / are relative to the directory that Freevo was started from.  Note that you cannot use tilde (~) expansion in filenames. </p>
+<p>Also check the mplayer section to specify the audio device and special parameter for mplayer. </p>
+
+<h2 id="head-b3838ae0e59a592f2a2d2210f3f32539ebc8f084">Main menu</h2>
+
+<p>If you do not want to use some parts of freevo, you can easily remove them from the main menu: 
+</p>
+<pre>
+plugin.remove('tv')
+plugin.remove('audio')
+plugin.remove('video')
+plugin.remove('image')
+</pre>
+
+<h2 id="head-12c5678c222ca798c06440a8ad60173e0c194cd7">Volume control</h2>
+
+<p>In <em>local_conf.py</em> you can give Freevo several default volume level for the different media. </p>
+<p>If you press VOL+ and VOL- the volume level is changed by 5%. You can change this step size easily by putting the following stuff in your <em>local_conf.py</em>. 
+</p>
+<pre>
+EVENTS['global']['VOL+'] = Event('MIXER_VOLUP', arg=2) 
+EVENTS['global']['VOL-'] = Event('MIXER_VOLDOWN', arg=2) 
+</pre>
+<p>where the value you give as 'arg' is the step size. See <a href="KeyMaps.html">KeyMaps</a> for more info. </p>
+
+<h2 id="head-66861415de1cd95af13f20f288bb6d4313d30d8a">Skins</h2>
+
+<p>At the moment there are three different skins to choose from. You can reach the menu where you can choose the skin by pressing DISPLAY in the main menu. Just select the skin you like best. But be aware that there may be features which are not implemented in all skins. If you like to invent your own skin, you should have a look at: <a href="Skins.html">Skins</a>. </p>
+
+<h2 id="head-e82762aab7f0a4cb7493b51058b0ab40018f7004">Configuring folders</h2>
+
+<p>When you press ENTER while a directory is highlighted a submenu will open. Among other options there is a menu entry for configuring the directory. Choosing that entry gives you a menu, where you can change the behaviour of this directory. Freevo will create a file <em>folder.fxd</em> ( see <a href="FXDFiles.html">FXDFiles</a>) in that directory to save your settings. If this file is missing freevo will use the default values. Things that you can change are for example: </p>
+<ul>
+<li><p> the way entries in the directory are sorted </p>
+</li>
+<li><p> or the skin layout </p>
+</li>
+<li><p> or if freevo should regard the directory as a playlist </p>
+</li>
+<li><p> etc... </p>
+</li>
+</ul>
+
+<h3 id="head-0029fda86111d4f2ab086de532af9efb70b51c22">Appearance</h3>
+
+<p>Moreover you can specify an image to display in the folder's parent menu by adding an image to the folder called cover.jpg or cover.png.  The size of the image depends on the current type of the menu. For movies you have something like DVD covers or movie poster, for audio a cd cover. So the image will be resized to 280x200 for movies, 200x200 for audio and 200x160 for images. These sizes will also be used for the directory images. You can change the sizes by changing the XML file (see <a href="FXDFiles.html">FXDFiles</a> for more info). </p>
+
+<h3 id="head-6b68896463944e53f3ea57c349d8d796374ce99e">Protection</h3>
+
+<p>Individual folders can be password protected by adding a text file named ".password" (note the leading dot).  This file should contain the access password, in plain text, not encrypted in any way.  Obviously, this is a fairly weak access mechanism if a user has local access to the machine, but it works fairly well in informal home environments. </p>
+<p>A remote control input can be used to type in the password. That is why a strictly numeric password is suggested. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-04-09 15:44:36 by <span title="c-67-161-251-152.hsd1.ut.comcast.net">SDibb</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/BasicConfig">http://freevo.sourceforge.net/cgi-bin/doc/BasicConfig</a></p>
+</div> <!-- end page -->
+</body>
+</html>

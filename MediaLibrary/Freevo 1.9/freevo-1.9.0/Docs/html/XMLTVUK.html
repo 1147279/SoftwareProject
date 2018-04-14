@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>XMLTVUK - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/XMLTVUK?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/XMLTVUK?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">XMLTVUK</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h3 id="head-3c9efaa80662afe82e1828dabe24c8f204405006">UK listings</h3>
+
+<p>The tv_grab_uk_rt script from the XMLTV package for UK listings is no longer working.  I found the following from the <a class="external" href="http://www.mail-archive.com/freevo-users@lists.sourceforge.net/msg05710.html"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> mailing lists</a> worked: 
+</p>
+<pre>
+#!/bin/bash
+# Get yesterday's, and the following weeks' listings in XMLTV format
+#
+BASE_URL='http://bleb.org/tv/data/listings'
+DAYS=-1,0,1,2,3,4,5,6
+FORMAT=XMLTV
+FILE=BZIP2
+TIME_OFFSET="+0060"
+CHANNELS=bbc1,bbc2,itv1,ch4,five,sky_one,uk_history,uk_horizons,e4,itv2,cartoon_network,uk_gold,bbc_radio4,bbc3,bbc4,bbc7
+wget -U 'Freevo Listing' -O '/tmp/listings.xml.bz2' "$BASE_URL?days=$DAYS&amp;format=$FORMAT&amp;file=$FILE&amp;channels=$CHANNELS"
+rm -f /tmp/listings.xml
+bunzip2 /tmp/listings.xml.bz2
+cat /tmp/listings.xml | perl -pi -e 's/(\d{14,})/$1 ${TIME_OFFSET}/g' &gt;/tmp/TV.xml
+cd /usr/lib/python2.3/site-packages/freevo/
+su -c "freevo execute tv/epg_xmltv.py" freevo
+</pre>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-01-25 12:10:05 by <span title="83.141.77.130">JohnMolohan</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/XMLTVUK">http://freevo.sourceforge.net/cgi-bin/doc/XMLTVUK</a></p>
+</div> <!-- end page -->
+</body>
+</html>

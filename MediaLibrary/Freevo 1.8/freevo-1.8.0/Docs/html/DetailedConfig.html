@@ -1,0 +1,353 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>DetailedConfig - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/DetailedConfig?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/DetailedConfig?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">DetailedConfig</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p><strong>Note:</strong> This page is still under construction. </p>
+
+<h3 id="head-2e908237a8879c743a5647d78a437cbf3df2c121">Introduction</h3>
+
+<p>Now that you've got Freevo installed, and you are ready to use it!  This guide will take you through setting up all your variables in your freevo configuration file: <strong>local_conf.py</strong>. </p>
+<p>The first thing you will need to do is pick your favorite editor, and open up the file.  Remember that you only need to edit local_conf.py, not freevo_conf.py.  Also any changes you make can be stored per user if the file is saved in the <strong>.freevo/</strong> hidden directory in your home directory. </p>
+<p>So, fire up a handy editor and take a look at the file.  Scroll down a bit until you see the <strong>General freevo settings</strong> section.  That's where we'll start first. </p>
+<p>You'll notice that all the variables are already commented out.  The values they are set to are the default values.  If you want to leave them as they are, that's fine -- you won't need to do anything.  If you do want to change them though, delete the pound sign (#) before the variable and then change the value.  Let's look at them one by one: </p>
+
+<h4 id="head-d5f72744bdf409bdd0b4e48816b18ade1fc759ed">Audio and Mixer Settings</h4>
+
+<p><strong><tt>AUDIO_DEVICE</tt></strong> </p>
+<p>This is the device node in your system's /dev directory that is used for playing sound.  If you have ALSA with OSS emulation on your computer (a common setting), then set this to <tt>/dev/dsp</tt> or <tt>/dev/dsp0</tt>. </p>
+<p>Check your filesystem first to see that one of those exist. </p>
+<p><strong><tt>AUDIO_INPUT_DEVICE</tt></strong>  </p>
+<p>The audio device node that Freevo will use to record your sound. </p>
+<p>If you have a TV tuner card in your system with its own onboard audio recorder, then you will want to use that one.  It will probably be <tt>/dev/dsp1</tt>.  If, however, you are running an audio cable from your TV tuner card to your sound card, then you want to use the sound card's device -- the same that would be set above for <tt>AUDIO_DEVICE</tt>. </p>
+<p><strong><tt>CONTROL_ALL_AUDIO</tt></strong> </p>
+<p>If set to <tt>1</tt>, Freevo will manage all your audio mixer settings.  Probably a good idea unless you want to manually manage everything yourself. </p>
+<p><strong><tt>MAX_VOLUME</tt></strong> </p>
+<p>The maximum value for your audio device to output. </p>
+<p>On some cards using ALSA, setting the value too high may cause some squelching or feedback, so 90 is a good safe value which should be plenty loud.  Check your mixer to see what your current settings are.  Some popular ones are <a class="external" href="http://docs.kde.org/en/3.4/kdemultimedia/kmix/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> kmix</a>, <a class="external" href="http://www.alsa-project.org/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> alsamixer</a> and <a class="external" href="http://jpj.net/~trevor/aumix/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> aumix</a>. </p>
+<p><strong><tt>DEFAULT_VOLUME</tt></strong>  </p>
+<p>The sound level you want Freevo to start at.  40 will probably be too low. </p>
+<p><strong><tt>TV_IN_VOLUME</tt></strong> </p>
+<p>Sets the recorder volume for your TV card. </p>
+<p><strong><tt>VCR_IN_VOLUME</tt></strong> </p>
+<p>Sets ... something. <img src="modern/img/smile.png" alt=":)" height="15" width="15"> </p>
+<p><strong><tt>DEV_MIXER</tt></strong> </p>
+<p>The mixer device node for your sound card (from <tt>AUDIO_DEVICE</tt> above).  For most ALSA-OSS setups, the default of <tt>/dev/mixer</tt> should work. </p>
+
+<h4 id="head-46309426cc341823c92f1074f9dbdff7bf85b6ff">System and Freevo Internal Settings</h4>
+
+<p><strong><tt>START_FULLSCREEN_X</tt></strong> </p>
+<p>Set this to <tt>1</tt> if you want Freevo to start in fullscreen mode instead of windowed mode. </p>
+<p>While you would want this to run fullscreen on a dedicated media box, leave it set to <tt>0</tt> until everything is working correctly -- it makes it easier to switch back and forth between your Freevo window and the documentation that way. <img src="modern/img/smile4.png" alt=";)" height="15" width="15"> </p>
+<p><strong><tt>CONFIRM_SHUTDOWN</tt></strong> If set to <tt>1</tt>, will display a small confirmation popup window when you select 'Shutdown' from the main Freevo menu.  A lifesaver for those of us with fat fingers. </p>
+<p><strong><tt>ROM_DRIVES</tt></strong> </p>
+<p>When set to <tt>None</tt>, this will automatically detect your read-only drives, such as your CD and DVD drives.  In most cases you won't need to change this. </p>
+<p>If you don't want Freevo to ever play anything from your drives, set the value to <tt>[]</tt> to disable detection completely. </p>
+<p>Or, if you want to manually specify which drives to include, enter them in the format of the config file.  An example would be: </p>
+
+<pre>
+ROM_DRIVES = [ ('/mnt/cdrom', '/dev/cdrom', 'CD ROM Drive') ]
+</pre>
+<p><strong><tt>HIDE_UNUSABLE_DISCS</tt></strong> </p>
+<p>Hide discs from the wrong menu (e.g. VCDs in audio menu) and empty discs. </p>
+<p><strong><tt>ROM_SPEED</tt></strong> </p>
+<p>Attempt to set the speed of the ROM drive. A good value for keeping the drive silent while playing movies is 8. </p>
+<p><strong><tt>ENABLE_SHUTDOWN_SYS</tt></strong> </p>
+<p>If set to <tt>1</tt>, when you select Shutdown from the main Freevo menu, it will also turn off your computer completely (assuming you are running as root or have sudo privileges).  Useful for standalone boxes. </p>
+<p><strong><tt>MENU_ARROW_NAVIGATION</tt></strong> (needs clarification) </p>
+<p>Use arrow keys for back and select (alternate way of navigating). </p>
+<p><strong><tt>USE_NETWORK</tt></strong> </p>
+<p>When set to <tt>1</tt>, Freevo can query CDDB for album information, the IMDB for movie information, and Amazon.com for cover searches. If the computer isn't connected to the Internet, or you don't want to use those features, you can set this to <tt>0</tt>. </p>
+<p><strong><tt>OVERLAY_DIR</tt></strong> </p>
+<p>Default setting is fine. </p>
+<p><strong><tt>UMASK</tt></strong> </p>
+<p>The only time you should change this from the default setting is if you run Freevo as one user, and want to modify or delete the recordings with another user. </p>
+<p>Umask numbers create the octal chmod numbers by subtracting itself from 777.  So if the umask is 022, then the files written will be chmod'ed 755.  A umask of 002 would set them to 775. </p>
+<p><strong><tt>PLAYLIST_SUFFIX</tt></strong> </p>
+<hr>
+<p> <img src="modern/img/alert.png" alt="/!\" height="15" width="15"> <strong>Edit conflict - other version:</strong> </p>
+<hr>
+<p> Default: m3u </p>
+<p>The suffix to identify playlist files with. Leave this as the default unless you use a custom suffix for your playlists. </p>
+<hr>
+<p> <img src="modern/img/alert.png" alt="/!\" height="15" width="15"> <strong>Edit conflict - your version:</strong> </p>
+<hr>
+<p> Default: m3u </p>
+<p>The suffix to identify playlist files with. Leave this as the default unless you use a custom suffix for your playlists. </p>
+<hr>
+<p> <img src="modern/img/alert.png" alt="/!\" height="15" width="15"> <strong>End of edit conflict</strong> </p>
+<hr>
+<p> </p>
+<p><strong><tt>MMPYTHON_CREATE_MD5_ID</tt></strong> </p>
+<p>While it's always fun to turn on settings that you aren't sure what they do even though they sound cool, it's not necessary.  You should only set this to <tt>1</tt> if you have problems with different discs having the same id. </p>
+<p><strong><tt>MEDIAINFO_USE_MEMORY</tt></strong> </p>
+<p>Default setting is fine. </p>
+<p><strong><tt>CACHE_IMAGES</tt></strong> </p>
+<p>Set to <tt>1</tt> to cache your images.  Will use a lot of disc space, but it creates a huge speed enhancement. </p>
+
+<h4 id="head-8bed0ffae6d6a821422a96d161186d3ae15c2e26">Plugins</h4>
+
+<p>Freevo has a lot of modular plugins that you can enable or disable.  For an initial setup, you won't need to change anything here.  If you'd like to see a list of available plugins, just run <tt>freevo&nbsp;plugins&nbsp;-l</tt>. </p>
+<p>Add plugins by using <tt>plugin.activate('plugin_name')</tt>  </p>
+<p>Remove them with <tt>plugin.remove('plugin_name')</tt> </p>
+<p>The default settings should be fine, so don't worry about changing anything just yet -- get your Freevo running first. </p>
+<p>If you are using an Hauppauge 250/350 PCI TV Tuner Card, then you will need to make some changes here: </p>
+
+<pre>
+plugin.remove('tv.generic_record')
+plugin_record = plugin.activate('tv.ivtv_record')
+</pre>
+
+<h4 id="head-87e9e5a7af1eee7f9ae878a4d5e11bc93956f15a">Directories</h4>
+
+<p>Once again, for an initial setup, nothing here needs to be changed to get your Freevo up and running.  You can always come back and tweak these settings later, but the defaults should serve just fine. </p>
+<p><strong><tt>DIRECTORY_SORT_BY_DATE</tt></strong> </p>
+<p>This setting controls how your files will be sorted in their directories.  The default setting of <tt>2</tt> will sort your files in your TV recording directory by date recorded, but all other directories by filename alphabetically. </p>
+<p>If you want all files in all folders sorted by date, set to <tt>1</tt>. </p>
+<p>For all files sorted alphabetically, set to <tt>0</tt>. </p>
+<p><strong><tt>DIRECTORY_REVERSE_SORT</tt></strong> </p>
+<p>If set to <tt>1</tt>, directory items will be sorted in reverse order. </p>
+<p><strong><tt>DIRECTORY_SMART_SORT</tt></strong> </p>
+<p>If set to <tt>1</tt>, Freevo will ignore filenames starting with the word 'The' when sorting. </p>
+<p><strong><tt>DIRECTORY_AUTOPLAY_SINGLE_ITEM</tt></strong> </p>
+<p>When browsing your folders in Freevo, if there is only one item in the folder, it will start playing that file instead of bringing up a list of items in the folder.  Set to <tt>0</tt> to disable. </p>
+<p><strong><tt>DIRECTORY_FORCE_SKIN_LAYOUT</tt></strong> </p>
+<p>Force the skin to use a specific layout number. <tt>-1</tt> == no force. The layout toggle with DISPLAY will be disabled. </p>
+<p><strong><tt>DIRECTORY_AUDIO_FORMAT_STRING</tt></strong> </p>
+<p>Format string for the audio item names. Possible strings: a = artist, n = tracknumber, t = title, y = year, f = filename </p>
+<p>Be sure that your entire setting is enclosed in single quotes.  Using the strings will use Python's format, so <tt>t</tt> would become <tt>%(t)s</tt> </p>
+<p><strong><tt>DIRECTORY_USE_MEDIAID_TAG_NAMES</tt></strong> </p>
+<p>Use media id tags to generate the name of the item. This should be enabled all the time. It should only be disabled for directories with broken tags. </p>
+<p><strong><tt>DIRECTORY_AUTOPLAY_ITEMS</tt></strong> </p>
+<p>Enable autoplay (see <tt>DIRECTORY_AUTOPLAY_SINGLE_ITEM</tt> above) for certain items. </p>
+<p>To enable autoplay for audio and image files: </p>
+
+<pre>
+DIRECTORY_AUTOPLAY_ITEMS = [ 'audio', 'image' ]
+</pre>
+<p>To disable autoplay entirely: </p>
+
+<pre>
+DIRECTORY_AUTOPLAY_ITEMS = []
+</pre>
+
+<h4 id="head-f0dd46b3ccbac7bc9f64a37431fb7943a83798b1">Movies</h4>
+
+<p><strong><tt>VIDEO_ITEMS</tt></strong> </p>
+<p>This is a list of folders where your movie files can be found, and the titles to display in your Freevo. </p>
+<p>The variable is entered in order of title, file.  If you are going to use your Freevo for watching videos other than your recorded TV (which is set later in <tt>TV_RECORD_DIR</tt>) or listening to your music (see <tt>AUDIO_ITEMS</tt>), then you will need to add them here. </p>
+<p>Here's an example: </p>
+
+<pre>
+VIDEO_ITEMS = [ ('Action Flicks', '/var/media/movies/action') ]
+</pre>
+<p>If you want to add more than one directory, separate the two with commas, and add one per line for easy reading: </p>
+
+<pre>
+VIDEO_ITEMS = [ ('Action Flicks', '/var/media/movies/action'),
+                ('Comedies', '/var/media/movies/comedy'),
+                ('Dramas', '/var/media/movies/drama'),
+                ('Cartoons', '/var/media/cartoons'),
+                ('Kid\'s Shows', '/var/media/tv/children') ]
+</pre>
+<p><strong><tt>VIDEO_MPLAYER_SUFFIX</tt></strong> and <strong><tt>VIDEO_XINE_SUFFIX</tt></strong> </p>
+<p>A comma-separated list of files with their suffixes that the media player will display. </p>
+<p>Unless you want to make any changes, the default is fine. </p>
+<p><strong><tt>VIDEO_PREFERED_PLAYER</tt></strong> </p>
+<p>Your preferred video player.  Make sure that your media player is installed correctly and that it can indeed play your media files.    Default is fine -- mplayer is a great media player that can play nearly all media files. </p>
+<p><strong><tt>VIDEO_ONLY_SCAN_DATADIR</tt></strong> </p>
+<p>Only scan OVERLAY_DIR and VIDEO_SHOW_DATA_DIR for fxd files containing information about a disc. If you only have the fxd files for discs in one of this directories (and subdirectories), set this to <tt>1</tt>, it will speed up startup, <tt>0</tt> may be needed if you have fxd files with disc links in your normal movie tree. </p>
+
+<h4 id="head-bcc5f21878043fae7e5186cce8172d6d9149e30f">Audio</h4>
+
+<p><strong><tt>AUDIO_ITEMS</tt></strong> </p>
+<p><strong><tt>AUDIO_COVER_REGEXP</tt></strong> </p>
+<p><strong><tt>AUDIO_SHOW_VIDEOFILES</tt></strong> </p>
+
+<h3 id="head-aa8885abdedf7febc3b27b62a290474e04aa893e">Image Viewer</h3>
+
+<p><strong><tt>IMAGE_ITEMS</tt></strong> </p>
+<p><strong><tt>IMAGE_SUFFIX</tt></strong> </p>
+<p><strong><tt>IMAGE_SSHOW_SUFFIX</tt></strong> </p>
+<p><strong><tt>IMAGEVIEWER_BLEND_MODE</tt></strong> </p>
+
+<h4 id="head-c7a1128e21391e3d4475a1c063cf3f134be427b9">Games</h4>
+
+<p><strong><tt>GAMES_ITEMS</tt></strong> </p>
+<p><strong><tt>GAMES_NICE</tt></strong> </p>
+<p><strong><tt>GAMES_MAME_CACHE</tt></strong> </p>
+
+<h4 id="head-2ecd85128d49fda40f0724f705263680a93920d3">Skins</h4>
+
+<p><strong><tt>SKIN_FORCE_TEXTVIEW_STYLE</tt></strong> </p>
+<p><strong><tt>SKIN_MEDIAMENU_FORCE_TEXTVIEW</tt></strong> </p>
+
+<h4 id="head-467f5fd0a5451e5f11faf7af38afa4f3c0955888">On Screen Display</h4>
+
+<p><strong><tt>OSD_EXTRA_FONT_PATH</tt></strong> </p>
+<p><strong><tt>OSD_FONT_ALIASES</tt></strong> </p>
+<p><strong><tt>OSD_BUSYICON_TIMER</tt></strong> </p>
+<p><strong><tt>OSD_OVERSCAN_X</tt></strong> </p>
+<p><strong><tt>OSD_OVERSCAN_Y</tt></strong> </p>
+<p><strong><tt>OSD_SDL_EXEC_AFTER_STARTUP</tt></strong> </p>
+<p><strong><tt>OSD_SDL_EXEC_AFTER_CLOSE</tt></strong> </p>
+<p><strong><tt>OSD_STOP_WHEN_PLAYING</tt></strong> </p>
+<p><strong><tt>OSD_DIM_TEXT</tt></strong> </p>
+
+<h4 id="head-719595d4aad00ff895ea6c79fe13f822bcec8770">Remote Control</h4>
+
+<p><strong><tt></tt></strong> </p>
+<p><strong><tt>LIRCRC</tt></strong> </p>
+<p><strong><tt>JOY_DEV</tt></strong> </p>
+<p><strong><tt>JOY_CMDS</tt></strong> </p>
+
+<h4 id="head-0d3449dc983ba1446fbf8faa7d1b473175c357a8">TVtime</h4>
+
+<p><strong><tt>TVTIME_CMD</tt></strong> </p>
+
+<h4 id="head-47b4bf123029f6cd700937d0c04f10deb40c6ece">MPlayer</h4>
+
+<p><strong><tt>MPLAYER_AO_DEV</tt></strong> </p>
+<p><strong><tt>MPLAYER_VO_DEV_OPTS</tt></strong> </p>
+<p><strong><tt>DVD_LANG_PREF</tt></strong> </p>
+<p><strong><tt>DVD_SUBTITLE_PREF</tt></strong> </p>
+<p><strong><tt>MPLAYER_NICE</tt></strong> </p>
+<p><strong><tt>MPLAYER_SOFTWARE_SCALER</tt></strong> </p>
+<p><strong><tt>MPLAYER_ARGS</tt></strong> </p>
+<p><strong><tt>MPLAYER_SEEK_TIMEOUT</tt></strong> </p>
+<p><strong><tt>MPLAYER_AUTOCROP</tt></strong> </p>
+<p><strong><tt>MPLAYER_SET_AUDIO_DELAY</tt></strong> </p>
+<p><strong><tt>MPLAYER_VF_INTERLACED</tt></strong> </p>
+<p><strong><tt>MPLAYER_VF_PROGRESSIVE</tt></strong> </p>
+<p><strong><tt>MPLAYER_VF_INTERLACED</tt></strong> </p>
+<p><strong><tt>MPLAYER_VF_PROGRESSIVE</tt></strong> </p>
+
+<h4 id="head-d40a9830cb439419d4aa6d00803c7843e1e63253">Xine</h4>
+
+<p><strong><tt>XINE_VO_DEV</tt></strong> </p>
+<p>Default: ? </p>
+<p>Choose from 'xv', 'xshm' and 'sdl' for Xine's video output. </p>
+<p><strong><tt>XINE_COMMAND</tt></strong> </p>
+<p>Default: '%s --hide-gui -pq -g -B --geometry %sx%s+0+0 --no-splash' % (CONF.xine, CONF.width, CONF.height) </p>
+<p>Run Xine with this command. The default command should be suited for most freevo setups. </p>
+<p><strong><tt>XINE_ARGS_DEF</tt></strong> </p>
+<p>Default: ? </p>
+<p>Pass these additional runtime arguments to Xine. </p>
+<p><strong><tt>XINE_AO_DEV</tt></strong> </p>
+<p>Default: ? </p>
+<p>Choose between 'alsa' and 'oss' for Xine's audio output. </p>
+
+<h4 id="head-d82ad203693c5afe0ae73e6c850b3229cb3fbafd">TV</h4>
+
+<p><strong><tt>TV_RECORD_DIR</tt></strong> </p>
+<p><strong><tt>TV_SETTINGS</tt></strong> </p>
+<p><strong><tt>TV_DRIVER</tt></strong> </p>
+<p><strong><tt>TV_DEVICE</tt></strong> </p>
+<p><strong><tt>TV_INPUT</tt></strong> </p>
+<p><strong><tt>TV_OPTS</tt></strong> </p>
+<p><strong><tt>TV_SETTINGS</tt></strong> </p>
+<p><strong><tt>TIMESHIFT_ENCODE_CMD</tt></strong> </p>
+<p><strong><tt>TIMESHIFT_BUFFER</tt></strong> </p>
+<p><strong><tt>TV_CHANNEL_PROG</tt></strong> </p>
+<p><strong><tt>TV_DATFORMAT</tt></strong> </p>
+<p><strong><tt>TV_TIMEFORMAT</tt></strong> </p>
+<p><strong><tt>TV_DATETIMEFORMAT</tt></strong> </p>
+<p><strong><tt>TV_RECORDFILE_MASK</tt></strong> </p>
+<p><strong><tt>TV_RECORD_SCHEDULE</tt></strong> </p>
+<p><strong><tt>TV_RECORD_SERVER_IP</tt></strong> </p>
+<p><strong><tt>TV_RECORD_SERVER_PORT</tt></strong> </p>
+<p><strong><tt>VCR_AUDIO</tt></strong> </p>
+<p><strong><tt>TV_VIEW_SIZE</tt></strong> </p>
+<p><strong><tt>TV_REC_SIZE</tt></strong> </p>
+<p><strong><tt>TV_VIEW_OUTFMT</tt></strong> </p>
+<p><strong><tt>TV_REC_OUTFMT</tt></strong> </p>
+<p><strong><tt>VCR_CMD</tt></strong> </p>
+<p><strong><tt>TV_IVTV_OPTIONS</tt></strong> </p>
+<p><strong><tt>FREQUENCY_TABLE</tt></strong> </p>
+<p><strong><tt>VIDEO_GROUPS</tt></strong> </p>
+<p><strong><tt>TV_CHANNELS</tt></strong> </p>
+<p><strong><tt>XMLTV_GRABBER</tt></strong> </p>
+<p><strong><tt>XMLTV_SORT</tt></strong> </p>
+<p><strong><tt>XMLTV_DAYS</tt></strong> </p>
+
+<h4 id="head-48010b20798f650c1f8e2ad775f81067f47ed478">WWW Server</h4>
+
+<p><strong><tt>WWW_PORT</tt></strong> </p>
+<p>Default: 80 </p>
+<p>The port to have the internal webserver listen on. If you specify a port other than the default, you will have to enter that number in your URI's like so: <a href="http://127.0.0.1:8080/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://127.0.0.1:8080/</a> </p>
+<p><strong><tt>WWW_USERS</tt></strong> </p>
+<p>Default: ? </p>
+<p>Set up user-password combinations to give access to the internal webserver. </p>
+<p>Example: 
+</p>
+<pre>
+{ "user" : "password" }
+</pre>
+<p>Or: 
+</p>
+<pre>
+{ "user1" : "password",
+  "user2" : "password" }
+</pre>
+<p><strong><tt>WWW_GUIDE_INTERVAL</tt></strong> </p>
+<p><strong><tt>WWW_GUIDE_PRECISION</tt></strong> </p>
+<p><strong><tt>WWW_GUIDE_COLS</tt></strong> </p>
+<p><strong><tt>WWW_STYLESHEET</tt></strong> </p>
+<p>Default: styles/main.css </p>
+<p>Unless you plan on customizing the appearance of the web frontend, you can leave this as the default. If you plan on doing some customizations, it is recommended that you make a backup first. </p>
+<p><strong><tt>WWW_JAVASCRIPT</tt></strong> </p>
+
+<h4 id="head-25882145ad7bfe37ad206edf60a0604e30d95f9a">Internal Config</h4>
+
+<p><strong><tt>VIDEO_SHOW_REGEXP</tt></strong> </p>
+<p><strong><tt>ENABLE_NETWORK_REMOTE</tt></strong> </p>
+<p><strong><tt>REMOTE_CONTROL_HOST</tt></strong> </p>
+<p><strong><tt>REMOTE_CONTROL_PORT</tt></strong> </p>
+<p><strong><tt>XMLTV_FILE</tt></strong> </p>
+<p><strong><tt>LOCALE</tt></strong> </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-06-20 07:27:34 by <span title="S01060012171a846b.gv.shawcable.net">AndrewHolmes</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/DetailedConfig">http://freevo.sourceforge.net/cgi-bin/doc/DetailedConfig</a></p>
+</div> <!-- end page -->
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>Recordserver - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/Recordserver?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/Recordserver?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">Recordserver</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>Site Index: </p>
+<ol>
+
+<li>
+<a href="#head-b16135651f6bc40834252d90a08bb8b0ab2db852">Introduction</a>
+</li>
+
+<li>
+<a href="#head-704de7e42cfb66f52e5e1b96c8184191bff6db23">Setup</a>
+</li>
+
+<li>
+<a href="#head-99209bc85f5cafa94a415842da08d2fede1b826b">Start manually</a>
+</li>
+
+<li>
+<a href="#head-f00e991de2023da267ba323216553406e8e45b5f">Start with initscripts</a>
+<ol>
+
+<li>
+<a href="#head-15624ca79127a4dd5171518ca5e61d500738303f">Gentoo</a>
+</li>
+
+<li>
+<a href="#head-6738b090e269b24bef83f185738a71e2142d2d9a">Debian</a>
+</li>
+
+<li>
+<a href="#head-4e0b2adba4b4757b7e653cc0f48fc59aeb98a4c7">Other distributions</a>
+</li>
+
+</ol>
+
+<li>
+<a href="#head-a384a0ecd443ecbdd32b5c060f7b078d3f7e2e44">Schedule Favorites</a>
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-b16135651f6bc40834252d90a08bb8b0ab2db852">Introduction</h2>
+
+<p>Freevo's recordserver is a helper program which is running in the background. It is a standalone persistent process that runs separately from the main freevo process that you see on your TV or monitor. It even does not have to be running on the same machine. Please be aware that it is a network application and your freevo machine should not have wide open access from the internet without a firewall limiting what ports outsiders can connect to.  It takes care of your scheduled recordings and favorites. It creates the <a href="FXDFiles.html"> FXDFiles</a> for the recorded shows and launches the recording application. You must provide the recordserver with the right command for recording. This is done via the variable <tt>VCR_CMD</tt> in <em>local_conf.py</em>. The recording command depends on the type of your TV card, so have a look at <a href="TVConfig.html">TVConfig</a> for that. </p>
+<p>Before you attempt to use the recordserver, you should make sure your TV card is already configured properly. If you can watch a tvshow successfully, you can try to setup the recordserver (The hard work is the <a href="TVConfig.html">TVConfig</a>). </p>
+<p>Note : If you open the <a href="TVUsage.html">TV Guide</a> to test TV, take a show that is running at the moment. If you take a show that is still to come, freevo will try to schedule it for recording and as the recordserver is not yet running, you will receive an error. </p>
+
+<h2 id="head-704de7e42cfb66f52e5e1b96c8184191bff6db23">Setup</h2>
+
+<p>You will have to tell freevo, where your recordings should be saved: 
+</p>
+<pre>
+TV_RECORD_DIR = '/path/to/somedir'
+</pre>
+<p>Moreover you can/need change the following config options in <em>local_conf.py </em>: 
+</p>
+<pre>
+TV_DATEFORMAT = '%e-%b' # Day-Month: 11-Jun
+TV_TIMEFORMAT = '%H:%M' # Hour-Minute 14:05
+TV_DATETIMEFORMAT = '%A %b %d %I:%M %p' # Thursday September 24 8:54 am
+</pre>
+<p>This is for the name freevo will give recorded files: 
+</p>
+<pre>
+TV_RECORDFILE_MASK = '%%m-%%d %%H:%%M %(progname)s - %(title)s'
+</pre>
+<p>You can even use a recordserver which is running on a different machine. Just put its name or ip here instead of localhost: 
+</p>
+<pre>
+TV_RECORD_SERVER_IP = 'localhost'
+TV_RECORD_SERVER_PORT = 18002
+</pre>
+<p>It is best when the the recordserver is run by the same user that is also running freevo. Otherwise you will probably get problems with permissions sooner or later. These options give you the possibility to change the <tt>uid</tt> and <tt>gid</tt> your recordserver is running with. If you want to run freevo or the recordserver as root, do so at your own risc. 
+</p>
+<pre>
+TV_RECORD_SERVER_UID = 0
+TV_RECORD_SERVER_GID = 0
+</pre>
+<p>This option tells the recordserver to start every recording X minutes before the scheduled start and also stop it X minutes later than scheduled. This is useful, when the times in the TV guide, are not hundred per cent right. It must be set to a value in seconds although at the moment it has only the precision of one minute. 
+</p>
+<pre>
+TV_RECORD_PADDING = 0 * 60
+</pre>
+
+<h2 id="head-99209bc85f5cafa94a415842da08d2fede1b826b">Start manually</h2>
+
+<p>You can start the recordserver manually:  
+</p>
+<pre>
+freevo recordserver start
+</pre>
+<p>And also stop it manually:  
+</p>
+<pre>
+freevo recordserver stop 
+</pre>
+
+<h2 id="head-f00e991de2023da267ba323216553406e8e45b5f">Start with initscripts</h2>
+
+<p>You probably want to have the recordserver running all the time in the background, so it is best if you start it by an initscript at boot time. It is then running independently from freevo, that means you can start and stop freevo, while the recordserver is persistent. The way how you start the recordserver with a initscript depends on your distribution. Maybe there are already scripts copied to the right place by your distributions installation tool, and you just have to edit them to your liking. There are some examples of such scripts in <tt>freevo/boot&nbsp;</tt>. </p>
+
+<h3 id="head-15624ca79127a4dd5171518ca5e61d500738303f">Gentoo</h3>
+
+<p>If you emerged freevo from portage : </p>
+<ul>
+<li><p> Edit the config script : /etc/conf.d/freevo </p>
+</li>
+<li><p> Add Freevo script to the default runlevel : </p>
+</li>
+</ul>
+
+<pre>
+rc-update add freevo default
+</pre>
+
+<h3 id="head-6738b090e269b24bef83f185738a71e2142d2d9a">Debian</h3>
+
+<p>One just has to copy a appropriate script to <tt>/etc/init.d/</tt>. After that create a link form <tt>/etc/rcX.d</tt>, where X stands for the runlevel in which you want the recordserver started. The default runlevel is usually 2. The link's name must be of the form <tt>SXXrecordserver</tt>, where S stands for <em>start script</em> and XX gives a number in what order the scripts are to be called during the init process.  The script itself can be one of the example scripts from the freevo package or just something as easy as: 
+</p>
+<pre>
+#!/bin/sh
+/bin/su - freevo -c "freevo recordserver start"
+</pre>
+<p>which starts the recordserver with the rights of the user <tt>freevo</tt>. </p>
+
+<h3 id="head-4e0b2adba4b4757b7e653cc0f48fc59aeb98a4c7">Other distributions</h3>
+
+<p>PleaseUpdate </p>
+
+<h2 id="head-a384a0ecd443ecbdd32b5c060f7b078d3f7e2e44">Schedule Favorites</h2>
+
+<p>There are two ways to reschedule the favorites when you grab new xmltv listings. You can grab your listings with the freevo tv_grab helper. It will grab the listings, recache them and reschedule the favorites.  </p>
+<p>PleaseUpdate : how to setup this in local_conf.py (I'm not using it) </p>
+<p>But sometimes it is not possible to grab the listings with the freevo tv_grab helper (if you use a custom script). Then you have to run the freevo reschedulefavorites helper : 
+</p>
+<pre>
+freevo schedulefavorites
+</pre>
+<p>Of course you don't want to run it manually every day, Add the following example to your crontab, it will recache freevo tvguide (speedup) and reschedule the favorites every day at 3h55 am (I grab my listings at 2h00 am) : 
+</p>
+<pre>
+55 03  * * *    root    freevo cache &gt; /dev/null &amp;&amp; freevo schedulefavorites &gt; /dev/null
+</pre>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-03-04 03:12:33 by <span title="h000d888ded48.ne.client2.attbi.com">TimMartin</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/Recordserver">http://freevo.sourceforge.net/cgi-bin/doc/Recordserver</a></p>
+</div> <!-- end page -->
+</body>
+</html>

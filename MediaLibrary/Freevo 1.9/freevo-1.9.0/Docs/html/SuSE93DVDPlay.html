@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>SuSE93DVDPlay - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/SuSE93DVDPlay?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/SuSE93DVDPlay?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">SuSE93DVDPlay</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h2 id="head-04a6b6db3f48ace9fbc19b0e62d056d66727e850">Workaround for lsdvd 0.15 and Freevo on SuSE 9.3</h2>
+
+<p>SuSE 9.3 use lsdvd 0.15 which is available from the apt repositories. </p>
+<p>The output of lsdvd causes Freevo not to detect and play a DVD. This is because this version of lsdvd adds the microseconds to the length of a track. </p>
+<p>The output looks as follows: </p>
+<p><em>Title: 01, Length: 02:50:38.100 Chapters: 33, Cells: 161, Audio streams: 01, Subpictures: 00</em> </p>
+<p>Note the Length format: <strong>02:50:38.100</strong> </p>
+<p>The expected format is without the microseconds, like this: <strong>02:50:38</strong> </p>
+<p>This problem can be fixed by making a small change to the <em>lsdvd.py</em> file. The full path of the file should be: '/usr/lib/python2.4/site-packages/mmpython/disc/lsdvd.py' </p>
+<p>The change is in the <strong>DVDTitle</strong> class (line 99). </p>
+<p>Following is the changed version of the class as it is on my system: </p>
+
+<pre>
+
+class DVDTitle(mediainfo.AVInfo):
+    def __init__(self, data):
+        mediainfo.AVInfo.__init__(self)
+        self.number = int(data[1])
+
+        self.keys.append('subtitles')
+        self.keys.append('chapters')
+        
+        self.mime = 'video/mpeg'
+
+        l = data[3].split(':')
+        """ 
+        Changed by AT to handle different versions of lsdvd
+        """
+        if len(l[2]) &gt; 2:
+          " We have the microseconds also - isolate it"
+          sec = l[2].split('.')
+          self.length   = (int(l[0])*60+int(l[1]))*60+int(sec[0])
+        else:
+          " Original line before AT got his paws in here - no microseconds in output"
+          self.length   = (int(l[0])*60+int(l[1]))*60+int(l[2])
+
+        self.trackno  = int(data[1])
+        self.chapters = int(data[5]) 
+
+</pre>
+<p>This should actually work for both output formats of lsdvd. Anyone care to test if it works correct on other systems? </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-06-06 22:02:34 by <span title="ns2.catwalktvdns.com">AndreTruter</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/SuSE93DVDPlay">http://freevo.sourceforge.net/cgi-bin/doc/SuSE93DVDPlay</a></p>
+</div> <!-- end page -->
+</body>
+</html>

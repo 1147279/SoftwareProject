@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>User Configuartion</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Freevo Plugin Writing HOWTO"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Notes for writing a plugin"
+HREF="c223.html"><LINK
+REL="PREVIOUS"
+TITLE="Which files to Import"
+HREF="x245.html"><LINK
+REL="NEXT"
+TITLE="i18n support"
+HREF="x301.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Freevo Plugin Writing HOWTO: Writing your own plugins for Freevo</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x245.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 4. Notes for writing a plugin</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x301.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN276"
+>4.4. User Configuartion</A
+></H1
+><P
+>	A plugin may require some special configuration. There are two
+	possible ways:
+      </P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN279"
+>4.4.1. Adding parameter to the constructor</A
+></H2
+><P
+>	  A plugin may add more than the <CODE
+CLASS="VARNAME"
+>self</CODE
+> to the
+	  <CODE
+CLASS="FUNCTION"
+>__init__</CODE
+> function. The user has to add the
+	  values when the plugin is loaded. This makes it possible to load a
+	  plugin more than once with different settings.
+	</P
+><P
+>	  The following example adds two parameter. The first one has no
+	  default value and has to be added when activating the plugin. The
+	  second is optional.
+	  <PRE
+CLASS="PROGRAMLISTING"
+>import plugin
+
+class PluginInterface(plugin.Plugin):
+    def __init__(self, arg1, arg2='foo'):
+        plugin.Plugin.__init__(self)
+
+
+plugin.activate('foo', args=('1',))
+plugin.activate('foo', args=('1', 'bar'))
+
+	  </PRE
+>
+	</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN287"
+>4.4.2. Using local_conf.py</A
+></H2
+><P
+>	  The second way is to use the <TT
+CLASS="FILENAME"
+>local_conf.py</TT
+> to
+	  let the user set the variables. Since a plugin should be self
+	  contained, it should not add something to
+	  <TT
+CLASS="FILENAME"
+>freevo_config.py</TT
+>. A better way is to use the
+	  member function <CODE
+CLASS="FUNCTION"
+>config</CODE
+> to return a list of
+	  variables for this plugin. If the user doesn't define the variable
+	  the default values will be added to the <CODE
+CLASS="FUNCTION"
+>config</CODE
+>
+	  module. Warning: the <CODE
+CLASS="FUNCTION"
+>config</CODE
+> function will be
+	  called in the <CODE
+CLASS="FUNCTION"
+>__init__</CODE
+> function of the base
+	  plugin class, do not try to use the variables before that. 
+	</P
+><P
+>Example: the plugin needs <CODE
+CLASS="VARNAME"
+>FOO_NAME</CODE
+> and
+	  <CODE
+CLASS="VARNAME"
+>FOO_FUNCTION</CODE
+> to be set. It defines the default
+	  values and a small description (not used at the moment)
+	  <PRE
+CLASS="PROGRAMLISTING"
+>import plugin
+
+class PluginInterface(plugin.Plugin):
+    def config(self):
+        return [ ('FOO_NAME', 'the default', 'some description'),
+                 ('FOO_FUNCTION', foo, 'this is a function') ]
+    
+	  </PRE
+>
+	</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x245.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x301.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Which files to Import</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c223.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>i18n support</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

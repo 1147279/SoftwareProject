@@ -1,0 +1,802 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>Skins - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/Skins?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/Skins?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">Skins</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<ol>
+
+<li>
+<a href="#head-fb06b28256e83157e75fb856d480ace8ae6dab42">We need graphical artists</a>
+</li>
+
+<li>
+<a href="#head-bdf53688eb681ede406c5703c88292759441ed7c">About the skins</a>
+<ol>
+
+<li>
+<a href="#head-5b8814d455c2e5e581e8e5589bf5da059e1f37b1">Why should I read this? I like the current skin.</a>
+</li>
+
+<li>
+<a href="#head-1a871c5ecf8106b19789663747afebd2d18508a0">Selecting a different skin</a>
+</li>
+
+</ol>
+
+<li>
+<a href="#head-47a85743843c3f693b5ef3eb5fa89135a610052f">Skin structure</a>
+<ol>
+
+<li>
+<a href="#head-99431a068aad7d421e5fc39b9fda9a7eb23a820f">Using an Icon Set</a>
+</li>
+
+<li>
+<a href="#head-a40624c5397d364ff3ff6f842fcdd2bad50fa0f9">Setting Skins Variables</a>
+</li>
+
+<li>
+<a href="#head-168a1cf7e9c1c314327380b2c215937156c596c5">Colors</a>
+</li>
+
+<li>
+<a href="#head-d0189b56556289ce39dad2a845349ded31b278b6">Images</a>
+</li>
+
+<li>
+<a href="#head-8f64011ece3c5e08e9cd6ac9dbf8a253d708e503">Rectangles</a>
+</li>
+
+<li>
+<a href="#head-fd43d7f69a984bd5c4e1f1924bd8226818400bcd">Fonts</a>
+</li>
+
+<li>
+<a href="#head-011e8e28511e0e9f52612f39bdc8f1af7357fb39">Setting Main Menu Items</a>
+</li>
+
+<li>
+<a href="#head-b384f4aa5d50229bcf74171cfbaa347f28617393">Defining your Menus</a>
+<ol>
+
+<li>
+<a href="#head-90f23ad3066d1c0232c2deb9960afb909ca013bf">Menu Sets</a>
+<ol>
+
+<li>
+<a href="#head-98edfcbd1b6558fe7b144236b4485e897a41de9d">Layouts</a>
+<ol>
+
+<li>
+<a href="#head-1ca51f414d91fbd27d8095e29acba61a7c17bd9d">Listing Layouts</a>
+</li>
+
+<li>
+<a href="#head-b63479c7b575cd670cc76d48b40781466b5bf960">Info Layouts</a>
+</li>
+
+</ol>
+
+</li>
+
+</ol>
+
+</li>
+
+</ol>
+
+<li>
+<a href="#head-052e6b976882abccc6df3b83ef573791ae2927a5">Defining TV settings</a>
+</li>
+
+<li>
+<a href="#head-afd7a770193e133249965adf04f829ca953b6677">Defining Player settings</a>
+</li>
+
+</ol>
+
+<li>
+<a href="#head-aab2077ccc20ca7bc0410bcc62cfdeb9214fefea">Examples</a>
+<ol>
+
+<li>
+<a href="#head-7f67cdd25d85c3bc0202ebc9324877d55d0ba045">Different background image</a>
+</li>
+
+<li>
+<a href="#head-715d89431394371a207a5c7417ca718dac34259f">Changing skins</a>
+</li>
+
+<li>
+<a href="#head-b61e0c63b083b268e6569a5d783e266c4ff618ea">Background images for DVDs or tv show folder</a>
+</li>
+
+</ol>
+
+<li>
+<a href="#head-a1c73daa00b28f203f34c3cf1a26c3a47ecb60b2">CD-ROM support</a>
+</li>
+
+<li>
+<a href="#head-6d1a14a8897d306b21c2ca26443e0750bc059510">Write a new skin, including new Python code</a>
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-fb06b28256e83157e75fb856d480ace8ae6dab42">We need graphical artists</h2>
+
+<p>If you are good with graphics, layouts and stuff, please: we need you to improve Freevo skins and maybe design new ones. If you want to help, read this document and join the developers list. It you don't want to work on the skins, but have other ideas, you can send mockups and likes to the development lists too. If we like it we may implement it. </p>
+
+<h2 id="head-bdf53688eb681ede406c5703c88292759441ed7c">About the skins</h2>
+
+<p>In Freevo, two things can be called skins: </p>
+<ul>
+<li><p> <strong>skin backend</strong>: which render things on the screen. For now, there is only one backend in Freevo, but you can write one if it doesn't act like you want. This backend handles a set of XML files and images to compound what we call a skin (see next point). We will not cover backend coding in this document, since the backend is flexible enough. Maybe it's just a matter of changing it, not implementing another. But if you really want to, join the developers mail list. Skin backends are located in <em>src/skins</em>. The backend we use now is called <strong>main</strong> and it's in <em>src/skins/main</em>. </p>
+</li>
+<li class="gap"><p> <strong>skin configuration</strong>: this one is specific for each backend. It can handle colors, layouts, menus, etc. This document will only cover this type of "skin". Skins are made from XML files and images. </p>
+</li>
+</ul>
+<p>The files are in <em>share/skins/<strong>&lt;backend&gt;</em></strong> (or /usr/share/freevo/skins in a default installation). They all have the <strong>.fxd</strong> extension. We will cover the skins for the <strong>main</strong> backend, so you should look in <em>share/skins/main</em>. The skins can inherit from each other so that information is not repeated over and over again. </p>
+<p>The <em>blue.fxd</em> skin contain all needed information for a skin. All other skins inherit from this one. </p>
+<p><strong>Note:</strong> the extension <strong>.fxd</strong> is use for all xml files used by Freevo, so you may see files ended in .fxd that has nothing to do with the skin. </p>
+
+<h3 id="head-5b8814d455c2e5e581e8e5589bf5da059e1f37b1">Why should I read this? I like the current skin.</h3>
+
+<p>Freevo supports folder based skins and has an extra xml file for menus with a background image you can use for DVD/VCD/CD, movie submenus and folders containing recordings of different episodes of one tv show. If you like that, keep reading or skip to the examples. <img src="modern/img/smile.png" alt=":)" height="15" width="15"> </p>
+
+<h3 id="head-1a871c5ecf8106b19789663747afebd2d18508a0">Selecting a different skin</h3>
+
+<hr>
+<p> <img src="modern/img/alert.png" alt="/!\" height="15" width="15"> <strong>Edit conflict - other version:</strong> </p>
+<hr>
+<p> You can change skins from within Freevo. Just press <em>d</em> (DISPLAY in your remote) in the main menu. You should get a list of the available skins. Select the one you like and press <em>ENTER</em> (SELECT in your remote). </p>
+<hr>
+<p> <img src="modern/img/alert.png" alt="/!\" height="15" width="15"> <strong>Edit conflict - your version:</strong> </p>
+<hr>
+<p> You can change skins from within Freevo. Just press <em>d</em> (DISPLAY in your remote) in the main menu. You should get a list of the available skins. Select the one you like and press <em>ENTER</em> (SELECT in your remote). </p>
+<hr>
+<p> <img src="modern/img/alert.png" alt="/!\" height="15" width="15"> <strong>End of edit conflict</strong> </p>
+<hr>
+<p> This skin will not be loaded during the next run. If you want some skin as your default, change your <em>local_conf.py</em> and search for the <strong>GUI_XML_FILE</strong> (<strong>SKIN_XML_FILE</strong> for Freevo 1.5.x). You should change the value to the skin name you want. </p>
+<p>Example: 
+</p>
+<pre>
+SKIN_XML_FILE = 'noia'
+</pre>
+<p>or 
+</p>
+<pre>
+GUI_XML_FILE = 'noia'
+</pre>
+
+<h2 id="head-47a85743843c3f693b5ef3eb5fa89135a610052f">Skin structure</h2>
+
+<p><img src="modern/img/icon-info.png" alt="{i}" height="16" width="16"> <strong>Tip:</strong> While you read this document, open some skins in a XML editor with syntax highlight (ie: kate, vi, emacs, ...) then try to match what we say with that document. <strong>blue.fxd</strong> is the base skin, almost every other skin inherit from it. <strong>info.fxd</strong> is a more elaborated skin, with different menu styles, information for items and more. <strong>barbieri_blue.fxd</strong> is my personal skin (Gustavo), it was made to demonstrate as many as possible skin capabilities. </p>
+<p>A skin xml contains different elements to make it possible to change the look very easy. First, the skin defines a geometry and maybe inherits from another skin. The skins provided with Freevo uses 800x600. If you use a different resolution, all positions and sizes will be scaled to fit the screen. </p>
+<hr>
+<p> <img src="modern/img/alert.png" alt="/!\" height="15" width="15"> <strong>Edit conflict - other version:</strong> </p>
+<hr>
+<p> <img src="modern/img/attention.png" alt="&lt;!&gt;" height="15" width="15"> <strong>IMPORTANT NOTE</strong>: one element can point to another referring to its <strong>label</strong> attribute. </p>
+<hr>
+<p> <img src="modern/img/alert.png" alt="/!\" height="15" width="15"> <strong>Edit conflict - your version:</strong> </p>
+<hr>
+<p> <img src="modern/img/attention.png" alt="&lt;!&gt;" height="15" width="15"> <strong>IMPORTANT NOTE</strong>: one element can point to another referring to its <strong>label</strong> attribute. </p>
+<hr>
+<p> <img src="modern/img/alert.png" alt="/!\" height="15" width="15"> <strong>End of edit conflict</strong> </p>
+<hr>
+<p> </p>
+<p>First, we begin the XML document, specify the XML version (and if you want, specify the encoding, the default one is <em>utf-8</em>) and open the root tag: 
+</p>
+<pre>
+&lt;?xml version="1.0" ?&gt;
+&lt;freevo&gt;
+</pre>
+<p>This is needed for all Freevo XML files. Remember that .fxd files can contain other kinds of information. We need to make it clear to Freevo that we're creating a skin. For this, we use the following tag: </p>
+
+<pre>
+  &lt;skin geometry="800x600"&gt;
+</pre>
+<p>This says we started to specify a skin document. The 'screen'-tag accepts the following attributes: </p>
+<ul>
+<li><p> <strong>geometry="<em>&lt;width&gt;</em>x<em>&lt;height&gt;</em>"</strong> -- the skin's geometry </p>
+</li>
+<li><p> <strong>fontscale="<em>&lt;float_number&gt;</em>"</strong> -- font sizes will be multiplied by this factor </p>
+</li>
+<li><p> <strong>include="<em>&lt;some_file&gt;</em>"</strong> -- include this file (must be other skin, of course) </p>
+</li>
+</ul>
+
+<h3 id="head-99431a068aad7d421e5fc39b9fda9a7eb23a820f">Using an Icon Set</h3>
+
+<p>Now we want to define which icon theme we use with this skin: </p>
+
+<pre>
+    &lt;iconset theme="AquaFusion" /&gt;
+</pre>
+<p>All icon themes are located in <em>share/icons/themes/</em>. </p>
+
+<h3 id="head-a40624c5397d364ff3ff6f842fcdd2bad50fa0f9">Setting Skins Variables</h3>
+
+<p>We can also set skin variables using the FXD. For example: 
+</p>
+<pre>
+    &lt;setvar name="box_under_icon" val="0" /&gt;
+</pre>
+<p>This sets the <em>box_under_icon</em> value to zero, disabling this feature. This feature, when enabled, says the box under items should be also under icons, in text menus (more about this feature later on). </p>
+<p><em>box_under_icon</em> is the unique skin variable for now. </p>
+<p>Before you go any further, you should be familiar with the following tags and their functions: </p>
+
+<h3 id="head-168a1cf7e9c1c314327380b2c215937156c596c5">Colors</h3>
+
+<p>You may define <strong>&lt;color&gt;</strong> tags so you don't need to remember values, it's easier to keep it consistent. It's easy to learn: <strong>&lt;font label="<em>&lt;label&gt;</em>" value="<em>&lt;color&gt;</em>" /&gt;</strong>. <em>label</em> is how other elements will refer to this <strong>&lt;color&gt;</strong>, <strong>value</strong> is the color in 0xAARRGGBB (ARGB mode, in hexa), 0xRRGGBB (RGB mode, also in hexa, as used in HTML). </p>
+<p>Example: 
+</p>
+<pre>
+      &lt;color label="list bg" value="0xa0333333" /&gt;
+</pre>
+
+<h3 id="head-d0189b56556289ce39dad2a845349ded31b278b6">Images</h3>
+
+<p>As simple as &lt;color&gt;, used to avoid typing and keep it consistent. Here's an example: </p>
+
+<pre>
+      &lt;image label="background" filename="barbieri/bg.png" /&gt;
+</pre>
+<p>This tag as child of other element can have other attributes. For example, in <strong>&lt;listing&gt;</strong> it can have <strong>width</strong>, <strong>height</strong>, <strong>x</strong> and <strong>y</strong> and <strong>label</strong> value is used internally by listing to match some pre-defined names, used by the skin backend. </p>
+<p>It can also be a child of layout's &lt;background&gt; tag. There you can refer to a previously declared &lt;image&gt; and specify the geometry. </p>
+
+<h3 id="head-8f64011ece3c5e08e9cd6ac9dbf8a253d708e503">Rectangles</h3>
+
+<hr>
+<p> <img src="modern/img/alert.png" alt="/!\" height="15" width="15"> <strong>Edit conflict - other version:</strong> </p>
+<hr>
+<p> Rectangles are used to draw a rectangular shape. Rectangles have a <strong>bgcolor</strong> (background color) that is used to fill the rectangle. The <strong>color</strong> is used as border color. <strong>size</strong> specifies the border size (0 disable the border). <strong>width</strong>, <strong>height</strong>, <strong>x</strong> and <strong>y</strong> specify the geometry and position. <strong>radius</strong> specifies the border radius, used to create rounded boxes. </p>
+<hr>
+<p> <img src="modern/img/alert.png" alt="/!\" height="15" width="15"> <strong>Edit conflict - your version:</strong> </p>
+<hr>
+<p> Rectangles are used to draw a rectangular shape. Rectangles have a <strong>bgcolor</strong> (background color) that is used to fill the rectangle. The <strong>color</strong> is used as border color. <strong>size</strong> specifies the border size (0 disable the border). <strong>width</strong>, <strong>height</strong>, <strong>x</strong> and <strong>y</strong> specify the geometry and position. <strong>radius</strong> specifies the border radius, used to create rounded boxes. </p>
+<hr>
+<p> <img src="modern/img/alert.png" alt="/!\" height="15" width="15"> <strong>End of edit conflict</strong> </p>
+<hr>
+<p> </p>
+
+<pre>
+   &lt;rectangle bgcolor="selection bg" color="selection border" size="0" x="0" y="0" width="20" height="20" radius="10" /&gt;
+</pre>
+
+<h3 id="head-fd43d7f69a984bd5c4e1f1924bd8226818400bcd">Fonts</h3>
+
+<p>You need to define a <strong>&lt;font&gt;</strong> tag to instantiate a font. This font then can be used everywhere in the skin. Its attributes are: </p>
+<ul>
+<li><p> <strong>label="<em>&lt;label&gt;</em>"</strong>: other elements will refer to this font by this label. </p>
+</li>
+<li><p> <strong>name="<em>&lt;name&gt;</em>"</strong>: the font name, you don't need the extension if it's ttf. The font <em>must be in share/fonts</em>! </p>
+</li>
+<li><p> <strong>size="<em>&lt;size&gt;</em>"</strong>: font size. </p>
+</li>
+<li><p> <strong>color="<em>&lt;color&gt;</em>"</strong>: color in 0xAARRGGBB (ARGB mode, in hexa) or in 0xRRGGBB (RGB mode, also in hexa, as used in HTML). The color can also be some color label, specified with <strong>&lt;color&gt;</strong>. </p>
+</li>
+</ul>
+<p>And it can also have one child tag, <strong>&lt;shadow&gt;</strong>, which specify the font shadow. It has the <em>x</em> and <em>y</em> attributes, that say how many pixels far the shadow will be, the color and <strong>visible="<em>&lt;yes|no&gt;</em>"</strong>. </p>
+<p>Another example:  
+</p>
+<pre>
+      &lt;font label="info title" name="impact" size="24" color="0xD59215"&gt;
+         &lt;shadow x="1" y="1" color="0x734F0B" visible="yes"/&gt;
+      &lt;/font&gt;
+</pre>
+
+<h3 id="head-011e8e28511e0e9f52612f39bdc8f1af7357fb39">Setting Main Menu Items</h3>
+
+<p>Then, let's define the main menu: 
+</p>
+<pre>
+    &lt;main&gt;
+      &lt;item label="tv"       name="TV"       icon="tv.png"            /&gt;
+      &lt;item label="video"    name="Movies"   icon="movies.png"        /&gt;
+      &lt;item label="audio"    name="Music"    icon="mp3.png"           /&gt;
+      &lt;item label="image"    name="Images"   icon="images.png"        /&gt;
+      &lt;item label="games"    name="Games"    icon="package_games.png" /&gt;
+      &lt;item label="shutdown" name="Shutdown" icon="shutdown.png"      /&gt;
+    &lt;/main&gt;
+</pre>
+<p>The <strong>&lt;main&gt;</strong> tag handles main menu item's settings. The <strong>&lt;item&gt;</strong> accept the following attributes: </p>
+<ul>
+<li><p> <strong>label</strong>="<em>&lt;item's name&gt;</em>" -- the item's name. </p>
+</li>
+<li><p> <strong>name</strong>="<em>&lt;some label to this item&gt;</em>" -- it's what you will see in Freevo. You may change this attribute to get nice names, like "Watch a movie" or even translate it if you're foreigner like me ("Veja um Filme", in Brazilian Portuguese). </p>
+</li>
+<li><p> <strong>icon</strong>="<em>&lt;icon file&gt;</em>" -- the icon for this item, relative to iconset theme. Leave in blank if you don't want icons. </p>
+</li>
+<li><p> <strong>outicon</strong>="<em>&lt;icon file&gt;</em>" -- the icon to be used when this item is not selected. If not specified, defaults to <em>icon</em> above. You can use this to simulate effects like icon zooming (see note below), colorizing, etc.. </p>
+</li>
+<li><p> <strong>image</strong>="<em>&lt;image file&gt;</em>" -- if instead of an icon you want an image associated with this file, specify this, relative to <em>share/images</em>. See <strong>info.fxd</strong>. </p>
+</li>
+</ul>
+<p><strong>Note</strong>: Icons will be scaled according to the line height, so based on the font size. If you want to simulate zoom effect in icons, you shouldn't give icons from different sizes in <em>icon</em> and <em>outicon</em>, but instead get icon from the same size (canvas) with the contents resized. For example, check share/icons/themes/tuxntosh/mainmenu/54x54/music.png and share/icons/themes/tuxntosh/mainmenu/54x54/out_music.png </p>
+<p>Other configurations for main menu, like position, alignment and others are handled like other menus, with <strong>&lt;menu type="main"&gt;</strong> and  <strong>&lt;menuset&gt;</strong>, except that the main menu can only have one <strong>&lt;style&gt;</strong>. </p>
+
+<h3 id="head-b384f4aa5d50229bcf74171cfbaa347f28617393">Defining your Menus</h3>
+
+<p>Now you can define what kind of menus do you want to have using the <strong>&lt;menu&gt;</strong> tag. Possible types are "all" (delete all other menus from the skin you inherit from), "video", "audio", "image", "games", "tv" and "default" (everything which is not defined). Each menu defines what menuset you want to use for this type using the <strong>&lt;style&gt;</strong> tag. </p>
+<p><strong>blue.fxd</strong> only defines "default, but <strong>info.fxd</strong> for examples defines more different menusets for different types.  </p>
+<p>Each menu defines a list of styles to use. You can toggle through the styles by pressing <em>d</em> (DISPLAY in your RC) in the menu. For instance, <strong>info.fxd</strong> has different styles (menusets), so you can, for example, browse your CD's viewing their covers.  </p>
+<p>Here's an excerpt from <strong>info.fxd</strong>: </p>
+
+<pre>
+    &lt;menu type="audio"&gt;
+      &lt;style image="audio menu with info" text="text with info style"/&gt;
+      &lt;style text="text with info style"/&gt;
+    &lt;/menu&gt;
+</pre>
+<p>This tells that the Audio Menus will have 2 styles. The first style will be the default and it say it will show listings in image mode with possible a text fallback (for example, when you're browsing through music you may see CD covers, but if you're inside a CD, all items will have the same cover, so there's no sense in viewing the cover, so we fallback to the text menu). The second style is a text view. Both <strong>image</strong> and <strong>text</strong> points to <strong>&lt;menusets&gt;</strong>. </p>
+<p>If an <strong>image</strong> view is defined, you will see a bi-dimensional menu with images (covers if movies/music) and possible the name under it.  </p>
+<p>If a <strong>text</strong> view is defined, you will see a one-dimensional menu with item names and possible an icon representing the item's type or some mark to allow you to identify that. For now, if some item doesn't have an icon associated and it's a directory, you will get <strong>[</strong> and <strong>]</strong> around the name. If it's a playlist, you get <strong>PL:</strong> before it. </p>
+<p>If you define <strong>text</strong> and <strong>image</strong>, the menu will use image and when all covers are the same (like a directory containing all mp3 files of a cd) the skin will switch to text view. In style, you don't really define the look, you point to a menuset with the label attribute. </p>
+
+<h4 id="head-90f23ad3066d1c0232c2deb9960afb909ca013bf">Menu Sets</h4>
+
+<p>Now, you must define all menusets your menu needs. As explained above, each  <strong>&lt;style&gt;</strong> reference to a <strong>&lt;menuset&gt;</strong> with <strong>image</strong> and <strong>text</strong> attributes. </p>
+<p>A <strong>&lt;menuset&gt;</strong> can inherit other menuset using the <strong>inherits="<em>&lt;other menuset label&gt;</em>"</strong>. It also has some areas, here called <strong>layouts</strong>: </p>
+<ul>
+<li><p> <strong>screen</strong>: the background and some items related, like rectangles. </p>
+</li>
+<li><p> <strong>title</strong>: can be menu's title or selected item. </p>
+</li>
+<li><p> <strong>subtitle</strong>: same as title. </p>
+</li>
+<li><p> <strong>listing</strong>:  where the menu will show its items. </p>
+</li>
+<li><p> <strong>info</strong>: information about the selected item. </p>
+</li>
+<li><p> <strong>view</strong>: some kind of visualization for the selected item. Can be a bigger cover or something else. Maybe in future we can get movie and tv preview in this place. </p>
+</li>
+</ul>
+<p>Each area may point to a <strong>layout</strong>. If you're inheriting other menuset, you don't need to set this. Areas may also have their position and geometry, defined as <strong>x</strong>, <strong>y</strong>, <strong>width</strong> and <strong>height</strong>. You can disable an area by setting <strong>visible="no"</strong>.  </p>
+<p><strong>&lt;listing&gt;</strong> can also have <strong>&lt;image&gt;</strong> inside them, so you can position your navigation arrows. These images have pre-defined labels: <strong>uparrow</strong> and <strong>downarrow</strong>. They're displayed just when needed. </p>
+<p>Here's an excerpt from <strong>barbieri_blue.fxd</strong>: </p>
+
+<pre>
+      &lt;menuset label="audio iconified with info big"&gt;
+         &lt;screen layout="audio screen" 
+                 x="0" y="0" width="800" height="600" /&gt;
+         &lt;title layout="audio title"
+                x="10" y="80" width="623" height="70" /&gt;
+         &lt;subtitle visible="no" /&gt;
+         &lt;listing layout="audio list" 
+                  x="346" y="151" width="416" height="439"&gt;
+            &lt;image label="uparrow" x="760" y="171" width="32" height="32" filename="up.png"/&gt;
+            &lt;image label="downarrow" x="760" y="538" width="32" height="32" filename="down.png"/&gt;
+         &lt;/listing&gt;
+         &lt;view layout="audio view" x="10" y="171" width="250" height="250" /&gt;
+         &lt;info layout="audio info" x="10" y="441" width="336" height="150" /&gt;
+      &lt;/menuset&gt;
+</pre>
+
+<h5 id="head-98edfcbd1b6558fe7b144236b4485e897a41de9d">Layouts</h5>
+
+<p>A layout must have a <strong>label</strong> attribute, so other elements can refer to it. It also may have some children tags:  </p>
+<ul>
+<li><p> <strong>&lt;background&gt;</strong>: contains images and rectangles. </p>
+</li>
+<li><p> <strong>&lt;content&gt;</strong>: defines how the content should look like.  </p>
+</li>
+</ul>
+<p>Layouts used by <strong>&lt;screen&gt;</strong> doesn't need the content tag, just the background one. <strong>&lt;title&gt;</strong>, <strong>&lt;subtitle&gt;</strong>, <strong>&lt;listing&gt;</strong>, <strong>&lt;view&gt;</strong> and <strong>&lt;info&gt;</strong>, the other way, just need the <strong>&lt;content&gt;</strong>. </p>
+<p><img src="modern/img/attention.png" alt="&lt;!&gt;" height="15" width="15"> <strong>&lt;content&gt;</strong> is the most important element in Freevo skin. <em> <strong>It values and children tags depends on who use it, so pay attention!</strong> </em>. </p>
+<p>It's attributes are: </p>
+<ul>
+<li><p> <strong>type="<em>&lt;type&gt;</em>"</strong>: </p>
+<ul>
+<li><p> If used by <strong>&lt;listing&gt;</strong> can be: <strong>text</strong> if it will be used in text listings, <strong>image</strong> for image listings without names under it, <strong>image+text</strong> for image listings with names under </p>
+</li>
+<li><p> If used by <strong>&lt;title&gt;</strong> or <strong>&lt;subtitle&gt;</strong> can be <strong>menu</strong> to get the menu title or <strong>short item</strong> to  get the selected item name. </p>
+</li>
+<li><p> If used by <strong>&lt;screen&gt;</strong>, <strong>&lt;info&gt;</strong> or <strong>&lt;view&gt;</strong> it's ignored. </p>
+</li>
+</ul>
+</li>
+<li><p> <strong>x="<em>&lt;x&gt;</em>"</strong>: horizontal position relative to the position defined in the calling area, so if in you used <em>&lt;screen x="20" .../&gt;</em> and then use <em>&lt;content x="5" ... /&gt;</em>, the contents will show in absolute position 25. </p>
+</li>
+<li><p> <strong>y="<em>&lt;y&gt;</em>"</strong>: vertical position, also relative. </p>
+</li>
+<li><p> <strong>width="<em>&lt;width&gt;</em>"</strong>: the width. Can be <strong>MAX+<em>&lt;value&gt;</em></strong> or <strong>MAX-<em>&lt;value&gt;</em></strong>, where <strong>MAX</strong> will be replaced by the width of the calling area. This is useful when you want to define some spacement from other things. For example, you can use x="10" and width="MAX-20" to get 10 pixels spacement in horizontal direction. </p>
+</li>
+<li><p> <strong>height="<em>&lt;height&gt;</em>"</strong>: the width. Can be <strong>MAX+<em>&lt;value&gt;</em></strong> or <strong>MAX-<em>&lt;value&gt;</em></strong>, same properties as width. </p>
+</li>
+<li><p> <strong>align="<em>&lt;left|right|center&gt;</em>"</strong>: horizontal alignment. Can be <strong>left</strong>, <strong>right</strong> or <strong>center</strong>. </p>
+</li>
+<li><p> <strong>valign="<em>&lt;top|bottom|center&gt;</em>"</strong>: vertical alignment. Can be <strong>top</strong>, <strong>bottom</strong> or <strong>center</strong>. </p>
+</li>
+<li><p> <strong>spacing="<em>&lt;spacing&gt;</em>"</strong>: spacing between items. </p>
+</li>
+</ul>
+<p>The <strong>&lt;listing&gt;</strong>, <strong>&lt;view&gt;</strong> and <strong>&lt;info&gt;</strong> area may contain <strong>&lt;item&gt;</strong> tags inside content to define different looks for the different types of menu items.  </p>
+
+<h6 id="head-1ca51f414d91fbd27d8095e29acba61a7c17bd9d">Listing Layouts</h6>
+
+<p>For <strong>&lt;listing&gt;</strong>, the <strong>&lt;item&gt;</strong> tags may have the <strong>type</strong> attribute set to: </p>
+<ul>
+<li><p> <strong>audio</strong>: settings for Audio items. </p>
+</li>
+<li><p> <strong>video</strong>: settings for Video items. </p>
+</li>
+<li><p> <strong>image</strong>: settings for Image items. </p>
+</li>
+<li><p> <strong>game</strong>: settings for Video Game items. </p>
+</li>
+<li><p> <strong>playlist</strong>: settings for Playlists items. </p>
+</li>
+<li><p> <strong>dir</strong>: settings for directories. </p>
+</li>
+<li><p> <strong>dvd</strong>: settings for DVD items. </p>
+</li>
+<li><p> <strong>vcd</strong>: settings for VCD items. </p>
+</li>
+<li><p> <strong>audiocd</strong>: settings for Audio CD items. </p>
+</li>
+<li><p> <strong>empty_cdrom</strong>: settings for Empty CD-Roms items. </p>
+</li>
+<li><p> <strong>default</strong>: used when one of the above was not specified. </p>
+</li>
+</ul>
+<p>These define the settings for non-selected items, for the selected you should use the <strong>selected</strong> variant, just have the type to be one of the described above + selected, ie: <strong>audio selected</strong>, except from <strong>default</strong> which become just <strong>selected</strong>. </p>
+<p>Note that if you use different layouts for different menus, you don't need to specify items you know will be not there. For example, you have a &lt;menuset&gt; used only by audio menu. The &lt;layout&gt; of its &lt;listing&gt; doesn't need to define 'game' menus, you just need to define audio related types (dvd, empty_cdrom, audiocd, dir, playlist). But if you will use the same menuset for all menus, you may define all the types. </p>
+<p>You can define a rectangle for the listing items (the selection bar). If you like, you could also define a rectangle for the non selected items with a different background, or no selection bar for the selected item and even a transparent background for some kind of items. If you want this selection bar to be also under the icon in text views, you can define the skin variable <strong>box_under_icon</strong> (take a look in the <em>Setting Skins Variables</em> section). </p>
+<p>As example, here is a <strong>&lt;layout&gt;</strong> to be used by <strong>&lt;listing&gt;</strong> for text view: 
+</p>
+<pre>
+      &lt;layout label="default list"&gt;
+         &lt;content type="text" spacing="2" align="right" valign="center"&gt;
+            
+            &lt;!-- Define default item. ALWAYS --&gt;
+            &lt;item type="default" font="item" /&gt;
+            &lt;item type="selected" font="selected"&gt;
+                &lt;rectangle bgcolor="selection bg" color="selection border" size="1" x="-10" y="-3"
+                           width="max+20" height="max+6" radius="10"/&gt;
+            &lt;/item&gt;
+
+            &lt;item type="audio" font="audio item" icon="mimetypes/out_audio.png"/&gt;
+            &lt;item type="audio selected" font="audio selected" icon="mimetypes/audio.png" /&gt;
+
+         &lt;/content&gt;
+      &lt;/layout&gt;
+</pre>
+<p>This will display Audio items <em>without</em> a selection box, but with icon at the right side (because we defined content alignment as "right", and with different icons for selected and non selected items (pay attention to the filenames).  All other items will show <em>with</em> a selection box under it, it's defined by <strong>&lt;rectangle&gt;</strong> tag.  </p>
+<p>This box will have a "selection border" color 1px border, that begins 10px <em>before</em> the item's limit and ends 10px <em>after</em> the limit in the horizontal direction, the horizontal limit is the one specified by the area (ie &lt;listing&gt;) with <strong>x</strong> and <strong>width</strong> in the &lt;menuset&gt;.  It also start 3px before and end 3px after the item's limit in the vertical direction, the vertical item's limit is given by the item's height, if in a text menu, it's the font height, if in a image menu, it's the image height, if in a image+text menu, it's the sum of both. The box will have round corners with 10px radius. </p>
+<p>This relative box geometry can be confusing, but it's just first impression... Better you try some tests and see the results. </p>
+<p>Now, look at another <strong>&lt;listing&gt;</strong> example, this time for image+text view: </p>
+
+<pre>
+      &lt;layout label="video list"&gt;
+         &lt;content type="image+text" spacing="-17" align="center" valign="center"&gt;
+
+            &lt;item type="default" width="108" height="150" font="item small" 
+                  align="center" valign="center"/&gt;
+            &lt;item type="selected" width="128" height="177" font="selected small"
+                  align="center" valign="center"&gt;
+               &lt;rectangle bgcolor="list selection bg" color="list selection fg" 
+                           size="1" x="-10" y="max-font_h-10" 
+                          width="max+20" height="font_h+20" radius="20"/&gt;
+            &lt;/item&gt;
+
+            &lt;item type="video" width="108" height="150" font="video item small" 
+                  align="center" valign="center"/&gt;
+            &lt;item type="video selected" width="128" height="177" font="video selected small"
+                  align="center" valign="center"&gt;
+               &lt;rectangle bgcolor="list selection bg" color="list selection fg"
+                          size="1" x="-10" y="max-font_h-10"
+                          width="max+20" height="font_h+20" radius="20"/&gt;
+            &lt;/item&gt;
+
+          &lt;/content&gt;
+      &lt;/layout&gt;
+</pre>
+<p>It's almost the same, except some settings: </p>
+<ul>
+<li><p> Now you may define <strong>&lt;item&gt;</strong> width and height. That will be used as image geometry. You also can have different sizes for selected and non-selected items, causing the zoom effect for selected items. </p>
+</li>
+<li><p> Because of this, you may need some negative <strong>spacing</strong>, because the item's geometry will be: <em>width = max( selected item width, non-selected item width )</em> and <em>height = max( selected item height, non-selected item height )</em>. So if you have selected item 20px larger than the non-selected, you may get 40px spacing between items! So using spacing="-17" will reduce it to 23px. </p>
+</li>
+<li><p> The rectangle attributes may use another meta value aside from <strong>MAX</strong>, this value is <strong>font_h</strong>, this is the font height. With that you can have things like the selection box to appear just under the text (as in this example), under the whole image+text  or just under the image.  </p>
+</li>
+</ul>
+
+<h6 id="head-b63479c7b575cd670cc76d48b40781466b5bf960">Info Layouts</h6>
+
+<p>Info layouts define what info and how these info will show up in the screen. The <strong>&lt;item&gt;</strong> type attribute is something like those for &lt;listing&gt;, except that you don't have the selected variant. Again, if you will use this layout from a menuset used by just some kind of items, you don't need to define all types, like in the following example, which is used only by audio menu's in <strong>barbieri_blue.fxd</strong>. </p>
+<p>You need to know some formatting tags before looking at the example. They're: </p>
+<ul>
+<li><p> <strong>&lt;newline /&gt;</strong>: used to go next line. </p>
+</li>
+<li><p> <strong>&lt;goto_pos x="<em>&lt;x&gt;</em>" y="<em>&lt;y&gt;</em>" mode="<em>&lt;absolute|relative&gt;</em>" /&gt;</strong>: Go to the given position. If you specify relative as mode, then it's relative to the "pen" position (where the last char was draw). If you specify absolute, then you will go to the position <em>inside the layout area</em>, which is defined in the &lt;info&gt; are in menuset, that is it's absolute in the layout context, but not absolute in the screen context. </p>
+</li>
+<li><p> <strong>&lt;if expression="<em>&lt;some expression&gt;</em>"&gt; &lt;!-- some tags --&gt; &lt;/if&gt;</strong>: This can be used to hide parts if some kind of data is not available. The <strong>expression</strong> is a logic expression that uses information attribute names as values and can have the logic operators <strong>or</strong>, <strong>and</strong> and <strong>not</strong>. These attribute names depends on what kind of information that item type provides to you. For example, audio have <strong>title</strong>, <strong>track</strong>, <strong>artist</strong>, <strong>album</strong> and <strong>year</strong>. Also, you can have <strong>len(<em>&lt;info name&gt;</em>) <em>&lt;some comparison&gt;</strong></em>, (ie: <em>len(playlist) &gt;= 1</em> ) this is useful for playlists, so you can check how many items are in that. </p>
+</li>
+<li><p> <strong>&lt;text font="<em>&lt;font&gt;</em>" width="<em>&lt;width&gt;</em>" height="<em>&lt;height&gt;</em>" mode="<em>&lt;hard|soft&gt;</em>" align="<em>&lt;horizontal alignment&gt;</em>" valign="<em>&lt;vertical alignment&gt;</em>"&gt;some text&lt;/text&gt;</strong>: This says what font to use and other properties of the text to be shown. <em>Every text outside &lt;text&gt; will NOT be displayed!</em>. The attributes are: </p>
+<ul>
+<li><p> <strong>mode</strong>: <em>soft</em> if you want the line to be broke at words or <em>hard</em> if you want to break at chars. <img src="modern/img/icon-info.png" alt="{i}" height="16" width="16"> <strong>Tip:</strong> for small text/area, better to use <em>hard</em> or you will end with just ellipses (used when the text is truncated). </p>
+</li>
+<li><p> <strong>expression</strong>: it's the information name, as explained above in <em>&lt;if&gt;</em>. The result of the expression will be displayed and the tag contents data will be discarded. </p>
+</li>
+<li><p> <strong>font</strong>: the font to use. </p>
+</li>
+<li><p> <strong>height</strong>: can be the meta value <em>line_height</em>, to fit one line; <em>max</em> to fit the whole text or until reach the bottom of the layout limit or the smallest between both. </p>
+</li>
+<li><p> <strong>width</strong>: some value in pixels. This can be used with &lt;goto_pos&gt; to simulate a tabular environment. </p>
+</li>
+</ul>
+</li>
+</ul>
+<p>So, here goes the example: </p>
+
+<pre>
+      &lt;layout label="audio info"&gt;
+         &lt;content x="0" y="0"&gt;
+
+            &lt;item type="audio"&gt;
+               &lt;if expression="title"&gt;
+                  &lt;if expression="track"&gt;
+                     &lt;text height="line_height"
+                           align="left" font="info title" 
+                           mode="hard" expression="track" /&gt;
+                     &lt;text font="info title"&gt; - &lt;/text&gt;
+                  &lt;/if&gt;
+                  &lt;text height="line_height"
+                        align="left" font="info title" 
+                        mode="hard" expression="title" /&gt;
+                  &lt;newline /&gt;
+               &lt;/if&gt;
+
+               &lt;if expression="artist"&gt;
+                  &lt;text height="line_height" width="75"
+                        align="right" font="info label" 
+                        mode="hard"&gt;Artist:&lt;/text&gt;
+                  &lt;goto_pos x="10" mode="relative" /&gt;              
+                  &lt;text height="line_height"
+                        align="left" font="info value" 
+                        mode="hard" expression="artist" /&gt;
+                  &lt;newline /&gt;     
+               &lt;/if&gt;
+
+               &lt;if expression="album"&gt;
+                  &lt;text height="line_height" width="75"
+                        align="right" font="info label" 
+                        mode="hard"&gt;Album:&lt;/text&gt;
+                  &lt;goto_pos x="10" mode="relative" /&gt;              
+                  &lt;text height="line_height"
+                        align="left" font="info value" 
+                        mode="hard" expression="album" /&gt;
+                  &lt;if expression="year"&gt;
+                     &lt;text font="info value"&gt; (&lt;/text&gt;
+                     &lt;text height="line_height"
+                           align="left" font="info value" 
+                           mode="hard" expression="year" /&gt;
+                     &lt;text font="info value"&gt;)&lt;/text&gt;
+                  &lt;/if&gt;
+                  &lt;newline /&gt;
+               &lt;/if&gt;
+            &lt;/item&gt;
+
+            &lt;item type="dir"&gt;
+               &lt;if expression="name"&gt;
+                  &lt;text height="line_height"
+                        align="right" font="info title" 
+                        mode="hard" expression="name" /&gt;
+                  &lt;newline /&gt;
+               &lt;/if&gt;
+
+               &lt;if expression="dir"&gt;
+                  &lt;text height="line_height"
+                        align="left" font="info value" 
+                        mode="hard" expression="dir" /&gt;
+                  &lt;newline /&gt;     
+               &lt;/if&gt;
+            &lt;/item&gt;
+
+            &lt;item type="playlist"&gt;
+               &lt;if expression="len(playlist)&gt;1"&gt;
+                  &lt;text font="info value" expression="len(playlist)"/&gt;
+                  &lt;text font="info value"&gt; musics in this playlist.&lt;/text&gt;
+                  &lt;newline/&gt;
+               &lt;/if&gt;
+
+               &lt;if expression="len(playlist)==1"&gt;
+                  &lt;text font="info value"&gt;Just one music in this playlist.&lt;/text&gt;
+                  &lt;newline/&gt;
+               &lt;/if&gt;
+
+               &lt;if expression="len(playlist)==0"&gt;
+                  &lt;text font="info value"&gt;This playlist is empty!&lt;/text&gt;
+                  &lt;newline/&gt;
+               &lt;/if&gt;
+            &lt;/item&gt;
+
+          &lt;/content&gt;
+      &lt;/layout&gt;
+</pre>
+
+<h3 id="head-052e6b976882abccc6df3b83ef573791ae2927a5">Defining TV settings</h3>
+
+<p>TV is just like other menus, the <strong>&lt;tv&gt;</strong> tag behaves just like <strong>&lt;menu&gt;</strong>in which you select different <strong>&lt;menuset&gt;</strong> using the <strong>&lt;style&gt;</strong> tag. (See <em>Menu Sets</em> section). </p>
+<p>As in TV Guide you can move horizontally, you may also define <strong>&lt;image&gt;</strong> tags with <strong>label="leftarrow"</strong> and <strong>label="rightarrow"</strong>, just you do for <strong>uparrow</strong> and <strong>downarrow</strong> in other <strong>&lt;listing&gt;</strong>. </p>
+<p>Example: 
+</p>
+<pre>
+      &lt;tv&gt;
+         &lt;style text="tv menu"/&gt;
+         &lt;style text="tv menu more info"/&gt;
+      &lt;/tv&gt;
+
+      &lt;menuset label="tv menu"&gt;
+         &lt;screen layout="tv screen" x="0" y="0" width="800" height="600"/&gt;
+         &lt;info   layout="tv info" x="10" y="70" width="780" height="140"/&gt;
+         &lt;title  visible="no"/&gt;
+         &lt;listing layout="tv listing" x="10" y="220" width="750" height="370"&gt;
+            &lt;image x="765" y="220" width="32" height="32" label="uparrow"
+                   filename="up.png"/&gt;
+            &lt;image x="765" y="max-32" width="32" height="32" label="downarrow"
+                   filename="down.png"/&gt;
+            &lt;image width="16" height="16" label="leftarrow" filename="left.png"/&gt;
+            &lt;image width="16" height="16" label="rightarrow" filename="right.png"/&gt;
+         &lt;/listing&gt;
+      &lt;/menuset&gt;
+
+
+      &lt;menuset label="tv menu more info" inherits="tv menu"&gt;
+         &lt;listing height="150"/&gt;
+         &lt;info layout="tv info" y="250" height="340"/&gt;
+      &lt;/menuset&gt;
+</pre>
+
+<h3 id="head-afd7a770193e133249965adf04f829ca953b6677">Defining Player settings</h3>
+
+<p>Player is just like <strong>&lt;menuset&gt;</strong>: </p>
+
+<pre>
+      &lt;player&gt;
+         &lt;screen layout="player screen" x="0" y="0" width="800" height="600"/&gt;
+         &lt;view layout="player view" x="430" y="230" width="420" height="360"/&gt;
+         &lt;info layout="player info" x="-50" y="80" width="600" height="300"/&gt;
+         &lt;title visible="no"/&gt;
+      &lt;/player&gt;
+</pre>
+
+<h2 id="head-aab2077ccc20ca7bc0410bcc62cfdeb9214fefea">Examples</h2>
+
+<p>OK, here some nice cool small examples: </p>
+
+<h3 id="head-7f67cdd25d85c3bc0202ebc9324877d55d0ba045">Different background image</h3>
+
+<p>You may have a file called skin.fxd in the freevo config directory. In this file you could write: </p>
+
+<pre>
+  &lt;?xml version="1.0" ?&gt;
+  &lt;freevo&gt;
+    &lt;skin&gt;
+      &lt;image label="background" filename="my-background"/&gt;
+    &lt;/skin&gt;
+  &lt;/freevo&gt;
+</pre>
+<p>and now you have a different background image for the menu. You could also put this in a folder.fxd and Freevo would use the new background in this folder only. So if you're Star Wars big fan, your Star Wars movie collection can have a different background!  </p>
+
+<h3 id="head-715d89431394371a207a5c7417ca718dac34259f">Changing skins</h3>
+
+<p>More? OK, maybe you like <strong>info.fxd</strong>. But you also like the 3rd  view skin (detailed info) in the video menu. But you only want that in the folder with all your fxd files pointing to your DVDs. Just create a folder.fxd, inherit from <strong>info.fxd</strong>, force the skin to 3rd view and set the background to some you want:  </p>
+
+<pre>
+&lt;?xml version="1.0" ?&gt;
+&lt;freevo&gt;
+  &lt;folder&gt;
+    &lt;setvar name="force_skin_layout" val="2"/&gt; &lt;!-- this select the 3rd view (detailed info) --&gt;
+  &lt;/folder&gt;
+  &lt;skin include="blue2" geometry="800x600"&gt;
+    &lt;image label="background" filename="myfavorite_bg.jpg" /&gt; &lt;!-- should be a file called myfavorite_bg.jpg in share/images/ --&gt;
+  &lt;/skin&gt;
+&lt;/freevo&gt;
+</pre>
+
+<h3 id="head-b61e0c63b083b268e6569a5d783e266c4ff618ea">Background images for DVDs or tv show folder</h3>
+
+<hr>
+<p> <img src="modern/img/alert.png" alt="/!\" height="15" width="15"> <strong>Edit conflict - other version:</strong> </p>
+<hr>
+<p> Now something different: you want a background image for a folder or as DVD menu. You don't need a title area, no view or info area, there is this background image. OK, just inherit from the <strong>image.fxd</strong> (a skin specially designed for this purpose) and redefine the listing area position and the colors (look at share/skins/main/image.fxd for more details). E.g.: I have a nice orange background for my Charlie's Angels DVD. I also have a fxd file for this DVD. I just added skin information to that file: </p>
+<hr>
+<p> <img src="modern/img/alert.png" alt="/!\" height="15" width="15"> <strong>Edit conflict - your version:</strong> </p>
+<hr>
+<p> Now something different: you want a background image for a folder or as DVD menu. You don't need a title area, no view or info area, there is this background image. OK, just inherit from the <strong>image.fxd</strong> (a skin specially designed for this purpose) and redefine the listing area position and the colors (look at share/skins/main/image.fxd for more details). E.g.: I have a nice orange background for my Charlie's Angels DVD. I also have a fxd file for this DVD. I just added skin information to that file: </p>
+<hr>
+<p> <img src="modern/img/alert.png" alt="/!\" height="15" width="15"> <strong>End of edit conflict</strong> </p>
+<hr>
+<p> </p>
+
+<pre>
+  &lt;?xml version="1.0" ?&gt;
+  &lt;freevo&gt;
+    &lt;copyright&gt;
+      The information in this file are from the Internet Movie Database (IMDb).
+
+---- /!\ '''Edit conflict - other version:''' ----
+      Please visit http://www.imdb.com for more information.
+
+---- /!\ '''Edit conflict - your version:''' ----
+      Please visit http://www.imdb.com for more information.
+
+---- /!\ '''End of edit conflict''' ----
+    &lt;/copyright&gt;
+    &lt;disc-set title="Charlie's Angels"&gt;
+      &lt;cover-img&gt;charlies_angels.jpg&lt;/cover-img&gt;
+    &lt;!-- ... the rest of your FXD, probably you may get this with the Search IMDb plugin --&gt;
+    &lt;/disc-set&gt;
+
+    &lt;skin include="image" geometry="800x600"&gt;
+
+      &lt;menuset label="bgimage style"&gt;
+        &lt;listing x="10" y="100" width="300" height="340"/&gt;
+      &lt;/menuset&gt;
+
+      &lt;image label="background" filename="charlies_angels_bg.jpg"/&gt;
+
+      &lt;color label="selected" value="0xffff00"/&gt;
+      &lt;color label="item" value="0x000000"/&gt;
+      &lt;color label="selection bar" value="0xa0000000"/&gt;
+    &lt;/skin&gt;
+  &lt;/freevo&gt;
+</pre>
+
+<h2 id="head-a1c73daa00b28f203f34c3cf1a26c3a47ecb60b2">CD-ROM support</h2>
+
+<p><em> <strong>Don't put a folder.fxd file on a cd. The format may change.</strong> </em> </p>
+<p>You always should use the movie fxd file to do that and put this file in some dir accessible by freevo, ie the defined in <strong>DIR_MOVIES</strong> or <strong>MOVIE_DATA_DIR</strong>. If you put in <strong>MOVIE_DATA_DIR</strong>, then when you insert your CD, it will show the information automatically. If you put in <strong>DIR_MOVIES</strong> it will do the same as <strong>MOVIE_DATA_DIR</strong> and will show the movie in the dir, even if the disc is not there. When you press <em>ENTER</em> (SELECT in your RC), Freevo will ask you for the Disc. </p>
+
+<h2 id="head-6d1a14a8897d306b21c2ca26443e0750bc059510">Write a new skin, including new Python code</h2>
+
+<p>If you don't like the current skin at all, you can write your own skin in python and you have all the freedom you want in designing the look of freevo. Please take a look at skin.py to get the needed callbacks your skin needs.  </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-01-29 17:26:34 by <span title="83-64-80-168.dynamic.adsl-line.inode.at">NicolasKaiser</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/Skins">http://freevo.sourceforge.net/cgi-bin/doc/Skins</a></p>
+</div> <!-- end page -->
+</body>
+</html>

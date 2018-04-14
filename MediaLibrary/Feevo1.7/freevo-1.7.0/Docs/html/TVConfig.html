@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>TVConfig - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/TVConfig?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/TVConfig?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">TVConfig</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p><strong>Overview</strong> </p>
+<p>There are two main areas which must be configured for correct use of TV in freevo. XMLTV is a vital component providing the TV guide and must be correctly configured before you continue. The second part of the configuration is done in your preferences files freevo.conf and local_conf.py. The main issue here is  setting up a working TV_Channels section. Below you will find more details on how to set this up for your configuration. </p>
+<p><strong>Subpages:</strong>   </p>
+<ul>
+<li><p><a href="XMLTV.html"> Xmltv</a>: Start here, configure the backend for the tv guide. </p>
+</li>
+<li><p><a href="pyTVGrab.html"> pyTVGrab</a>: A Xmltv clone, written in Python rather than in Perl. </p>
+</li>
+<li><p><a href="Nxtvepg.html"> Nxtvepg</a>: An other alternative to Xmltv for configuring the tv guide backend. </p>
+</li>
+<li><p><a href="AnalogTvConfig.html"> Analog Tv</a>: Configure freevo for analogue TV </p>
+</li>
+<li><p><a href="DVBConfig.html"> DVB</a>: Configure freevo for DVB (Digital TV) </p>
+</li>
+<li><p><a href="ExternalTunerConfig.html"> External Tuner</a>: Configure an external tuner </p>
+</li>
+</ul>
+<p><strong>Notes:</strong> Freevo supports analogue tv cards and DVB cards (budget and full featured) for watching and recording tv. The 1.5 release has very basic support for multiple tv cards, please see the analogue tv section for details. The CVS version (which will be freevo 2.0) can manage more than one card with lots of neat tricks, check out the wiki for version 2 for more info. </p>
+<p>Freevo / tvtime / mplayer / etc do not like channels with leading zeroes. Thus, when updating your channel list in your local_conf.py file, use '4' NOT '04'. (Not sure if this info is correct, can someone confirm and remove if necessary, 24Jan2005) </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-04-19 02:01:38 by <span title="marriere-4-82-227-215-70.fbx.proxad.net"><a href="okay_awright.html">okay awright</a></span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/TVConfig">http://freevo.sourceforge.net/cgi-bin/doc/TVConfig</a></p>
+</div> <!-- end page -->
+</body>
+</html>

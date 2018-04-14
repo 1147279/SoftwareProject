@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>AnalogueGen - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/AnalogueGen?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/AnalogueGen?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">AnalogueGen</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p><strong>Overview</strong> </p>
+<p>In order to configure freevo for TV you need to edit your user preferences. Freevo defaults to using mplayer as the application for TV viewing. If you want you can keep this however the application tvtime provides vastly superiour quality pictures using filters taken from the dscaler? project. If your not sure which to use go for tvtime. </p>
+<p><strong>Part 1, configuring freevo.conf</strong> </p>
+<p>As part of your initial setup of Freevo you should have run the command 'freevo conf' if you didn't you'll need to do that now. Once done this will create a file freevo.conf. There are to sections in this that you need to check are correct these are 'chanlist' and 'tv'. E.G. for ireland these would be set to: </p>
+
+<pre>
+chanlist = IRELAND
+tv = pal
+</pre>
+<p>Have a look at this table to figure out which you should set chanlist to. </p>
+
+<pre>
+CHANLIST = {
+     "us-bcast"         : dict(NTSC_BCAST),
+     "us-cable"         : dict(NTSC_CABLE),
+     "us-cable-hrc"     : dict(NTSC_HRC),
+     "japan-bcast"      : dict(NTSC_BCAST_JP),
+     "japan-cable"      : dict(NTSC_CABLE_JP),
+     "europe-west"      : dict(PAL_EUROPE),
+     "europe-east"      : dict(PAL_EUROPE_EAST),
+     "italy"            : dict(PAL_ITALY),
+     "newzealand"       : dict(PAL_NEWZEALAND),
+     "australia"        : dict(PAL_AUSTRALIA),
+     "ireland"          : dict(PAL_IRELAND),
+     "france"           : dict(SECAM_FRANCE),
+     "china-bcast"      : dict(PAL_CHINA),
+     "canada-cable"     : dict(NTSC_CABLE_CAN),
+     "southafrica"      : dict(PAL_BCAST_ZA),
+     "argentina"        : dict(ARGENTINA),
+</pre>
+<p>The 'tv' part is your TV standard PAL, SECAM ot NTSC That's it for freevo.conf. </p>
+<p><strong>Part 1, configuring local_conf.py</strong> </p>
+<p>Firsh off choose which app you want to view tv with, if you want to use mplayer you don't need to change anything. If you want to use tvtime add the following. </p>
+
+<pre>
+plugin.remove('tv.mplayer')
+plugin.activate('tv.tvtime')
+</pre>
+<p>Once you have chosen your TV viewing app you need to configure the TV_Channels section. TV_CHANNELS uses the following format. Note I am writing this from memory, I will update it as soon as I am in front of a freevo box but for now please double check the syntax (24Jan2005) </p>
+
+<pre>
+TV_CHANNELS = [
+              ( 'xmltvid', 'freevodisplayname', 'tvchannel' ) 
+              ]
+</pre>
+<p>Here is an example with some explanation. 
+</p>
+<pre>
+TV_CHANNELS = [
+              ( 'bbc1.bbc.co.uk', 'BBC One', 'A24' ), 
+              ( 'bbc2.bbc.co.uk', 'BBC Two', 'A38' )
+              ]
+</pre>
+<p>This might look a bit strange but it's not that bad, lets take one at a time. </p>
+<p>'xmltvid' if you look at your TV.xml file you'll see something like this  *<a href="AnalogueXMLTV.html"> This</a>: XMLTV TV.xml example The 'xmltvid' is taken from programme channel="" so just take a look at your TV.xml and copy the programme channel name you need into your 'xmltvid' part of TV_CHANNELS. </p>
+<p>'freevodisplayname' Nice and simple. This is just the display name that freevo uses in the TV Guide section of freevo. </p>
+<p>'tvchannel' This uses the same format as anothe tv viewing app xawtv. If you have this package installed you should simply run the command 'scantv' which will scan for and print your available channels. Have a look at the examples here for more help. </p>
+<p>Once this is configured correctly you should have working TV <img src="modern/img/smile.png" alt=":-)" height="15" width="15"> </p>
+<p><strong>Examples</strong> Here you will find examples from freevo users for different countries, hopefully you'll be able to simply copy and paste these into your local_conf.py </p>
+<ul>
+<li><p> <a href="ATVCHANNELSIE.html"> IE</a>: Irish examples </p>
+</li>
+<li><p> ATVCHANNELSUK : UK examples, PleaseUpdate </p>
+</li>
+<li><p> <a href="ATVCHANNELSDE.html"> DE</a> : German examples </p>
+</li>
+<li><p> <a href="ATVCHANNELSFR.html"> FR</a>: French examples </p>
+</li>
+<li><p> ATVCHANNELSUS : US examples, PleaseUpdate </p>
+</li>
+<li><p> <a href="ATVCHANNELSBE.html"> BE</a> : Belgian (Dutch) examples </p>
+</li>
+<li><p> <a href="ATVCHANNELSDU.html">ATVCHANNELSDU</a> : Dutch examples, PleaseUpdate </p>
+</li>
+<li><p> <a href="ATVCHANNELSSE.html">ATVCHANNELSSE</a> : Sweedish examples, PleaseUpdate </p>
+</li>
+<li><p> ATVCHANNELSNZ : Newzeland examples, PleaseUpdate </p>
+</li>
+<li><p> ATVCHANNELSAU : Australian listings </p>
+</li>
+</ul>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-03-17 10:30:52 by <span title="gatekeepermons.telindus.be">GeertDecorte</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/AnalogueGen">http://freevo.sourceforge.net/cgi-bin/doc/AnalogueGen</a></p>
+</div> <!-- end page -->
+</body>
+</html>

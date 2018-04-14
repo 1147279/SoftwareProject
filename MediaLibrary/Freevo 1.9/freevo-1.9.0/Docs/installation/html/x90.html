@@ -1,0 +1,445 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Software</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Freevo Installation HOWTO"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Prerequisites"
+HREF="c63.html"><LINK
+REL="PREVIOUS"
+TITLE="Hardware"
+HREF="x71.html"><LINK
+REL="NEXT"
+TITLE="Installing / Configuring Freevo"
+HREF="c169.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Freevo Installation HOWTO: Build your own media box with Freevo and Linux</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x71.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. Prerequisites</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c169.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN90"
+>2.3. Software</A
+></H1
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN92"
+>2.3.1. Linux Kernel</A
+></H2
+><P
+>This setup will require a kernel recompile. Specifically, you will need to download the latest version of the kernel. I used version 2.4.20 in my initial tests, but had problems with audio/video syncing while watching TV. 
+      </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN95"
+>2.3.1.1. BTTV</A
+></H3
+><P
+>I use a BTTV capture card because it's the most widely supported TV capture card for Linux. Because Video4Linux is constantly changing and it is widely documented elsewhere I won't cover it in great detail in this document. You should find all you need to get your BTTV (or other tuner cards) working successfully at the <A
+HREF="http://bytesex.org/"
+TARGET="_top"
+>BTTV/Video4Linux main website</A
+> or by checking out the <A
+HREF="http://www.tldp.org/HOWTO/mini/BTTV.html"
+TARGET="_top"
+>The BTTV Mini-HOWTO</A
+>. I will point out that I was not able to get my Matrox Marvel TV Tuner card to work and, even if I had, it would not have supported full screen TV in framebuffer mode.
+        </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN100"
+>2.3.1.2. Matrox Frame Buffer</A
+></H3
+><P
+>Freevo uses the frame buffer to display graphics. At the time of this writing the most widely supported video card was the Matrox G400 card. In the "Console drivers" section of the kernel config menu you need to go to "Frame-buffer support" and enable "Support for frame buffer devices". Below is an example of my Matrox G400 setup:
+        </P
+><P
+>        <PRE
+CLASS="SCREEN"
+>  &#60;*&#62;   Matrox acceleration (EXPERIMENTAL) (NEW) 
+  [ ]     Millennium I/II support (NEW) 
+  [ ]     Mystique support (NEW)       
+  [*]     G100/G200/G400/G450/G550 support (NEW)
+  &#60; &#62;       G450/G550 second head support      
+  [*]     Multihead support (NEW)                        
+        </PRE
+>
+        </P
+><P
+>I chose to include Matrox frame buffer support compiled directly into the kernel instead of a module. Either way should work, but remember to load the modules during your boot sequence.
+        </P
+><P
+>You may also want to check out <A
+HREF="http://www.bglug.ca/matrox_tvout/g450_tvout_howto.html"
+TARGET="_top"
+>Matrox G450/550 TV-out</A
+> as well as the <A
+HREF="http://davedina.apestaart.org/download/doc/Matrox-TVOUT-HOWTO-0.1.txt"
+TARGET="_top"
+>The Matrox Millenium G400 TV/OUT Mini-HOWTO</A
+>
+        </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN109"
+>2.3.1.3. General</A
+></H3
+><P
+>I would also recommend installing support for EXT3 into your kernel, which is default in 2.4 kernels. If your Freevo box is going to be a stand alone box you won't be wanting to force check drives if the power goes out. Other things you should think about are your sound card drivers (if you're not using ALSA), network cards, etc.
+        </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="XMLTV"
+>2.3.2. XMLTV</A
+></H2
+><P
+>XMLTV is used to grab your local TV listings. Freevo uses these files for its internal TV guide. My distro, Debian, has packages for XMLTV in its unstable branch, which worked fine for me. 
+      </P
+><P
+>If your distribution does not have XMLTV packages you will have to compile XMLTV from source. You can grab the latest source from <A
+HREF="http://membled.com/work/apps/xmltv/"
+TARGET="_top"
+>the official XMLTV website</A
+>. After you have downloaded the XMLTV source follow the installation guide included with the source.
+      </P
+><P
+>After you have the XMLTV sources compiled and installed you will want to create a script that downloads the XML files and sets up the link to /tmp/TV.xml. Below is an example of what I used.
+      </P
+><P
+>      <PRE
+CLASS="SCREEN"
+>#!/bin/sh
+
+todayis=`date +%Y%m%d`
+
+tv_grab_na --days 1 | tv_sort &#62; /usr/local/freevo/xmltv/listings_$todayis.xml
+rm -f /tmp/TV.xml
+ln -s /usr/local/freevo/xmltv/listings_$todayis.xml /tmp/TV.xml
+      </PRE
+>
+      </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="TVTIME"
+>2.3.3. tvtime</A
+></H2
+><P
+>When I first started working on my Freevo box I was unable to get MPlayer to work properly with live TV. Basically, my audio and video were out of sync, which made watching live TV like watching an old crappy version of Godzilla. Luckily, someone created a tvtime plugin, which works perfectly for me.      
+      </P
+><P
+>The first thing you need to do is is download and install tvtime, which can be found at <A
+HREF="http://tvtime.sourceforge.net"
+TARGET="_top"
+>tvtime.sourceforge.net</A
+>. Follow the instructions to install tvtime. When you are done open up your freevo.conf file and change the tvtime variable to the path of your newly installed tvtime. 
+      </P
+><P
+>After you have tvtime set up in your freevo.conf file you will want to open up freevo_config.py and enable the tv.tvtime plugin and disable the tv.mplayer plugin. Search for 'tvtime' and you will see what I'm talking about.
+      </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN126"
+>2.3.3.1. stationlist.xml</A
+></H3
+><P
+>tvtime installs all of its configuration files in $HOME by default. If you wish to change it's default behavior you will need to go into the home directory of the user which Freevo runs as. My configuration runs as root so changing to /root/.tvtime did it for me. In there you will find a file called stationlist.xml, which defines how stations are shown onscreen in tvtime. A sample line follows.
+        </P
+><P
+>        <PRE
+CLASS="SCREEN"
+>    &lt;station name="CNN" active="1" position="18"
+             band="US Cable" channel="18"/&gt;
+        </PRE
+>
+        </P
+><P
+>The name attribute defines what text shows up on the onscreen display when tvtime changes to that specific channel. As far as I can tell there isn't any real limit as to what you can place in this field.
+        </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN132"
+>2.3.3.2. VBI Support</A
+></H3
+><P
+>VBI stands for vertical blanking interval and is the standard for NTSC which allows data besides video to be sent to your TV. Such data includes closed captioning, station information, show information and ratings, etc. If you want tvtime's onscreen display to show such information (such as TV show names, ratings, time start and time stop) you will need to turn this on in your $HOME/.tvtime/tvtime.xml file. Below is an example.
+        </P
+><P
+>        <PRE
+CLASS="SCREEN"
+>  &lt;!--
+    Set this to 1 to enable VBI decoding.  tvtime supports decoding of
+    closed captions and XDS channel information data.  Both of these
+    standards are specific to NTSC regions, since that's what the
+    tvtime authors use. :)
+  --&gt;
+  &lt;option name="UseVBI" value="0"/&gt;
+
+  &lt;!--
+    This sets which device to use for VBI decoding.
+  --&gt;
+  &lt;option name="VBIDevice" value="/dev/vbi0"/&gt;
+ 
+         </PRE
+>
+        </P
+><P
+>This information is completely independend of your TV.xml listings and is read
+directly from data coming from your cable provider.
+        </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN138"
+>2.3.4. MPlayer</A
+></H2
+><P
+>MPlayer is an advanced media player for Linux that supports a wide range of video codecs. Freevo uses MPlayer for TV playback, CD/DVD playing, and TV recording. As of this writing MPlayer was not in any of the Debian branches. A binary version of MPlayer is included with Freevo, but was not compiled with TV or CD support as of the latest version (1.3.2-pre4).
+      </P
+><P
+>As a result I had to compile MPlayer from source, which isn't a difficult task by any means, but does require a few extra steps. First you will need the latest version of MPlayer, which can be downloaded <A
+HREF="http://www.mplayerhq.hu/homepage/design6/dload.html"
+TARGET="_top"
+>from MPlayer's website</A
+>. 
+      </P
+><P
+>In order to play DVD's or TV at full screen using the frame buffer you will need to compile and install the mga_vid drivers included with MPlayer. The default frame buffer drivers do not include support for hardware scaling. In my experience this led to a 1 inch black border around my TV and DVD playback.
+      </P
+><P
+>Before you can compile MPlayer you need to create the mga_vid device. MPlayer will not compile the mga output driver if /dev/mga_vid does not exist.
+      </P
+><P
+><PRE
+CLASS="SCREEN"
+><SAMP
+CLASS="PROMPT"
+>[user@host]$</SAMP
+> <B
+CLASS="COMMAND"
+>mknod /dev/mga_vid 178 0</B
+></PRE
+>
+      </P
+><P
+>After you have the source and have created the mga_vid device you need to compile it. 
+      </P
+><P
+><PRE
+CLASS="SCREEN"
+><SAMP
+CLASS="PROMPT"
+>[user@host]$</SAMP
+> <B
+CLASS="COMMAND"
+>./configure</B
+>
+<SAMP
+CLASS="PROMPT"
+>[user@host]$</SAMP
+> <B
+CLASS="COMMAND"
+>make</B
+>
+<SAMP
+CLASS="PROMPT"
+>[user@host]$</SAMP
+> <B
+CLASS="COMMAND"
+>make install</B
+></PRE
+>
+      </P
+><P
+>MPlayer should recognize that /dev/mga_vid exists and compile your setup accordingly. MPlayer will NOT compile TV support if your TV tuner card has not been properly set up.
+      </P
+><P
+>Once you have compiled MPlayer you will need to compile the mga_vid kernel module which is found in the drivers director of the MPlayer source. Change into that directory and compile the driver.
+      </P
+><PRE
+CLASS="SCREEN"
+><SAMP
+CLASS="PROMPT"
+>[user@host]$</SAMP
+> <B
+CLASS="COMMAND"
+>cd ./drivers</B
+>
+<SAMP
+CLASS="PROMPT"
+>[user@host]$</SAMP
+> <B
+CLASS="COMMAND"
+>make</B
+>
+<SAMP
+CLASS="PROMPT"
+>[user@host]$</SAMP
+> <B
+CLASS="COMMAND"
+>insmod mga_vid.o</B
+> <TT
+CLASS="REPLACEABLE"
+><I
+>mga_ram_size=16</I
+></TT
+></PRE
+><P
+> 
+Setting the RAM size is optional. I found that in order for the driver to work properly you have to set the RAM size for cards that only have 16MB of RAM, without setting it the driver assumed the card had 32MB of RAM. Make sure your kernel driver is working by running the test program included in the drivers directory.
+      </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x71.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c169.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Hardware</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c63.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Installing / Configuring Freevo</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

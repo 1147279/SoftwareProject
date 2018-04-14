@@ -1,0 +1,276 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>GamesConfig - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/GamesConfig?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/GamesConfig?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">GamesConfig</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<ol>
+
+<li>
+<a href="#head-a47bea2a3759d813cb494b0f8d093bc9b8b43c8f">Usage</a>
+</li>
+
+<li>
+<a href="#head-e31e20b838c6157a88dddd2281dd7217d1cbc377">Playstation One</a>
+<ol>
+
+<li>
+<a href="#head-6323612001a6739b24ebf7e20cb6657244092f5d">For playing PSone CD's</a>
+</li>
+
+<li>
+<a href="#head-4054122e4a69c47c63818e61926eb57eef991353">For playing PSone CD ISO's</a>
+</li>
+
+</ol>
+
+<li>
+<a href="#head-a96e611b2890ad2341d8a44a6c063e9c7fd3f713">SNES</a>
+</li>
+
+<li>
+<a href="#head-0572f7d64320b081877d7972036a0f172b5326e0">MAME</a>
+</li>
+
+<li>
+<a href="#head-09fbc324a9c72cae100388dadfbd5f05eff19bb3">Megadrive</a>
+</li>
+
+<li>
+<a href="#head-2106be94cc55b63679741bd74e0ae8896a3099c8">Gameboy Advance</a>
+</li>
+
+<li>
+<a href="#head-032d9153450f6f3b7c4017953ed6e4a6ba615e5f">Atari</a>
+</li>
+
+<li>
+<a href="#head-52c40e039061aba73d60fd97437c15db00d5768d">Amiga</a>
+</li>
+
+<li>
+<a href="#head-c20066cd58b43b24c1ade7ea73ecd339a0d5b381">Linux Games</a>
+</li>
+
+<li>
+<a href="#head-5d76f84c07821e9ff17dda6988224c61d4fec75c">Exiting an emulator with LIRC</a>
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-a47bea2a3759d813cb494b0f8d093bc9b8b43c8f">Usage</h2>
+
+<p>FREEVO now supports the following emulators : </p>
+<ol type="1">
+<li><p>XMAME (keyword MAME: ROM name parsing and identification (<a href="http://x.mame.net"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://x.mame.net</a>), works great in SDL mode or X11/DGA </p>
+</li>
+<li><p>SNES (keyword SNES) : Internal ROM indentification (ZSNES in SDL mode - <a href="http://www.zsnes.com/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.zsnes.com/</a> ) </p>
+</li>
+<li><p>GENESIS/MEGADRIVE (keyword GENESIS) : Internal ROM identification (GENERATOR in SVGALIB mode - <a href="http://www.squish.net/generator/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.squish.net/generator/</a> ) </p>
+</li>
+<li><p>Playstation </p>
+</li>
+<li><p>Gameboy advance </p>
+</li>
+<li><p>Atari </p>
+</li>
+<li><p>Amiga  </p>
+</li>
+<li><p>?? Spectrum PleaseUpdate </p>
+</li>
+</ol>
+<p>In addition, you can call all the emulators you want by simply using the GENERIC keyword, as described below. In this case, Freevo will only launch the associated command line with the file selected in the menu. </p>
+<p>The GAMES_ITEMS structure in freevo_config.py is now built with the following parameters : </p>
+<ul>
+<li style="list-style-type:none"><p>[ ( &lt;NAME&gt;, &lt;FOLDER&gt;, (&lt;TYPE&gt;, &lt;COMMAND_PATH&gt;, &lt;COMMAND_ARGS&gt;, &lt;IMAGE_PATH&gt;, [&lt;FILE_SUFFIX_FOR_GENERIC&gt;]) ) ], ... </p>
+<p>where : </p>
+<ul>
+<li style="list-style-type:none"><p>&lt;TYPE&gt; : Internal game types ('MAME', 'SNES', 'GENESIS') or generic one (GENERIC) &lt;COMMAND_PATH&gt; : Emulator command &lt;COMMAND_ARGS&gt; : Arguments for the emulator &lt;IMAGE_PATH&gt; : Optionnal path to the pictures/snapshot for games &lt;FILE_SUFFIX_FOR_GENERIC&gt; : If the folder use the GENERIC type, then you must specify here the file suffix used by the emulator </p>
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="head-e31e20b838c6157a88dddd2281dd7217d1cbc377">Playstation One</h2>
+
+
+<h3 id="head-6323612001a6739b24ebf7e20cb6657244092f5d">For playing PSone CD's</h3>
+
+<p>In your freevo local_conf.py add these lines to the games section; 
+</p>
+<pre>
+GAMES_ITEMS = [ ('PSone CD', '/etc/freevo/psx',
+                ('GENERIC', '/usr/local/bin/psx-cd', '', '',
+[ 'psx' ] )) ]
+</pre>
+<p>Here we execute a script to run epsxe, the reason for this is I was personally having trouble with the GENERIC command line arguments. The contents of the psx-cd script are as follows; 
+</p>
+<pre>
+#!/bin/bash
+/usr/local/games/psx/epsxe -nogui
+</pre>
+<p>Finally, create a file in the /etc/freevo/psx directory called PSone.psx 
+</p>
+<pre>
+# touch /etc/freevo/psx/PSone.psx
+</pre>
+
+<h3 id="head-4054122e4a69c47c63818e61926eb57eef991353">For playing PSone CD ISO's</h3>
+
+<p>In your freevo local_conf.py add these lines to the games section; 
+</p>
+<pre>
+GAMES_ITEMS = [ ('PSone IMG', '/home/psx',
+                ('GENERIC', '/usr/local/bin/psx-iso', '', '',
+[ 'img','bin','iso' ] )) ]
+</pre>
+<p>The psx-iso script here contains; 
+</p>
+<pre>
+#!/bin/bash
+/usr/local/games/psx/epsxe -nogui -loadiso $*
+</pre>
+
+<h2 id="head-a96e611b2890ad2341d8a44a6c063e9c7fd3f713">SNES</h2>
+
+
+<pre>
+GAMES_ITEMS = [('SNES', '/home/media/games/snes/roms', ('SNES', '/usr/local/bin/zsnes', '-m -r 3 -k 100 -cs -u', '', None )) ]
+</pre>
+
+<h2 id="head-0572f7d64320b081877d7972036a0f172b5326e0">MAME</h2>
+
+
+<pre>
+GAMES_ITEMS = [ ('MAME', '/home/media/games/xmame/roms',  
+                ('MAME', '/usr/local/bin/xmame.SDL', '-fullscreen -modenumber 6', '/home/media/games/xmame/shots', None)) ]
+</pre>
+
+<h2 id="head-09fbc324a9c72cae100388dadfbd5f05eff19bb3">Megadrive</h2>
+
+
+<pre>
+GAMES_ITEMS = ('MEGADRIVE', '/home/media/games/megadrive/roms', ('GENESIS', '/usr/local/bin/generator-svgalib', '', '', '' )) ]
+</pre>
+
+<h2 id="head-2106be94cc55b63679741bd74e0ae8896a3099c8">Gameboy Advance</h2>
+
+
+<pre>
+GAMES_ITEMS = [ ('Visual Boy Advance', '/home/media/games/vba/roms',  
+                ('GENERIC', '/usr/local/vba/VisualBoyAdvance', ' ', '', [ '.gba' ] )) ]
+</pre>
+
+<h2 id="head-032d9153450f6f3b7c4017953ed6e4a6ba615e5f">Atari</h2>
+
+<p>Hatari <a class="external" href="http://hatari.sf.net/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://hatari.sf.net/</a> 
+</p>
+<pre>
+GAMES_ITEMS = [ ('Atari Emulation', '/usr/local/freevo/testfiles/atari', 
+                ('GENERIC', '/usr/games/bin/hatari', 
+                 '--memsize 1 --tos /usr/local/freevo/testfiles/atari/tos.img -f ', 
+                 '', [ 'st', 'msa', 'gz'] )) ]
+</pre>
+
+<h2 id="head-52c40e039061aba73d60fd97437c15db00d5768d">Amiga</h2>
+
+<p>e-uae <a class="external" href="http://www.rcdrummond.net/uae/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.rcdrummond.net/uae/</a>, should also work with regular uae <a class="external" href="http://www.freiburg.linux.de/~uae/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.freiburg.linux.de/~uae/</a> 
+</p>
+<pre>
+GAMES_ITEMS = [('Amiga', '/home/freevo/Games/Amiga/adfs',
+               ('GENERIC', '/usr/bin/e-uae', 
+                '-0', '', ['adf'])) ]
+</pre>
+
+<h2 id="head-c20066cd58b43b24c1ade7ea73ecd339a0d5b381">Linux Games</h2>
+
+<p>How to launch Tux Racer for example from Freevo : </p>
+<p>Check the path of tuxracer, if its in the path you can 
+</p>
+<pre>
+# which tuxracer
+</pre>
+<p>otherwise check /usr/games and /usr/local/games </p>
+<p>Add in var GAMES_ITEMS : 
+</p>
+<pre>
+GAMES_ITEMS = [ ('Tux Racer', '/etc/freevo/games/tuxracer',  
+                ('GENERIC', '/usr/games/tuxracer', '', '', [ 'tux' ] )) ]
+</pre>
+<p>Create file /etc/freevo/games/tuxracer/tuxracer.tux </p>
+
+<pre>
+# mkdir /etc/freevo/games 
+# mkdir /etc/freevo/games/tuxracer 
+# &gt; /etc/freevo/games/tuxracer/tuxracer.tux 
+</pre>
+<p>If you get a screenshot of this games, copy to this new directory </p>
+
+<pre>
+# cp TuxRacer.jpg /etc/freevo/games/tuxracer/cover.jpg 
+</pre>
+
+<h2 id="head-5d76f84c07821e9ff17dda6988224c61d4fec75c">Exiting an emulator with LIRC</h2>
+
+<p>To stop a running PSX/snes/etc... emulator and return to the menu add the following into your lircrc; 
+</p>
+<pre>
+begin
+        button = menu
+        prog   = irexec
+        repeat = 3
+        config = kill -INT `pidof epsxe`
+end
+</pre>
+<p>My 'menu' button also provides the EXIT code in freevo, you could also hook other scripts up to this to make sure it kills any processes that are running the the foreground. </p>
+<p>Make sure you start irexec at some point before freevo starts like so; 
+</p>
+<pre>
+/usr/local/bin/irexec /etc/freevo/lircrc &amp;
+</pre>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-03-25 20:24:28 by <span title="someone.aub.auc.dk">HenrikFarre</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/GamesConfig">http://freevo.sourceforge.net/cgi-bin/doc/GamesConfig</a></p>
+</div> <!-- end page -->
+</body>
+</html>

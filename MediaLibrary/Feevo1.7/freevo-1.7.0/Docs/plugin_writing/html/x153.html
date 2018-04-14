@@ -1,0 +1,321 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>DaemonPlugin</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Freevo Plugin Writing HOWTO"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="The Different Types of Plugins"
+HREF="c145.html"><LINK
+REL="PREVIOUS"
+TITLE="The Different Types of Plugins"
+HREF="c145.html"><LINK
+REL="NEXT"
+TITLE="MainMenuPlugin"
+HREF="x187.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Freevo Plugin Writing HOWTO: Writing your own plugins for Freevo</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c145.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. The Different Types of Plugins</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x187.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN153"
+>3.2. DaemonPlugin</A
+></H1
+><A
+NAME="DAEMON"
+></A
+><P
+>	A DaemonPlugin is somthing that works in the background of
+	Freevo. Examples for this kind of plugin are the idlebar, the usb
+	plugin, the thread watching your rom drives and the LCD plugin. A
+	DaemonPlugin can react on events, can be called in a specific time
+	intervall and can draw something to the skin.
+      </P
+><PRE
+CLASS="PROGRAMLISTING"
+>class DaemonPlugin(Plugin):
+
+    # Variables:
+    self.poll_interval  = 1
+    self.poll_menu_only = True
+    self.event_listener = False
+
+    # Functions
+    def __init__(self):
+        pass
+    
+    def poll(self):
+        pass
+    
+    def draw(self(type, object), osd):
+        pass
+
+    def eventhandler(self, event, menuw=None):
+        return False
+    
+    def shutdown(self):
+        pass
+    
+      </PRE
+><P
+>	The <CODE
+CLASS="FUNCTION"
+>shutdown</CODE
+> function will be called when Freevo
+	shuts down to do some cleanup. Most plugins won't need that function. 
+      </P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN161"
+>3.2.1. Polling</A
+></H2
+><P
+>	  A plugin can be called in a specific time intervall. To do this, it
+	  has to set the variable <CODE
+CLASS="VARNAME"
+>poll_intervall</CODE
+> and define
+	  a function <CODE
+CLASS="FUNCTION"
+>poll</CODE
+>. After that, the
+	  <CODE
+CLASS="FUNCTION"
+>poll</CODE
+> will be called every <CODE
+CLASS="VARNAME"
+>0.01 *
+	    poll_intervall</CODE
+> seconds. When the menu is not active
+	  (e.g. watching a movie or listening to music), the function won't be
+	  called. If you want the plugin to be called even than, you can set
+	  the variable <CODE
+CLASS="VARNAME"
+>poll_menu_only</CODE
+> to True.
+	</P
+><P
+>	  Example: a plugin that sends the Event <CODE
+CLASS="VARNAME"
+>foo</CODE
+>
+	  every second:
+
+	  <PRE
+CLASS="PROGRAMLISTING"
+>import plugin
+import rc
+from event import *
+
+class FooSenderPlugin(plugin.DaemonPlugin):
+    """
+    Sending foo events
+    """
+    def __init__(self):
+        DaemonPlugin.__init__(self)
+        self.poll_interval  = 100
+
+    def poll(self):
+        rc.post_event(Event('foo'))
+        
+	  </PRE
+>
+	</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN173"
+>3.2.2. Action on events</A
+></H2
+><P
+>	  To act on specific events, the class must define the function
+	  <CODE
+CLASS="FUNCTION"
+>eventhandler</CODE
+>. This function will be called
+	  with the event if nothing before consumed this event. If you create
+	  your own kind of event, you can be sure you get it. If the function
+	  handles this event, it should return True, if not False.
+	</P
+><P
+>	  If the plugin should see all events, the plugin should set the
+	  variable <CODE
+CLASS="VARNAME"
+>event_listener</CODE
+> to True. After that, the
+	  plugin will see all events and it doesn't matter, if the function
+	  return True or not.
+	</P
+><P
+>	  Example: a plugin that reacts on the Event <CODE
+CLASS="VARNAME"
+>foo</CODE
+>
+	  and counts the number of the events:
+	  
+	  <PRE
+CLASS="PROGRAMLISTING"
+>import plugin
+
+class FooReceiverPlugin(plugin.DaemonPlugin):
+    """
+    Counting foo
+    """
+    def __init__(self):
+        DaemonPlugin.__init__(self)
+        self.foo = 0
+
+    def eventhandler(self, event, menuw=None):
+        if event == 'foo':
+            self.foo += 1
+            return True
+        return False
+
+	  </PRE
+>
+	</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN183"
+>3.2.3. Drawing on the Screen</A
+></H2
+><P
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>not written yet</I
+></SPAN
+></P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c145.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x187.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>The Different Types of Plugins</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c145.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>MainMenuPlugin</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

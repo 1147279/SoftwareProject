@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>XMLTVPackage - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/XMLTVPackage?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/XMLTVPackage?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">XMLTVPackage</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h3 id="head-a9aa8172906c9804758c83b2c64a6c6f04b5ee93">RPMS</h3>
+
+<p>Manually download from <a class="external" href="http://atrpms.physik.fu-berlin.de/dist/fc1/xmltv/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://atrpms.physik.fu-berlin.de/dist/fc1/xmltv/</a> or </p>
+<p>Install <a class="external" href="http://atrpms.physik.fu-berlin.de/name/apt/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> apt-get</a> as suggested on the site. There are a lot of different Perl dependencies which apt-get will take care of for you. As of writing (03/03/2004) you need to add 
+</p>
+<pre>
+rpm http://apt.physik.fu-berlin.de fedora/1/en/i386 at-bleeding
+</pre>
+<p>to your /etc/apt/sources.list </p>
+<p>to get all of xmltv installed as it needs the "bleeding-edge" installation of pwlib to satisfy dependencies. Be sure to change it back to at-testing, at-good or at-stable as other bleeding edge packages may lead to a lot of instability. </p>
+<p>If preferred a yum repository is also available - 
+</p>
+<pre>
+[atrpms testing]
+name=Fedora Core $releasever - $basearch - ATrpms
+baseurl=http://apt.atrpms.net/fedora/$releasever/en/$basearch/at-bleeding
+</pre>
+
+<h3 id="head-c653bcdc1f6d85e821d8b1a4d90f8da955bc2858">Debian Packages</h3>
+
+<p><a class="external" href="http://packages.qa.debian.org/x/xmltv.html"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://packages.qa.debian.org/x/xmltv.html</a> </p>
+<p>The XMLTV README has instructions for using the Perl CPAN method of downloading and installing missing modules. </p>
+<p>Try using "force install &lt;modulename&gt;" if the regular install fails due to broken tests. The CPAN install process is quite noisy, make sure to read all output to find the real problem when a step fails. </p>
+
+<h3 id="head-4e962a231595318decf7f762876cedd4a76d0fbc">Mandrake Packages</h3>
+
+<p>All you need to do to install on Mandrake is run 'urpmi xmltv' <img src="modern/img/smile.png" alt=":-)" height="15" width="15"> </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-03-21 03:38:37 by <span title="66-214-230-16.lb-cres.charterpipeline.net">FlashFiasco</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/XMLTVPackage">http://freevo.sourceforge.net/cgi-bin/doc/XMLTVPackage</a></p>
+</div> <!-- end page -->
+</body>
+</html>

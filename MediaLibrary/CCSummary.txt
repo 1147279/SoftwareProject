@@ -1,0 +1,33 @@
+Summary For Cyclomatic Complexity Analysis:
+
+
+
+Rank the complexity score from A to F, where A stands for the simplest and best score and F the most complex and worst one:
+
+1 - 5	A (low risk - simple block)
+6 - 10	B (low risk - well structured and stable block)
+11 - 20	C (moderate risk - slightly complex block)
+21 - 30	D (more than moderate risk - more complex block)
+31 - 40	E (high risk - complex block, alarming)
+41+	F (very high risk - error-prone, unstable block)
+Here block is used in place of function, method or class.
+
+
+
+
+1.7
+
+3187 blocks (classes, functions, methods) analyzed.
+Average complexity: A (4.02196422968)
+
+
+
+1.8
+
+4374 blocks (classes, functions, methods) analyzed.
+Average complexity: A (3.80475537266)
+
+1.9
+
+5833 blocks (classes, functions, methods) analyzed.
+Average complexity: A (3.63020744043)

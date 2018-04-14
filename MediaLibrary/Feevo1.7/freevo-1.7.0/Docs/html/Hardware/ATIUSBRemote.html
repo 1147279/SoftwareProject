@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>Hardware/ATIUSBRemote - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="../modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="../modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="../modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/Hardware/ATIUSBRemote?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/Hardware/ATIUSBRemote?action=print">
+<link rel="Up" href="/cgi-bin/doc/Hardware">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="../Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">Hardware/ATIUSBRemote</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>Site Index: </p>
+<ol>
+
+<li>
+<a href="#head-d832d2a2f3451aff300f8c9d480cdbd6d198762c">General Info</a>
+</li>
+
+<li>
+<a href="#head-b008877e4fefcca8af1d6cda7d449fcb2bde15d1">Installation Method One: Install using LIRC</a>
+<ol>
+
+<li>
+<a href="#head-e7668aa3f7c4e5857a5956c51d09451f22e6aa9d">Requirements</a>
+</li>
+
+<li>
+<a href="#head-6242a689f6b9dbe9107e42503d51acb743ed064a">Compilation</a>
+</li>
+
+<li>
+<a href="#head-6a6d8e052a9039ed9780e3e72fdef3887380c3e4">Configuration</a>
+</li>
+
+<li>
+<a href="#head-7337188150ca07cbf74cc321f5770c5d625433ce">Loading and Running</a>
+</li>
+
+</ol>
+
+<li>
+<a href="#head-41512485047a997416f63f692466ca307a6c9edf">Installation Method Two: Without LIRC</a>
+<ol>
+
+<li>
+<a href="#head-c44bb338dae71417ece33aa4c16d35fc828935cc">Tutorial / Tutoriel</a>
+</li>
+
+<li>
+<a href="#head-9c385841611025edc0d28cceb33cf8cc2c6de53b">Check that it works</a>
+</li>
+
+<li>
+<a href="#head-2f54f76351ba2852c4f95080ece0a07a0159f7fb">Example xmodmap file</a>
+</li>
+
+</ol>
+
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-d832d2a2f3451aff300f8c9d480cdbd6d198762c">General Info</h2>
+
+<p>This remote is absolutely great. It is USB and has it's own receiver. However, it is an RF (radio frequency) receiver, as oppoased to an infrared receiver. There is a third-party hack to let it work with LIRC until support for this remote is included into the LIRC main branch. Here is how to get it working: </p>
+
+<h2 id="head-b008877e4fefcca8af1d6cda7d449fcb2bde15d1">Installation Method One: Install using LIRC</h2>
+
+
+<h3 id="head-e7668aa3f7c4e5857a5956c51d09451f22e6aa9d">Requirements</h3>
+
+<ol type="1">
+<li><p>Linux system running devfs </p>
+</li>
+<li><p>Kernel source for your running kernel, located at '/usr/src/linux' (NOTE: This kernel source must have had at least 'make dep' run in it, so that the proper header files, etc. have been generated). </p>
+</li>
+<li><p>'lirc-0.6.6' (or greater) from <a class="external" href="http://lirc.sourceforge.net"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://lirc.sourceforge.net</a> </p>
+</li>
+<li><p>'lirc_usb.c' from 'ati_remote' <a class="external" href="http://gatos.sourceforge.net"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://gatos.sourceforge.net</a> (NOTE: Please make sure you get the file from the CVS, as it is not yet in the 'ati_remote' tarball) </p>
+</li>
+<li><p>OPTIONAL: While in the CVS for 'ati_remote', you can grab the 'lircd.conf', but I have never had any luck getting it working; I have had to always generate my own. Your mileage may vary. </p>
+</li>
+<li><p>UPDATE: The lirc_usb.c is no longer available from either CVS or alternate sources (googled). The Gatos people seems to have integrated everything inte just one source file. Compliling the single source file ati_remote.c and running "insmod ati_remote.o" works. You just have to remember to recompile kernel with "input" and "USB" support. </p>
+</li>
+</ol>
+
+<h3 id="head-6242a689f6b9dbe9107e42503d51acb743ed064a">Compilation</h3>
+
+<p><strong>METHOD ONE:</strong> lirc is not already installed </p>
+<ol type="1">
+<li><p>Untar and uncompress 'lirc-0.6.6.tar.[gz|bz2]' </p>
+</li>
+<li><p>Copy 'lirc_usb.c' into one of the driver directories, and rename it to the same as whatever 'lirc_*.c' already exists in there. For example, if you copy into the 'drivers/lirc_sir' directory, you would rename the 'lirc_usb.c' file to 'lirc_sir.c' (This will overwrite the existing file 'lirc_*.c' file in the directrory) </p>
+</li>
+<li><p>Run './configure --with-driver=sir' (replace 'sir' with whatever directory you copied your lirc_usb.c' file into in Step 2). Of course, you can also add whatever additional './configure' options you wish <img src="../modern/img/smile.png" alt=":-)" height="15" width="15"> </p>
+</li>
+<li><p>Run 'make' then 'make install'. </p>
+</li>
+<li><p>Change to the '/lib/modules/&lt;kernel_version&gt;/misc' directory, and change the name of the 'lirc_*.o' file to 'lirc_usb.o' (e.g., 'mv lirc_sir.o lirc_usb.o'). </p>
+</li>
+<li><p>Run 'depmod -a' again. </p>
+</li>
+</ol>
+<p><strong>METHOD TWO:</strong> lirc is already installed </p>
+<ol type="1">
+<li><p>Untar and uncompress 'lirc-0.6.6.tar.[gz|bz2]' </p>
+</li>
+<li><p>Copy 'lirc_usb.c' into one of the driver directories, and rename it to the same as whatever 'lirc_*.c' already exists in there. For example, if you copy into the 'drivers/lirc_sir' directory, you would rename the 'lirc_usb.c' file to 'lirc_sir.c' (This will overwrite the existing file 'lirc_*.c' file in the directrory) </p>
+</li>
+<li><p>Staying in the driver's directory, run 'make'. </p>
+</li>
+<li><p>Rename the resulting 'lirc_*.o' file to 'lirc_usb.o' (e.g., 'mv lirc_sir.o lirc_usb.o') </p>
+</li>
+<li><p>Copy 'lirc_usb.o' to the '/lib/modules/&lt;kernel_version&gt;/misc' directory </p>
+</li>
+<li><p>Run 'depmod -a' </p>
+</li>
+</ol>
+
+<h3 id="head-6a6d8e052a9039ed9780e3e72fdef3887380c3e4">Configuration</h3>
+
+<ol type="1">
+<li><p>Load the module: 'modprobe lirc_usb debug=1' </p>
+</li>
+<li><p>Generate an 'lircd.conf' file for the remote: 'irrecord -d /dev/usb/remote0' (follow the instructions from 'irrecord') </p>
+</li>
+<li><p>Copy the resulting file to '/etc/lircd.conf' </p>
+</li>
+<li><p>Run '~freevo/helpers lircd2lircrc.pl' to generate an 'lircrc' file from your 'lircd.conf' file, that you can then put into '/etc/freevo' </p>
+</li>
+<li><p>Edit '/etc/freevo/lircrc' to change the name of some of the Freevo events to what Freevo is looking for, so as to have the remote work properly (refer to Freevo's sample 'lircrc' file for this) </p>
+</li>
+</ol>
+
+<h3 id="head-7337188150ca07cbf74cc321f5770c5d625433ce">Loading and Running</h3>
+
+<ol type="1">
+<li><p>Load the module: 'modprobe lirc_usb debug=1' </p>
+</li>
+<li><p>Start lirc: 'lircd -d /dev/usb/remote0 /etc/lircd.conf' </p>
+</li>
+<li><p>Confirm the remote is working properly by running 'irw' and pressing a few buttons </p>
+</li>
+</ol>
+<p>Congratulations! You now have a working ATI USB remote for use with Freevo! </p>
+
+<h2 id="head-41512485047a997416f63f692466ca307a6c9edf">Installation Method Two: Without LIRC</h2>
+
+
+<h3 id="head-c44bb338dae71417ece33aa4c16d35fc828935cc">Tutorial / Tutoriel</h3>
+
+<p>Follow the instructions on this page: <a href="http://remotew.free.fr/linux_en.htm"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://remotew.free.fr/linux_en.htm</a> </p>
+<p>Note: It is important to use <em>xmodmap</em> as suggested to configure keycodes </p>
+<p>Les mêmes instructions mais en français: <a href="http://remotew.free.fr/linux_fr.htm"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://remotew.free.fr/linux_fr.htm</a> </p>
+<p>NB: Utilisez <em>xmodmap</em> commme les instructions suggèrent pour configurer les touches de votre manette. </p>
+
+<h3 id="head-9c385841611025edc0d28cceb33cf8cc2c6de53b">Check that it works</h3>
+
+<p>1. Use <em>xev</em> to  verify funcitonality. This also gives you keycodes. See tutorial above. 2. If no output seen in <em>xev</em>, the <em>su</em> to <em>root</em>, and then run the following: </p>
+
+<pre>
+This is the expected output 
+. 
+# lsmod | grep ati 
+ati_remote              6424   0  (unused) 
+input                   5664   0  [ati_remote keybdev mousedev hid] 
+usbcore                72992   1  [ati_remote hid printer usb-uhci] 
+</pre>
+<p>3. If you are like me, you will discover that nothing showed up. Now check if the module 'hid' is loaded: </p>
+
+<pre>
+ This is the expected output
+ . 
+ # lsmod | grep hid 
+ hid                    20900   0  (unused) 
+ input                   5664   0  [ati_remote keybdev mousedev hid] 
+ usbcore                72992   1  [ati_remote hid printer usb-uhci] 
+</pre>
+<p>4. Again, if you are like me, you will discover that <em>hid</em> is not installed either. Probably somewhere around this point you will realize that you do not have anything in <em>/dev/input/mice</em> The simple solution is to simply type the following: </p>
+
+<pre>
+ # modprobe hid 
+ # modprobe ati_remote 
+</pre>
+<p>And voila, it will work. </p>
+<p>5. You do not want to do this everytime you load X, so a file called <em>remote</em> in the  <em>/etc/X11/xinit.d/</em> directory with the follwing contents: </p>
+
+<pre>
+ modprobe hid 
+ modprobe ati_radeon 
+</pre>
+<p>6. Finally, make this file executable by typing <em># chmod a+x /etc/X11/xinit.d/remote</em>. </p>
+
+<h3 id="head-2f54f76351ba2852c4f95080ece0a07a0159f7fb">Example xmodmap file</h3>
+
+<p>Running xev and writing down all the keycodes is not that fun, so you can try this configuration file: <a href="http://audacious.kysis.org/files/xmodmap_freevo"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://audacious.kysis.org/files/xmodmap_freevo</a> (comments in french) </p>
+<p>Note: Keycodes may vary, mine are actually different than the ones on the tutorial page. </p>
+<p>For more information on mapping keys to your preference, see <a href="../KeyMaps.html">KeyMaps</a> </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-07-26 22:03:08 by <span title="cpe-24-167-79-238.houston.res.rr.com">NecLimDul</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/Hardware/ATIUSBRemote">http://freevo.sourceforge.net/cgi-bin/doc/Hardware/ATIUSBRemote</a></p>
+</div> <!-- end page -->
+</body>
+</html>

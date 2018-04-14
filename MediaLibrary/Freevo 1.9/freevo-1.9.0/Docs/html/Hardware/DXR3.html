@@ -1,0 +1,246 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>Hardware/DXR3 - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="../modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="../modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="../modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/Hardware/DXR3?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/Hardware/DXR3?action=print">
+<link rel="Up" href="/cgi-bin/doc/Hardware">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="../Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">Hardware/DXR3</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h2 id="head-de31893f0f3dae3007b57271d9f2906f7378c55d">Introduction</h2>
+
+<p>The DXR3/Hollywood Plus is a MPEG2-Decoder-Card with TV out (Composite and S-Video). You can use it to display Freevo on your TV screen. If you have any questions concerning this documentation, contact me <a class="external" href="mailto:dany@sps-edv.de"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> Schilling, Daniel</a>. </p>
+
+<h2 id="head-043ee809d6be80a7fa2a933237f51f8d79f1ee2b">Setting up the DXR3-Kernel-Drivers</h2>
+
+<p>See <a class="external" href="http://dxr3.sourceforge.net/howto.html"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> DXR3 / Hollywood Plus HOWTO</a> </p>
+
+<h2 id="head-fc6d9ed38d804a333804318bfbf5e2fc39b18110">Creating ffmpeg</h2>
+
+<ul>
+<li><p> Homepage: <a href="http://ffmpeg.sourceforge.net/"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://ffmpeg.sourceforge.net/</a>  
+</p>
+<pre>
+At the moment, SDL 1.2.6 will only compile with 0.4.6
+wget http://unc.dl.sourceforge.net/sourceforge/ffmpeg/ffmpeg-0.4.6.tar.gz
+tar xzfv ffmpeg-0.4.6.tar.gz
+cd ffmpeg-0.4.6
+./configure --enable-shared
+make
+make install
+</pre>
+</li>
+</ul>
+
+<h2 id="head-d71a0d6a77316621cc84a56922c78fc7be822102">Creating SDL with DXR3-Support</h2>
+
+<ul>
+<li><p> Homepage: <a href="http://www.libsdl.org/"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.libsdl.org/</a> </p>
+</li>
+</ul>
+<p>At first, see "Creating the runtime", section SDL under DocumentationPage/InstallDeps. The difference to that is, that before configuring the source you also have to apply the dxr3-patch from the contrib/DXR3 directory and regenerate the Makefiles with autogen.sh. You'll need the Version 1.2.6 of sdl to get the dxr3-patch working. See the webpage for instructions, or just hit:  </p>
+<ul>
+<li style="list-style-type:none">
+<pre>
+At the moment, SDL 1.2.6 will only compile with 0.4.6
+cvs -d :pserver:guest@libsdl.org:/home/sdlweb/libsdl.org/cvs login
+cvs -z3 -d :pserver:guest@libsdl.org:/home/sdlweb/libsdl.org/cvs checkout -r release_1_2_6 SDL12 </pre>
+</li>
+</ul>
+<p>Apply the patches: </p>
+<ul>
+<li style="list-style-type:none">
+<pre>
+cd path-to-your-SDL-source
+patch -p1 &lt; path-to-your-freevo/contrib/rpm/SDL-1.2.6-nokeyboardpatch 
+patch -p1 &lt; path-to-your-freevo/contrib/rpm/SDL-1.2.6-dxr3-ffmpeg.patch </pre>
+</li>
+</ul>
+<p>The dxr3-patch is outdated, you may get HUNK #3 failed, or something like that. Look at configure.in.rej to see what have failed and make the changes manually. To be able to compile your SDL you'll need some files from ffmpeg. This is probably a lame way to go, but hey, it works <img src="../modern/img/smile4.png" alt=";)" height="15" width="15"> </p>
+<ul>
+<li style="list-style-type:none">
+<pre>
+cp path-to-your-ffmpeg/libavcodec/avcodec.h src/video/dxr3/
+cp path-to-your-ffmpeg/libavcodec/common.h src/video/dxr3/ </pre>
+</li>
+</ul>
+<p>Atm it's just the Makefile of dxr3 you'll have to insert in you configure.in among the other video/ Makefiles. </p>
+<ul>
+<li style="list-style-type:none">
+<pre>
+./autogen.sh
+./configure </pre>
+</li>
+</ul>
+<p>Go ahead and compile your SDL. </p>
+<ul>
+<li style="list-style-type:none">
+<pre>
+make 
+make install 
+cd .. 
+</pre>
+</li>
+</ul>
+
+<h2 id="head-b64b356e236755db9aa1e63a6e636644a53f1fd7">Creating MPlayer with DXR3-Support</h2>
+
+<ul>
+<li><p> Homepage: <a href="http://www.mplayerhq.hu"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.mplayerhq.hu</a> 
+</p>
+<pre>
+wget ftp://ftp1.mplayerhq.hu/MPlayer/releases/MPlayer-0.90rc5.tar.bz2
+tar xjfv MPlayer-0.90rc5.tar.bz2
+cd MPlayer-0.90rc5
+./configure
+</pre>
+<p>Take a look at the configure-output, especialy the "Video Output" (dxr3 should be enabled): 
+</p>
+<pre>
+Config files successfully generated by ./configure !
+
+  Install prefix: /usr
+  Data directory: /usr/share/mplayer
+  Config direct.: /usr/etc/mplayer
+
+  Byte order: Little Endian
+  Optimizing for: pentium3 mmx mmx2 sse mtrr
+
+  Enabled optional drivers:
+    Input: streaming edl tv cdda mpdvdkit2 vcd
+    Codecs: divx5linux libavcodec libvorbis
+    Audio output: alsa9 arts oss sdl mpegpes(file)
+    Video output: xvidix dxr3 sdl vesa jpeg mpegpes(file) fbdev opengl dga xv x11
+  Disabled optional drivers:
+    Input: tv-v4l tv-bsdbt848 dvdnav dvdread dvdcss
+    Codecs: qtx divx4linux xvid libdv real xanim dshow/dmo win32 libmad liblzo gif
+    Audio output: sgi sun esd dxr2 nas win32
+    Video output: bl zr dxr2 directx gif89a png svga aa ggi xmga mga directfb tdfxfb 3dfx
+</pre>
+<p>If dxr3 doesn't appear in the "Video output" section, then the dxr3-header-files are missing. Have a look in the DXR3-FAQ mentioned above. If you think, that all header files are in their correct location, you possibly can enable DXR3-Support by appending "--enable-dxr3" to the configure-script. </p>
+<p>Now you can compile and install MPlayer: 
+</p>
+<pre>
+make
+make install
+</pre>
+</li>
+</ul>
+
+<h2 id="head-b9e04ace2c48080731b83df206c4eb1862ef1fc1">Setting up Freevo with DXR3-Support</h2>
+
+<ol type="1">
+<li><p>Get Freevo from CVS and make it run properly with your PC monitor. </p>
+</li>
+<li><p>Edit freevo.conf in the CVS root directory and change the display and geometry parameter (in my case for PAL): </p>
+</li>
+</ol>
+<ul>
+<li style="list-style-type:none">
+<pre>
+display = dxr3
+geometry = 720x576
+</pre>
+</li>
+</ul>
+<ol type="3">
+<li><p>You'll probably want to use your dxr3 card for sound too.  </p>
+</li>
+</ol>
+<ul>
+<li style="list-style-type:none"><p>Edit your freevo_config.py or local_config.py and change the mplayer ao to the dxr3 card. 
+</p>
+<pre>
+MPLAYER_AO_DEV       = 'oss://dev/em8300_ma-0'
+</pre>
+<p>Also you might want to use the dxr3 card to decode the sound, change MPLAYER_ARGS_DEF to -ac hwac3, instead of -ac mad, </p>
+<p>You may need to tweak the MPlayer command-line to get smooth playback, particularly of MPEG-4.  The following has worked for several people: 
+</p>
+<pre>
+MPLAYER_ARGS['avi'] = '-cache 5000 -idx -vo dxr3:sync:prebuf -vop lavc=1:25:97'
+MPLAYER_ARGS['mpeg'] = '-cache 5000 -vo dxr3:sync:prebuf'
+MPLAYER_ARGS['default'] = '-cache 5000'
+</pre>
+</li>
+</ul>
+<ol type="4">
+<li><p>Copy the SDL-Library to the runtime/dll directory </p>
+</li>
+</ol>
+<ul>
+<li style="list-style-type:none">
+<pre>
+cp /usr/local/lib/libSDL-1.2.so.0  runtime/dll
+</pre>
+</li>
+</ul>
+<ol type="5">
+<li><p>Copy MPlayer to the runtime/apps directory </p>
+</li>
+</ol>
+<ul>
+<li style="list-style-type:none">
+<pre>
+cp /usr/local/bin/mplayer runtime/apps
+</pre>
+</li>
+</ul>
+<ol type="6">
+<li><p>Run ./freevo and enjoy Freevo on your TV screen! </p>
+</li>
+</ol>
+
+<h2 id="head-87c54410303f14f275dabcbdc40e775c57cee9a6">Outdated infos (moved from DocumentationPage)</h2>
+
+<p>There is support for the dxr3 card by "Creative Labs" (aka. "Hollywood Plus" by "Sigma Designs") in the current release of "freevo". </p>
+<p>You need, however, support for the dxr3 in your libSDL, too. First attemps to add dxr3 to libSDL were done by Michael Hunold using the "fame" mpeg-encoder. You can find this attempts at </p>
+<p>Please don't use this code any more, it's outdated and not maintained any more -- it's just still there for completeness. </p>
+<p>This support has lately been improved by Jens Axboe, he switched to the very populoar "libavcodec" mpeg-encoder, too. Have look at the mailing list archives for the latest version of his patch or  send a mail to the mailing list. </p>
+<p>If you compiled and installed this new version of libSDL, you should configure "freevo" to use the dxr3 as an output device, for example like this: </p>
+<p>"./configure --display=dxr3 --geometry=640x480 --tv=pal", then do a "make". </p>
+<p>Now you are ready to start it with "./freevo". Good luck and have fun! </p>
+<p>For further questions, ask on the mailing list. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-09-30 14:19:48 by <span title="dslb-082-083-252-156.pools.arcor-ip.net">PhilippLeusmann</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/Hardware/DXR3">http://freevo.sourceforge.net/cgi-bin/doc/Hardware/DXR3</a></p>
+</div> <!-- end page -->
+</body>
+</html>

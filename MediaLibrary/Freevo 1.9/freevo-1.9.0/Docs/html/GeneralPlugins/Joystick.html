@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>GeneralPlugins/Joystick - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="../modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="../modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="../modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/GeneralPlugins/Joystick?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/GeneralPlugins/Joystick?action=print">
+<link rel="Up" href="/cgi-bin/doc/GeneralPlugins">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="../Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">GeneralPlugins/Joystick</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h2 id="head-b5badc47fcbdfb24586f47029f06f3f92b49fdaf">Joystick</h2>
+
+<p>This is a plugin to control freevo with a joystick. Make sure that your joystick is working. (driver compiled in kernel or as module and module loaded). </p>
+<p>Freevo needs to know which joystick device to use. /dev/input/js0 or /dev/js0 = device 1, add the following in your local_conf.py : 
+</p>
+<pre>
+JOY_DEV=1
+</pre>
+<p>You can link different events to the joystick actions example, also to add in local_conf.py : 
+</p>
+<pre>
+JOY_CMDS={ 'up' : 'UP',
+   'down' : 'DOWN',
+   'left' : 'LEFT',
+   'button 1': 'PLAY',
+   'button 2': 'STOP',
+   'button 3': 'PAUSE',
+   'button 4': 'ENTER'}
+</pre>
+<p>For a listing of all available commands and how they are mapped within the different events (Playing Audio, Video, TV, etc...) look at freevo/src/event.py . </p>
+<p>To activate the plugin, add this in your local_conf.py : 
+</p>
+<pre>
+plugin.activate("joy")
+</pre>
+<br>
+<p> If you want to use some other axis, or change the default one (for example, when your controller has a POV and a D-PAD), you can add them for freevo to use. You will have to modify the joy.py file (normally at /usr/lib/python2.3/site-packages/freevo/plugins/joy.py ). Don't forget to do a backup first! Look at the bottom of the joy.py file, you will find something like this: </p>
+
+<pre>
+            if ((data[3] == 1) &amp; (data[1] &lt; -16384)):
+                button = 'up'
+                command = config.JOY_CMDS['up']
+            if ((data[3] == 1) &amp; (data[1] &gt; 16384)):
+                button = 'down'
+                command = config.JOY_CMDS['down']
+            if ((data[3] == 0) &amp; (data[1] &lt; -16384)):
+                button = 'left'
+                command = config.JOY_CMDS['left']
+            if ((data[3] == 0) &amp; (data[1] &gt; 16384)):
+                button = 'right'
+                command = config.JOY_CMDS['right']
+</pre>
+<p>The lines "button =" and "command = config.JOY_CMDS[..." indicates the function assigned to the axis. You can put whatever word you want there, instead of left/right/up/down (be sure to put the same thing on the "button" and "command" lines), then use them in the JOY_CMDS section of your local_conf.py to assign functions (see above). On the example above, the axis used are 0 and 1. If you want to use another axis, just change those numbers. If you want to use axis X, then modify accordingly: </p>
+
+<pre>
+            if ((data[3] == X) &amp; (data[1] &lt; -16384)):
+                button = 'name1'
+                command = config.JOY_CMDS['name1']
+            if ((data[3] == X) &amp; (data[1] &gt; 16384)):
+                button = 'name2'
+                command = config.JOY_CMDS['name2']
+            and so on...
+</pre>
+<p>You might want to try and find out which axis is the one you want, as it isn't always obvious. </p>
+<p>So new lines can be added or modified to your suiting. If you have 4 axis you want to use for different functions, add some new "if ((data[3] == X)..." subsections as above, and change the names and axis' accordingly. </p>
+<p>You might not get this right the first time, so it's all about trial and error. Modify the file, save it, then launch freevo and see what happens. </p>
+<p>Another important part are the "offsets". As you can see above, by default it is 16384 or -16384. This tells freevo when to acknowledge a command. If you have analog controllers, 16384 is the mid-position (when you push it half up or down). You might want to fiddle with those values until you find the ones which are comfortable. </p>
+<p>On the other hand, with digital controlers, it usually is 1. So you will want to replace 16384 and -16348 with 1 and -1. </p>
+<p>To know what the good values are, you can use the linux jstest or jscal tools. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-07-09 17:04:22 by <span title="dyn-213-36-24-179.ppp.tiscali.fr">TheStick</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/GeneralPlugins/Joystick">http://freevo.sourceforge.net/cgi-bin/doc/GeneralPlugins/Joystick</a></p>
+</div> <!-- end page -->
+</body>
+</html>

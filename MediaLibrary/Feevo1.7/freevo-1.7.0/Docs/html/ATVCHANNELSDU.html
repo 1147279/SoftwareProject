@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>ATVCHANNELSDU - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/ATVCHANNELSDU?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/ATVCHANNELSDU?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">ATVCHANNELSDU</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p><strong>1. Mapping channel names</strong> </p>
+<p>Check <em>/tmp/TV.xml</em> to find the channelnames you will be using: </p>
+<pre>
+&lt;channel id=¨3.tvgids.nl&gt; 
+    &lt;display-name&gt;Nederland 3&lt;/display-name&gt;
+   &lt;/channel&gt;
+</pre>
+<p>and find a frequency table for the frequencies your cable company uses, like on <a href="http://www.upc.nl/frequencies_select.php"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.upc.nl/frequencies_select.php</a>. </p>
+<p><strong>2. Configuring local_conf.py</strong> </p>
+<p>TV_CHANNELS uses 3 columns: the id used in TV.xml, the name that gets displayed in freevo interface, and an aribtrary name you use for your mapping with FREQUENCY_TABLE: </p>
+<pre>
+TV_CHANNELS = [('1.tvgids.nl', 'Nederland 1', 'NED1'), 
+        ('2.tvgids.nl', 'Nederland 2', 'NED2'),
+        ('3.tvgids.nl', 'Nederland 3', 'NED3'),
+        ('4.tvgids.nl', 'RTL 4', 'RTL4'),
+        ('31.tvgids.nl', 'RTL 5', 'RTL5'),
+        ('37.tvgids.nl', 'NET 5', 'NET5'),
+        ('36.tvgids.nl', 'SBS 6', 'SBS6'),
+        ('46.tvgids.nl', 'Yorin', 'YORIN'),
+        ('34.tvgids.nl', 'Veronica', 'VERONICA'),
+        ('6.tvgids.nl', 'KETNET', 'KETNET'),
+        ('89.tvgids.nl', 'Nickelodeon', 'NICKELODEON'),
+        ('35.tvgids.nl', 'TMF', 'TMF'),
+        ('25.tvgids.nl', 'MTV', 'MTV'),
+        ('26.tvgids.nl', 'CNN', 'CNN') ]</pre>
+<p>In FREQUENCY_TABLE you use the name from 3rd column of TV_CHANNELS and the frequency in kHz:  </p>
+
+<pre>
+FREQUENCY_TABLE = {
+        'NED1'          :       216000,
+        'NED2'          :       184000,
+        'NED3'          :       192000,
+        'RTL4'          :       720000,
+        'RTL5'          :       728000,
+        'SBS6'          :       792000,
+        'YORIN'         :       736000,
+        'VERONICA'      :       672000,
+        'NET5'          :       784000,
+        'KETNET'        :       208000,
+        'NICKELODEON'   :       536000,
+        'MTV'           :       768000,
+        'TMF'           :       568000,
+        'CNN'           :       752000
+}
+
+}
+</pre>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-09-08 19:31:16 by <span title="cp501992-b.tilbu1.nb.home.nl">ThomasFaddegon</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/ATVCHANNELSDU">http://freevo.sourceforge.net/cgi-bin/doc/ATVCHANNELSDU</a></p>
+</div> <!-- end page -->
+</body>
+</html>

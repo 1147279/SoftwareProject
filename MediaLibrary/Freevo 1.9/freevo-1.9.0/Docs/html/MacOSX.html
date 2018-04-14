@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>MacOSX - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/MacOSX?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/MacOSX?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">MacOSX</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h3 id="head-8fa26ab801425fb034e77c034e142442ae7c5137">Overview</h3>
+
+<p>Since a lot of people have been interested in using the Mac mini and Freevo as an HTPC device, I thought that I would explain the steps I took to get most of the things working.  This is still a work in progress for me because I do not have a TV capture card yet, but I have successfully gotten movie watching, music listening, and picture viewing working on Mac OS 10.4.2. </p>
+
+<h3 id="head-cb1253dc0617b7c659a79df4840af55bf4d78ed3">Installing Dependencies</h3>
+
+<p>Unfortunately, Freevo has <strong>a lot</strong> of dependencies.  The good thing, however, is that most of them are available through <a class="external" href="http://darwinports.opendarwin.org/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> Darwin Ports</a>.  The first thing you need to do is download and install Darwin Ports on your system.  It's a simple package installer, so it shouldn't be a problem for most people. </p>
+<p>Secondly, open up a terminal window (/Applications/Utilities/Terminal) and install all the dependencies (one at a time).  This <strong>will</strong> take a while!  It will download, compile, and install all programs and their own dependencies as well. </p>
+
+<pre>
+# port install smpeg
+# port install libexif
+# port install libdvdread
+# port install libdvdcss
+# port install py-pyobjc
+# port install py-game
+# port install expat
+# port install py-xml
+# port install py-pil
+# port install py-twistedweb
+# port install py-mx
+# port install xine-lib
+# port install MPlayer +real +quicktime +sdl +freetype +lzo +vorbis +mencoder
+</pre>
+<p>When I installed all of those ports, I did not receive any errors.  If you do, then you should look at the Darwin Ports page for troubleshooting information. </p>
+<p>Another way to fulfill these dependencies is to use <a class="external" href="http://fink.sourceforge.net/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> Fink</a>. The dependencies can be found, al least, in the unstable distribution (this is what I used, maybe stable will suffice some day). For further info about Fink and unstable packages see <a class="external" href="http://fink.sourceforge.net/faq/usage-fink.php?phpLang=en#unstable"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> this</a>. </p>
+
+<pre>
+# fink install smpeg
+# fink install libexif
+# fink install libdvdread4
+# fink install pyobjc-py23
+# fink install pygame-py23
+# fink install pyxml-py23
+# fink install pil-py23
+# fink install twisted-py23
+# fink install python-mx-py23
+# fink install libxine
+# fink install mplayer
+</pre>
+<p>There are a couple of dependencies that are not available as ports yet (at the time of this writing), so you'll need to install those on your own.  The first one is lsdvd which you can download from <a class="external" href="http://sourceforge.net/project/showfiles.php?group_id=63864&amp;package_id=61147"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://sourceforge.net/project/showfiles.php?group_id=63864&amp;package_id=61147</a>.  Once you have that downloaded, you can configure and install it using the following commands: </p>
+
+<pre>
+# tar -tf lsdvd-0.15.tar
+# cd lsdvd-0.15/
+# env LDFLAGS=-L/opt/local/lib CPPFLAGS=-I/opt/local/include ./configure --prefix=/opt/local
+# make
+# make install
+</pre>
+<p>The LDFLAGS and CPPFLAGS tell lsdvd where to find libdvdread and libdvdcss which we installed earlier. </p>
+<p>Next you need to install mmpython.  You can download it from the freevo website here: <a class="external" href="http://sourceforge.net/project/showfiles.php?group_id=75590&amp;package_id=76071"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://sourceforge.net/project/showfiles.php?group_id=75590&amp;package_id=76071</a>.  As of this writing, the <tt>mmpython-0.4.9/disc/cdrommodule.c</tt> file does not support Mac OS X so you will not be able to compile it.  Please download the file with Mac OS X support from here: <a class="external" href="http://cddb-py.sourceforge.net/CDDB/unix/cdrommodule.c"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://cddb-py.sourceforge.net/CDDB/unix/cdrommodule.c</a> and replace the one in <tt>mmpython-0.4.9/disc/</tt> with the new one.  Then do the usual install method: </p>
+
+<pre>
+# env LDFLAGS=-L/opt/local/lib CFLAGS=-I/opt/local/include /opt/local/bin/python setup.py install
+</pre>
+<p>or for Fink you may want to run: </p>
+
+<pre>
+# sudo /sw/bin/python2.3 setup.py install
+</pre>
+<p>That should build and install just fine.  And that's it!  That's all you need to get freevo working!  There are two dependencies that I have not tried installing yet: lirc and aumix.  I don't have a remote control yet, so I'm not even going to attempt installing lirc until I do.  I'm currently looking for a way to provide audio mixer support to Freevo with the native Mac OS X libraries/commands instead of aumix.  For right now, use the volume settings on your Mac keyboard to control that. </p>
+
+<h3 id="head-bc879f4c4297b5ad2709b1a1b226c1120b61174d">Installing Freevo</h3>
+
+<p>Again, this installation of Freevo will not use any of the TV modules because I don't have a capture card and can't test it yet.  Believe me, I'm working on it though!  Once you've downloaded and unzipped Freevo (I'm using version 1.5.3), you'll need to run the initial configuration and change some settings.  First of all, edit the freevo file itself and change the first line from <tt>#!/usr/bin/env&nbsp;python</tt> to <tt>#!/opt/local/bin/python</tt>.  This will ensure that you're using the Darwin Ports installation of Python (which has all of the dependencies that we installed). </p>
+<p>Make sure you've added <tt>/opt/local/bin</tt> to your path and then and run <tt>./freevo&nbsp;setup</tt>.  That will create a new directory in your home directory and put <tt>freevo.conf</tt> and <tt>local_config.py</tt> files for you to edit (if <tt>local_conf.py&nbsp;</tt> is missing, run <tt>cp&nbsp;local_conf.py.example&nbsp;~/.freevo/local_conf.py</tt> in the freevo source directory).  My initial <tt>~/.freevo/freevo.conf</tt> looks like this: </p>
+
+<pre>
+chanlist = us-cable
+display = x11
+flac = /opt/local/bin/flac
+geometry = 800x600
+jpegtran = /opt/local/bin/jpegtran
+lame = /opt/local/bin/lame
+lsdvd = /opt/local/bin/lsdvd
+mencoder = /opt/local/bin/mencoder
+mplayer = /opt/local/bin/mplayer
+renice = /usr/bin/renice
+tv = ntsc
+version = 2.1
+</pre>
+<p>Great!  No dependency errors!  Now there's one thing we need to change.  In order to actually see the display, you want to change the <tt>display</tt> variable from <tt>x11</tt> to <tt>quartz</tt>.  My working <tt>~/.freevo/freevo.conf</tt> looks like this: </p>
+
+<pre>
+chanlist = us-cable
+display = quartz
+flac = /opt/local/bin/flac
+geometry = 800x600
+jpegtran = /opt/local/bin/jpegtran
+lsdvd = /opt/local/bin/lsdvd
+mencoder = /opt/local/bin/mencoder
+mplayer = /opt/local/bin/mplayer
+renice = /usr/bin/renice
+tv = ntsc
+version = 2.1
+</pre>
+<p>Next, you need to add a few things in the <tt>~/.freevo/local_conf.py</tt> to make it work.  Somewhere around line 613 (in the "MPlayer settings" section) add the following line: <tt>MPLAYER_VERSION&nbsp;=&nbsp;'1.0'</tt>.  Right below that, there's a setting called <tt>MPLAYER_AO_DEV</tt>.  Add a new line below the one show there and add the following setting: <tt>MPLAYER_AO_DEV&nbsp;=&nbsp;'macosx'</tt>.  Here's a snippet from the MPlayer settings section of my working <tt>~/.freevo/local_conf.py</tt> file: </p>
+
+<pre>
+# ======================================================================
+# MPlayer settings:
+# ======================================================================
+
+MPLAYER_VERSION = '1.0'
+
+# MPLAYER_AO_DEV       = 'oss:/dev/dsp'  # e.g.: oss,sdl,alsa, see mplayer docs
+MPLAYER_AO_DEV       = 'macosx'
+
+# MPLAYER_VO_DEV_OPTS  = ''              # e.g.: ':some_var=vcal'
+</pre>
+<p>Also, to remove all references to the TV portion of Freevo (because I haven't gotten it working yet), you'll need to add the following lines to the <tt>~/.freevo/local_conf.py</tt> file around line 169 in the "Plugins" section: </p>
+
+<pre>
+plugin.remove('tv')
+plugin.remove('tv.generic_record')
+plugin.remove('tv.manual_record')
+plugin.remove('tv.scheduled_recordings')
+plugin.remove('tv.view_favorites')
+plugin.remove('tv.mplayer')
+</pre>
+<p>That's all you need to do for configuration!  However, if Darwin Ports installed version 1.7.1 of pygame (which is the current version as of this writing), then you're going to have some issues with Freevo giving an error about "Surfaces must not be locked during blit".  After reading this email: <a class="external" href="http://aspn.activestate.com/ASPN/Mail/Message/pygame-users/2811112"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://aspn.activestate.com/ASPN/Mail/Message/pygame-users/2811112</a>, it mentions how to work around this error and that it'll be fixed in the next version.  As a work around, you'll need to edit the <tt>freevo-1.5.3/src/skins/main/screen.py</tt> file and make the following change after line 169: </p>
+
+<pre>
+168:            for x0, y0, x1, y1 in update_area:
+169:                self.s_content.blit(self.s_bg, (x0, y0), (x0, y0, x1-x0, y1-y0))
+170:                self.s_alpha.unlock()  # add this line
+171:                self.s_alpha.unlock()  # add this line
+172:                self.s_content.blit(self.s_alpha, (x0, y0), (x0, y0, x1-x0, y1-y0))
+</pre>
+<p>Whew!  Now that all of that is done, you can go ahead and start freevo! If freevo fails due to a missing utils module you may need to add <tt>export&nbsp;PYTHONHOME=/sw</tt> to your <tt>~/.bashrc</tt> if you are using Fink. </p>
+
+<h3 id="head-0908f6e3e3fa1c83ca31cc89db04328833650c77">Still To Do</h3>
+
+<ul>
+<li><p> Figure out why the Shutdown command doesn't work without a remote </p>
+</li>
+<li><p> Make MPlayer start fullscreen from the beginning so that it doesn't leave a green block in the upper left hand corner </p>
+</li>
+<li><p> Update Freevo so that Mac OS X can have full screen mode as well (it's very easy since pygame supports it already) </p>
+</li>
+<li><p> Get a TV capture card and work on that </p>
+</li>
+<li><p> Get a remote and work on getting LIRC to work </p>
+</li>
+<li><p> Figure out an alternative to the aumix application so that volume control works </p>
+</li>
+</ul>
+
+<h3 id="head-ee7ebc52e9e8a9b5b5b1ab302efce8b8c59fb55c">Things I'd like to Add</h3>
+
+<ul>
+<li><p> iPhoto integration </p>
+</li>
+<li><p> iTunes integration </p>
+</li>
+<li><p> Make slideshows an option on every picture folder (meaning they're dynamically generated, not based on an FXD or SSR file) </p>
+</li>
+</ul>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-10-12 13:29:33 by <span title="prime.ling.gu.se">MagerValp</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/MacOSX">http://freevo.sourceforge.net/cgi-bin/doc/MacOSX</a></p>
+</div> <!-- end page -->
+</body>
+</html>

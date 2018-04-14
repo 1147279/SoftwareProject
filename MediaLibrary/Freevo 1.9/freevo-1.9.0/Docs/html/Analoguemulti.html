@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>Analoguemulti - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/Analoguemulti?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/Analoguemulti?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">Analoguemulti</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h2 id="head-d9c81e58302f2c8d8497e2ceaedb82b5fd37a0aa">Multi tv card info</h2>
+
+<p>This is what I did to add a secondary tuner for recording, keeping the main tuner free for live tv viewing. Someone that knows Freevo better than I do should probably write this part, but something better than nothing right?  4 hours experience with Freevo and counting (version 1.5.2). </p>
+<p>In the local_conf.py file there are to variables VCR_CMD and VCR_AUDIO that tells mencoder everything it needs to know about recording by pulling together several of the variables defined earlier in the file, or in freevo.conf. </p>
+<p>It uses:  
+</p>
+<pre>
+CONF.mencoder (freevo.conf)
+CONF.tv (freevo.conf)
+CONF.chanlist (freevo.conf)
+
+TV_DRIVER = 'v4l2'
+TV_DEVICE = '/dev/video0'
+TV_INPUT  = '0'
+AUDIO_DEVICE = ='/dev/dsp'
+</pre>
+<p>What I did was create duplicates of these variables to reflect the hardware device I wanted to use for recording. </p>
+<p>Added: 
+</p>
+<pre>
+TV_DRIVER_2 = 'v4l2'
+TV_DEVICE_2 = '/dev/video1'
+TV_INPUT_2  = '0'
+AUDIO_DEVICE_2 = '/dev/dsp1'
+</pre>
+<p>The CONF.x variables I left alone, since they would be the same for each tuner. </p>
+<p>After adding the variables, find the VCR_AUDIO variable and change AUDIO_DEVICE to AUDIO_DEVICE_2 to use the second sound source. </p>
+
+<pre>
+VCR_AUDIO = (':adevice=%s' % AUDIO_DEVICE_2 +
+              ':audiorate=32000' +         # 44100 for better sound
+              ':forceaudio:forcechan=1:' + # Forced mono for bug in my driver
+              'buffersize=64')             # 64MB capture buffer, change?
+</pre>
+<p>Now modify the VCR_CMD variable to use the _2 variables instead of the main.  For my card I had to add the normid=1 part to select NTSC.  See the mencoder pages for more info. </p>
+
+<pre>
+VCR_CMD = (CONF.mencoder + ' ' +
+            'tv:// ' +                      # New mplayer requires this.
+            '-tv driver=%s:input=%d' % (TV_DRIVER_2, TV_INPUT_2) +
+            ':norm=%s' % CONF.tv +
+            ':normid=1' +                   # I had to add this to make it work for my card
+            ':channel=%(channel)s' +        # Filled in by Freevo
+            ':chanlist=%s' % CONF.chanlist +
+            ':width=%d:height=%d' % (TV_REC_SIZE[0], TV_REC_SIZE[1]) +
+            ':outfmt=%s' % TV_REC_OUTFMT +
+            ':device=%s' % TV_DEVICE_2 +
+            VCR_AUDIO +                     # set above
+            ' -ovc lavc -lavcopts ' +       # Mencoder lavcodec video codec
+            'vcodec=mpeg4' +                # lavcodec mpeg-4
+            ':vbitrate=1200:' +             # Change lower/higher, bitrate
+            'keyint=30 ' +                  # Keyframe every 10 secs, change?
+            '-oac mp3lame -lameopts ' +     # Use Lame for MP3 encoding, must be enabled in mencoder!
+            'br=128:cbr:mode=3 ' +          # MP3 const. bitrate, 128 kbit/s
+            '-ffourcc divx ' +              # Force 'divx' ident, better compat.
+            '-endpos %(seconds)s ' +        # only mencoder uses this so do it here.
+            '-o %(filename)s')              # Filled in by Freevo
+</pre>
+<p>One catch to this is the need to adjust mixer levels on the second sound card manually.  In my case this meant running  </p>
+<p>'alsamixer -c 1', setting the line-in volume up, muting it, and setting it for capture.  </p>
+<p>If it doesn't work for you, add a print line for the VCR_CMD "print VCR_CMD" to the end of local_conf.py for testing.  Run freevo and make note of the output for VCR_CMD.  Change '%(channel)s', %(seconds)s, and %(filename) to something appropriate(such as 3, 10, and test.avi) and try running the command manually to find the reason it isn't working.   </p>
+<p>Finally, the recordserver script puts a drop file to prevent live tv viewing / channel changes during record.  I couldn't see a way to disable this with an option, so I did it by patching the recordserver.py file.   </p>
+<p>Locate the line:  
+</p>
+<pre>
+tv_lock_file = config.FREEVO_CACHEDIR + '/record'
+</pre>
+<p>Change this line to: 
+</p>
+<pre>
+tv_lock_file = config.FREEVO_CACHEDIR + '/record.tuner2'
+</pre>
+<p>If anyone else has a cleaner way to do this, for the love of god and all that is holy write it up and put it here! </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-02-07 02:19:57 by <span title="mo-65-40-185-64.sta.sprint-hsd.net">DougBallance</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/Analoguemulti">http://freevo.sourceforge.net/cgi-bin/doc/Analoguemulti</a></p>
+</div> <!-- end page -->
+</body>
+</html>

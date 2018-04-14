@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>XMLTVGrab - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/XMLTVGrab?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/XMLTVGrab?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">XMLTVGrab</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h2 id="head-4a5349b101ea784fbfbb25a7e53824897e554588">Grabbing listings</h2>
+
+<p>Configure xmltv via the xmltv documented installation instructions. </p>
+<p>Quickstart: run 'tv_grab_your_local --configure' Enter the channels you require. Run 'tv_grab_your_local --days=1 &gt; /tmp/TV.xml' </p>
+<p>Run the xml tv guide grabber periodically to have it pull the XML files describing your television programming. </p>
+<p>For automatic downloading, you can add a line like this to your crontab: 
+</p>
+<pre>
+0 3 * * * /usr/bin/tv_grab_your_local --gui TermNoProgressBar --days=2 &gt; /tmp/TV.xml 2&gt;/tmp/TV.xml.error &amp;
+</pre>
+<p>The "2&gt;/tmp/TV.xml.error" bit saves the grabber's stderr output to a file.  The "&amp;" backgrounds the grabbing process.  Without the "&amp;", XMLTV will run in the foreground and if the process takes more than a minute, cron will kill it, leaving you with a partial XML file that Freevo can't use. The "--gui TermNoProgressBar" option solves an issue with the stderr output redirection.  </p>
+<p>The Freevo module "epg_xmltv.py" can be run standalone to generate a translated version of the TV guide that makes the first startup a lot quicker. <em>NOTE</em> Add better instructions </p>
+<p>Another way to do it is to have this in your crontab: 
+</p>
+<pre>
+/path/to/freevo tv_grab &gt; /tmp/TV.log 2&gt;&amp;1
+</pre>
+<p>You will need to define <tt>XMLTV_GRABBER</tt> in your local_conf.py </p>
+<p>Here's another shell script that you can cron that may help you out. 
+</p>
+<pre>
+#!/bin/sh
+
+/usr/bin/tv_grab_na --listings "$HOME/freevo/xmltv/listings_%d%m%Y.xml" --days 1
+rm /tmp/TV.xml
+ln -s `date +'$HOME/freevo/xmltv/listings_%d%m%Y.xml'` /tmp/TV.xml
+</pre>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-06-16 12:22:50 by <span title="piggy.gla.ac.uk">FernandoRodriguez</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/XMLTVGrab">http://freevo.sourceforge.net/cgi-bin/doc/XMLTVGrab</a></p>
+</div> <!-- end page -->
+</body>
+</html>

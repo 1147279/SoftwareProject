@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Automating Freevo with Cron</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Freevo Installation HOWTO"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Misc."
+HREF="c248.html"><LINK
+REL="PREVIOUS"
+TITLE="Booting into Freevo"
+HREF="x262.html"><LINK
+REL="NEXT"
+TITLE="Related Documents / Websites"
+HREF="x288.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Freevo Installation HOWTO: Build your own media box with Freevo and Linux</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x262.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 6. Misc.</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x288.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN273"
+>6.4. Automating Freevo with Cron</A
+></H1
+><P
+>If you truly plan on your Freevo box being a stand alone media box you will want to set up your XMLTV and record scripts in cron. This will ensure that your box runs smoothly without any problems.
+      </P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN276"
+>6.4.1. XMLTV</A
+></H2
+><P
+>If you have created the script mentioned in the XMLTV setup section then it should be fairly easy to automate the XMLTV channel grabbing. You might want to add a few lines to your XMLTV script that grabs the TV logos as well. Once you have your script working properly add the following to your crontab:
+        </P
+><P
+>        <PRE
+CLASS="SCREEN"
+>0 0 * * * /path/to/xmltv_script.sh
+        </PRE
+>
+        </P
+><P
+>Make sure to change the path above to the correct path to your XMLTV script. See <A
+HREF="x90.html#XMLTV"
+>the XMLTV section</A
+> for more information.
+        </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="FREEVORECORD"
+>6.4.2. Freevo Recording Daemon</A
+></H2
+><P
+>It's not technically a daemon per se, but you will need to run it via cron every minute so that it can check for programs to record and start recording them if it is time. Some people run it every hour or half hour as well. I personally would hate to miss the first few minutes of a program though so I choose to run it every minute. Once you have set up your directories in freevo_config.py you will need to add the following entry to your cron:
+        </P
+><P
+>        <PRE
+CLASS="SCREEN"
+>* * * * * /usr/local/freevo/freevo execute src/tv/record_daemon.py
+        </PRE
+>
+        </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x262.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x288.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Booting into Freevo</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c248.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Related Documents / Websites</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

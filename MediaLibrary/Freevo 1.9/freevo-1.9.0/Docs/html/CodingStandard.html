@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>CodingStandard - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/CodingStandard?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/CodingStandard?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">CodingStandard</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>To make it easier to read patches and other contributions, the freevo source code should follow some basic guidelines. The latest release is far away from respecting the guidelines, but on cvs we are working on a cleaner code. Most of the guidelines are taking from the basic <a class="external" href="http://www.python.org/peps/pep-0008.html"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> python guidelines</a>. </p>
+<ol type="1">
+<li><p>All files have a header. This header must include: a one line description, a longer description what this file does and how it interacts with others, and a name of a maintainer. </p>
+</li>
+<li class="gap"><p>More code doc. Each class must have a doc string, explaining the purpose of the class. Some for functions, also describing the parameters and return values. No exceptions (not even eventhandler()). One exception: after a class description, __init__ only needs parameter description. </p>
+</li>
+<li class="gap"><p>And even more doc: add comments inside the code what you are doing here. Some days ago I came across a 'if instance(self.parent, str)' and I wondered: how can this be? So more docs. Also document stuff like "now we build xy" and "add xy to z". And for 'if foo' in the line <span class="u">after</span> the if "now we handle foo by doing bar". </p>
+</li>
+<li class="gap"><p>Max line width is 80 chars, no more. It should be readable in a simple xterm. Indention is 4 chars. If you need a longer line, you should think of using a) a helper variable or b) move some code to an extra function. </p>
+</li>
+<li class="gap"><p>All variables/classes except tmp vars have clear names. Use file_dir, not fd or d. </p>
+</li>
+<li class="gap"><p>Config variables and constants are upper case, use an underline char to split words for better reading. So FOO, FOOBAR or FOO_BAR. Config variables also contain the code were they are used like AUDIO_MPLAYER_FOO is foo or audio, the mplayer plugin. </p>
+</li>
+<li class="gap"><p>Other variables and functions are lowercase. To split words here also use _, not a capital letter. E.g.: foo, foobar, foo_bar, not Foo, fooBar. </p>
+</li>
+<li class="gap"><p>Classes start with an uppercase char, followed by lowercase. To split words, use a capital letter, no _. E.g. Foo, Foobar or FooBar, not Foo_bar or Foo_Bar. </p>
+</li>
+<li class="gap"><p>Filenames are similar to variables/functions, no upper case letters. </p>
+</li>
+<li class="gap"><p>Some people like ( x , y ), others prefer (x, y), so do what you want here, both is ok. </p>
+</li>
+<li class="gap"><p>To make code readable, add an empty lines between blocks. Add two empty lines between functions. </p>
+</li>
+<li class="gap"><p>Do not use names of builtin functions (IMPORTANT!): dir, filter, str, file, etc </p>
+</li>
+<li class="gap"><p>Strings: Use single-quotes in general (less visual clutter), double-quote if you want to use single-quotes inside a string (or use backsplash here) and for multi-line string constants (like doc strings). If the string is visible to use user and no debug message, use the i18n module _(). 
+</p>
+<pre>
+'a simple text'
+
+'I can\'t believe how easy Python is'
+
+"I can't believe how easy Python is"
+
+"""A multi-
+line
+comment."""
+
+_('something to translate')
+</pre>
+</li>
+<li class="gap"><p>Python's linebreak rules are not entirely straight-forward. Most lines cannot be broken without a backslash (\). The exception is for expressions with parenthesis and braces (both kinds), Python doesn't need back-slashes there. I think it looks better with extra parenthesis instead of backslashes. </p>
+</li>
+<li class="gap"><p>Freevo CVS head uses the python logging module. So there should be no print statements in the code, use the logging object. A set of files sgare a specific logging module name. </p>
+</li>
+<li class="gap"><p>Split import statements into up to four groups: normal python imports, kaa imports, freevo imports and imports in the current module (inside the same directory). Only import one module each line and do not import files not needed. </p>
+</li>
+</ol>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-07-11 11:46:52 by <span title="demonstration.informatik.uni-bremen.de">Dischi</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/CodingStandard">http://freevo.sourceforge.net/cgi-bin/doc/CodingStandard</a></p>
+</div> <!-- end page -->
+</body>
+</html>

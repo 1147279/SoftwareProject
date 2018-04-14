@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>FreevoAptSuSE - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/FreevoAptSuSE?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/FreevoAptSuSE?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">FreevoAptSuSE</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h2 id="head-1643e18ccd9b577bf0259911696023f069e90361">Freevo Apt for SuSE</h2>
+
+<p>More information about apt-get for SUSE can be found at <a href="http://linux01.gwdg.de/apt4rpm/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://linux01.gwdg.de/apt4rpm/</a> . Reading that page is highly recommended. </p>
+<p>You can download apt from <a href="ftp://ftp.gwdg.de/pub/linux/suse/apt/SuSE/9.0-i386/RPMS.suser-rbos"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> ftp://ftp.gwdg.de/pub/linux/suse/apt/SuSE/9.0-i386/RPMS.suser-rbos</a> . You will need the apt, apt-libs, and lua rpms at a minimum. </p>
+<p>The following '/etc/apt/sources.list' file will allow you to get Freevo and it's dependencies, plus updates from SUSE.:: 
+</p>
+<pre>
+rpm      ftp://ftp.gwdg.de/pub/linux/suse/apt SuSE/9.0-i386  base update suser-rbos funktronics packman packman-i686 security
+rpm-src  ftp://ftp.gwdg.de/pub/linux/suse/apt SuSE/9.0-i386  base update suser-rbos funktronics packman packman-i686 security
+</pre>
+<p>After apt is setup, you need to run 'apt-get update' before doing anything else. After that you can install Freevo by typing 'apt-get install freevo' . </p>
+<p><strong>Note: </strong> The above sources.list includes the 'base' component. If you originally installed SUSE 9.0 from DVD/CDs an 'apt-get upgrade' will tell you that a lot of packages need to be upgraded. There are 3 things that you can do about this: </p>
+<ol type="1">
+<li><p>Update all of the packages and be done with it. This can take a long time </p>
+</li>
+<li><p>Figure out and install the dependencies yourself </p>
+</li>
+<li><p>Best option, if you have the space: Copy all of the RPMs from your DVD/CDs to your hard drive (or a machine on your local network that is not publicly accessible) and create your own repository for 'base'. Here are instructions for doing this from Richard Bos (from <a href="http://sourceforge.net/mailarchive/message.php?msg_id=6400724"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://sourceforge.net/mailarchive/message.php?msg_id=6400724</a> ): </p>
+</li>
+</ol>
+<p>Install the rpm that helps you create a repository: 
+</p>
+<pre>
+apt install apt4rpm
+</pre>
+<p>Now create the file ~/.aptate/aptate.conf. Something like the one below, change LOGIN in your loginname 
+</p>
+<pre>
+   &lt;?xml version='1.0' encoding="iso-8859-1"?&gt;
+   &lt;!DOCTYPE opt SYSTEM "/usr/share/apt4rpm/aptate.dtd"&gt;
+
+   &lt;opt&gt;
+     &lt;topdir&gt;/home/LOGIN/&lt;/topdir&gt;
+
+     &lt;distribution id="suse90"&gt;
+       &lt;name&gt;suse&lt;/name&gt;
+       &lt;version&gt;9.0&lt;/version&gt;
+       &lt;architecture&gt;i586&lt;/architecture&gt;
+
+       &lt;component&gt;
+        &lt;name&gt;base&lt;/name&gt;
+         &lt;url&gt;../../../media/dvd/suse/&lt;/url&gt;
+       &lt;/component&gt;
+     &lt;/distribution&gt;
+   &lt;/opt&gt;
+</pre>
+<p>Than run aptate and after it has finished, what can take quite some time you'll have a repository in /home/LOGIN/apt. In /home/LOGIN/apt/suse-9.0/ examples you'll find an example sources.list file. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-01-10 16:50:03 by <span title="212.17.56.2">JohnMolohan</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/FreevoAptSuSE">http://freevo.sourceforge.net/cgi-bin/doc/FreevoAptSuSE</a></p>
+</div> <!-- end page -->
+</body>
+</html>

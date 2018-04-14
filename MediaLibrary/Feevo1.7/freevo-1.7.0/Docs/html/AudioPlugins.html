@@ -1,0 +1,348 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>AudioPlugins - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/AudioPlugins?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/AudioPlugins?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">AudioPlugins</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<ol>
+
+<li>
+<a href="#head-c6d963744a24c2c9557906fa5ba667d3bd14c385">Detached Audio</a>
+</li>
+
+<li>
+<a href="#head-0736fa4f88708c018a3e549a9f43d2465f70e66d">Playlist</a>
+</li>
+
+<li>
+<a href="#head-9f2e2761c32ad9618bd4052ee3c4eb37653a446a">xmms</a>
+</li>
+
+<li>
+<a href="#head-0c57a4072cc63f927aadc2afea5dcf722eb49b53">Audio CD backup</a>
+</li>
+
+<li>
+<a href="#head-805bcd1827d7cb7ab60a9e72855170e9ee394a99">Cover Search</a>
+</li>
+
+<li>
+<a href="#head-a19371ad20096026fec0100d8d808f0f87a5eb00">Webradio</a>
+</li>
+
+<li>
+<a href="#head-a159c1c774e57bbc008acbbf9d301b82c1f9dd10">FM Radio</a>
+<ol>
+
+<li>
+<a href="#head-bb7bbb9ab71b67336a2c0af28612e835a832d517">bttv Cards</a>
+</li>
+
+<li>
+<a href="#head-cf60cf06439ed4e8f520f119f327648aa13788e6">ivtv Cards</a>
+</li>
+
+</ol>
+
+<li>
+<a href="#head-f90bdb612d7e99092fe584c4df1640c8d917a64d">3rd Party plugins</a>
+<ol>
+
+<li>
+<a href="#head-d1497ac615494e356b46f82c08be617aa281576a">Album Tree</a>
+</li>
+
+</ol>
+
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-c6d963744a24c2c9557906fa5ba667d3bd14c385">Detached Audio</h2>
+
+<p>With the detached audio plugin it is possible to play music in the background and leave the music menu in order to do something else, while the music keeps playing. For example you can have a look at the tv guide or play a game, or something similar... </p>
+<p>To activate this plugin you just have to put the following in <em>local_conf.py</em>: 
+</p>
+<pre>
+plugin.activate('audio.detach')
+</pre>
+<p>Now, if you press DISPLAY while a song is playing, the "song playing page" is hidden, and the song information is shown in the idlebar instead (if you have it activated and there is enough free place). You can then navigate in the usual way through your freevo menus, while the music keeps playing in the background. If you want to issue a command to the music playing application, you can reach it via a extra entry in your music menu, which is called <em>show player</em>. Selecting this entry brings up again the "song playing page". </p>
+<p>NOTE: you can watch tv and videos while playing detached audio but you won't hear their audio. </p>
+
+<h2 id="head-0736fa4f88708c018a3e549a9f43d2465f70e66d">Playlist</h2>
+
+<p>This plugin allows you to create playlists for all your media files. To activate it, simply add the following line in your <em>local.conf.py</em>: </p>
+<ul>
+<li style="list-style-type:none">
+<pre>
+plugin.activate( ‘audio.playlist’, args=( ‘/Path/To/Playlists’, ‘Naming_Scheme %m%d’ ) )
+PLAYLIST_SUFFIX = [ ‘m3u’ ]
+</pre>
+</li>
+</ul>
+<p>Now, from within Freevo, when you navigate to a particular file or directory you want to make a playlist, or playlist member, press the ENTER button on your remote (<em>e</em> on your keyboard) and select the option to <em>Enqueue this Music in Playlist</em>. Freevo will then, if necessary, create a file in your <tt>/Path/To/Playlists&nbsp;</tt> called <tt>Naming_Scheme&nbsp;0311&nbsp;</tt> (if you created the playlist on March 11th, for example), and add the highlighted file/directory as the first member of the playlist. You can continue to add files and directories to your newly created playlist by enqueueing more files/directories. </p>
+<p>Afterward, you can create a new playlist by pressing the ENTER button on your remote (<em>e</em> on your keyboard) and selecting the ‘'Make a new Audio Playlist’'; however, the new playlist WILL OVERWRITE YOUR PREVIOUS ONE IF YOUR NAMING SCHEME DOESN’T TAKE THIS INTO CONSIDERATION! </p>
+<p>Once your playlist is established, the only way to change the name of your playlist is to manually rename the playlist file: <tt>&nbsp;mv&nbsp;“Naming_Scheme&nbsp;0311”&nbsp;“Rock&nbsp;&amp;&nbsp;Roll”&nbsp;</tt> </p>
+<p>You can also manually edit your playlist later by simply opening the file up in any text processor and changing its contents. Be aware, though, that a blank line in your playlist will make the plugin fail to parse the file. </p>
+
+<h2 id="head-9f2e2761c32ad9618bd4052ee3c4eb37653a446a">xmms</h2>
+
+<p>If you want to use xmms for playing music instead of mplayer, you need this plugin. </p>
+<p>1) Install xmms. Verify it operates correctly. </p>
+<p>2) Install pyxmms. (under debian it is called python-xmms) </p>
+<ul>
+<li style="list-style-type:none"><p>Note: Make sure that you install pyxmms under the same version of python you use to run Freevo. </p>
+</li>
+</ul>
+<p>3) add this to your <em>local_conf.py</em> 
+</p>
+<pre>
+plugin.activate('audio.fxmms')
+FXMMS_CMD = '/usr/bin/xmms'
+</pre>
+<p>4) additional setup (optional): 
+</p>
+<pre>
+# Tell freevo to prefer fxmms for playing most audio
+# generally most people who want fxmms also want this, but it is not required.
+# Not setting this will force fxmms to take a back seat to audio.mplayer if it is active
+# generally i set this and still keep mplayer active since it supports net radio streams and many more formats.
+AUDIO_PREFERED_PLAYER = 'fxmms'
+
+# an optional parameter to tell freevo not to use FXMMS to play netradio (it doesn't support most of the formats)
+FXMMS_NETRADIO = 0
+
+# an optional parameter, tells freevo that FXMMS can play the following files with those extensions. below is the
+# default but you can simply add more if you have xmms plugins that play other formats.
+FXMMS_SUFFIX = ['mp3','wav','ogg', 'mod']
+</pre>
+
+<h2 id="head-0c57a4072cc63f927aadc2afea5dcf722eb49b53">Audio CD backup</h2>
+
+<p>Freevo can backup your audio CD's in mp3, ogg or wav format. To activate the plugin, add the following to local_conf.py 
+</p>
+<pre>
+plugin.activate('audio.cdbackup')}
+}}
+The following variables also need to be added :
+Directory that you want to backup your audio CD to.
+{{{
+AUDIO_BACKUP_DIR = '/music/MP3'
+</pre>
+<p>You can use any combination of the 4 variables below to create subdirectories, and filename of songs. The four variables are: genre, artist, album, and song. Whatever follows the last slash indicates how to create the filename. Everything before the last slash indicates the directory structure you would like to use -which will be appended to AUDIO_BACKUP_DIR. 
+</p>
+<pre>
+CD_RIP_PN_PREF= '%(genre)s/%(artist)s/%(album)s/%(song)s'
+</pre>
+<p>This would give you something like: /music/MP3/metal/Metallica/And Justice For All/Blackened.mp3 (or Blackened.wav, Blackened.ogg) Here is another example which includes the artist and album in the filename: 
+</p>
+<pre>
+CD_RIP_PN_PREF = '%(artist)s/%(artist)s - %(album)s - %(song)s'
+</pre>
+<p>This would give you something like: /music/MP3/Metallica/Metallica - And Justice For All - Blackened.mp3 cdparanoia is used to rip the CD to your hard drive. The actual command that will be executed is stored in CDPAR_CMD. 
+</p>
+<pre>
+CDPAR_CMD = 'cdparanoia'
+</pre>
+<p>Lame is used for .mp3 encoding. The actual command that will be executed is stored in LAME_CMD 
+</p>
+<pre>
+LAME_CMD = 'lame'
+</pre>
+<p>For ripping to .mp3 you can provide your own Lame encoder parameters for bitrate, algorithm, and various other lame options. Add your custom parameters in CD_RIP_LAME_OPTS. 
+</p>
+<pre>
+CD_RIP_LAME_OPTS = '--vbr-new'
+</pre>
+<p>Likewise for Ogg format, the command is as below, and you can add your own custom ogg encoding options. 
+</p>
+<pre>
+OGGENC_CMD ='oggenc'
+CD_RIP_OGG_OPTS = ' '
+</pre>
+<p>Finally, to actually backup an audio CD within Freeevo, when you are in the Music menu, highlight/choose a CD, then hit 'e' on keyboard or 'enter' on your remote control and you will be able to access the rip/backup menu. </p>
+<p>Here is a list of all the above mentioned parameters for simple cutting and pasting: </p>
+
+<pre>
+#To activate the cdbackup plugin:
+plugin.activate('audio.cdbackup')
+#The following are for configuring the CD Audio backup plugin:
+AUDIO_BACKUP_DIR = '/music/MP3'
+
+CD_RIP_PN_PREF= '%(genre)s/%(artist)s/%(album)s/%(song)s'
+CDPAR_CMD = 'cdparanoia'
+
+LAME_CMD = 'lame'
+CD_RIP_LAME_OPTS = '--vbr-new'
+
+#You can leave this out if you never use ogg and it won't show up in the backup menu
+OGGENC_CMD ='oggenc'
+CD_RIP_OGG_OPTS = ' '
+</pre>
+
+<h2 id="head-805bcd1827d7cb7ab60a9e72855170e9ee394a99">Cover Search</h2>
+
+<p>This plugin will allow you to search for CD Covers for your albums. To do that just go to an audio item (e.g. Album) and press 'e' (on your keyboard) or 'ENTER' on your remote control. That will present you a list of options with <strong>Find a cover for this music</strong> as one item, just select it press 'enter' (on your keyboard) or 'PLAY' on your remote control and then it will search the cover in amazon.com. </p>
+<p><strong>Please Notice</strong> that this plugin use the Amazon.com web services and you will need an Amazon developer key. You can get your at: <a href="http://www.amazon.com/webservices"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.amazon.com/webservices</a>, get that key and put it in a file named <strong>~/.amazonkey</strong> or pass it as an argument to this plugin. </p>
+<p>To activate this plugin, put the following in your <strong>local_conf.py</strong>. </p>
+<p>If you have the key in ~/.amazonkey </p>
+
+<pre>
+plugin.activate( 'audio.coversearch' )
+</pre>
+<p>Or this one if you want to pass the key to the plugin directly: </p>
+
+<pre>
+plugin.activate( 'audio.coversearch', args=('YOUR_KEY',) )
+</pre>
+
+<h2 id="head-a19371ad20096026fec0100d8d808f0f87a5eb00">Webradio</h2>
+
+<p>Previous versions of Freevo contained a webradio plugin, but now it's gone. It has been replaced by a fxd-file with container and audio tags. This fxd-file needs to be added to the list of AUDIO_ITEMS in your local_conf.py: </p>
+
+<pre>
+AUDIO_ITEMS = [ ('MP3 Audio', '/home/freevo/MP3'),
+                ('WebRadio', '/home/freevo/fxd/webradio.fxd') ]
+</pre>
+<p>The webradio shows up as an option after your own Music Dirs and before your cdroms in the audio menu. </p>
+<p>The fxd-file contains information on the available radio stations. An example of such a file can be found in the <a class="external" href="http://cvs.sourceforge.net/viewcvs.py/*checkout*/freevo/freevo/share/fxd/webradio.fxd?rev=1.1"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> cvs repository</a>. </p>
+<p>A small excerpt from this file: </p>
+
+<pre>
+&lt;?xml version="1.0" ?&gt;
+&lt;freevo&gt;
+  &lt;container title="Web Radio" type="webradio"&gt;
+    &lt;container title="Alternative"&gt;
+      &lt;audio title="KQRX 95x"&gt;
+ &lt;url&gt;mms://media.apex2000.net/KQRX&lt;/url&gt;
+      &lt;/audio&gt;
+      &lt;audio title="WBER 90.5 FM"&gt;
+ &lt;url&gt;rtsp://media.monroe.edu/encoder/live2.ra&lt;/url&gt;
+      &lt;/audio&gt;
+      &lt;audio title="Heavy Metal Radio"&gt;
+ &lt;url&gt;http://war.str3am.com:7080&lt;/url&gt;
+ &lt;info&gt;
+   &lt;description&gt;HeavyMetalRadio.com - The Loudest Site On The
+     Internet!!!&lt;/description&gt;
+   &lt;link&gt;http://www.heavymetalradio.com&lt;/link&gt;
+   &lt;bitrate&gt;128&lt;/bitrate&gt;
+ &lt;/info&gt;
+      &lt;/audio&gt;
+    &lt;/container&gt;
+  &lt;/container&gt;
+&lt;/freevo&gt;
+</pre>
+<p>PleaseUpdate Add information on supported formats and links to existing fxd files </p>
+
+<h2 id="head-a159c1c774e57bbc008acbbf9d301b82c1f9dd10">FM Radio</h2>
+
+
+<h3 id="head-bb7bbb9ab71b67336a2c0af28612e835a832d517">bttv Cards</h3>
+
+<p>(this is for bttv cards?) </p>
+<p>This is a plugin for the FM radio that is built into numerous TV capture cards. The plugin works by calling the radio application that is bundled with xawtv. </p>
+<p>To activate the plugin add the following to your local_conf.py: </p>
+
+<pre>
+plugin.activate('audio.radioplayer')
+plugin.activate('audio.radio')
+RADIO_CMD='/usr/bin/radio'
+</pre>
+<p>Set radio stations in local_conf.py using the RADIO_STATIONS setting eg: </p>
+
+<pre>
+RADIO_STATIONS = [ ('Mai FM', '88.6'),
+                   ('1ZB', '89.4'),
+                   ('91', '91'),
+                   ('Channel Z', '94.2'),
+                   ('BFM', '95'),
+                   ('Hauraki', '99'),
+                   ('Life FM', '99.8') ]
+</pre>
+<p>You should then have a radio icon under your Audio section. </p>
+<p>Note: the use of btaudio for tuner audio (or any other alternative dsp device) is not supported at the moment. </p>
+<p>However, it is possible to get btaudio to work by making minor modifications to radioplayer.py. In the play command add an extra os.system call after the radio call, this is an external call to sox which will copy the audio from /dev/dsp2 to /dev/dsp at the specified rate: </p>
+
+<pre>
+os.system('/usr/bin/sox -r 32000 -w -t ossdsp /dev/dsp2 -t ossdsp %s &amp;')
+</pre>
+<p>In the stop command add an extra os.system call after the radio call: </p>
+
+<pre>
+os.system('killall -9 sox')
+</pre>
+<p>Obviously the above is a hack and could be made cleaner, but ideally a sox call would not be required. </p>
+
+<h3 id="head-cf60cf06439ed4e8f520f119f327648aa13788e6">ivtv Cards</h3>
+
+<p>The option for ivtv based cards like the WinTV PVR 350 would look like this. </p>
+<p>Change the command line in the radioplayer.py to </p>
+
+<pre>
+os.system('%s -f %s &amp;' % (config.RADIO_CMD, self.item.station))
+</pre>
+<p>and further down </p>
+
+<pre>
+os.system('killall -9 aplay')
+</pre>
+<p>Change the RADIO_CMD in your local_conf.py to </p>
+
+<pre>
+RADIO_CMD = '/usr/bin/ivtv-radio -d /dev/v4l/radio0 -i /dev/v4l/video24'
+</pre>
+<p>Be sure to substitiute the above devices with yours. It depends on working with udev or devfs and on different tuners and ivtv versions. Play with it on the command line first. It's ugly and keeps filling my logs with "Radio Player IS PLAYING?" but it works. </p>
+
+<h2 id="head-f90bdb612d7e99092fe584c4df1640c8d917a64d">3rd Party plugins</h2>
+
+<p>Not in the core distribution. </p>
+
+<h3 id="head-d1497ac615494e356b46f82c08be617aa281576a">Album Tree</h3>
+
+<p><a href="PluginAudioAlbumTree.html">PluginAudioAlbumTree</a> </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-03-18 18:52:42 by <span title="cp562554-a.landg1.lb.home.nl">mvoncken</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/AudioPlugins">http://freevo.sourceforge.net/cgi-bin/doc/AudioPlugins</a></p>
+</div> <!-- end page -->
+</body>
+</html>

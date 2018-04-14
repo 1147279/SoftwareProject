@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>ImageConfig - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/ImageConfig?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/ImageConfig?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">ImageConfig</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>Not much to configure. Let freevo know where the images are : 
+</p>
+<pre>
+Image_ITEMS = [ ('My Holiday Pictures', '/files/pictures/holiday'),
+                ('Family Pictures', '/files/pictures/family') ]
+</pre>
+<p>The list of filename suffixes that are used to match the files that are used for the image viewer. 
+</p>
+<pre>
+IMAGE_SUFFIX = [ 'jpg','gif','png', 'jpeg','bmp','tiff','psd' ]
+</pre>
+<p>The viewer supports a slideshow file. 
+</p>
+<pre>
+IMAGE_SSHOW_SUFFIX = [ 'ssr' ]
+</pre>
+<p>Choose the mode of the blending effect in the image viewer between two images. Possible values are: </p>
+<ul>
+<li><p> None: no blending </p>
+</li>
+<li><p> -1    random effect </p>
+</li>
+<li><p> 0    alpha blending </p>
+</li>
+<li><p> 1    wipe effect </p>
+</li>
+</ul>
+
+<pre>
+IMAGEVIEWER_BLEND_MODE = -1
+</pre>
+<p>And choose if you want freevo to treat your image directories as implicit slideshows. 
+</p>
+<pre>
+DIRECTORY_CREATE_PLAYLIST=['image']
+</pre>
+<p>If you press NEXT or PREV while viewing one of the images in the directory, freevo will display the next or previous image in the directory. </p>
+<p>You can also set a time after which freevo proceeds with the next image by: 
+</p>
+<pre>
+IMAGEVIEWER_DURATION = 2
+</pre>
+<p>By default this variable is set to 0, which means that you have to press NEXT to continue. </p>
+<p>Moreover you also can have a menu item for the directory playlist by adding 'image' to the <tt>ADD_PLAYLIST</tt>s variables: 
+</p>
+<pre>
+DIRECTORY_ADD_PLAYLIST_FILES   = ['image']
+</pre>
+<p>and/or 
+</p>
+<pre>
+DIRECTORY_ADD_RANDOM_PLAYLIST  = ['image']
+</pre>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-02-15 16:57:51 by <span title="p508702F8.dip0.t-ipconnect.de">TanjaStriepling</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/ImageConfig">http://freevo.sourceforge.net/cgi-bin/doc/ImageConfig</a></p>
+</div> <!-- end page -->
+</body>
+</html>

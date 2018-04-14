@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>Hardware/ivtv - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="../modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="../modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="../modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/Hardware/ivtv?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/Hardware/ivtv?action=print">
+<link rel="Up" href="/cgi-bin/doc/Hardware">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="../Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">Hardware/ivtv</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>Site Index: </p>
+<ol>
+
+<li>
+<a href="#head-c2f64b46c62198a67adab096edc6c65c4d5ce62e">General Info</a>
+</li>
+
+<li>
+<a href="#head-cb41dd3700723f6fc83375e00ce26b55b96b7817">IVTV Driver</a>
+</li>
+
+<li>
+<a href="#head-8e40299c22d09a93f719b490aa83e89c13030013">TV-Out</a>
+</li>
+
+<li>
+<a href="#head-dfdf13cf19abefca05ec663d770af395de6561c6">LIRC / WinTV PCR remote control</a>
+</li>
+
+<li>
+<a href="#head-7dd665e925b4bf60ba7e560b46b922a2db70d0c7">Freevo setup for IVTV</a>
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-c2f64b46c62198a67adab096edc6c65c4d5ce62e">General Info</h2>
+
+<p>There is support for the WinTV-PVR series of cards in Freevo; the WinTV-PVR 250/350 cards have recently been getting a lot more attention. </p>
+
+<h2 id="head-cb41dd3700723f6fc83375e00ce26b55b96b7817">IVTV Driver</h2>
+
+<p>The drivers for these cards are under active development and are becoming stable, see <a href="http://ivtv.sourceforge.net"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://ivtv.sourceforge.net</a> . Please make sure your card and the ivtv driver are working properly before trying to use it in Freevo. That is, download and install the latest ivtv driver; you'll find information on this in the <a class="external" href="http://ivtv.sourceforge.net/docs.html"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> IVTV documentation</a> and the <a class="external" href="http://ivtv.sourceforge.net/tiki/tiki-view_faq.php?faqId=1"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> IVTV FAQ</a>. Basically, this boils down to: </p>
+<ul>
+<li><p> Compiling and installing the modules (i.e. make &amp;&amp; make install) </p>
+</li>
+<li><p> Making sure you have the firmware for the cards in /lib/modules. There is a utility included with the driver package that will help you with this called ivtvfwextract.pl. Run it with the location of the windows driver package as its only argument (defaults to /mnt/cdrom) and it will do the rest. </p>
+</li>
+<li><p> Loading and testing the driver </p>
+</li>
+<li><p> Putting the options and module dependancies into your modules.conf file </p>
+</li>
+<li><p> Setting up the module(s) for autoloading on boot </p>
+</li>
+</ul>
+<p>The MythTV site offers an excellent page that describes how to <a class="external" href="http://www.mythtv.org/docs/mythtv-HOWTO-22.html#ss22.1"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> install a PVR-250/350 on Mandrake 9.1</a>. It may be helpful for other distros as well. </p>
+
+<h2 id="head-8e40299c22d09a93f719b490aa83e89c13030013">TV-Out</h2>
+
+<p>If you want Freevo to use the WinTV PVR card's TV-out, you can use the TV-out as a standard framebuffer device for X. Once you get X working with this framebuffer device freevo works with it just like any other X display. This is explained in the <a class="external" href="http://ivtv.writeme.ch/tiki-index.php?page=TvOutHowto"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> TvOutHowto page of the IVTV Wiki</a>. </p>
+
+<h2 id="head-dfdf13cf19abefca05ec663d770af395de6561c6">LIRC / WinTV PCR remote control</h2>
+
+<p>After setting up the IVTV driver, you might want to set up LIRC, too.  My lirc came with a suitable lircd.conf.hauppauge config file which actually contains two separate descriptions of remote controls.  The second one matches my remote (that came with the PVR 350). See Configuration / Lirc for more info. </p>
+
+<h2 id="head-7dd665e925b4bf60ba7e560b46b922a2db70d0c7">Freevo setup for IVTV</h2>
+
+<p>See <a href="../AnalogTvConfig.html">AnalogTvConfig</a> </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2004-12-31 12:16:38 by <span title="h194-7-114-130.unknown.fortisbank.be">BHeremans</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/Hardware/ivtv">http://freevo.sourceforge.net/cgi-bin/doc/Hardware/ivtv</a></p>
+</div> <!-- end page -->
+</body>
+</html>

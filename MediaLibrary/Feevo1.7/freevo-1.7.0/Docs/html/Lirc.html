@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>Lirc - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/Lirc?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/Lirc?action=print">
+<link rel="Appendix" title="lircd.conf" href="/cgi-bin/doc/Lirc?action=AttachFile&amp;do=get&amp;target=lircd.conf">
+<link rel="Appendix" title="lircrc" href="/cgi-bin/doc/Lirc?action=AttachFile&amp;do=get&amp;target=lircrc">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">Lirc</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<ol>
+
+<li>
+<a href="#head-e3f24cf3a3e612dfd208402a0dc4159afddfd8f3">Overview</a>
+</li>
+
+<li>
+<a href="#head-a87c51e08f9aba29ff6e9916065ffe9967051bfe">Install steps</a>
+</li>
+
+<li>
+<a href="#head-2b95f5f7148efeac7fd4654945e51a1ec0f44a8f">File format</a>
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-e3f24cf3a3e612dfd208402a0dc4159afddfd8f3">Overview</h2>
+
+<p>Basically what happens is, when Freevo starts up, it checks if it can initialize pylirc. If it can, it tries to open <tt>/etc/freevo/lircrc</tt> (or whatever the variable LIRCRC in <em>local_conf.py</em> is set to). It then uses these strings in the freevo code to perform actions. </p>
+<p>First check if Lirc is working with your remote before attempting to get it to work with freevo. </p>
+<p>(NOTE:: Check the remote section under supported <a href="Hardware.html">hardware</a> for stuff on specific remotes with lirc) </p>
+
+<h2 id="head-a87c51e08f9aba29ff6e9916065ffe9967051bfe">Install steps</h2>
+
+<ol type="1">
+<li><p>Install Lirc (remote control receiver software) </p>
+<ul>
+<li><p> <a class="external" href="http://www.lirc.org/Download"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.lirc.org/Download</a> and <a class="external" href="http://www.lirc.org/html/install.html"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> install</a> lirc. </p>
+</li>
+<li><p> <a href="http://www.lirc.org/html/configure.html#lircrc_format"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.lirc.org/html/configure.html#lircrc_format</a> (for more details on the .lircrc file format) </p>
+</li>
+<li><p> <tt>insmod</tt> any lirc modules you need (i.e. <tt>lirc_serial</tt>) </p>
+</li>
+<li><p> Create the <tt>/dev/lirc</tt> and <tt>/dev/lircd</tt> devices </p>
+<ul>
+<li><p> N.B. <tt>/dev/lirc</tt> is not required if your device does not use a lirc kernel module (e.g. IRman)  </p>
+</li>
+</ul>
+</li>
+<li><p> Use <em>irrecord</em> to <a class="external" href="http://www.lirc.org/html/irrecord.html"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> record your IR frequencies</a> and associate them with names. </p>
+</li>
+<li><p> Copy the resulting file to <tt>/etc/lircd.conf</tt> or <tt>/etc/lirc/lircd.conf</tt> (depends on distro used) </p>
+<ul>
+<li><p> This is my lircd.conf for a grey/black Hauppauge remote: lircd.conf </p>
+</li>
+<li><p> And this is my config for the same remote to control Xine. Save it as ~/.lircrc: lircrc </p>
+</li>
+</ul>
+<ul>
+<li><p> lircd of an other(newer) pvr350 remote <a class="external" href="http://freevo.sourceforge.net/cgi-bin/freevo-2.0/Lirc"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> on the freevo2 wiki</a>   </p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="gap"><p>Install pylirc (python-lirc library) </p>
+<ul>
+<li><p> <a class="external" href="http://pylirc.sourceforge.net/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> Download pylirc</a> and install. </p>
+</li>
+</ul>
+</li>
+<li class="gap"><p>Start the lirc daemon </p>
+</li>
+</ol>
+
+<pre>
+/etc/init.d/lircd start
+</pre>
+<ol start="4" type="1">
+<li><p>Run the lirc app <em>irw</em> to check the function of the remote control. you should see the names from your <tt>lircd.conf</tt> showing up when pressing those buttons. </p>
+</li>
+<li class="gap"><p>Create a new file: <tt>/etc/freevo/lircrc</tt>. Use <tt>freevo&nbsp;makelircrc&nbsp;-w</tt> to produce a base <tt>lircrc</tt> file. See below for file format and how ot enhance it. </p>
+</li>
+<li class="gap"><p>Test the remote using lirc's <em>ircat</em> application: </p>
+</li>
+</ol>
+
+<pre>
+ircat --config=/etc/freevo/lircrc freevo
+</pre>
+<ul>
+<li><p> You should see the new freevo button names appear instead of those defined in <tt>lircd.conf</tt>  </p>
+</li>
+</ul>
+<ol start="7" type="1">
+<li><p>Now try it with freevo. </p>
+</li>
+</ol>
+
+<h2 id="head-2b95f5f7148efeac7fd4654945e51a1ec0f44a8f">File format</h2>
+
+<p>Essential commands: 
+</p>
+<pre>
+LEFT, RIGHT, UP, DOWN, SELECT, ENTER, EXIT, DISPLAY
+</pre>
+<p>Recommended commands: 
+</p>
+<pre>
+REC, REW, PLAY, FFWD, PAUSE, STOP, CH+, CH-
+</pre>
+<p>Format of file is: 
+</p>
+<pre>
+begin 
+    prog = freevo 
+    button = &lt;name from lircd&gt; 
+    config = &lt;freevo name&gt; 
+end 
+</pre>
+<p>for example one section would be: 
+</p>
+<pre>
+begin 
+    prog = freevo 
+    button = RECALL 
+    config = REC 
+end 
+</pre>
+<p>A more elaborate example is: 
+</p>
+<pre>
+begin
+  prog=freevo
+  remote=hauppaugegrey
+  button=GO
+  repeat=1
+  delay=2
+  config=ENTER
+end
+</pre>
+<p>the file consists of many of the above sections separated by a blank line. For a listing of all available commands and how they are mapped within the different events (Playing Audio, Video, TV, etc...) look at <tt>freevo/src/event.py</tt> .  </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-07-28 03:55:53 by <span title="pcp09353534pcs.tsclos01.al.comcast.net">EvanHisey</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/Lirc">http://freevo.sourceforge.net/cgi-bin/doc/Lirc</a></p>
+</div> <!-- end page -->
+</body>
+</html>

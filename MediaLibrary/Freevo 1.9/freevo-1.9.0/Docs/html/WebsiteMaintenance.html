@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>WebsiteMaintenance - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/WebsiteMaintenance?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/WebsiteMaintenance?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">WebsiteMaintenance</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>Site Index: </p>
+<ol>
+
+<li>
+<a href="#head-4dff772827bf2282329b9941707d00996f1f1465">Introduction</a>
+</li>
+
+<li>
+<a href="#head-d5d4fa907ab9c51490c3036313094a7cf63853e3">CVS</a>
+</li>
+
+<li>
+<a href="#head-1680d69f5d52e62f48d50a343cf355286a17a148">Gensite.py</a>
+<ol>
+
+<li>
+<a href="#head-46d652ca5ac39bd5e132d4a471e44ef5d3ea97ad">Template and content files</a>
+</li>
+
+<li>
+<a href="#head-fb42a881eecdf42f8855f13433af0635f2951892">News page</a>
+</li>
+
+</ol>
+
+<li>
+<a href="#head-2a11dd8076501d950c4996e62a94c701111bd78f">Screenshots</a>
+</li>
+
+<li>
+<a href="#head-465c45d54a19182b737699b77cced9cf8965f904">Uploading new website files</a>
+</li>
+
+<li>
+<a href="#head-6086b2463ddbcc840c0ce66ee34f22a999ca6fca">Publishing changes via rsync</a>
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-4dff772827bf2282329b9941707d00996f1f1465">Introduction</h2>
+
+<p>The website is hosted on Sourceforge. All developers with CVS access are welcome to help keeping it updated! </p>
+
+<h2 id="head-d5d4fa907ab9c51490c3036313094a7cf63853e3">CVS</h2>
+
+<p>The website HTML templates and scripts are stored in CVS as the website component.  It can be checked out and modified if you're a developer. </p>
+
+<h2 id="head-1680d69f5d52e62f48d50a343cf355286a17a148">Gensite.py</h2>
+
+<p>The <tt>gensite.py</tt> application will generate the website HTML documents from template and content files. Run it with no arguments after changing the other files. </p>
+
+<h3 id="head-46d652ca5ac39bd5e132d4a471e44ef5d3ea97ad">Template and content files</h3>
+
+<p>Please see the source code of <a class="external" href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/freevo/website/gensite.py?rev=HEAD&amp;content-type=text/vnd.viewcvs-markup"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> gensite.py</a> for a list of the template and content files that are used to build the website. </p>
+
+<h3 id="head-fb42a881eecdf42f8855f13433af0635f2951892">News page</h3>
+
+<p>The <a class="external" href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/*checkout*/freevo/website/news.txt"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> news.txt</a> file is processed by <tt>gensite.py</tt> to generate the front newspage. It has simple text format that is transformed into HTML. </p>
+<p>Please note that the format is a little tricky sometimes, check the results carefully before uploading to the real site. </p>
+
+<h2 id="head-2a11dd8076501d950c4996e62a94c701111bd78f">Screenshots</h2>
+
+<p>There is a script called <a class="external" href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/freevo/website/gen_ss.py?rev=HEAD&amp;content-type=text/vnd.viewcvs-markup"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> gen_ss.py</a> that processes Freevo BMP screenshots (key F10) and generates JPGs and HTML docs.  </p>
+<p>The screenshots have to be taken in the following order: </p>
+<ol type="1">
+<li><p>Main menu, the cursor should be on the second row. </p>
+</li>
+<li><p>TV Guide with programs and logos, put the cursor somewhere in the middle. </p>
+</li>
+<li><p>Movie browsing. Use a directory with images. </p>
+</li>
+<li><p>Music browsing. Use a directory with images. </p>
+</li>
+<li><p>Playing music. Choose a song with an image. </p>
+</li>
+<li><p>Image browsing, choose an image with a preview. </p>
+</li>
+</ol>
+<p>Please use the arial font for screenshots, it looks better than the default builtin kimberly font. Also use 800x600 resolution. </p>
+<p>Copy Arial from the website to the fonts dir: </p>
+<ul>
+<li style="list-style-type:none">
+<pre>
+cd skins/fonts ; wget http://freevo.sourceforge.net/Arial_Bold.ttf </pre>
+</li>
+</ul>
+<p>Create a directory for the new screenshots (named after the skin): </p>
+<ul>
+<li style="list-style-type:none">
+<pre>
+mkdir ss_raw/blue_round1 </pre>
+</li>
+</ul>
+<p>Copy the screenshots: </p>
+<ul>
+<li style="list-style-type:none">
+<pre>
+cp /tmp/freevo_ss* ss_raw/blue_round1 </pre>
+</li>
+</ul>
+<p>Run this script to scale the pics, generate thumbnails and content_screenshots.html: </p>
+<ul>
+<li style="list-style-type:none">
+<pre>
+./gen_ss.py </pre>
+</li>
+</ul>
+<p>The output is in ss/[skin]/*.jpg </p>
+<p>You must run gensite.py after this script! </p>
+<p>Also, please note that content_about.html refers to the blue_round1 skin. </p>
+
+<h2 id="head-465c45d54a19182b737699b77cced9cf8965f904">Uploading new website files</h2>
+
+<p>The website documents should be uploaded to the test area where it  can be tested before it is made part of the official site: </p>
+<ul>
+<li style="list-style-type:none">
+<pre>
+scp -r *html *.css *.gif *.gif *jpg *ico ss &lt;USERNAME&gt;@freevo.sf.net:/home/groups/f/fr/freevo/htdocs/tentative </pre>
+</li>
+</ul>
+<p>When you're satisifed you can upload to the real site which is at the same place without the  <tt>/tentative</tt> at the end. </p>
+
+<h2 id="head-6086b2463ddbcc840c0ce66ee34f22a999ca6fca">Publishing changes via rsync</h2>
+
+<p>If you make small changes to the website, it may be preferable to only upload those changes, in that case, you can use the following rsync command: </p>
+
+<pre>
+rsync --exclude=".cvsignore" --cvs-exclude --exclude="gen*.py" --exclude="content_*.html" --exclude=template_main.html -av --compress -e ssh /var/www/website/ freevo:/home/groups/f/fr/freevo/htdocs/
+</pre>
+<p>You should probably change '/var/www/website' to wherever your local copy of the website is. This command is also preferred to the 'scp' method because it won't upload the template files which are fairly useless on the live website.  </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-01-04 14:27:29 by <span title="h194-7-114-2.unknown.fortisbank.be">BHeremans</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/WebsiteMaintenance">http://freevo.sourceforge.net/cgi-bin/doc/WebsiteMaintenance</a></p>
+</div> <!-- end page -->
+</body>
+</html>

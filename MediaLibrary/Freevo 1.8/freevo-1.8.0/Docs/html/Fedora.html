@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>Fedora - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/Fedora?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/Fedora?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">Fedora</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h2 id="head-83f56943f9366bcd768999fbbba3694611f58482">Fedora</h2>
+
+<p>ALERT: Redhat 9 support is deprecated for freevo version 1.5 due to a lack of proper unicode support in python 2.2.x. Please upgrade to at minimum Fedora Core 2/3. Proper Fedora Core 4 support will require Freevo &gt; 1.5.3 (pending). </p>
+<p>ALERT: The yum repository paths have been changed to cater for differences between Fedora Core 2/3 and Fedora Core 4. Please update your yum repository information for freevo.repo based on the example below (notably, the addition of $releasever to the baseurl path). </p>
+
+<h3 id="head-0abfb2868092cce7a0b9015ed76f4b1b3ef16b1a">Freevo yum repository</h3>
+
+<p>Edit /etc/( yum.conf | yum.repos.d/freevo.conf ) | (fc3/fc4: /etc/yum.repos.d/freevo.repo) 
+</p>
+<pre>
+[freevo]
+name=Freevo RPM Repository for Fedora Core
+baseurl=http://freevo.sf.net/fedora/$releasever
+gpgkey=http://freevo.sourceforge.net/fedora/tcwan_freevo_key.asc
+enabled=1
+gpgcheck=1
+</pre>
+
+<h3 id="head-6dce31a92159c6865ec8a556c70f8b181801aeeb">Dependencies</h3>
+
+
+<h4 id="head-c80af70530f8ccc6892dc0afb2c459483a4a89da">Dag Wieers</h4>
+
+<p>For Fedora Core 2 / 3, you can use Dag to satisfy the dependency packages. </p>
+<p>/etc/( yum.conf | yum.repos.d/dag.conf ) | (fc3: /etc/yum.repos.d/dag.repo) 
+</p>
+<pre>
+[dag]
+name=Dag RPM Repository for Fedora Core
+baseurl=http://apt.sw.be/fedora/$releasever/en/$basearch/dag
+gpgkey=http://dag.wieers.com/packages/RPM-GPG-KEY.dag.txt
+enabled=1
+gpgcheck=1
+</pre>
+
+<h4 id="head-4017ef6dc997b7798031e4f59e275060d545c02a">Dries</h4>
+
+<p>RPM packages for Fedora Core 4 are maintained by Dries. </p>
+<p>/etc/yum.repos.d/dries.repo 
+</p>
+<pre>
+[dries]
+name=Extra Fedora rpms dries - $releasever - $basearch
+baseurl=http://ftp.belnet.be/packages/dries.ulyssis.org/fedora/linux/$releasever/$basearch/dries/RPMS/
+gpgkey=http://dries.ulyssis.org/rpm/RPM-GPG-KEY.dries.txt
+enabled=1
+gpgcheck=1
+</pre>
+
+<h4 id="head-8569deecfa8f12fb077dbd52584e773854b0c7d6">Freshrpms</h4>
+
+<p>/etc/( yum.conf | yum.repos.d/fresh.conf ) | (fc3/fc4: /etc/yum.repos.d/fresh.repo) 
+</p>
+<pre>
+[freshrpms]
+name=Fedora Linux $releasever - $basearch - freshrpms
+baseurl=http://ayo.freshrpms.net/fedora/linux/$releasever/$basearch/freshrpms
+gpgkey=http://freshrpms.net/RPM-GPG-KEY-freshrpms
+enabled=1
+gpgcheck=1
+
+[updates]
+name=Fedora Linux $releasever - $basearch - updates
+baseurl=http://ayo.freshrpms.net/fedora/linux/$releasever/$basearch/updates
+gpgkey=http://freshrpms.net/RPM-GPG-KEY-freshrpms
+enabled=1
+gpgcheck=1
+</pre>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-08-05 01:23:40 by <span title="219.93.2.117">TCWan</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/Fedora">http://freevo.sourceforge.net/cgi-bin/doc/Fedora</a></p>
+</div> <!-- end page -->
+</body>
+</html>

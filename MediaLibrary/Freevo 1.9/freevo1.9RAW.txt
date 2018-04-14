@@ -1,0 +1,4656 @@
+freevo-1.9.0/setup.py
+    LOC: 194
+    LLOC: 106
+    SLOC: 139
+    Comments: 19
+    Single comments: 19
+    Multi: 9
+    Blank: 27
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 14%
+        (C + M % L): 14%
+freevo-1.9.0/freevo_config.py
+    LOC: 2324
+    LLOC: 419
+    SLOC: 835
+    Comments: 1217
+    Single comments: 1160
+    Multi: 0
+    Blank: 329
+    - Comment Stats
+        (C % L): 52%
+        (C % S): 146%
+        (C + M % L): 52%
+freevo-1.9.0/contrib/ps3/local_conf.py
+    LOC: 1523
+    LLOC: 26
+    SLOC: 45
+    Comments: 1267
+    Single comments: 1250
+    Multi: 0
+    Blank: 228
+    - Comment Stats
+        (C % L): 83%
+        (C % S): 2816%
+        (C + M % L): 83%
+freevo-1.9.0/contrib/pdaclient/gui.py
+    LOC: 137
+    LLOC: 113
+    SLOC: 102
+    Comments: 3
+    Single comments: 3
+    Multi: 0
+    Blank: 32
+    - Comment Stats
+        (C % L): 2%
+        (C % S): 3%
+        (C + M % L): 2%
+freevo-1.9.0/contrib/developer/reindent.py
+    LOC: 293
+    LLOC: 186
+    SLOC: 191
+    Comments: 41
+    Single comments: 36
+    Multi: 29
+    Blank: 37
+    - Comment Stats
+        (C % L): 14%
+        (C % S): 21%
+        (C + M % L): 24%
+freevo-1.9.0/contrib/developer/chktab.py
+    LOC: 34
+    LLOC: 26
+    SLOC: 24
+    Comments: 1
+    Single comments: 1
+    Multi: 0
+    Blank: 9
+    - Comment Stats
+        (C % L): 3%
+        (C % S): 4%
+        (C + M % L): 3%
+freevo-1.9.0/contrib/plugins/weather_update.py
+    LOC: 68
+    LLOC: 27
+    SLOC: 27
+    Comments: 37
+    Single comments: 37
+    Multi: 0
+    Blank: 4
+    - Comment Stats
+        (C % L): 54%
+        (C % S): 137%
+        (C + M % L): 54%
+freevo-1.9.0/contrib/plugins/weather.py
+    LOC: 1077
+    LLOC: 610
+    SLOC: 784
+    Comments: 102
+    Single comments: 105
+    Multi: 40
+    Blank: 148
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 13%
+        (C + M % L): 13%
+freevo-1.9.0/contrib/examples/rc_send.py
+    LOC: 81
+    LLOC: 38
+    SLOC: 38
+    Comments: 33
+    Single comments: 33
+    Multi: 0
+    Blank: 10
+    - Comment Stats
+        (C % L): 41%
+        (C % S): 87%
+        (C + M % L): 41%
+freevo-1.9.0/contrib/examples/dvd_cropscale.py
+    LOC: 116
+    LLOC: 50
+    SLOC: 48
+    Comments: 43
+    Single comments: 43
+    Multi: 0
+    Blank: 25
+    - Comment Stats
+        (C % L): 37%
+        (C % S): 90%
+        (C + M % L): 37%
+freevo-1.9.0/contrib/runtime/pylcd-test.py
+    LOC: 34
+    LLOC: 27
+    SLOC: 27
+    Comments: 0
+    Single comments: 0
+    Multi: 0
+    Blank: 7
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 0%
+freevo-1.9.0/contrib/runtime/pygoom-2k4/setup.py
+    LOC: 42
+    LLOC: 10
+    SLOC: 24
+    Comments: 8
+    Single comments: 8
+    Multi: 0
+    Blank: 10
+    - Comment Stats
+        (C % L): 19%
+        (C % S): 33%
+        (C + M % L): 19%
+freevo-1.9.0/contrib/runtime/pygoom-2k4/pygoom-test.py
+    LOC: 118
+    LLOC: 101
+    SLOC: 88
+    Comments: 14
+    Single comments: 14
+    Multi: 0
+    Blank: 16
+    - Comment Stats
+        (C % L): 12%
+        (C % S): 16%
+        (C + M % L): 12%
+freevo-1.9.0/src/rssperiodic.py
+    LOC: 295
+    LLOC: 237
+    SLOC: 235
+    Comments: 27
+    Single comments: 29
+    Multi: 6
+    Blank: 25
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 11%
+        (C + M % L): 11%
+freevo-1.9.0/src/encodingcore.py
+    LOC: 1186
+    LLOC: 673
+    SLOC: 732
+    Comments: 120
+    Single comments: 125
+    Multi: 115
+    Blank: 214
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 16%
+        (C + M % L): 20%
+freevo-1.9.0/src/config.py
+    LOC: 1082
+    LLOC: 739
+    SLOC: 742
+    Comments: 151
+    Single comments: 149
+    Multi: 56
+    Blank: 135
+    - Comment Stats
+        (C % L): 14%
+        (C % S): 20%
+        (C + M % L): 19%
+freevo-1.9.0/src/rc.py
+    LOC: 726
+    LLOC: 412
+    SLOC: 414
+    Comments: 56
+    Single comments: 52
+    Multi: 129
+    Blank: 131
+    - Comment Stats
+        (C % L): 8%
+        (C % S): 14%
+        (C + M % L): 25%
+freevo-1.9.0/src/playlist.py
+    LOC: 606
+    LLOC: 353
+    SLOC: 356
+    Comments: 53
+    Single comments: 51
+    Multi: 83
+    Blank: 116
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 15%
+        (C + M % L): 22%
+freevo-1.9.0/src/event.py
+    LOC: 678
+    LLOC: 182
+    SLOC: 503
+    Comments: 69
+    Single comments: 69
+    Multi: 20
+    Blank: 86
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 14%
+        (C + M % L): 13%
+freevo-1.9.0/src/evdev.py
+    LOC: 413
+    LLOC: 232
+    SLOC: 232
+    Comments: 57
+    Single comments: 49
+    Multi: 36
+    Blank: 96
+    - Comment Stats
+        (C % L): 14%
+        (C % S): 25%
+        (C + M % L): 23%
+freevo-1.9.0/src/rssfeed.py
+    LOC: 102
+    LLOC: 61
+    SLOC: 61
+    Comments: 24
+    Single comments: 26
+    Multi: 3
+    Blank: 12
+    - Comment Stats
+        (C % L): 24%
+        (C % S): 39%
+        (C + M % L): 26%
+freevo-1.9.0/src/pylcd.py
+    LOC: 215
+    LLOC: 83
+    SLOC: 100
+    Comments: 21
+    Single comments: 21
+    Multi: 52
+    Blank: 42
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 21%
+        (C + M % L): 34%
+freevo-1.9.0/src/linuxevent.py
+    LOC: 569
+    LLOC: 8
+    SLOC: 537
+    Comments: 34
+    Single comments: 24
+    Multi: 3
+    Blank: 5
+    - Comment Stats
+        (C % L): 6%
+        (C % S): 6%
+        (C + M % L): 7%
+freevo-1.9.0/src/plugin.py
+    LOC: 648
+    LLOC: 337
+    SLOC: 332
+    Comments: 52
+    Single comments: 48
+    Multi: 130
+    Blank: 138
+    - Comment Stats
+        (C % L): 8%
+        (C % S): 16%
+        (C + M % L): 28%
+freevo-1.9.0/src/fxditem.py
+    LOC: 228
+    LLOC: 96
+    SLOC: 97
+    Comments: 36
+    Single comments: 36
+    Multi: 46
+    Blank: 49
+    - Comment Stats
+        (C % L): 16%
+        (C % S): 37%
+        (C + M % L): 36%
+freevo-1.9.0/src/item.py
+    LOC: 574
+    LLOC: 347
+    SLOC: 342
+    Comments: 50
+    Single comments: 40
+    Multi: 104
+    Blank: 88
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 15%
+        (C + M % L): 27%
+freevo-1.9.0/src/childapp.py
+    LOC: 441
+    LLOC: 286
+    SLOC: 282
+    Comments: 50
+    Single comments: 48
+    Multi: 45
+    Blank: 66
+    - Comment Stats
+        (C % L): 11%
+        (C % S): 18%
+        (C + M % L): 22%
+freevo-1.9.0/src/evfallback.py
+    LOC: 573
+    LLOC: 8
+    SLOC: 537
+    Comments: 38
+    Single comments: 28
+    Multi: 3
+    Blank: 5
+    - Comment Stats
+        (C % L): 7%
+        (C % S): 7%
+        (C + M % L): 7%
+freevo-1.9.0/src/main.py
+    LOC: 599
+    LLOC: 370
+    SLOC: 388
+    Comments: 71
+    Single comments: 65
+    Multi: 48
+    Blank: 98
+    - Comment Stats
+        (C % L): 12%
+        (C % S): 18%
+        (C + M % L): 20%
+freevo-1.9.0/src/sitecustomize.py
+    LOC: 35
+    LLOC: 2
+    SLOC: 2
+    Comments: 24
+    Single comments: 24
+    Multi: 5
+    Blank: 4
+    - Comment Stats
+        (C % L): 69%
+        (C % S): 1200%
+        (C + M % L): 83%
+freevo-1.9.0/src/setup_freevo.py
+    LOC: 308
+    LLOC: 180
+    SLOC: 214
+    Comments: 37
+    Single comments: 36
+    Multi: 11
+    Blank: 47
+    - Comment Stats
+        (C % L): 12%
+        (C % S): 17%
+        (C + M % L): 16%
+freevo-1.9.0/src/benchmark.py
+    LOC: 151
+    LLOC: 82
+    SLOC: 81
+    Comments: 28
+    Single comments: 32
+    Multi: 18
+    Blank: 20
+    - Comment Stats
+        (C % L): 19%
+        (C % S): 35%
+        (C + M % L): 30%
+freevo-1.9.0/src/directory.py
+    LOC: 1076
+    LLOC: 661
+    SLOC: 681
+    Comments: 108
+    Single comments: 107
+    Multi: 84
+    Blank: 204
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 16%
+        (C + M % L): 18%
+freevo-1.9.0/src/osd.py
+    LOC: 1671
+    LLOC: 1073
+    SLOC: 1127
+    Comments: 155
+    Single comments: 144
+    Multi: 134
+    Blank: 266
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 14%
+        (C + M % L): 17%
+freevo-1.9.0/src/menu.py
+    LOC: 962
+    LLOC: 656
+    SLOC: 649
+    Comments: 66
+    Single comments: 61
+    Multi: 56
+    Blank: 196
+    - Comment Stats
+        (C % L): 7%
+        (C % S): 10%
+        (C + M % L): 13%
+freevo-1.9.0/src/__init__.py
+    LOC: 0
+    LLOC: 0
+    SLOC: 0
+    Comments: 0
+    Single comments: 0
+    Multi: 0
+    Blank: 0
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 0%
+freevo-1.9.0/src/commdetectcore.py
+    LOC: 275
+    LLOC: 187
+    SLOC: 199
+    Comments: 38
+    Single comments: 48
+    Multi: 3
+    Blank: 25
+    - Comment Stats
+        (C % L): 14%
+        (C % S): 19%
+        (C + M % L): 15%
+freevo-1.9.0/src/version.py
+    LOC: 23
+    LLOC: 17
+    SLOC: 17
+    Comments: 0
+    Single comments: 0
+    Multi: 3
+    Blank: 3
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 13%
+freevo-1.9.0/src/revision.py
+    LOC: 1
+    LLOC: 1
+    SLOC: 1
+    Comments: 0
+    Single comments: 0
+    Multi: 0
+    Blank: 0
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 0%
+freevo-1.9.0/src/animation/transition.py
+    LOC: 221
+    LLOC: 94
+    SLOC: 93
+    Comments: 48
+    Single comments: 48
+    Multi: 33
+    Blank: 47
+    - Comment Stats
+        (C % L): 22%
+        (C % S): 52%
+        (C + M % L): 37%
+freevo-1.9.0/src/animation/screensaver.py
+    LOC: 47
+    LLOC: 8
+    SLOC: 10
+    Comments: 30
+    Single comments: 30
+    Multi: 3
+    Blank: 4
+    - Comment Stats
+        (C % L): 64%
+        (C % S): 300%
+        (C + M % L): 70%
+freevo-1.9.0/src/animation/marquee.py
+    LOC: 84
+    LLOC: 29
+    SLOC: 30
+    Comments: 32
+    Single comments: 32
+    Multi: 6
+    Blank: 16
+    - Comment Stats
+        (C % L): 38%
+        (C % S): 107%
+        (C + M % L): 45%
+freevo-1.9.0/src/animation/render.py
+    LOC: 203
+    LLOC: 81
+    SLOC: 81
+    Comments: 50
+    Single comments: 48
+    Multi: 33
+    Blank: 41
+    - Comment Stats
+        (C % L): 25%
+        (C % S): 62%
+        (C + M % L): 41%
+freevo-1.9.0/src/animation/__init__.py
+    LOC: 38
+    LLOC: 4
+    SLOC: 4
+    Comments: 29
+    Single comments: 29
+    Multi: 3
+    Blank: 2
+    - Comment Stats
+        (C % L): 76%
+        (C % S): 725%
+        (C + M % L): 84%
+freevo-1.9.0/src/animation/base.py
+    LOC: 201
+    LLOC: 87
+    SLOC: 88
+    Comments: 38
+    Single comments: 41
+    Multi: 25
+    Blank: 47
+    - Comment Stats
+        (C % L): 19%
+        (C % S): 43%
+        (C + M % L): 31%
+freevo-1.9.0/src/dialog/display.py
+    LOC: 394
+    LLOC: 171
+    SLOC: 172
+    Comments: 37
+    Single comments: 37
+    Multi: 125
+    Blank: 60
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 22%
+        (C + M % L): 41%
+freevo-1.9.0/src/dialog/widgets.py
+    LOC: 554
+    LLOC: 302
+    SLOC: 302
+    Comments: 29
+    Single comments: 29
+    Multi: 153
+    Blank: 70
+    - Comment Stats
+        (C % L): 5%
+        (C % S): 10%
+        (C + M % L): 33%
+freevo-1.9.0/src/dialog/__init__.py
+    LOC: 229
+    LLOC: 75
+    SLOC: 75
+    Comments: 31
+    Single comments: 30
+    Multi: 84
+    Blank: 40
+    - Comment Stats
+        (C % L): 14%
+        (C % S): 41%
+        (C + M % L): 50%
+freevo-1.9.0/src/dialog/utils.py
+    LOC: 70
+    LLOC: 26
+    SLOC: 27
+    Comments: 29
+    Single comments: 28
+    Multi: 6
+    Blank: 9
+    - Comment Stats
+        (C % L): 41%
+        (C % S): 107%
+        (C + M % L): 50%
+freevo-1.9.0/src/dialog/dialogs.py
+    LOC: 609
+    LLOC: 328
+    SLOC: 333
+    Comments: 28
+    Single comments: 28
+    Multi: 158
+    Blank: 90
+    - Comment Stats
+        (C % L): 5%
+        (C % S): 8%
+        (C + M % L): 31%
+freevo-1.9.0/src/dialog/plugins/osd_display.py
+    LOC: 97
+    LLOC: 34
+    SLOC: 34
+    Comments: 31
+    Single comments: 31
+    Multi: 19
+    Blank: 13
+    - Comment Stats
+        (C % L): 32%
+        (C % S): 91%
+        (C + M % L): 52%
+freevo-1.9.0/src/dialog/plugins/tiny_xosd_display.py
+    LOC: 92
+    LLOC: 39
+    SLOC: 44
+    Comments: 29
+    Single comments: 29
+    Multi: 8
+    Blank: 11
+    - Comment Stats
+        (C % L): 32%
+        (C % S): 66%
+        (C + M % L): 40%
+freevo-1.9.0/src/dialog/plugins/x11_overlay_display.py
+    LOC: 143
+    LLOC: 72
+    SLOC: 72
+    Comments: 28
+    Single comments: 28
+    Multi: 19
+    Blank: 24
+    - Comment Stats
+        (C % L): 20%
+        (C % S): 39%
+        (C + M % L): 33%
+freevo-1.9.0/src/dialog/plugins/__init__.py
+    LOC: 0
+    LLOC: 0
+    SLOC: 0
+    Comments: 0
+    Single comments: 0
+    Multi: 0
+    Blank: 0
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 0%
+freevo-1.9.0/src/tv/freq.py
+    LOC: 1340
+    LLOC: 26
+    SLOC: 1278
+    Comments: 73
+    Single comments: 28
+    Multi: 0
+    Blank: 34
+    - Comment Stats
+        (C % L): 5%
+        (C % S): 6%
+        (C + M % L): 5%
+freevo-1.9.0/src/tv/record_client.py
+    LOC: 653
+    LLOC: 436
+    SLOC: 437
+    Comments: 50
+    Single comments: 83
+    Multi: 11
+    Blank: 122
+    - Comment Stats
+        (C % L): 8%
+        (C % S): 11%
+        (C + M % L): 9%
+freevo-1.9.0/src/tv/channels.py
+    LOC: 413
+    LLOC: 249
+    SLOC: 253
+    Comments: 72
+    Single comments: 71
+    Multi: 12
+    Blank: 77
+    - Comment Stats
+        (C % L): 17%
+        (C % S): 28%
+        (C + M % L): 20%
+freevo-1.9.0/src/tv/v4l2.py
+    LOC: 971
+    LLOC: 635
+    SLOC: 691
+    Comments: 63
+    Single comments: 60
+    Multi: 61
+    Blank: 159
+    - Comment Stats
+        (C % L): 6%
+        (C % S): 9%
+        (C + M % L): 13%
+freevo-1.9.0/src/tv/epg_xmltv.py
+    LOC: 354
+    LLOC: 218
+    SLOC: 213
+    Comments: 66
+    Single comments: 61
+    Multi: 18
+    Blank: 62
+    - Comment Stats
+        (C % L): 19%
+        (C % S): 31%
+        (C + M % L): 24%
+freevo-1.9.0/src/tv/edit_favorite.py
+    LOC: 377
+    LLOC: 278
+    SLOC: 281
+    Comments: 42
+    Single comments: 43
+    Multi: 10
+    Blank: 43
+    - Comment Stats
+        (C % L): 11%
+        (C % S): 15%
+        (C + M % L): 14%
+freevo-1.9.0/src/tv/programitem.py
+    LOC: 400
+    LLOC: 249
+    SLOC: 237
+    Comments: 77
+    Single comments: 86
+    Multi: 17
+    Blank: 60
+    - Comment Stats
+        (C % L): 19%
+        (C % S): 32%
+        (C + M % L): 24%
+freevo-1.9.0/src/tv/record_types.py
+    LOC: 374
+    LLOC: 246
+    SLOC: 248
+    Comments: 34
+    Single comments: 54
+    Multi: 9
+    Blank: 63
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 14%
+        (C + M % L): 11%
+freevo-1.9.0/src/tv/favoriteitem.py
+    LOC: 368
+    LLOC: 220
+    SLOC: 226
+    Comments: 51
+    Single comments: 54
+    Multi: 27
+    Blank: 61
+    - Comment Stats
+        (C % L): 14%
+        (C % S): 23%
+        (C + M % L): 21%
+freevo-1.9.0/src/tv/tvmenu.py
+    LOC: 138
+    LLOC: 71
+    SLOC: 70
+    Comments: 36
+    Single comments: 35
+    Multi: 0
+    Blank: 33
+    - Comment Stats
+        (C % L): 26%
+        (C % S): 51%
+        (C + M % L): 26%
+freevo-1.9.0/src/tv/tvguide.py
+    LOC: 584
+    LLOC: 355
+    SLOC: 358
+    Comments: 76
+    Single comments: 77
+    Multi: 34
+    Blank: 115
+    - Comment Stats
+        (C % L): 13%
+        (C % S): 21%
+        (C + M % L): 19%
+freevo-1.9.0/src/tv/__init__.py
+    LOC: 44
+    LLOC: 6
+    SLOC: 7
+    Comments: 27
+    Single comments: 27
+    Multi: 6
+    Blank: 4
+    - Comment Stats
+        (C % L): 61%
+        (C % S): 386%
+        (C + M % L): 75%
+freevo-1.9.0/src/tv/xmltv.py
+    LOC: 733
+    LLOC: 343
+    SLOC: 463
+    Comments: 56
+    Single comments: 56
+    Multi: 97
+    Blank: 117
+    - Comment Stats
+        (C % L): 8%
+        (C % S): 12%
+        (C + M % L): 21%
+freevo-1.9.0/src/tv/ivtv.py
+    LOC: 490
+    LLOC: 253
+    SLOC: 266
+    Comments: 66
+    Single comments: 60
+    Multi: 95
+    Blank: 69
+    - Comment Stats
+        (C % L): 13%
+        (C % S): 25%
+        (C + M % L): 33%
+freevo-1.9.0/src/tv/strptime.py
+    LOC: 533
+    LLOC: 318
+    SLOC: 350
+    Comments: 41
+    Single comments: 55
+    Multi: 76
+    Blank: 52
+    - Comment Stats
+        (C % L): 8%
+        (C % S): 12%
+        (C + M % L): 22%
+freevo-1.9.0/src/tv/dialogs.py
+    LOC: 268
+    LLOC: 170
+    SLOC: 174
+    Comments: 32
+    Single comments: 32
+    Multi: 14
+    Blank: 48
+    - Comment Stats
+        (C % L): 12%
+        (C % S): 18%
+        (C + M % L): 17%
+freevo-1.9.0/src/tv/epg_types.py
+    LOC: 396
+    LLOC: 234
+    SLOC: 233
+    Comments: 52
+    Single comments: 55
+    Multi: 41
+    Blank: 67
+    - Comment Stats
+        (C % L): 13%
+        (C % S): 22%
+        (C + M % L): 23%
+freevo-1.9.0/src/tv/plugins/ivtv_record.py
+    LOC: 230
+    LLOC: 144
+    SLOC: 145
+    Comments: 34
+    Single comments: 34
+    Multi: 3
+    Blank: 48
+    - Comment Stats
+        (C % L): 15%
+        (C % S): 23%
+        (C + M % L): 16%
+freevo-1.9.0/src/tv/plugins/upsoon.py
+    LOC: 295
+    LLOC: 178
+    SLOC: 182
+    Comments: 45
+    Single comments: 48
+    Multi: 21
+    Blank: 44
+    - Comment Stats
+        (C % L): 15%
+        (C % S): 25%
+        (C + M % L): 22%
+freevo-1.9.0/src/tv/plugins/xawtv.py
+    LOC: 276
+    LLOC: 153
+    SLOC: 155
+    Comments: 48
+    Single comments: 42
+    Multi: 15
+    Blank: 64
+    - Comment Stats
+        (C % L): 17%
+        (C % S): 31%
+        (C + M % L): 23%
+freevo-1.9.0/src/tv/plugins/generic_record.py
+    LOC: 196
+    LLOC: 113
+    SLOC: 124
+    Comments: 29
+    Single comments: 29
+    Multi: 3
+    Blank: 40
+    - Comment Stats
+        (C % L): 15%
+        (C % S): 23%
+        (C + M % L): 16%
+freevo-1.9.0/src/tv/plugins/irsend_directv.py
+    LOC: 100
+    LLOC: 34
+    SLOC: 34
+    Comments: 33
+    Single comments: 33
+    Multi: 11
+    Blank: 22
+    - Comment Stats
+        (C % L): 33%
+        (C % S): 97%
+        (C + M % L): 44%
+freevo-1.9.0/src/tv/plugins/scheduled_recordings.py
+    LOC: 122
+    LLOC: 62
+    SLOC: 62
+    Comments: 28
+    Single comments: 28
+    Multi: 4
+    Blank: 28
+    - Comment Stats
+        (C % L): 23%
+        (C % S): 45%
+        (C + M % L): 26%
+freevo-1.9.0/src/tv/plugins/mplayer.py
+    LOC: 433
+    LLOC: 271
+    SLOC: 302
+    Comments: 56
+    Single comments: 48
+    Multi: 3
+    Blank: 80
+    - Comment Stats
+        (C % L): 13%
+        (C % S): 19%
+        (C + M % L): 14%
+freevo-1.9.0/src/tv/plugins/recordings_manager.py
+    LOC: 1120
+    LLOC: 614
+    SLOC: 643
+    Comments: 109
+    Single comments: 108
+    Multi: 173
+    Blank: 196
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 17%
+        (C + M % L): 25%
+freevo-1.9.0/src/tv/plugins/freeboxtv.py
+    LOC: 156
+    LLOC: 73
+    SLOC: 74
+    Comments: 14
+    Single comments: 14
+    Multi: 29
+    Blank: 39
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 19%
+        (C + M % L): 28%
+freevo-1.9.0/src/tv/plugins/tvtime.py
+    LOC: 606
+    LLOC: 424
+    SLOC: 440
+    Comments: 76
+    Single comments: 68
+    Multi: 6
+    Blank: 92
+    - Comment Stats
+        (C % L): 13%
+        (C % S): 17%
+        (C + M % L): 14%
+freevo-1.9.0/src/tv/plugins/ivtv_xine_tv.py
+    LOC: 1046
+    LLOC: 533
+    SLOC: 559
+    Comments: 71
+    Single comments: 116
+    Multi: 212
+    Blank: 159
+    - Comment Stats
+        (C % L): 7%
+        (C % S): 13%
+        (C + M % L): 27%
+freevo-1.9.0/src/tv/plugins/search_programs.py
+    LOC: 162
+    LLOC: 94
+    SLOC: 94
+    Comments: 32
+    Single comments: 32
+    Multi: 3
+    Blank: 33
+    - Comment Stats
+        (C % L): 20%
+        (C % S): 34%
+        (C + M % L): 22%
+freevo-1.9.0/src/tv/plugins/xine.py
+    LOC: 203
+    LLOC: 86
+    SLOC: 91
+    Comments: 37
+    Single comments: 34
+    Multi: 37
+    Blank: 41
+    - Comment Stats
+        (C % L): 18%
+        (C % S): 41%
+        (C + M % L): 36%
+freevo-1.9.0/src/tv/plugins/vbi2srt_record.py
+    LOC: 256
+    LLOC: 120
+    SLOC: 139
+    Comments: 36
+    Single comments: 35
+    Multi: 34
+    Blank: 48
+    - Comment Stats
+        (C % L): 14%
+        (C % S): 26%
+        (C + M % L): 27%
+freevo-1.9.0/src/tv/plugins/irsend_echostar.py
+    LOC: 216
+    LLOC: 100
+    SLOC: 102
+    Comments: 52
+    Single comments: 51
+    Multi: 18
+    Blank: 45
+    - Comment Stats
+        (C % L): 24%
+        (C % S): 51%
+        (C + M % L): 32%
+freevo-1.9.0/src/tv/plugins/genre.py
+    LOC: 161
+    LLOC: 72
+    SLOC: 71
+    Comments: 43
+    Single comments: 43
+    Multi: 18
+    Blank: 29
+    - Comment Stats
+        (C % L): 27%
+        (C % S): 61%
+        (C + M % L): 38%
+freevo-1.9.0/src/tv/plugins/irsend_generic.py
+    LOC: 80
+    LLOC: 23
+    SLOC: 23
+    Comments: 32
+    Single comments: 32
+    Multi: 8
+    Blank: 17
+    - Comment Stats
+        (C % L): 40%
+        (C % S): 139%
+        (C + M % L): 50%
+freevo-1.9.0/src/tv/plugins/view_favorites.py
+    LOC: 120
+    LLOC: 62
+    SLOC: 61
+    Comments: 28
+    Single comments: 28
+    Multi: 4
+    Blank: 27
+    - Comment Stats
+        (C % L): 23%
+        (C % S): 46%
+        (C + M % L): 27%
+freevo-1.9.0/src/tv/plugins/__init__.py
+    LOC: 0
+    LLOC: 0
+    SLOC: 0
+    Comments: 0
+    Single comments: 0
+    Multi: 0
+    Blank: 0
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 0%
+freevo-1.9.0/src/tv/plugins/view_line_in.py
+    LOC: 53
+    LLOC: 13
+    SLOC: 13
+    Comments: 28
+    Single comments: 28
+    Multi: 6
+    Blank: 6
+    - Comment Stats
+        (C % L): 53%
+        (C % S): 215%
+        (C + M % L): 64%
+freevo-1.9.0/src/tv/plugins/manual_record.py
+    LOC: 409
+    LLOC: 263
+    SLOC: 280
+    Comments: 38
+    Single comments: 38
+    Multi: 4
+    Blank: 87
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 14%
+        (C + M % L): 10%
+freevo-1.9.0/src/tv/plugins/view_recordings.py
+    LOC: 48
+    LLOC: 9
+    SLOC: 10
+    Comments: 28
+    Single comments: 28
+    Multi: 6
+    Blank: 4
+    - Comment Stats
+        (C % L): 58%
+        (C % S): 280%
+        (C + M % L): 71%
+freevo-1.9.0/src/tv/plugins/categories.py
+    LOC: 275
+    LLOC: 134
+    SLOC: 134
+    Comments: 58
+    Single comments: 58
+    Multi: 41
+    Blank: 42
+    - Comment Stats
+        (C % L): 21%
+        (C % S): 43%
+        (C + M % L): 36%
+freevo-1.9.0/src/tv/plugins/livepause/controllers.py
+    LOC: 255
+    LLOC: 118
+    SLOC: 119
+    Comments: 35
+    Single comments: 35
+    Multi: 53
+    Blank: 48
+    - Comment Stats
+        (C % L): 14%
+        (C % S): 29%
+        (C + M % L): 35%
+freevo-1.9.0/src/tv/plugins/livepause/record.py
+    LOC: 121
+    LLOC: 60
+    SLOC: 63
+    Comments: 31
+    Single comments: 31
+    Multi: 15
+    Blank: 12
+    - Comment Stats
+        (C % L): 26%
+        (C % S): 49%
+        (C + M % L): 38%
+freevo-1.9.0/src/tv/plugins/livepause/players.py
+    LOC: 755
+    LLOC: 325
+    SLOC: 340
+    Comments: 50
+    Single comments: 50
+    Multi: 225
+    Blank: 140
+    - Comment Stats
+        (C % L): 7%
+        (C % S): 15%
+        (C + M % L): 36%
+freevo-1.9.0/src/tv/plugins/livepause/events.py
+    LOC: 58
+    LLOC: 11
+    SLOC: 11
+    Comments: 31
+    Single comments: 31
+    Multi: 9
+    Blank: 7
+    - Comment Stats
+        (C % L): 53%
+        (C % S): 282%
+        (C + M % L): 69%
+freevo-1.9.0/src/tv/plugins/livepause/backend.py
+    LOC: 499
+    LLOC: 271
+    SLOC: 275
+    Comments: 37
+    Single comments: 36
+    Multi: 104
+    Blank: 84
+    - Comment Stats
+        (C % L): 7%
+        (C % S): 13%
+        (C + M % L): 28%
+freevo-1.9.0/src/tv/plugins/livepause/__init__.py
+    LOC: 645
+    LLOC: 329
+    SLOC: 368
+    Comments: 61
+    Single comments: 57
+    Multi: 93
+    Blank: 127
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 17%
+        (C + M % L): 24%
+freevo-1.9.0/src/tv/plugins/livepause/display/text.py
+    LOC: 52
+    LLOC: 17
+    SLOC: 17
+    Comments: 29
+    Single comments: 29
+    Multi: 0
+    Blank: 6
+    - Comment Stats
+        (C % L): 56%
+        (C % S): 171%
+        (C + M % L): 56%
+freevo-1.9.0/src/tv/plugins/livepause/display/graphics.py
+    LOC: 251
+    LLOC: 164
+    SLOC: 171
+    Comments: 33
+    Single comments: 33
+    Multi: 3
+    Blank: 44
+    - Comment Stats
+        (C % L): 13%
+        (C % S): 19%
+        (C + M % L): 14%
+freevo-1.9.0/src/tv/plugins/livepause/display/__init__.py
+    LOC: 48
+    LLOC: 9
+    SLOC: 9
+    Comments: 31
+    Single comments: 31
+    Multi: 4
+    Blank: 4
+    - Comment Stats
+        (C % L): 65%
+        (C % S): 344%
+        (C + M % L): 73%
+freevo-1.9.0/src/tv/plugins/livepause/display/dialogs.py
+    LOC: 163
+    LLOC: 95
+    SLOC: 101
+    Comments: 34
+    Single comments: 34
+    Multi: 0
+    Blank: 28
+    - Comment Stats
+        (C % L): 21%
+        (C % S): 34%
+        (C + M % L): 21%
+freevo-1.9.0/src/tv/plugins/livepause/display/base.py
+    LOC: 88
+    LLOC: 10
+    SLOC: 10
+    Comments: 31
+    Single comments: 31
+    Multi: 39
+    Blank: 8
+    - Comment Stats
+        (C % L): 35%
+        (C % S): 310%
+        (C + M % L): 80%
+freevo-1.9.0/src/tv/plugins/dvbstreamer/rwlock.py
+    LOC: 122
+    LLOC: 104
+    SLOC: 104
+    Comments: 0
+    Single comments: 2
+    Multi: 13
+    Blank: 3
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 11%
+freevo-1.9.0/src/tv/plugins/dvbstreamer/live_pause.py
+    LOC: 823
+    LLOC: 493
+    SLOC: 512
+    Comments: 76
+    Single comments: 71
+    Multi: 89
+    Blank: 151
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 15%
+        (C + M % L): 20%
+freevo-1.9.0/src/tv/plugins/dvbstreamer/ring_buffer.py
+    LOC: 325
+    LLOC: 188
+    SLOC: 180
+    Comments: 36
+    Single comments: 35
+    Multi: 50
+    Blank: 60
+    - Comment Stats
+        (C % L): 11%
+        (C % S): 20%
+        (C + M % L): 26%
+freevo-1.9.0/src/tv/plugins/dvbstreamer/record.py
+    LOC: 184
+    LLOC: 86
+    SLOC: 86
+    Comments: 41
+    Single comments: 40
+    Multi: 26
+    Blank: 32
+    - Comment Stats
+        (C % L): 22%
+        (C % S): 48%
+        (C + M % L): 36%
+freevo-1.9.0/src/tv/plugins/dvbstreamer/manager.py
+    LOC: 110
+    LLOC: 36
+    SLOC: 36
+    Comments: 30
+    Single comments: 30
+    Multi: 27
+    Blank: 17
+    - Comment Stats
+        (C % L): 27%
+        (C % S): 83%
+        (C + M % L): 52%
+freevo-1.9.0/src/tv/plugins/dvbstreamer/__init__.py
+    LOC: 0
+    LLOC: 0
+    SLOC: 0
+    Comments: 0
+    Single comments: 0
+    Multi: 0
+    Blank: 0
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 0%
+freevo-1.9.0/src/tv/plugins/dvbstreamer/comms.py
+    LOC: 331
+    LLOC: 196
+    SLOC: 195
+    Comments: 31
+    Single comments: 31
+    Multi: 60
+    Blank: 45
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 16%
+        (C + M % L): 27%
+freevo-1.9.0/src/tv/plugins/dvbstreamer/vlc_live_pause.py
+    LOC: 1008
+    LLOC: 636
+    SLOC: 657
+    Comments: 82
+    Single comments: 72
+    Multi: 95
+    Blank: 184
+    - Comment Stats
+        (C % L): 8%
+        (C % S): 12%
+        (C + M % L): 18%
+freevo-1.9.0/src/image/imageitem.py
+    LOC: 127
+    LLOC: 54
+    SLOC: 55
+    Comments: 30
+    Single comments: 30
+    Multi: 18
+    Blank: 24
+    - Comment Stats
+        (C % L): 24%
+        (C % S): 55%
+        (C + M % L): 38%
+freevo-1.9.0/src/image/viewer.py
+    LOC: 524
+    LLOC: 329
+    SLOC: 347
+    Comments: 80
+    Single comments: 76
+    Multi: 9
+    Blank: 92
+    - Comment Stats
+        (C % L): 15%
+        (C % S): 23%
+        (C + M % L): 17%
+freevo-1.9.0/src/image/__init__.py
+    LOC: 192
+    LLOC: 84
+    SLOC: 87
+    Comments: 38
+    Single comments: 38
+    Multi: 35
+    Blank: 32
+    - Comment Stats
+        (C % L): 20%
+        (C % S): 44%
+        (C + M % L): 38%
+freevo-1.9.0/src/image/plugins/flickr.py
+    LOC: 212
+    LLOC: 105
+    SLOC: 111
+    Comments: 46
+    Single comments: 53
+    Multi: 18
+    Blank: 30
+    - Comment Stats
+        (C % L): 22%
+        (C % S): 41%
+        (C + M % L): 30%
+freevo-1.9.0/src/image/plugins/gphoto.py
+    LOC: 157
+    LLOC: 90
+    SLOC: 90
+    Comments: 33
+    Single comments: 31
+    Multi: 15
+    Blank: 21
+    - Comment Stats
+        (C % L): 21%
+        (C % S): 37%
+        (C + M % L): 31%
+freevo-1.9.0/src/image/plugins/apod.py
+    LOC: 139
+    LLOC: 81
+    SLOC: 81
+    Comments: 30
+    Single comments: 30
+    Multi: 10
+    Blank: 18
+    - Comment Stats
+        (C % L): 22%
+        (C % S): 37%
+        (C + M % L): 29%
+freevo-1.9.0/src/image/plugins/__init__.py
+    LOC: 0
+    LLOC: 0
+    SLOC: 0
+    Comments: 0
+    Single comments: 0
+    Multi: 0
+    Blank: 0
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 0%
+freevo-1.9.0/src/games/genesisitem.py
+    LOC: 152
+    LLOC: 82
+    SLOC: 83
+    Comments: 35
+    Single comments: 34
+    Multi: 3
+    Blank: 32
+    - Comment Stats
+        (C % L): 23%
+        (C % S): 42%
+        (C + M % L): 25%
+freevo-1.9.0/src/games/genericitem.py
+    LOC: 125
+    LLOC: 58
+    SLOC: 59
+    Comments: 33
+    Single comments: 32
+    Multi: 3
+    Blank: 31
+    - Comment Stats
+        (C % L): 26%
+        (C % S): 56%
+        (C + M % L): 29%
+freevo-1.9.0/src/games/game.py
+    LOC: 126
+    LLOC: 70
+    SLOC: 70
+    Comments: 38
+    Single comments: 32
+    Multi: 0
+    Blank: 24
+    - Comment Stats
+        (C % L): 30%
+        (C % S): 54%
+        (C + M % L): 30%
+freevo-1.9.0/src/games/mame_cache.py
+    LOC: 333
+    LLOC: 200
+    SLOC: 208
+    Comments: 68
+    Single comments: 68
+    Multi: 0
+    Blank: 57
+    - Comment Stats
+        (C % L): 20%
+        (C % S): 33%
+        (C + M % L): 20%
+freevo-1.9.0/src/games/zipped_rom.py
+    LOC: 56
+    LLOC: 20
+    SLOC: 19
+    Comments: 28
+    Single comments: 28
+    Multi: 6
+    Blank: 3
+    - Comment Stats
+        (C % L): 50%
+        (C % S): 147%
+        (C + M % L): 61%
+freevo-1.9.0/src/games/mame_types.py
+    LOC: 121
+    LLOC: 59
+    SLOC: 59
+    Comments: 33
+    Single comments: 33
+    Multi: 0
+    Blank: 29
+    - Comment Stats
+        (C % L): 27%
+        (C % S): 56%
+        (C + M % L): 27%
+freevo-1.9.0/src/games/mameitem.py
+    LOC: 135
+    LLOC: 65
+    SLOC: 64
+    Comments: 38
+    Single comments: 37
+    Multi: 3
+    Blank: 31
+    - Comment Stats
+        (C % L): 28%
+        (C % S): 59%
+        (C + M % L): 30%
+freevo-1.9.0/src/games/__init__.py
+    LOC: 110
+    LLOC: 56
+    SLOC: 57
+    Comments: 26
+    Single comments: 26
+    Multi: 12
+    Blank: 15
+    - Comment Stats
+        (C % L): 24%
+        (C % S): 46%
+        (C + M % L): 35%
+freevo-1.9.0/src/games/snesitem.py
+    LOC: 344
+    LLOC: 114
+    SLOC: 264
+    Comments: 40
+    Single comments: 39
+    Multi: 3
+    Blank: 38
+    - Comment Stats
+        (C % L): 12%
+        (C % S): 15%
+        (C + M % L): 12%
+freevo-1.9.0/src/plugins/usb.py
+    LOC: 97
+    LLOC: 36
+    SLOC: 36
+    Comments: 30
+    Single comments: 29
+    Multi: 17
+    Blank: 15
+    - Comment Stats
+        (C % L): 31%
+        (C % S): 83%
+        (C + M % L): 48%
+freevo-1.9.0/src/plugins/newevents.py
+    LOC: 83
+    LLOC: 17
+    SLOC: 19
+    Comments: 28
+    Single comments: 28
+    Multi: 23
+    Blank: 13
+    - Comment Stats
+        (C % L): 34%
+        (C % S): 147%
+        (C + M % L): 61%
+freevo-1.9.0/src/plugins/autocolor.py
+    LOC: 86
+    LLOC: 22
+    SLOC: 22
+    Comments: 33
+    Single comments: 33
+    Multi: 16
+    Blank: 15
+    - Comment Stats
+        (C % L): 38%
+        (C % S): 150%
+        (C + M % L): 57%
+freevo-1.9.0/src/plugins/icecast.py
+    LOC: 160
+    LLOC: 81
+    SLOC: 90
+    Comments: 33
+    Single comments: 33
+    Multi: 25
+    Blank: 12
+    - Comment Stats
+        (C % L): 21%
+        (C % S): 37%
+        (C + M % L): 36%
+freevo-1.9.0/src/plugins/ejectromdrives.py
+    LOC: 91
+    LLOC: 34
+    SLOC: 34
+    Comments: 35
+    Single comments: 35
+    Multi: 7
+    Blank: 15
+    - Comment Stats
+        (C % L): 38%
+        (C % S): 103%
+        (C + M % L): 46%
+freevo-1.9.0/src/plugins/freevo-rendezvous.py
+    LOC: 78
+    LLOC: 28
+    SLOC: 29
+    Comments: 30
+    Single comments: 29
+    Multi: 9
+    Blank: 11
+    - Comment Stats
+        (C % L): 38%
+        (C % S): 103%
+        (C + M % L): 50%
+freevo-1.9.0/src/plugins/joy.py
+    LOC: 174
+    LLOC: 98
+    SLOC: 104
+    Comments: 32
+    Single comments: 34
+    Multi: 8
+    Blank: 28
+    - Comment Stats
+        (C % L): 18%
+        (C % S): 31%
+        (C + M % L): 23%
+freevo-1.9.0/src/plugins/autostart.py
+    LOC: 99
+    LLOC: 41
+    SLOC: 44
+    Comments: 31
+    Single comments: 31
+    Multi: 13
+    Blank: 11
+    - Comment Stats
+        (C % L): 31%
+        (C % S): 70%
+        (C + M % L): 44%
+freevo-1.9.0/src/plugins/remind.py
+    LOC: 196
+    LLOC: 84
+    SLOC: 98
+    Comments: 31
+    Single comments: 32
+    Multi: 30
+    Blank: 36
+    - Comment Stats
+        (C % L): 16%
+        (C % S): 32%
+        (C + M % L): 31%
+freevo-1.9.0/src/plugins/ossmixer.py
+    LOC: 283
+    LLOC: 174
+    SLOC: 174
+    Comments: 45
+    Single comments: 44
+    Multi: 13
+    Blank: 52
+    - Comment Stats
+        (C % L): 16%
+        (C % S): 26%
+        (C + M % L): 20%
+freevo-1.9.0/src/plugins/sixmixer.py
+    LOC: 316
+    LLOC: 203
+    SLOC: 203
+    Comments: 60
+    Single comments: 60
+    Multi: 5
+    Blank: 48
+    - Comment Stats
+        (C % L): 19%
+        (C % S): 30%
+        (C + M % L): 21%
+freevo-1.9.0/src/plugins/headlines.py
+    LOC: 232
+    LLOC: 115
+    SLOC: 122
+    Comments: 44
+    Single comments: 44
+    Multi: 25
+    Blank: 41
+    - Comment Stats
+        (C % L): 19%
+        (C % S): 36%
+        (C + M % L): 30%
+freevo-1.9.0/src/plugins/wiimote.py
+    LOC: 420
+    LLOC: 173
+    SLOC: 209
+    Comments: 37
+    Single comments: 37
+    Multi: 80
+    Blank: 94
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 18%
+        (C + M % L): 28%
+freevo-1.9.0/src/plugins/mixer.py
+    LOC: 292
+    LLOC: 197
+    SLOC: 196
+    Comments: 41
+    Single comments: 40
+    Multi: 9
+    Blank: 47
+    - Comment Stats
+        (C % L): 14%
+        (C % S): 21%
+        (C + M % L): 17%
+freevo-1.9.0/src/plugins/shutdown.py
+    LOC: 244
+    LLOC: 116
+    SLOC: 125
+    Comments: 46
+    Single comments: 46
+    Multi: 32
+    Blank: 41
+    - Comment Stats
+        (C % L): 19%
+        (C % S): 37%
+        (C + M % L): 32%
+freevo-1.9.0/src/plugins/tiny_osd.py
+    LOC: 136
+    LLOC: 53
+    SLOC: 58
+    Comments: 36
+    Single comments: 36
+    Multi: 20
+    Blank: 22
+    - Comment Stats
+        (C % L): 26%
+        (C % S): 62%
+        (C + M % L): 41%
+freevo-1.9.0/src/plugins/home_automation.py
+    LOC: 148
+    LLOC: 77
+    SLOC: 77
+    Comments: 0
+    Single comments: 0
+    Multi: 47
+    Blank: 24
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 32%
+freevo-1.9.0/src/plugins/rom_drives.py
+    LOC: 943
+    LLOC: 648
+    SLOC: 637
+    Comments: 115
+    Single comments: 113
+    Multi: 46
+    Blank: 147
+    - Comment Stats
+        (C % L): 12%
+        (C % S): 18%
+        (C + M % L): 17%
+freevo-1.9.0/src/plugins/yac.py
+    LOC: 76
+    LLOC: 30
+    SLOC: 28
+    Comments: 38
+    Single comments: 37
+    Multi: 5
+    Blank: 6
+    - Comment Stats
+        (C % L): 50%
+        (C % S): 136%
+        (C + M % L): 57%
+freevo-1.9.0/src/plugins/shoppingcart.py
+    LOC: 168
+    LLOC: 99
+    SLOC: 99
+    Comments: 35
+    Single comments: 35
+    Multi: 8
+    Blank: 26
+    - Comment Stats
+        (C % L): 21%
+        (C % S): 35%
+        (C + M % L): 26%
+freevo-1.9.0/src/plugins/zoneminder.py
+    LOC: 566
+    LLOC: 395
+    SLOC: 434
+    Comments: 43
+    Single comments: 37
+    Multi: 24
+    Blank: 71
+    - Comment Stats
+        (C % L): 8%
+        (C % S): 10%
+        (C + M % L): 12%
+freevo-1.9.0/src/plugins/tiny_xosd.py
+    LOC: 167
+    LLOC: 58
+    SLOC: 82
+    Comments: 43
+    Single comments: 40
+    Multi: 21
+    Blank: 24
+    - Comment Stats
+        (C % L): 26%
+        (C % S): 52%
+        (C + M % L): 38%
+freevo-1.9.0/src/plugins/oneclick.py
+    LOC: 1285
+    LLOC: 688
+    SLOC: 964
+    Comments: 84
+    Single comments: 109
+    Multi: 50
+    Blank: 162
+    - Comment Stats
+        (C % L): 7%
+        (C % S): 9%
+        (C + M % L): 10%
+freevo-1.9.0/src/plugins/itv.py
+    LOC: 274
+    LLOC: 124
+    SLOC: 133
+    Comments: 52
+    Single comments: 52
+    Multi: 46
+    Blank: 43
+    - Comment Stats
+        (C % L): 19%
+        (C % S): 39%
+        (C + M % L): 36%
+freevo-1.9.0/src/plugins/torrent.py
+    LOC: 259
+    LLOC: 173
+    SLOC: 178
+    Comments: 5
+    Single comments: 5
+    Multi: 27
+    Blank: 49
+    - Comment Stats
+        (C % L): 2%
+        (C % S): 3%
+        (C + M % L): 12%
+freevo-1.9.0/src/plugins/vfd.py
+    LOC: 896
+    LLOC: 521
+    SLOC: 632
+    Comments: 101
+    Single comments: 95
+    Multi: 53
+    Blank: 116
+    - Comment Stats
+        (C % L): 11%
+        (C % S): 16%
+        (C + M % L): 17%
+freevo-1.9.0/src/plugins/freevused.py
+    LOC: 571
+    LLOC: 262
+    SLOC: 291
+    Comments: 136
+    Single comments: 122
+    Multi: 49
+    Blank: 109
+    - Comment Stats
+        (C % L): 24%
+        (C % S): 47%
+        (C + M % L): 32%
+freevo-1.9.0/src/plugins/lcd.py
+    LOC: 859
+    LLOC: 278
+    SLOC: 654
+    Comments: 108
+    Single comments: 82
+    Multi: 40
+    Blank: 83
+    - Comment Stats
+        (C % L): 13%
+        (C % S): 17%
+        (C + M % L): 17%
+freevo-1.9.0/src/plugins/alsamixer.py
+    LOC: 331
+    LLOC: 207
+    SLOC: 218
+    Comments: 46
+    Single comments: 45
+    Multi: 11
+    Blank: 57
+    - Comment Stats
+        (C % L): 14%
+        (C % S): 21%
+        (C + M % L): 17%
+freevo-1.9.0/src/plugins/processevent.py
+    LOC: 62
+    LLOC: 22
+    SLOC: 22
+    Comments: 24
+    Single comments: 25
+    Multi: 8
+    Blank: 7
+    - Comment Stats
+        (C % L): 39%
+        (C % S): 109%
+        (C + M % L): 52%
+freevo-1.9.0/src/plugins/mediamenu.py
+    LOC: 278
+    LLOC: 169
+    SLOC: 173
+    Comments: 36
+    Single comments: 36
+    Multi: 20
+    Blank: 49
+    - Comment Stats
+        (C % L): 13%
+        (C % S): 21%
+        (C + M % L): 20%
+freevo-1.9.0/src/plugins/speak.py
+    LOC: 125
+    LLOC: 56
+    SLOC: 56
+    Comments: 31
+    Single comments: 35
+    Multi: 10
+    Blank: 24
+    - Comment Stats
+        (C % L): 25%
+        (C % S): 55%
+        (C + M % L): 33%
+freevo-1.9.0/src/plugins/udpremote.py
+    LOC: 223
+    LLOC: 118
+    SLOC: 119
+    Comments: 49
+    Single comments: 48
+    Multi: 22
+    Blank: 34
+    - Comment Stats
+        (C % L): 22%
+        (C % S): 41%
+        (C + M % L): 32%
+freevo-1.9.0/src/plugins/command.py
+    LOC: 478
+    LLOC: 224
+    SLOC: 235
+    Comments: 45
+    Single comments: 45
+    Multi: 111
+    Blank: 87
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 19%
+        (C + M % L): 33%
+freevo-1.9.0/src/plugins/df.py
+    LOC: 83
+    LLOC: 32
+    SLOC: 32
+    Comments: 32
+    Single comments: 30
+    Multi: 10
+    Blank: 11
+    - Comment Stats
+        (C % L): 39%
+        (C % S): 100%
+        (C + M % L): 51%
+freevo-1.9.0/src/plugins/lcd2.py
+    LOC: 307
+    LLOC: 192
+    SLOC: 186
+    Comments: 59
+    Single comments: 46
+    Multi: 33
+    Blank: 42
+    - Comment Stats
+        (C % L): 19%
+        (C % S): 32%
+        (C + M % L): 30%
+freevo-1.9.0/src/plugins/mpd.py
+    LOC: 267
+    LLOC: 147
+    SLOC: 157
+    Comments: 48
+    Single comments: 49
+    Multi: 20
+    Blank: 41
+    - Comment Stats
+        (C % L): 18%
+        (C % S): 31%
+        (C + M % L): 25%
+freevo-1.9.0/src/plugins/cd_burn.py
+    LOC: 959
+    LLOC: 590
+    SLOC: 617
+    Comments: 82
+    Single comments: 84
+    Multi: 85
+    Blank: 173
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 13%
+        (C + M % L): 17%
+freevo-1.9.0/src/plugins/__init__.py
+    LOC: 28
+    LLOC: 0
+    SLOC: 0
+    Comments: 24
+    Single comments: 24
+    Multi: 3
+    Blank: 1
+    - Comment Stats
+        (C % L): 86%
+        (C % S): 2400%
+        (C + M % L): 96%
+freevo-1.9.0/src/plugins/weatherdata.py
+    LOC: 509
+    LLOC: 229
+    SLOC: 294
+    Comments: 31
+    Single comments: 31
+    Multi: 126
+    Blank: 58
+    - Comment Stats
+        (C % L): 6%
+        (C % S): 11%
+        (C + M % L): 31%
+freevo-1.9.0/src/plugins/file_ops.py
+    LOC: 126
+    LLOC: 62
+    SLOC: 72
+    Comments: 29
+    Single comments: 29
+    Multi: 6
+    Blank: 19
+    - Comment Stats
+        (C % L): 23%
+        (C % S): 40%
+        (C + M % L): 28%
+freevo-1.9.0/src/plugins/freevoscreensaver.py
+    LOC: 176
+    LLOC: 91
+    SLOC: 93
+    Comments: 29
+    Single comments: 29
+    Multi: 30
+    Blank: 24
+    - Comment Stats
+        (C % L): 16%
+        (C % S): 31%
+        (C + M % L): 34%
+freevo-1.9.0/src/plugins/usbstorage.py
+    LOC: 62
+    LLOC: 14
+    SLOC: 14
+    Comments: 29
+    Single comments: 29
+    Multi: 11
+    Blank: 8
+    - Comment Stats
+        (C % L): 47%
+        (C % S): 207%
+        (C + M % L): 65%
+freevo-1.9.0/src/plugins/autoshutdown.py
+    LOC: 714
+    LLOC: 414
+    SLOC: 424
+    Comments: 64
+    Single comments: 63
+    Multi: 109
+    Blank: 118
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 15%
+        (C + M % L): 24%
+freevo-1.9.0/src/plugins/alsamixer2.py
+    LOC: 256
+    LLOC: 95
+    SLOC: 103
+    Comments: 49
+    Single comments: 56
+    Multi: 57
+    Blank: 40
+    - Comment Stats
+        (C % L): 19%
+        (C % S): 48%
+        (C + M % L): 41%
+freevo-1.9.0/src/plugins/buttonbar.py
+    LOC: 446
+    LLOC: 250
+    SLOC: 267
+    Comments: 47
+    Single comments: 46
+    Multi: 59
+    Blank: 74
+    - Comment Stats
+        (C % L): 11%
+        (C % S): 18%
+        (C + M % L): 24%
+freevo-1.9.0/src/plugins/screensaver/bouncing_freevo.py
+    LOC: 103
+    LLOC: 51
+    SLOC: 51
+    Comments: 33
+    Single comments: 33
+    Multi: 3
+    Blank: 16
+    - Comment Stats
+        (C % L): 32%
+        (C % S): 65%
+        (C + M % L): 35%
+freevo-1.9.0/src/plugins/screensaver/life.py
+    LOC: 201
+    LLOC: 130
+    SLOC: 133
+    Comments: 33
+    Single comments: 33
+    Multi: 3
+    Blank: 32
+    - Comment Stats
+        (C % L): 16%
+        (C % S): 25%
+        (C + M % L): 18%
+freevo-1.9.0/src/plugins/screensaver/balls.py
+    LOC: 185
+    LLOC: 104
+    SLOC: 108
+    Comments: 38
+    Single comments: 37
+    Multi: 3
+    Blank: 37
+    - Comment Stats
+        (C % L): 21%
+        (C % S): 35%
+        (C + M % L): 22%
+freevo-1.9.0/src/plugins/screensaver/flames.py
+    LOC: 144
+    LLOC: 86
+    SLOC: 74
+    Comments: 38
+    Single comments: 43
+    Multi: 3
+    Blank: 24
+    - Comment Stats
+        (C % L): 26%
+        (C % S): 51%
+        (C + M % L): 28%
+freevo-1.9.0/src/plugins/screensaver/__init__.py
+    LOC: 244
+    LLOC: 133
+    SLOC: 137
+    Comments: 38
+    Single comments: 38
+    Multi: 19
+    Blank: 50
+    - Comment Stats
+        (C % L): 16%
+        (C % S): 28%
+        (C + M % L): 23%
+freevo-1.9.0/src/plugins/idlebar/remindicon.py
+    LOC: 94
+    LLOC: 41
+    SLOC: 39
+    Comments: 30
+    Single comments: 30
+    Multi: 9
+    Blank: 16
+    - Comment Stats
+        (C % L): 32%
+        (C % S): 77%
+        (C + M % L): 41%
+freevo-1.9.0/src/plugins/idlebar/transcode.py
+    LOC: 277
+    LLOC: 191
+    SLOC: 195
+    Comments: 32
+    Single comments: 34
+    Multi: 14
+    Blank: 34
+    - Comment Stats
+        (C % L): 12%
+        (C % S): 16%
+        (C + M % L): 17%
+freevo-1.9.0/src/plugins/idlebar/sixvolume.py
+    LOC: 115
+    LLOC: 73
+    SLOC: 71
+    Comments: 29
+    Single comments: 29
+    Multi: 5
+    Blank: 10
+    - Comment Stats
+        (C % L): 25%
+        (C % S): 41%
+        (C + M % L): 30%
+freevo-1.9.0/src/plugins/idlebar/encoding.py
+    LOC: 299
+    LLOC: 204
+    SLOC: 210
+    Comments: 44
+    Single comments: 43
+    Multi: 11
+    Blank: 35
+    - Comment Stats
+        (C % L): 15%
+        (C % S): 21%
+        (C + M % L): 18%
+freevo-1.9.0/src/plugins/idlebar/mail.py
+    LOC: 72
+    LLOC: 30
+    SLOC: 30
+    Comments: 27
+    Single comments: 27
+    Multi: 5
+    Blank: 10
+    - Comment Stats
+        (C % L): 38%
+        (C % S): 90%
+        (C + M % L): 44%
+freevo-1.9.0/src/plugins/idlebar/diskfree.py
+    LOC: 146
+    LLOC: 79
+    SLOC: 83
+    Comments: 27
+    Single comments: 26
+    Multi: 15
+    Blank: 22
+    - Comment Stats
+        (C % L): 18%
+        (C % S): 33%
+        (C + M % L): 29%
+freevo-1.9.0/src/plugins/idlebar/volume.py
+    LOC: 95
+    LLOC: 52
+    SLOC: 50
+    Comments: 29
+    Single comments: 29
+    Multi: 5
+    Blank: 11
+    - Comment Stats
+        (C % L): 31%
+        (C % S): 58%
+        (C + M % L): 36%
+freevo-1.9.0/src/plugins/idlebar/system.py
+    LOC: 650
+    LLOC: 349
+    SLOC: 349
+    Comments: 57
+    Single comments: 58
+    Multi: 131
+    Blank: 112
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 16%
+        (C + M % L): 29%
+freevo-1.9.0/src/plugins/idlebar/progactive.py
+    LOC: 86
+    LLOC: 42
+    SLOC: 45
+    Comments: 22
+    Single comments: 22
+    Multi: 10
+    Blank: 9
+    - Comment Stats
+        (C % L): 26%
+        (C % S): 49%
+        (C + M % L): 37%
+freevo-1.9.0/src/plugins/idlebar/MultiMail.py
+    LOC: 179
+    LLOC: 104
+    SLOC: 104
+    Comments: 32
+    Single comments: 30
+    Multi: 11
+    Blank: 34
+    - Comment Stats
+        (C % L): 18%
+        (C % S): 31%
+        (C + M % L): 24%
+freevo-1.9.0/src/plugins/idlebar/weather.py
+    LOC: 208
+    LLOC: 116
+    SLOC: 119
+    Comments: 26
+    Single comments: 27
+    Multi: 31
+    Blank: 31
+    - Comment Stats
+        (C % L): 12%
+        (C % S): 22%
+        (C + M % L): 27%
+freevo-1.9.0/src/plugins/idlebar/tv.py
+    LOC: 98
+    LLOC: 44
+    SLOC: 44
+    Comments: 28
+    Single comments: 28
+    Multi: 10
+    Blank: 16
+    - Comment Stats
+        (C % L): 29%
+        (C % S): 64%
+        (C + M % L): 39%
+freevo-1.9.0/src/plugins/idlebar/holidays.py
+    LOC: 94
+    LLOC: 20
+    SLOC: 32
+    Comments: 27
+    Single comments: 27
+    Multi: 21
+    Blank: 14
+    - Comment Stats
+        (C % L): 29%
+        (C % S): 84%
+        (C + M % L): 51%
+freevo-1.9.0/src/plugins/idlebar/__init__.py
+    LOC: 260
+    LLOC: 124
+    SLOC: 124
+    Comments: 29
+    Single comments: 31
+    Multi: 63
+    Blank: 42
+    - Comment Stats
+        (C % L): 11%
+        (C % S): 23%
+        (C + M % L): 35%
+freevo-1.9.0/src/plugins/idlebar/cdstatus.py
+    LOC: 74
+    LLOC: 33
+    SLOC: 33
+    Comments: 27
+    Single comments: 27
+    Multi: 5
+    Blank: 9
+    - Comment Stats
+        (C % L): 36%
+        (C % S): 82%
+        (C + M % L): 43%
+freevo-1.9.0/src/skins/__init__.py
+    LOC: 28
+    LLOC: 0
+    SLOC: 0
+    Comments: 24
+    Single comments: 24
+    Multi: 3
+    Blank: 1
+    - Comment Stats
+        (C % L): 86%
+        (C % S): 2400%
+        (C + M % L): 96%
+freevo-1.9.0/src/skins/main/skin_utils.py
+    LOC: 267
+    LLOC: 177
+    SLOC: 179
+    Comments: 36
+    Single comments: 36
+    Multi: 3
+    Blank: 49
+    - Comment Stats
+        (C % L): 13%
+        (C % S): 20%
+        (C + M % L): 15%
+freevo-1.9.0/src/skins/main/tvlisting_area.py
+    LOC: 392
+    LLOC: 239
+    SLOC: 264
+    Comments: 44
+    Single comments: 43
+    Multi: 12
+    Blank: 73
+    - Comment Stats
+        (C % L): 11%
+        (C % S): 17%
+        (C + M % L): 14%
+freevo-1.9.0/src/skins/main/textentry_area.py
+    LOC: 116
+    LLOC: 60
+    SLOC: 56
+    Comments: 32
+    Single comments: 32
+    Multi: 9
+    Blank: 19
+    - Comment Stats
+        (C % L): 28%
+        (C % S): 57%
+        (C + M % L): 35%
+freevo-1.9.0/src/skins/main/area.py
+    LOC: 728
+    LLOC: 443
+    SLOC: 458
+    Comments: 73
+    Single comments: 73
+    Multi: 60
+    Blank: 137
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 16%
+        (C + M % L): 18%
+freevo-1.9.0/src/skins/main/buttongroup_area.py
+    LOC: 105
+    LLOC: 51
+    SLOC: 52
+    Comments: 29
+    Single comments: 29
+    Multi: 9
+    Blank: 15
+    - Comment Stats
+        (C % L): 28%
+        (C % S): 56%
+        (C + M % L): 36%
+freevo-1.9.0/src/skins/main/xml_skin.py
+    LOC: 1144
+    LLOC: 749
+    SLOC: 785
+    Comments: 59
+    Single comments: 59
+    Multi: 80
+    Blank: 220
+    - Comment Stats
+        (C % L): 5%
+        (C % S): 8%
+        (C + M % L): 12%
+freevo-1.9.0/src/skins/main/main.py
+    LOC: 584
+    LLOC: 332
+    SLOC: 331
+    Comments: 43
+    Single comments: 43
+    Multi: 89
+    Blank: 121
+    - Comment Stats
+        (C % L): 7%
+        (C % S): 13%
+        (C + M % L): 23%
+freevo-1.9.0/src/skins/main/listing_area.py
+    LOC: 502
+    LLOC: 315
+    SLOC: 355
+    Comments: 46
+    Single comments: 46
+    Multi: 13
+    Blank: 88
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 13%
+        (C + M % L): 12%
+freevo-1.9.0/src/skins/main/scrollabletext_area.py
+    LOC: 100
+    LLOC: 44
+    SLOC: 44
+    Comments: 30
+    Single comments: 30
+    Multi: 9
+    Blank: 17
+    - Comment Stats
+        (C % L): 30%
+        (C % S): 68%
+        (C + M % L): 39%
+freevo-1.9.0/src/skins/main/__init__.py
+    LOC: 0
+    LLOC: 0
+    SLOC: 0
+    Comments: 0
+    Single comments: 0
+    Multi: 0
+    Blank: 0
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 0%
+freevo-1.9.0/src/skins/main/view_area.py
+    LOC: 131
+    LLOC: 62
+    SLOC: 62
+    Comments: 28
+    Single comments: 28
+    Multi: 9
+    Blank: 32
+    - Comment Stats
+        (C % L): 21%
+        (C % S): 45%
+        (C + M % L): 28%
+freevo-1.9.0/src/skins/main/info_area.py
+    LOC: 441
+    LLOC: 248
+    SLOC: 262
+    Comments: 74
+    Single comments: 67
+    Multi: 32
+    Blank: 80
+    - Comment Stats
+        (C % L): 17%
+        (C % S): 28%
+        (C + M % L): 24%
+freevo-1.9.0/src/skins/main/default_areas.py
+    LOC: 183
+    LLOC: 88
+    SLOC: 90
+    Comments: 31
+    Single comments: 31
+    Multi: 28
+    Blank: 34
+    - Comment Stats
+        (C % L): 17%
+        (C % S): 34%
+        (C + M % L): 32%
+freevo-1.9.0/src/skins/main/screen.py
+    LOC: 225
+    LLOC: 130
+    SLOC: 143
+    Comments: 36
+    Single comments: 36
+    Multi: 10
+    Blank: 36
+    - Comment Stats
+        (C % L): 16%
+        (C % S): 25%
+        (C + M % L): 20%
+freevo-1.9.0/src/skins/osd/xml.py
+    LOC: 419
+    LLOC: 286
+    SLOC: 294
+    Comments: 37
+    Single comments: 37
+    Multi: 12
+    Blank: 76
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 13%
+        (C + M % L): 12%
+freevo-1.9.0/src/skins/osd/designer.py
+    LOC: 1064
+    LLOC: 712
+    SLOC: 851
+    Comments: 42
+    Single comments: 42
+    Multi: 28
+    Blank: 143
+    - Comment Stats
+        (C % L): 4%
+        (C % S): 5%
+        (C + M % L): 7%
+freevo-1.9.0/src/skins/osd/skin.py
+    LOC: 676
+    LLOC: 468
+    SLOC: 470
+    Comments: 75
+    Single comments: 70
+    Multi: 16
+    Blank: 120
+    - Comment Stats
+        (C % L): 11%
+        (C % S): 16%
+        (C + M % L): 13%
+freevo-1.9.0/src/skins/osd/__init__.py
+    LOC: 33
+    LLOC: 1
+    SLOC: 1
+    Comments: 31
+    Single comments: 31
+    Multi: 0
+    Blank: 1
+    - Comment Stats
+        (C % L): 94%
+        (C % S): 3100%
+        (C + M % L): 94%
+freevo-1.9.0/src/skins/plugins/__init__.py
+    LOC: 0
+    LLOC: 0
+    SLOC: 0
+    Comments: 0
+    Single comments: 0
+    Multi: 0
+    Blank: 0
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 0%
+freevo-1.9.0/src/skin/models.py
+    LOC: 410
+    LLOC: 210
+    SLOC: 204
+    Comments: 48
+    Single comments: 43
+    Multi: 105
+    Blank: 58
+    - Comment Stats
+        (C % L): 12%
+        (C % S): 24%
+        (C + M % L): 37%
+freevo-1.9.0/src/skin/__init__.py
+    LOC: 151
+    LLOC: 60
+    SLOC: 64
+    Comments: 35
+    Single comments: 35
+    Multi: 22
+    Blank: 30
+    - Comment Stats
+        (C % L): 23%
+        (C % S): 55%
+        (C + M % L): 38%
+freevo-1.9.0/src/skin/widgets/scrollabletext_screen.py
+    LOC: 116
+    LLOC: 43
+    SLOC: 43
+    Comments: 33
+    Single comments: 33
+    Multi: 26
+    Blank: 14
+    - Comment Stats
+        (C % L): 28%
+        (C % S): 77%
+        (C + M % L): 51%
+freevo-1.9.0/src/skin/widgets/__init__.py
+    LOC: 32
+    LLOC: 2
+    SLOC: 2
+    Comments: 29
+    Single comments: 29
+    Multi: 0
+    Blank: 1
+    - Comment Stats
+        (C % L): 91%
+        (C % S): 1450%
+        (C + M % L): 91%
+freevo-1.9.0/src/skin/widgets/textentry_screen.py
+    LOC: 248
+    LLOC: 121
+    SLOC: 126
+    Comments: 40
+    Single comments: 40
+    Multi: 43
+    Blank: 39
+    - Comment Stats
+        (C % L): 16%
+        (C % S): 32%
+        (C + M % L): 33%
+freevo-1.9.0/src/helpers/convert_favorites.py
+    LOC: 154
+    LLOC: 87
+    SLOC: 94
+    Comments: 29
+    Single comments: 29
+    Multi: 3
+    Blank: 28
+    - Comment Stats
+        (C % L): 19%
+        (C % S): 31%
+        (C + M % L): 21%
+freevo-1.9.0/src/helpers/osddesigner.py
+    LOC: 1538
+    LLOC: 1191
+    SLOC: 1243
+    Comments: 59
+    Single comments: 58
+    Multi: 0
+    Blank: 237
+    - Comment Stats
+        (C % L): 4%
+        (C % S): 5%
+        (C + M % L): 4%
+freevo-1.9.0/src/helpers/convert_favorites_txt.py
+    LOC: 181
+    LLOC: 115
+    SLOC: 122
+    Comments: 32
+    Single comments: 32
+    Multi: 6
+    Blank: 21
+    - Comment Stats
+        (C % L): 18%
+        (C % S): 26%
+        (C + M % L): 21%
+freevo-1.9.0/src/helpers/schedulefavorites.py
+    LOC: 56
+    LLOC: 20
+    SLOC: 20
+    Comments: 30
+    Single comments: 30
+    Multi: 0
+    Blank: 6
+    - Comment Stats
+        (C % L): 54%
+        (C % S): 150%
+        (C + M % L): 54%
+freevo-1.9.0/src/helpers/vtrelease.py
+    LOC: 62
+    LLOC: 21
+    SLOC: 22
+    Comments: 30
+    Single comments: 30
+    Multi: 3
+    Blank: 7
+    - Comment Stats
+        (C % L): 48%
+        (C % S): 136%
+        (C + M % L): 53%
+freevo-1.9.0/src/helpers/cache.py
+    LOC: 722
+    LLOC: 503
+    SLOC: 527
+    Comments: 52
+    Single comments: 52
+    Multi: 32
+    Blank: 111
+    - Comment Stats
+        (C % L): 7%
+        (C % S): 10%
+        (C + M % L): 12%
+freevo-1.9.0/src/helpers/install.py
+    LOC: 132
+    LLOC: 69
+    SLOC: 71
+    Comments: 42
+    Single comments: 42
+    Multi: 0
+    Blank: 19
+    - Comment Stats
+        (C % L): 32%
+        (C % S): 59%
+        (C + M % L): 32%
+freevo-1.9.0/src/helpers/audioscrobbler-errors.py
+    LOC: 45
+    LLOC: 14
+    SLOC: 14
+    Comments: 28
+    Single comments: 28
+    Multi: 0
+    Blank: 3
+    - Comment Stats
+        (C % L): 62%
+        (C % S): 200%
+        (C + M % L): 62%
+freevo-1.9.0/src/helpers/mkimagemrss.py
+    LOC: 198
+    LLOC: 143
+    SLOC: 144
+    Comments: 29
+    Single comments: 29
+    Multi: 3
+    Blank: 22
+    - Comment Stats
+        (C % L): 15%
+        (C % S): 20%
+        (C + M % L): 16%
+freevo-1.9.0/src/helpers/encodingserver.py
+    LOC: 328
+    LLOC: 198
+    SLOC: 201
+    Comments: 33
+    Single comments: 49
+    Multi: 12
+    Blank: 66
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 16%
+        (C + M % L): 14%
+freevo-1.9.0/src/helpers/commdetectserver.py
+    LOC: 159
+    LLOC: 101
+    SLOC: 103
+    Comments: 25
+    Single comments: 27
+    Multi: 3
+    Blank: 26
+    - Comment Stats
+        (C % L): 16%
+        (C % S): 24%
+        (C + M % L): 18%
+freevo-1.9.0/src/helpers/makestationlist.py
+    LOC: 120
+    LLOC: 38
+    SLOC: 49
+    Comments: 30
+    Single comments: 30
+    Multi: 25
+    Blank: 16
+    - Comment Stats
+        (C % L): 25%
+        (C % S): 61%
+        (C + M % L): 46%
+freevo-1.9.0/src/helpers/makelogos.py
+    LOC: 68
+    LLOC: 29
+    SLOC: 29
+    Comments: 32
+    Single comments: 32
+    Multi: 0
+    Blank: 7
+    - Comment Stats
+        (C % L): 47%
+        (C % S): 110%
+        (C + M % L): 47%
+freevo-1.9.0/src/helpers/passwd.py
+    LOC: 55
+    LLOC: 23
+    SLOC: 23
+    Comments: 28
+    Single comments: 28
+    Multi: 0
+    Blank: 4
+    - Comment Stats
+        (C % L): 51%
+        (C % S): 122%
+        (C + M % L): 51%
+freevo-1.9.0/src/helpers/livepauseserver.py
+    LOC: 169
+    LLOC: 108
+    SLOC: 111
+    Comments: 27
+    Single comments: 26
+    Multi: 0
+    Blank: 32
+    - Comment Stats
+        (C % L): 16%
+        (C % S): 24%
+        (C + M % L): 16%
+freevo-1.9.0/src/helpers/webserver.py
+    LOC: 134
+    LLOC: 76
+    SLOC: 76
+    Comments: 32
+    Single comments: 32
+    Multi: 3
+    Blank: 23
+    - Comment Stats
+        (C % L): 24%
+        (C % S): 42%
+        (C + M % L): 26%
+freevo-1.9.0/src/helpers/daemon.py
+    LOC: 89
+    LLOC: 39
+    SLOC: 45
+    Comments: 29
+    Single comments: 29
+    Multi: 3
+    Blank: 12
+    - Comment Stats
+        (C % L): 33%
+        (C % S): 64%
+        (C + M % L): 36%
+freevo-1.9.0/src/helpers/vg.py
+    LOC: 340
+    LLOC: 246
+    SLOC: 252
+    Comments: 46
+    Single comments: 52
+    Multi: 0
+    Blank: 36
+    - Comment Stats
+        (C % L): 14%
+        (C % S): 18%
+        (C + M % L): 14%
+freevo-1.9.0/src/helpers/plugins.py
+    LOC: 643
+    LLOC: 441
+    SLOC: 486
+    Comments: 43
+    Single comments: 43
+    Multi: 27
+    Blank: 87
+    - Comment Stats
+        (C % L): 7%
+        (C % S): 9%
+        (C + M % L): 11%
+freevo-1.9.0/src/helpers/tv_grab.py
+    LOC: 134
+    LLOC: 73
+    SLOC: 78
+    Comments: 29
+    Single comments: 29
+    Multi: 3
+    Blank: 24
+    - Comment Stats
+        (C % L): 22%
+        (C % S): 37%
+        (C + M % L): 24%
+freevo-1.9.0/src/helpers/convert_config.py
+    LOC: 236
+    LLOC: 69
+    SLOC: 171
+    Comments: 41
+    Single comments: 41
+    Multi: 3
+    Blank: 21
+    - Comment Stats
+        (C % L): 17%
+        (C % S): 24%
+        (C + M % L): 19%
+freevo-1.9.0/src/helpers/rssserver.py
+    LOC: 114
+    LLOC: 40
+    SLOC: 41
+    Comments: 31
+    Single comments: 31
+    Multi: 26
+    Blank: 16
+    - Comment Stats
+        (C % L): 27%
+        (C % S): 76%
+        (C + M % L): 50%
+freevo-1.9.0/src/helpers/remote.py
+    LOC: 125
+    LLOC: 54
+    SLOC: 71
+    Comments: 36
+    Single comments: 36
+    Multi: 3
+    Blank: 15
+    - Comment Stats
+        (C % L): 29%
+        (C % S): 51%
+        (C + M % L): 31%
+freevo-1.9.0/src/helpers/makelinuxevent.py
+    LOC: 428
+    LLOC: 291
+    SLOC: 292
+    Comments: 46
+    Single comments: 38
+    Multi: 3
+    Blank: 95
+    - Comment Stats
+        (C % L): 11%
+        (C % S): 16%
+        (C + M % L): 11%
+freevo-1.9.0/src/helpers/__init__.py
+    LOC: 3
+    LLOC: 0
+    SLOC: 0
+    Comments: 0
+    Single comments: 0
+    Multi: 3
+    Blank: 0
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 100%
+freevo-1.9.0/src/helpers/makelircrc.py
+    LOC: 268
+    LLOC: 170
+    SLOC: 195
+    Comments: 40
+    Single comments: 41
+    Multi: 3
+    Blank: 29
+    - Comment Stats
+        (C % L): 15%
+        (C % S): 21%
+        (C + M % L): 16%
+freevo-1.9.0/src/helpers/imdb.py
+    LOC: 205
+    LLOC: 137
+    SLOC: 140
+    Comments: 34
+    Single comments: 34
+    Multi: 3
+    Blank: 28
+    - Comment Stats
+        (C % L): 17%
+        (C % S): 24%
+        (C + M % L): 18%
+freevo-1.9.0/src/helpers/recordserver.py
+    LOC: 1496
+    LLOC: 1060
+    SLOC: 1079
+    Comments: 110
+    Single comments: 117
+    Multi: 23
+    Blank: 277
+    - Comment Stats
+        (C % L): 7%
+        (C % S): 10%
+        (C + M % L): 9%
+freevo-1.9.0/src/www/wap_types.py
+    LOC: 84
+    LLOC: 39
+    SLOC: 39
+    Comments: 28
+    Single comments: 28
+    Multi: 0
+    Blank: 17
+    - Comment Stats
+        (C % L): 33%
+        (C % S): 72%
+        (C + M % L): 33%
+freevo-1.9.0/src/www/configlib.py
+    LOC: 381
+    LLOC: 242
+    SLOC: 243
+    Comments: 37
+    Single comments: 37
+    Multi: 33
+    Blank: 68
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 15%
+        (C + M % L): 18%
+freevo-1.9.0/src/www/__init__.py
+    LOC: 55
+    LLOC: 19
+    SLOC: 19
+    Comments: 25
+    Single comments: 25
+    Multi: 6
+    Blank: 5
+    - Comment Stats
+        (C % L): 45%
+        (C % S): 132%
+        (C + M % L): 56%
+freevo-1.9.0/src/www/web_types.py
+    LOC: 593
+    LLOC: 161
+    SLOC: 264
+    Comments: 99
+    Single comments: 100
+    Multi: 118
+    Blank: 111
+    - Comment Stats
+        (C % L): 17%
+        (C % S): 38%
+        (C + M % L): 37%
+freevo-1.9.0/src/util/fxdparser.py
+    LOC: 376
+    LLOC: 216
+    SLOC: 217
+    Comments: 33
+    Single comments: 33
+    Multi: 72
+    Blank: 54
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 15%
+        (C + M % L): 28%
+freevo-1.9.0/src/util/mediainfo.py
+    LOC: 826
+    LLOC: 487
+    SLOC: 491
+    Comments: 62
+    Single comments: 62
+    Multi: 120
+    Blank: 153
+    - Comment Stats
+        (C % L): 8%
+        (C % S): 13%
+        (C + M % L): 22%
+freevo-1.9.0/src/util/distutils.py
+    LOC: 268
+    LLOC: 111
+    SLOC: 120
+    Comments: 98
+    Single comments: 98
+    Multi: 18
+    Blank: 32
+    - Comment Stats
+        (C % L): 37%
+        (C % S): 82%
+        (C + M % L): 43%
+freevo-1.9.0/src/util/youtube_dl.py
+    LOC: 929
+    LLOC: 556
+    SLOC: 614
+    Comments: 44
+    Single comments: 79
+    Multi: 97
+    Blank: 139
+    - Comment Stats
+        (C % L): 5%
+        (C % S): 7%
+        (C + M % L): 15%
+freevo-1.9.0/src/util/videothumb.py
+    LOC: 143
+    LLOC: 79
+    SLOC: 80
+    Comments: 41
+    Single comments: 41
+    Multi: 3
+    Blank: 19
+    - Comment Stats
+        (C % L): 29%
+        (C % S): 51%
+        (C + M % L): 31%
+freevo-1.9.0/src/util/amazon.py
+    LOC: 482
+    LLOC: 240
+    SLOC: 252
+    Comments: 62
+    Single comments: 66
+    Multi: 96
+    Blank: 68
+    - Comment Stats
+        (C % L): 13%
+        (C % S): 25%
+        (C + M % L): 33%
+freevo-1.9.0/src/util/pymetar.py
+    LOC: 971
+    LLOC: 337
+    SLOC: 628
+    Comments: 76
+    Single comments: 80
+    Multi: 158
+    Blank: 105
+    - Comment Stats
+        (C % L): 8%
+        (C % S): 12%
+        (C + M % L): 24%
+freevo-1.9.0/src/util/marmalade.py
+    LOC: 450
+    LLOC: 315
+    SLOC: 315
+    Comments: 54
+    Single comments: 54
+    Multi: 34
+    Blank: 47
+    - Comment Stats
+        (C % L): 12%
+        (C % S): 17%
+        (C + M % L): 20%
+freevo-1.9.0/src/util/audioscrobbler.py
+    LOC: 473
+    LLOC: 238
+    SLOC: 248
+    Comments: 39
+    Single comments: 40
+    Multi: 120
+    Blank: 65
+    - Comment Stats
+        (C % L): 8%
+        (C % S): 16%
+        (C + M % L): 34%
+freevo-1.9.0/src/util/Rendezvous.py
+    LOC: 1480
+    LLOC: 995
+    SLOC: 996
+    Comments: 77
+    Single comments: 151
+    Multi: 109
+    Blank: 224
+    - Comment Stats
+        (C % L): 5%
+        (C % S): 8%
+        (C + M % L): 13%
+freevo-1.9.0/src/util/ioctl.py
+    LOC: 68
+    LLOC: 34
+    SLOC: 29
+    Comments: 30
+    Single comments: 30
+    Multi: 0
+    Blank: 9
+    - Comment Stats
+        (C % L): 44%
+        (C % S): 103%
+        (C + M % L): 44%
+freevo-1.9.0/src/util/feedparser.py
+    LOC: 3629
+    LLOC: 2647
+    SLOC: 2893
+    Comments: 343
+    Single comments: 272
+    Multi: 81
+    Blank: 383
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 12%
+        (C + M % L): 12%
+freevo-1.9.0/src/util/tv_util.py
+    LOC: 172
+    LLOC: 85
+    SLOC: 100
+    Comments: 28
+    Single comments: 29
+    Multi: 3
+    Blank: 40
+    - Comment Stats
+        (C % L): 16%
+        (C % S): 28%
+        (C + M % L): 18%
+freevo-1.9.0/src/util/fxdimdb.py
+    LOC: 1169
+    LLOC: 792
+    SLOC: 758
+    Comments: 138
+    Single comments: 154
+    Multi: 45
+    Blank: 212
+    - Comment Stats
+        (C % L): 12%
+        (C % S): 18%
+        (C + M % L): 16%
+freevo-1.9.0/src/util/misc.py
+    LOC: 606
+    LLOC: 387
+    SLOC: 371
+    Comments: 71
+    Single comments: 62
+    Multi: 76
+    Blank: 97
+    - Comment Stats
+        (C % L): 12%
+        (C % S): 19%
+        (C + M % L): 24%
+freevo-1.9.0/src/util/qp_xml.py
+    LOC: 249
+    LLOC: 155
+    SLOC: 152
+    Comments: 40
+    Single comments: 36
+    Multi: 4
+    Blank: 57
+    - Comment Stats
+        (C % L): 16%
+        (C % S): 26%
+        (C + M % L): 18%
+freevo-1.9.0/src/util/lirc.py
+    LOC: 141
+    LLOC: 83
+    SLOC: 81
+    Comments: 30
+    Single comments: 30
+    Multi: 0
+    Blank: 30
+    - Comment Stats
+        (C % L): 21%
+        (C % S): 37%
+        (C + M % L): 21%
+freevo-1.9.0/src/util/vfs.py
+    LOC: 256
+    LLOC: 157
+    SLOC: 153
+    Comments: 36
+    Single comments: 36
+    Multi: 32
+    Blank: 35
+    - Comment Stats
+        (C % L): 14%
+        (C % S): 24%
+        (C + M % L): 27%
+freevo-1.9.0/src/util/__init__.py
+    LOC: 83
+    LLOC: 40
+    SLOC: 40
+    Comments: 27
+    Single comments: 27
+    Multi: 3
+    Blank: 13
+    - Comment Stats
+        (C % L): 33%
+        (C % S): 68%
+        (C + M % L): 36%
+freevo-1.9.0/src/util/distribution.py
+    LOC: 396
+    LLOC: 199
+    SLOC: 226
+    Comments: 103
+    Single comments: 101
+    Multi: 12
+    Blank: 57
+    - Comment Stats
+        (C % L): 26%
+        (C % S): 46%
+        (C + M % L): 29%
+freevo-1.9.0/src/util/fileops.py
+    LOC: 708
+    LLOC: 400
+    SLOC: 402
+    Comments: 66
+    Single comments: 64
+    Multi: 124
+    Blank: 118
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 16%
+        (C + M % L): 27%
+freevo-1.9.0/src/util/objectcache.py
+    LOC: 111
+    LLOC: 48
+    SLOC: 48
+    Comments: 40
+    Single comments: 39
+    Multi: 5
+    Blank: 19
+    - Comment Stats
+        (C % L): 36%
+        (C % S): 83%
+        (C + M % L): 41%
+freevo-1.9.0/src/util/dbutil.py
+    LOC: 127
+    LLOC: 62
+    SLOC: 62
+    Comments: 31
+    Single comments: 35
+    Multi: 6
+    Blank: 24
+    - Comment Stats
+        (C % L): 24%
+        (C % S): 50%
+        (C + M % L): 29%
+freevo-1.9.0/src/util/popen3.py
+    LOC: 187
+    LLOC: 105
+    SLOC: 105
+    Comments: 33
+    Single comments: 33
+    Multi: 18
+    Blank: 31
+    - Comment Stats
+        (C % L): 18%
+        (C % S): 31%
+        (C + M % L): 27%
+freevo-1.9.0/src/util/extendedmeta.py
+    LOC: 321
+    LLOC: 213
+    SLOC: 218
+    Comments: 47
+    Single comments: 45
+    Multi: 4
+    Blank: 54
+    - Comment Stats
+        (C % L): 15%
+        (C % S): 22%
+        (C + M % L): 16%
+freevo-1.9.0/src/util/unescape.py
+    LOC: 29
+    LLOC: 22
+    SLOC: 19
+    Comments: 9
+    Single comments: 8
+    Multi: 0
+    Blank: 2
+    - Comment Stats
+        (C % L): 31%
+        (C % S): 47%
+        (C + M % L): 31%
+freevo-1.9.0/src/audio/audiodiskitem.py
+    LOC: 132
+    LLOC: 62
+    SLOC: 62
+    Comments: 37
+    Single comments: 37
+    Multi: 9
+    Blank: 24
+    - Comment Stats
+        (C % L): 28%
+        (C % S): 60%
+        (C + M % L): 35%
+freevo-1.9.0/src/audio/player.py
+    LOC: 247
+    LLOC: 163
+    SLOC: 158
+    Comments: 32
+    Single comments: 27
+    Multi: 13
+    Blank: 49
+    - Comment Stats
+        (C % L): 13%
+        (C % S): 20%
+        (C + M % L): 18%
+freevo-1.9.0/src/audio/audioitem.py
+    LOC: 254
+    LLOC: 132
+    SLOC: 136
+    Comments: 46
+    Single comments: 47
+    Multi: 26
+    Blank: 45
+    - Comment Stats
+        (C % L): 18%
+        (C % S): 34%
+        (C + M % L): 28%
+freevo-1.9.0/src/audio/__init__.py
+    LOC: 181
+    LLOC: 71
+    SLOC: 72
+    Comments: 39
+    Single comments: 39
+    Multi: 40
+    Blank: 30
+    - Comment Stats
+        (C % L): 22%
+        (C % S): 54%
+        (C + M % L): 44%
+freevo-1.9.0/src/audio/plugins/lyrics.py
+    LOC: 200
+    LLOC: 108
+    SLOC: 114
+    Comments: 39
+    Single comments: 38
+    Multi: 12
+    Blank: 36
+    - Comment Stats
+        (C % L): 20%
+        (C % S): 34%
+        (C + M % L): 26%
+freevo-1.9.0/src/audio/plugins/fxmms.py
+    LOC: 292
+    LLOC: 143
+    SLOC: 144
+    Comments: 54
+    Single comments: 48
+    Multi: 45
+    Blank: 55
+    - Comment Stats
+        (C % L): 18%
+        (C % S): 38%
+        (C + M % L): 34%
+freevo-1.9.0/src/audio/plugins/lastfm.py
+    LOC: 945
+    LLOC: 528
+    SLOC: 557
+    Comments: 74
+    Single comments: 80
+    Multi: 152
+    Blank: 156
+    - Comment Stats
+        (C % L): 8%
+        (C % S): 13%
+        (C + M % L): 24%
+freevo-1.9.0/src/audio/plugins/freevo_scrobbler.py
+    LOC: 142
+    LLOC: 95
+    SLOC: 91
+    Comments: 28
+    Single comments: 28
+    Multi: 0
+    Blank: 23
+    - Comment Stats
+        (C % L): 20%
+        (C % S): 31%
+        (C + M % L): 20%
+freevo-1.9.0/src/audio/plugins/icecast.py
+    LOC: 434
+    LLOC: 302
+    SLOC: 302
+    Comments: 36
+    Single comments: 36
+    Multi: 30
+    Blank: 66
+    - Comment Stats
+        (C % L): 8%
+        (C % S): 12%
+        (C + M % L): 15%
+freevo-1.9.0/src/audio/plugins/xmradio.py
+    LOC: 168
+    LLOC: 60
+    SLOC: 72
+    Comments: 40
+    Single comments: 40
+    Multi: 30
+    Blank: 26
+    - Comment Stats
+        (C % L): 24%
+        (C % S): 56%
+        (C + M % L): 42%
+freevo-1.9.0/src/audio/plugins/logger.py
+    LOC: 78
+    LLOC: 31
+    SLOC: 37
+    Comments: 28
+    Single comments: 28
+    Multi: 3
+    Blank: 10
+    - Comment Stats
+        (C % L): 36%
+        (C % S): 76%
+        (C + M % L): 40%
+freevo-1.9.0/src/audio/plugins/mplayervis.py
+    LOC: 939
+    LLOC: 560
+    SLOC: 584
+    Comments: 94
+    Single comments: 93
+    Multi: 92
+    Blank: 170
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 16%
+        (C + M % L): 20%
+freevo-1.9.0/src/audio/plugins/audioscrobbler.py
+    LOC: 218
+    LLOC: 109
+    SLOC: 113
+    Comments: 48
+    Single comments: 48
+    Multi: 20
+    Blank: 37
+    - Comment Stats
+        (C % L): 22%
+        (C % S): 42%
+        (C + M % L): 31%
+freevo-1.9.0/src/audio/plugins/musicip.py
+    LOC: 500
+    LLOC: 292
+    SLOC: 276
+    Comments: 49
+    Single comments: 49
+    Multi: 77
+    Blank: 98
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 18%
+        (C + M % L): 25%
+freevo-1.9.0/src/audio/plugins/mplayer.py
+    LOC: 357
+    LLOC: 194
+    SLOC: 208
+    Comments: 55
+    Single comments: 50
+    Multi: 26
+    Blank: 73
+    - Comment Stats
+        (C % L): 15%
+        (C % S): 26%
+        (C + M % L): 23%
+freevo-1.9.0/src/audio/plugins/vux.py
+    LOC: 100
+    LLOC: 11
+    SLOC: 20
+    Comments: 54
+    Single comments: 54
+    Multi: 13
+    Blank: 13
+    - Comment Stats
+        (C % L): 54%
+        (C % S): 270%
+        (C + M % L): 67%
+freevo-1.9.0/src/audio/plugins/mpd_playlist.py
+    LOC: 168
+    LLOC: 63
+    SLOC: 71
+    Comments: 61
+    Single comments: 63
+    Multi: 6
+    Blank: 28
+    - Comment Stats
+        (C % L): 36%
+        (C % S): 86%
+        (C + M % L): 40%
+freevo-1.9.0/src/audio/plugins/xine.py
+    LOC: 208
+    LLOC: 104
+    SLOC: 104
+    Comments: 39
+    Single comments: 34
+    Multi: 25
+    Blank: 45
+    - Comment Stats
+        (C % L): 19%
+        (C % S): 38%
+        (C + M % L): 31%
+freevo-1.9.0/src/audio/plugins/coversearch.py
+    LOC: 380
+    LLOC: 217
+    SLOC: 235
+    Comments: 78
+    Single comments: 76
+    Multi: 22
+    Blank: 47
+    - Comment Stats
+        (C % L): 21%
+        (C % S): 33%
+        (C + M % L): 26%
+freevo-1.9.0/src/audio/plugins/apodcast.py
+    LOC: 308
+    LLOC: 191
+    SLOC: 194
+    Comments: 10
+    Single comments: 8
+    Multi: 41
+    Blank: 65
+    - Comment Stats
+        (C % L): 3%
+        (C % S): 5%
+        (C + M % L): 17%
+freevo-1.9.0/src/audio/plugins/radio.py
+    LOC: 236
+    LLOC: 100
+    SLOC: 102
+    Comments: 36
+    Single comments: 42
+    Multi: 47
+    Blank: 45
+    - Comment Stats
+        (C % L): 15%
+        (C % S): 35%
+        (C + M % L): 35%
+freevo-1.9.0/src/audio/plugins/radioplayer.py
+    LOC: 193
+    LLOC: 91
+    SLOC: 91
+    Comments: 38
+    Single comments: 34
+    Multi: 36
+    Blank: 32
+    - Comment Stats
+        (C % L): 20%
+        (C % S): 42%
+        (C + M % L): 38%
+freevo-1.9.0/src/audio/plugins/cdbackup.py
+    LOC: 589
+    LLOC: 294
+    SLOC: 323
+    Comments: 95
+    Single comments: 95
+    Multi: 65
+    Blank: 106
+    - Comment Stats
+        (C % L): 16%
+        (C % S): 29%
+        (C + M % L): 27%
+freevo-1.9.0/src/audio/plugins/mpdclient2.py
+    LOC: 461
+    LLOC: 249
+    SLOC: 314
+    Comments: 70
+    Single comments: 38
+    Multi: 9
+    Blank: 100
+    - Comment Stats
+        (C % L): 15%
+        (C % S): 22%
+        (C + M % L): 17%
+freevo-1.9.0/src/audio/plugins/shoutcast.py
+    LOC: 269
+    LLOC: 163
+    SLOC: 165
+    Comments: 32
+    Single comments: 32
+    Multi: 29
+    Blank: 43
+    - Comment Stats
+        (C % L): 12%
+        (C % S): 19%
+        (C + M % L): 23%
+freevo-1.9.0/src/audio/plugins/mpd_status.py
+    LOC: 273
+    LLOC: 133
+    SLOC: 140
+    Comments: 70
+    Single comments: 76
+    Multi: 7
+    Blank: 50
+    - Comment Stats
+        (C % L): 26%
+        (C % S): 50%
+        (C + M % L): 28%
+freevo-1.9.0/src/audio/plugins/album_tree.py
+    LOC: 438
+    LLOC: 155
+    SLOC: 170
+    Comments: 57
+    Single comments: 55
+    Multi: 136
+    Blank: 77
+    - Comment Stats
+        (C % L): 13%
+        (C % S): 34%
+        (C + M % L): 44%
+freevo-1.9.0/src/audio/plugins/__init__.py
+    LOC: 0
+    LLOC: 0
+    SLOC: 0
+    Comments: 0
+    Single comments: 0
+    Multi: 0
+    Blank: 0
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 0%
+freevo-1.9.0/src/audio/plugins/detachbar.py
+    LOC: 356
+    LLOC: 184
+    SLOC: 189
+    Comments: 57
+    Single comments: 50
+    Multi: 55
+    Blank: 62
+    - Comment Stats
+        (C % L): 16%
+        (C % S): 30%
+        (C + M % L): 31%
+freevo-1.9.0/src/audio/plugins/playlists.py
+    LOC: 127
+    LLOC: 53
+    SLOC: 54
+    Comments: 37
+    Single comments: 37
+    Multi: 14
+    Blank: 22
+    - Comment Stats
+        (C % L): 29%
+        (C % S): 69%
+        (C + M % L): 40%
+freevo-1.9.0/src/audio/plugins/detach.py
+    LOC: 156
+    LLOC: 91
+    SLOC: 93
+    Comments: 32
+    Single comments: 32
+    Multi: 8
+    Blank: 23
+    - Comment Stats
+        (C % L): 21%
+        (C % S): 34%
+        (C + M % L): 26%
+freevo-1.9.0/src/video/videoitem.py
+    LOC: 888
+    LLOC: 497
+    SLOC: 499
+    Comments: 112
+    Single comments: 110
+    Multi: 132
+    Blank: 147
+    - Comment Stats
+        (C % L): 13%
+        (C % S): 22%
+        (C + M % L): 27%
+freevo-1.9.0/src/video/fxdhandler.py
+    LOC: 365
+    LLOC: 225
+    SLOC: 225
+    Comments: 50
+    Single comments: 50
+    Multi: 45
+    Blank: 45
+    - Comment Stats
+        (C % L): 14%
+        (C % S): 22%
+        (C + M % L): 26%
+freevo-1.9.0/src/video/configure.py
+    LOC: 338
+    LLOC: 166
+    SLOC: 168
+    Comments: 31
+    Single comments: 30
+    Multi: 57
+    Blank: 83
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 18%
+        (C + M % L): 26%
+freevo-1.9.0/src/video/commdetectclient.py
+    LOC: 143
+    LLOC: 65
+    SLOC: 66
+    Comments: 31
+    Single comments: 34
+    Multi: 24
+    Blank: 19
+    - Comment Stats
+        (C % L): 22%
+        (C % S): 47%
+        (C + M % L): 38%
+freevo-1.9.0/src/video/__init__.py
+    LOC: 240
+    LLOC: 146
+    SLOC: 147
+    Comments: 30
+    Single comments: 30
+    Multi: 22
+    Blank: 41
+    - Comment Stats
+        (C % L): 12%
+        (C % S): 20%
+        (C + M % L): 22%
+freevo-1.9.0/src/video/encodingclient.py
+    LOC: 434
+    LLOC: 165
+    SLOC: 194
+    Comments: 33
+    Single comments: 36
+    Multi: 118
+    Blank: 86
+    - Comment Stats
+        (C % L): 8%
+        (C % S): 17%
+        (C + M % L): 35%
+freevo-1.9.0/src/video/plugins/rtve.py
+    LOC: 250
+    LLOC: 165
+    SLOC: 167
+    Comments: 33
+    Single comments: 32
+    Multi: 5
+    Blank: 46
+    - Comment Stats
+        (C % L): 13%
+        (C % S): 20%
+        (C + M % L): 15%
+freevo-1.9.0/src/video/plugins/wikisubtitles.py
+    LOC: 260
+    LLOC: 153
+    SLOC: 161
+    Comments: 49
+    Single comments: 52
+    Multi: 13
+    Blank: 34
+    - Comment Stats
+        (C % L): 19%
+        (C % S): 30%
+        (C + M % L): 24%
+freevo-1.9.0/src/video/plugins/filmaffinity.py
+    LOC: 633
+    LLOC: 380
+    SLOC: 389
+    Comments: 87
+    Single comments: 93
+    Multi: 42
+    Blank: 109
+    - Comment Stats
+        (C % L): 14%
+        (C % S): 22%
+        (C + M % L): 20%
+freevo-1.9.0/src/video/plugins/youtube.py
+    LOC: 299
+    LLOC: 158
+    SLOC: 176
+    Comments: 53
+    Single comments: 64
+    Multi: 19
+    Blank: 40
+    - Comment Stats
+        (C % L): 18%
+        (C % S): 30%
+        (C + M % L): 24%
+freevo-1.9.0/src/video/plugins/bilingual.py
+    LOC: 99
+    LLOC: 38
+    SLOC: 39
+    Comments: 28
+    Single comments: 28
+    Multi: 16
+    Blank: 16
+    - Comment Stats
+        (C % L): 28%
+        (C % S): 72%
+        (C + M % L): 44%
+freevo-1.9.0/src/video/plugins/dvdimage.py
+    LOC: 131
+    LLOC: 65
+    SLOC: 65
+    Comments: 30
+    Single comments: 29
+    Multi: 13
+    Blank: 24
+    - Comment Stats
+        (C % L): 23%
+        (C % S): 46%
+        (C + M % L): 33%
+freevo-1.9.0/src/video/plugins/wwitv.py
+    LOC: 363
+    LLOC: 218
+    SLOC: 241
+    Comments: 75
+    Single comments: 74
+    Multi: 4
+    Blank: 44
+    - Comment Stats
+        (C % L): 21%
+        (C % S): 31%
+        (C + M % L): 22%
+freevo-1.9.0/src/video/plugins/cinemovies_trailers.py
+    LOC: 264
+    LLOC: 182
+    SLOC: 183
+    Comments: 37
+    Single comments: 37
+    Multi: 4
+    Blank: 40
+    - Comment Stats
+        (C % L): 14%
+        (C % S): 20%
+        (C + M % L): 16%
+freevo-1.9.0/src/video/plugins/reencode-old.py
+    LOC: 201
+    LLOC: 104
+    SLOC: 104
+    Comments: 47
+    Single comments: 47
+    Multi: 5
+    Blank: 45
+    - Comment Stats
+        (C % L): 23%
+        (C % S): 45%
+        (C + M % L): 26%
+freevo-1.9.0/src/video/plugins/removecommercials.py
+    LOC: 82
+    LLOC: 32
+    SLOC: 32
+    Comments: 30
+    Single comments: 30
+    Multi: 8
+    Blank: 12
+    - Comment Stats
+        (C % L): 37%
+        (C % S): 94%
+        (C + M % L): 46%
+freevo-1.9.0/src/video/plugins/mplayer.py
+    LOC: 750
+    LLOC: 473
+    SLOC: 505
+    Comments: 72
+    Single comments: 68
+    Multi: 47
+    Blank: 130
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 14%
+        (C + M % L): 16%
+freevo-1.9.0/src/video/plugins/vpodcast.py
+    LOC: 617
+    LLOC: 366
+    SLOC: 422
+    Comments: 35
+    Single comments: 48
+    Multi: 52
+    Blank: 95
+    - Comment Stats
+        (C % L): 6%
+        (C % S): 8%
+        (C + M % L): 14%
+freevo-1.9.0/src/video/plugins/reencode.py
+    LOC: 551
+    LLOC: 384
+    SLOC: 399
+    Comments: 51
+    Single comments: 53
+    Multi: 13
+    Blank: 86
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 13%
+        (C + M % L): 12%
+freevo-1.9.0/src/video/plugins/moviecovers.py
+    LOC: 661
+    LLOC: 400
+    SLOC: 398
+    Comments: 106
+    Single comments: 114
+    Multi: 32
+    Blank: 117
+    - Comment Stats
+        (C % L): 16%
+        (C % S): 27%
+        (C + M % L): 21%
+freevo-1.9.0/src/video/plugins/vlc.py
+    LOC: 160
+    LLOC: 72
+    SLOC: 75
+    Comments: 35
+    Single comments: 31
+    Multi: 26
+    Blank: 28
+    - Comment Stats
+        (C % L): 22%
+        (C % S): 47%
+        (C + M % L): 38%
+freevo-1.9.0/src/video/plugins/xine_info.py
+    LOC: 139
+    LLOC: 66
+    SLOC: 66
+    Comments: 36
+    Single comments: 33
+    Multi: 21
+    Blank: 19
+    - Comment Stats
+        (C % L): 26%
+        (C % S): 55%
+        (C + M % L): 41%
+freevo-1.9.0/src/video/plugins/xine.py
+    LOC: 493
+    LLOC: 316
+    SLOC: 320
+    Comments: 61
+    Single comments: 61
+    Multi: 33
+    Blank: 79
+    - Comment Stats
+        (C % L): 12%
+        (C % S): 19%
+        (C + M % L): 19%
+freevo-1.9.0/src/video/plugins/dvdcopy.py
+    LOC: 184
+    LLOC: 105
+    SLOC: 107
+    Comments: 30
+    Single comments: 30
+    Multi: 11
+    Blank: 36
+    - Comment Stats
+        (C % L): 16%
+        (C % S): 28%
+        (C + M % L): 22%
+freevo-1.9.0/src/video/plugins/bmovl.py
+    LOC: 449
+    LLOC: 248
+    SLOC: 281
+    Comments: 32
+    Single comments: 32
+    Multi: 34
+    Blank: 102
+    - Comment Stats
+        (C % L): 7%
+        (C % S): 11%
+        (C + M % L): 15%
+freevo-1.9.0/src/video/plugins/linkbrowser.py
+    LOC: 343
+    LLOC: 185
+    SLOC: 181
+    Comments: 55
+    Single comments: 55
+    Multi: 52
+    Blank: 55
+    - Comment Stats
+        (C % L): 16%
+        (C % S): 30%
+        (C + M % L): 31%
+freevo-1.9.0/src/video/plugins/mplayer_autoaspect.py
+    LOC: 78
+    LLOC: 20
+    SLOC: 20
+    Comments: 41
+    Single comments: 43
+    Multi: 5
+    Blank: 10
+    - Comment Stats
+        (C % L): 53%
+        (C % S): 205%
+        (C + M % L): 59%
+freevo-1.9.0/src/video/plugins/appletrailers.py
+    LOC: 266
+    LLOC: 186
+    SLOC: 190
+    Comments: 28
+    Single comments: 27
+    Multi: 4
+    Blank: 45
+    - Comment Stats
+        (C % L): 11%
+        (C % S): 15%
+        (C + M % L): 12%
+freevo-1.9.0/src/video/plugins/dvdbackup.py
+    LOC: 203
+    LLOC: 112
+    SLOC: 113
+    Comments: 45
+    Single comments: 44
+    Multi: 9
+    Blank: 37
+    - Comment Stats
+        (C % L): 22%
+        (C % S): 40%
+        (C + M % L): 27%
+freevo-1.9.0/src/video/plugins/fillscreen.py
+    LOC: 217
+    LLOC: 96
+    SLOC: 98
+    Comments: 47
+    Single comments: 52
+    Multi: 22
+    Blank: 45
+    - Comment Stats
+        (C % L): 22%
+        (C % S): 48%
+        (C + M % L): 32%
+freevo-1.9.0/src/video/plugins/fxdarchive.py
+    LOC: 167
+    LLOC: 86
+    SLOC: 95
+    Comments: 30
+    Single comments: 30
+    Multi: 22
+    Blank: 20
+    - Comment Stats
+        (C % L): 18%
+        (C % S): 32%
+        (C + M % L): 31%
+freevo-1.9.0/src/video/plugins/details.py
+    LOC: 100
+    LLOC: 47
+    SLOC: 47
+    Comments: 31
+    Single comments: 31
+    Multi: 7
+    Blank: 15
+    - Comment Stats
+        (C % L): 31%
+        (C % S): 66%
+        (C + M % L): 38%
+freevo-1.9.0/src/video/plugins/__init__.py
+    LOC: 3
+    LLOC: 0
+    SLOC: 0
+    Comments: 0
+    Single comments: 0
+    Multi: 3
+    Blank: 0
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 100%
+freevo-1.9.0/src/video/plugins/mover.py
+    LOC: 125
+    LLOC: 45
+    SLOC: 46
+    Comments: 37
+    Single comments: 37
+    Multi: 19
+    Blank: 23
+    - Comment Stats
+        (C % L): 30%
+        (C % S): 80%
+        (C + M % L): 45%
+freevo-1.9.0/src/video/plugins/imdb.py
+    LOC: 278
+    LLOC: 152
+    SLOC: 159
+    Comments: 50
+    Single comments: 50
+    Multi: 20
+    Blank: 49
+    - Comment Stats
+        (C % L): 18%
+        (C % S): 31%
+        (C + M % L): 25%
+freevo-1.9.0/src/video/plugins/bookmarker.py
+    LOC: 193
+    LLOC: 115
+    SLOC: 117
+    Comments: 43
+    Single comments: 43
+    Multi: 10
+    Blank: 23
+    - Comment Stats
+        (C % L): 22%
+        (C % S): 37%
+        (C + M % L): 27%
+freevo-1.9.0/src/video/plugins/rtvelib.py
+    LOC: 268
+    LLOC: 186
+    SLOC: 183
+    Comments: 36
+    Single comments: 33
+    Multi: 0
+    Blank: 52
+    - Comment Stats
+        (C % L): 13%
+        (C % S): 20%
+        (C + M % L): 13%
+freevo-1.9.0/src/video/plugins/applelib.py
+    LOC: 407
+    LLOC: 276
+    SLOC: 309
+    Comments: 38
+    Single comments: 38
+    Multi: 0
+    Blank: 60
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 12%
+        (C + M % L): 9%
+freevo-1.9.0/src/gui/Label.py
+    LOC: 202
+    LLOC: 89
+    SLOC: 99
+    Comments: 29
+    Single comments: 29
+    Multi: 35
+    Blank: 39
+    - Comment Stats
+        (C % L): 14%
+        (C % S): 29%
+        (C + M % L): 32%
+freevo-1.9.0/src/gui/ListItem.py
+    LOC: 92
+    LLOC: 32
+    SLOC: 37
+    Comments: 28
+    Single comments: 28
+    Multi: 10
+    Blank: 17
+    - Comment Stats
+        (C % L): 30%
+        (C % S): 76%
+        (C + M % L): 41%
+freevo-1.9.0/src/gui/RegionScroller.py
+    LOC: 237
+    LLOC: 121
+    SLOC: 129
+    Comments: 39
+    Single comments: 39
+    Multi: 20
+    Blank: 49
+    - Comment Stats
+        (C % L): 16%
+        (C % S): 30%
+        (C + M % L): 25%
+freevo-1.9.0/src/gui/ConfirmBox.py
+    LOC: 115
+    LLOC: 43
+    SLOC: 46
+    Comments: 30
+    Single comments: 30
+    Multi: 21
+    Blank: 18
+    - Comment Stats
+        (C % L): 26%
+        (C % S): 65%
+        (C + M % L): 44%
+freevo-1.9.0/src/gui/InputBox.py
+    LOC: 90
+    LLOC: 26
+    SLOC: 30
+    Comments: 29
+    Single comments: 29
+    Multi: 16
+    Blank: 15
+    - Comment Stats
+        (C % L): 32%
+        (C % S): 97%
+        (C + M % L): 50%
+freevo-1.9.0/src/gui/Color.py
+    LOC: 187
+    LLOC: 67
+    SLOC: 69
+    Comments: 25
+    Single comments: 25
+    Multi: 60
+    Blank: 33
+    - Comment Stats
+        (C % L): 13%
+        (C % S): 36%
+        (C + M % L): 45%
+freevo-1.9.0/src/gui/Progressbar.py
+    LOC: 94
+    LLOC: 32
+    SLOC: 34
+    Comments: 29
+    Single comments: 29
+    Multi: 10
+    Blank: 21
+    - Comment Stats
+        (C % L): 31%
+        (C % S): 85%
+        (C + M % L): 41%
+freevo-1.9.0/src/gui/Container.py
+    LOC: 104
+    LLOC: 49
+    SLOC: 52
+    Comments: 26
+    Single comments: 26
+    Multi: 2
+    Blank: 24
+    - Comment Stats
+        (C % L): 25%
+        (C % S): 50%
+        (C + M % L): 27%
+freevo-1.9.0/src/gui/Border.py
+    LOC: 139
+    LLOC: 41
+    SLOC: 41
+    Comments: 43
+    Single comments: 41
+    Multi: 29
+    Blank: 28
+    - Comment Stats
+        (C % L): 31%
+        (C % S): 105%
+        (C + M % L): 52%
+freevo-1.9.0/src/gui/Window.py
+    LOC: 185
+    LLOC: 103
+    SLOC: 106
+    Comments: 30
+    Single comments: 30
+    Multi: 9
+    Blank: 40
+    - Comment Stats
+        (C % L): 16%
+        (C % S): 28%
+        (C + M % L): 21%
+freevo-1.9.0/src/gui/PopupBox.py
+    LOC: 147
+    LLOC: 48
+    SLOC: 51
+    Comments: 30
+    Single comments: 30
+    Multi: 37
+    Blank: 29
+    - Comment Stats
+        (C % L): 20%
+        (C % S): 59%
+        (C + M % L): 46%
+freevo-1.9.0/src/gui/exceptions.py
+    LOC: 57
+    LLOC: 10
+    SLOC: 10
+    Comments: 28
+    Single comments: 28
+    Multi: 12
+    Blank: 7
+    - Comment Stats
+        (C % L): 49%
+        (C % S): 280%
+        (C + M % L): 70%
+freevo-1.9.0/src/gui/sounds.py
+    LOC: 122
+    LLOC: 49
+    SLOC: 49
+    Comments: 41
+    Single comments: 40
+    Multi: 13
+    Blank: 20
+    - Comment Stats
+        (C % L): 34%
+        (C % S): 84%
+        (C + M % L): 44%
+freevo-1.9.0/src/gui/Scrollbar.py
+    LOC: 194
+    LLOC: 98
+    SLOC: 103
+    Comments: 39
+    Single comments: 39
+    Multi: 11
+    Blank: 41
+    - Comment Stats
+        (C % L): 20%
+        (C % S): 38%
+        (C + M % L): 26%
+freevo-1.9.0/src/gui/ProgressBox.py
+    LOC: 62
+    LLOC: 14
+    SLOC: 17
+    Comments: 28
+    Single comments: 28
+    Multi: 8
+    Blank: 9
+    - Comment Stats
+        (C % L): 45%
+        (C % S): 165%
+        (C + M % L): 58%
+freevo-1.9.0/src/gui/Button.py
+    LOC: 155
+    LLOC: 67
+    SLOC: 80
+    Comments: 30
+    Single comments: 30
+    Multi: 15
+    Blank: 30
+    - Comment Stats
+        (C % L): 19%
+        (C % S): 38%
+        (C + M % L): 29%
+freevo-1.9.0/src/gui/AlertBox.py
+    LOC: 76
+    LLOC: 18
+    SLOC: 20
+    Comments: 28
+    Single comments: 28
+    Multi: 17
+    Blank: 11
+    - Comment Stats
+        (C % L): 37%
+        (C % S): 140%
+        (C + M % L): 59%
+freevo-1.9.0/src/gui/LayoutManagers.py
+    LOC: 238
+    LLOC: 144
+    SLOC: 150
+    Comments: 32
+    Single comments: 32
+    Multi: 0
+    Blank: 56
+    - Comment Stats
+        (C % L): 13%
+        (C % S): 21%
+        (C + M % L): 13%
+freevo-1.9.0/src/gui/LetterBoxGroup.py
+    LOC: 366
+    LLOC: 214
+    SLOC: 237
+    Comments: 29
+    Single comments: 29
+    Multi: 29
+    Blank: 71
+    - Comment Stats
+        (C % L): 8%
+        (C % S): 12%
+        (C + M % L): 16%
+freevo-1.9.0/src/gui/OptionBox.py
+    LOC: 142
+    LLOC: 59
+    SLOC: 64
+    Comments: 28
+    Single comments: 28
+    Multi: 17
+    Blank: 33
+    - Comment Stats
+        (C % L): 20%
+        (C % S): 44%
+        (C + M % L): 32%
+freevo-1.9.0/src/gui/Panel.py
+    LOC: 59
+    LLOC: 17
+    SLOC: 19
+    Comments: 26
+    Single comments: 26
+    Multi: 2
+    Blank: 12
+    - Comment Stats
+        (C % L): 44%
+        (C % S): 137%
+        (C + M % L): 47%
+freevo-1.9.0/src/gui/__init__.py
+    LOC: 64
+    LLOC: 16
+    SLOC: 16
+    Comments: 28
+    Single comments: 28
+    Multi: 13
+    Blank: 7
+    - Comment Stats
+        (C % L): 44%
+        (C % S): 175%
+        (C + M % L): 64%
+freevo-1.9.0/src/gui/ListBox.py
+    LOC: 241
+    LLOC: 125
+    SLOC: 131
+    Comments: 30
+    Single comments: 30
+    Multi: 19
+    Blank: 61
+    - Comment Stats
+        (C % L): 12%
+        (C % S): 23%
+        (C + M % L): 20%
+freevo-1.9.0/src/gui/GUIObject.py
+    LOC: 580
+    LLOC: 307
+    SLOC: 309
+    Comments: 37
+    Single comments: 36
+    Multi: 107
+    Blank: 128
+    - Comment Stats
+        (C % L): 6%
+        (C % S): 12%
+        (C + M % L): 25%
+freevo-1.9.0/Docs/distribution/setup.py
+    LOC: 16
+    LLOC: 3
+    SLOC: 9
+    Comments: 2
+    Single comments: 3
+    Multi: 0
+    Blank: 4
+    - Comment Stats
+        (C % L): 12%
+        (C % S): 22%
+        (C + M % L): 12%
+freevo-1.9.0/Docs/plugin_writing/code/config.py
+    LOC: 6
+    LLOC: 4
+    SLOC: 5
+    Comments: 0
+    Single comments: 0
+    Multi: 0
+    Blank: 1
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 0%
+freevo-1.9.0/Docs/plugin_writing/code/setup.py
+    LOC: 23
+    LLOC: 5
+    SLOC: 14
+    Comments: 2
+    Single comments: 3
+    Multi: 0
+    Blank: 6
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 14%
+        (C + M % L): 9%
+freevo-1.9.0/Docs/plugin_writing/code/menu_Menu.py
+    LOC: 6
+    LLOC: 2
+    SLOC: 2
+    Comments: 2
+    Single comments: 2
+    Multi: 0
+    Blank: 2
+    - Comment Stats
+        (C % L): 33%
+        (C % S): 100%
+        (C + M % L): 33%
+freevo-1.9.0/Docs/plugin_writing/code/doc.py
+    LOC: 13
+    LLOC: 4
+    SLOC: 4
+    Comments: 0
+    Single comments: 0
+    Multi: 6
+    Blank: 3
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 46%
+freevo-1.9.0/Docs/plugin_writing/code/idlebarplugin.py
+    LOC: 31
+    LLOC: 18
+    SLOC: 21
+    Comments: 2
+    Single comments: 2
+    Multi: 5
+    Blank: 3
+    - Comment Stats
+        (C % L): 6%
+        (C % S): 10%
+        (C + M % L): 23%
+freevo-1.9.0/Docs/plugin_writing/code/item.py
+    LOC: 22
+    LLOC: 14
+    SLOC: 19
+    Comments: 0
+    Single comments: 0
+    Multi: 0
+    Blank: 3
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 0%
+freevo-1.9.0/Docs/plugin_writing/code/daemon_action.py
+    LOC: 15
+    LLOC: 10
+    SLOC: 10
+    Comments: 0
+    Single comments: 0
+    Multi: 3
+    Blank: 2
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 20%
+freevo-1.9.0/Docs/plugin_writing/code/menu_fullexample.py
+    LOC: 29
+    LLOC: 11
+    SLOC: 13
+    Comments: 10
+    Single comments: 10
+    Multi: 0
+    Blank: 6
+    - Comment Stats
+        (C % L): 34%
+        (C % S): 77%
+        (C + M % L): 34%
+freevo-1.9.0/Docs/plugin_writing/code/menu_MenuItem.py
+    LOC: 11
+    LLOC: 7
+    SLOC: 7
+    Comments: 3
+    Single comments: 3
+    Multi: 0
+    Blank: 1
+    - Comment Stats
+        (C % L): 27%
+        (C % S): 43%
+        (C + M % L): 27%
+freevo-1.9.0/Docs/plugin_writing/code/daemon.py
+    LOC: 22
+    LLOC: 14
+    SLOC: 14
+    Comments: 2
+    Single comments: 2
+    Multi: 0
+    Blank: 6
+    - Comment Stats
+        (C % L): 9%
+        (C % S): 14%
+        (C + M % L): 9%
+freevo-1.9.0/Docs/plugin_writing/code/menu_Item.py
+    LOC: 15
+    LLOC: 9
+    SLOC: 9
+    Comments: 1
+    Single comments: 1
+    Multi: 3
+    Blank: 2
+    - Comment Stats
+        (C % L): 7%
+        (C % S): 11%
+        (C + M % L): 27%
+freevo-1.9.0/Docs/plugin_writing/code/parameter.py
+    LOC: 9
+    LLOC: 6
+    SLOC: 6
+    Comments: 0
+    Single comments: 0
+    Multi: 0
+    Blank: 3
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 0%
+freevo-1.9.0/Docs/plugin_writing/code/i18n.py
+    LOC: 7
+    LLOC: 6
+    SLOC: 6
+    Comments: 0
+    Single comments: 0
+    Multi: 0
+    Blank: 1
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 0%
+freevo-1.9.0/Docs/plugin_writing/code/MainMenuPlugin.py
+    LOC: 87
+    LLOC: 49
+    SLOC: 51
+    Comments: 14
+    Single comments: 14
+    Multi: 4
+    Blank: 18
+    - Comment Stats
+        (C % L): 16%
+        (C % S): 27%
+        (C + M % L): 21%
+freevo-1.9.0/Docs/plugin_writing/code/daemon_poll.py
+    LOC: 14
+    LLOC: 9
+    SLOC: 9
+    Comments: 0
+    Single comments: 0
+    Multi: 3
+    Blank: 2
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 21%
+** Total **
+    LOC: 121728
+    LLOC: 65877
+    SLOC: 73208
+    Comments: 18300
+    Single comments: 18185
+    Multi: 10827
+    Blank: 19508
+    - Comment Stats
+        (C % L): 15%
+        (C % S): 25%
+        (C + M % L): 24%

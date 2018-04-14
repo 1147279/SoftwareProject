@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>Contributing - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/Contributing?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/Contributing?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">Contributing</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>Site Index: </p>
+<ol>
+
+<li>
+<a href="#head-e74a853394fea85f7abcf788dea82abe28fe0e24">How can I help with Freevo Development?</a>
+</li>
+
+<li>
+<a href="#head-3135370383e7cf6e2f8f4e7cedb79067e7271f66">Code Management</a>
+<ol>
+
+<li>
+<a href="#head-44418b5f74c6474b3e932660d0c18190d340bfc4">Repository Overview</a>
+</li>
+
+</ol>
+
+<li>
+<a href="#head-9ec333e919eefa9afe3b19d417596d388a209b6d">Patches</a>
+</li>
+
+<li>
+<a href="#head-dc397ca374c5dbf8c684b9b399f421b400358387">Translations</a>
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-e74a853394fea85f7abcf788dea82abe28fe0e24">How can I help with Freevo Development?</h2>
+
+<p>There are a number of ways you can help. The most obvious one is to work on features that you'd like to see implemented. Read the <a href="WishList.html">WishList</a> (user ideas, roadmap) and <a class="external" href="http://sourceforge.net/mail/?group_id=46652"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> mailing list archives</a> to see what has been said before about specific features. Please read the section on patches below before you submit anything. </p>
+<p>We also need help from people on external programs. Please read <a class="external" href="http://freevo.sourceforge.net/cgi-bin/freevo-2.0/HelpNeeded"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> HelpNeeded for Freevo 2.0</a> for details. You can also help by updating the user documentation in this wiki and answering questions from other users on the mailing lists. </p>
+
+<h2 id="head-3135370383e7cf6e2f8f4e7cedb79067e7271f66">Code Management</h2>
+
+<p>As of September 2005 Freevo uses Subversion instead of Sourceforge's CVS server. The <a class="external" href="http://sourceforge.net/mailarchive/forum.php?thread_id=8233611&amp;forum_id=9200"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> original announcment</a> can be found in the <a class="external" href="http://sourceforge.net/mailarchive/forum.php?forum_id=9200"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> freevo-devel</a> mailinglist archives. </p>
+
+<h3 id="head-44418b5f74c6474b3e932660d0c18190d340bfc4">Repository Overview</h3>
+
+<p>current freevo + kaa </p>
+<p><tt>svn&nbsp;co&nbsp;svn://svn.freevo.org/kaa/trunk&nbsp;kaa</tt> <tt>svn&nbsp;co&nbsp;svn://svn.freevo.org/freevo/trunk/freevo</tt> </p>
+<p>current WIP dir </p>
+<p><tt>svn&nbsp;co&nbsp;svn://svn.freevo.org/freevo/trunk/testing</tt> </p>
+<p>website </p>
+<p><tt>svn&nbsp;co&nbsp;svn://svn.freevo.org/freevo/trunk/website</tt> </p>
+<p>freevo 1.5 branch + mmpython branch </p>
+<p><tt>svn&nbsp;co&nbsp;svn://svn.freevo.org/kaa/branches/mmpython-0-4/mmpython</tt> <tt>svn&nbsp;co&nbsp;svn://svn.freevo.org/freevo/branches/rel-1-5/freevo</tt> </p>
+
+<h2 id="head-9ec333e919eefa9afe3b19d417596d388a209b6d">Patches</h2>
+
+<p>Note: We know our rules place a burden on you, but rest assured that maintaining a big and complex software project is even harder, so please accept our rules. We cannot afford to spend our time fixing buggy, broken or outdated patches. </p>
+<p>Having said that, we also appreciate your help of course! </p>
+<ol type="1">
+<li><p>Always make patches for the CVS version. The main website describes how to check out CVS. We do not accept patches for releases or outdated CVS versions. </p>
+</li>
+<li><p>Make unified diffs ('diff -Naur freevo freevo-new &gt; patch_xmms_playlists'). </p>
+<ol type="A">
+<li><p>Check out a fresh copy of freevo from CVS to the directory freevo. </p>
+</li>
+<li><p>Run 'diff -Naur -x CVS freevo freevo-new &gt; patch_xmms_playlists' </p>
+<ol type="i">
+<li><p>The cvs diff doesn't seem to work right for subdirs for some reason (anyone know why?) </p>
+</li>
+</ol>
+</li>
+<li><p><strong>Test your patch!</strong> 'cd freevo ; patch -p1 &lt; ../patch_xmms_playlists' </p>
+</li>
+</ol>
+</li>
+<li><p>Make sure the patch is clean! Common mistakes are patches that include changes to <tt>local_conf.py</tt>. </p>
+</li>
+<li><p>Test the functionality of your patch. We'll refuse it if it breaks something, even if it extends other features! </p>
+</li>
+<li><p>Read your patch. We'll refuse it if it doesn't follow the <a href="CodingStandard.html">CodingStandard</a>. Pay particular attention to using spaces, not tabs. </p>
+</li>
+<li><p>Comment parts that need it (tricky side-effects etc). Include module and function docs using <tt>'''Comment'''</tt> below each function etc. </p>
+</li>
+<li><p>Include documentation for new/improved features in the Wiki format. After the patch is accepted you are expected to add the docs to the Wiki and keep it updated. </p>
+</li>
+<li><p>Send your patch to the freevo-devel mailing list as an attachment with the subject line: '<tt>[PATCH]&nbsp;very&nbsp;short&nbsp;description&nbsp;of&nbsp;the&nbsp;patch</tt>'. In the mail, describe in a few sentences what you change and why. <strong>If you made independent changes, try to send them as separate patches. </strong>The subject line is very important if you do not want your patch to get lost in the noise. We need the uppercase <tt>[PATCH]</tt> to be able to search for unapplied patches, so please use it. You have to subscribe to freevo-devel because patches get reviewed by the developers on the list. We want you to be available for discussing your code, you might be asked to make modifications before we accept it. </p>
+</li>
+<li><p>You should receive a response to your patch within a week or so. If not, please send a polite reminder to the mailing list! </p>
+</li>
+</ol>
+
+<h2 id="head-dc397ca374c5dbf8c684b9b399f421b400358387">Translations</h2>
+
+<ul>
+<li><p> download the newest snapshot (<a href="http://freevo.sf.net/snapshots/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://freevo.sf.net/snapshots/</a>) </p>
+</li>
+<li><p> run <strong>python setup.py i18n</strong>. </p>
+</li>
+<li><p> translate the messages in <strong>[language-code]/LC_MESSAGES/freevo.po</strong>. Remove #fuzzy comments in the translation when you checked them. Also remove old translations not needed anymore from the end of the file. </p>
+</li>
+<li><p> to test your translations run <strong>[freevo-dir]/autogen.sh</strong> then start freevo like this: "LANG=[language-code] freevo" </p>
+</li>
+<li><p> when you're done, send a mail to <a href="mailto:freevo-devel@lists.sf.net"><img src="modern/img/moin-email.png" alt="[MAILTO]" height="10" width="14"> freevo-devel@lists.sf.net</a> with the <strong>freevo.po</strong>-file as attachment </p>
+</li>
+</ul>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-09-28 10:00:51 by <span title="sls407-gate.alcatel.de">FDemmer</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/Contributing">http://freevo.sourceforge.net/cgi-bin/doc/Contributing</a></p>
+</div> <!-- end page -->
+</body>
+</html>

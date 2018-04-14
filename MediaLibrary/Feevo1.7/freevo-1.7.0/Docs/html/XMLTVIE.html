@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>XMLTVIE - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/XMLTVIE?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/XMLTVIE?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">XMLTVIE</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h3 id="head-c5eae1734b7cdc3ff83e6a95bbfb30851d1fa903">Irish listings</h3>
+
+<p>Irish listings are provided with the tv_grab_uk_rt script with uses data from radiotimes.com. To configure xmltv for freevo 1st run 'tv_grab_uk_rt --configure' this script will ask you to choose you channels and write a conf file for you. Once this is done make sure you have your TV_Channels &amp; xmltv settings configured in you local_conf.py and then run 'freevo tv_grab' </p>
+<p>The config file xmltv uses is stored in ~/.xmltv/tv_grab_uk_rt.conf </p>
+<p>Here is an example for NTL in Dublin (as of 05 March 2005, most likely out of date) 
+</p>
+<pre>
+channel rte-1.rte.ie
+channel C1870.radiotimes.com
+channel tv3.ie
+channel utvlive.com
+channel channel4.com
+channel south-east.bbc1.bbc.co.uk
+channel south-east.bbc2.bbc.co.uk
+channel sky-one.sky.com
+channel e4.channel4.com
+channel tg4.ie
+channel 1.setanta.com
+channel discoveryeurope.com
+channel mtv.co.uk
+channel tmf.nl
+channel toons.nickelodeon.co.uk
+channel sky-news.sky.com
+</pre>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-03-05 11:50:54 by <span title="dsl-35-189.dsl.netsource.ie">johnmolohan</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/XMLTVIE">http://freevo.sourceforge.net/cgi-bin/doc/XMLTVIE</a></p>
+</div> <!-- end page -->
+</body>
+</html>

@@ -1,0 +1,71 @@
+Summary For RAW Analyses:
+
+
+
+
+loc: The number of lines of code (total)
+lloc: The number of logical lines of code
+sloc: The number of source lines of code (not necessarily
+corresponding to the LLOC)
+comments: The number of Python comment lines
+multi: The number of lines which represent multi-line strings
+single_comments: The number of lines which are just comments with
+no code
+blank: The number of blank lines (or whitespace-only ones)
+The equation sloc+blanks+multi+singlecomments=loc should always hold. Multiline strings are not counted as comments, since, to the Python interpreter, they are not comments but strings.
+
+
+
+
+
+1.7
+
+** Total **
+    LOC: 76196
+    LLOC: 38697
+    SLOC: 44412
+    Comments: 13424
+    Single comments: 13135
+    Multi: 5703
+    Blank: 12946
+    - Comment Stats
+        (C % L): 18%
+        (C % S): 30%
+        (C + M % L): 25%
+
+
+
+1.8
+
+** Total **
+    LOC: 98718
+    LLOC: 52040
+    SLOC: 58609
+    Comments: 16191
+    Single comments: 16050
+    Multi: 8004
+    Blank: 16055
+    - Comment Stats
+        (C % L): 16%
+        (C % S): 28%
+        (C + M % L): 25%
+
+
+
+1.9
+
+** Total **
+    LOC: 121728
+    LLOC: 65877
+    SLOC: 73208
+    Comments: 18300
+    Single comments: 18185
+    Multi: 10827
+    Blank: 19508
+    - Comment Stats
+        (C % L): 15%
+        (C % S): 25%
+        (C + M % L): 24%
+
+
+

@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>PluginAudioAlbumTree - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/PluginAudioAlbumTree?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/PluginAudioAlbumTree?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">PluginAudioAlbumTree</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>This Plugin is not available in the core distribution. </p>
+<p>You can download the latest version at <a href="http://members.home.nl/gvoncken/mvo/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://members.home.nl/gvoncken/mvo/</a> </p>
+<p>Author: Martijn Voncken (mvoncken at gmail.com) </p>
+
+<h2 id="head-5f8db18ba8603062cc8203204f385eb26403d0d6">Summary</h2>
+
+<p>Plugin to browse songs in a tree-like way. </p>
+<p>Requires pysqlite.    </p>
+<p>Tested on freevo 1.5.3 and a 12499 mp3/6.4 MB database. </p>
+<p>freevo2 has no stable database implementation yet (doesn't need to be sql) </p>
+
+<h2 id="head-ee05dfa8ac7f4429c5dd0ac7610b2f7259d2df81">Screenshots</h2>
+
+<p><img src="http://members.home.nl/gvoncken/mvo/screenshots/pic1.png" alt="pic1">  </p>
+<p><img src="http://members.home.nl/gvoncken/mvo/screenshots/pic2.png" alt="pic2"> <img src="http://members.home.nl/gvoncken/mvo/screenshots/pic3.png" alt="pic3"> </p>
+<p><img src="http://members.home.nl/gvoncken/mvo/screenshots/pic4.png" alt="pic4"> <img src="http://members.home.nl/gvoncken/mvo/screenshots/pic5.png" alt="pic5"> </p>
+
+<h2 id="head-2cfbdaccb95af6b7bb9da8941f834139054760ec">Pre Installation</h2>
+
+<p>The sqlite-meta-database should be available. </p>
+<p>The audio.logger plugin also uses this database,you can skip the pre-installation if this plugin is already sucesfully installed.  </p>
+<ul>
+<li><p>install pysqlite,sqlite </p>
+</li>
+<li><p>edit your local_config.py : Configure AUDIO_ITEMS (<strong><a href="AudioConfig.html">AudioConfig</a></strong> ,don't leave it at the default!) </p>
+</li>
+<li><p>run <tt>freevo&nbsp;cache</tt> </p>
+</li>
+<li><p>wait..... </p>
+</li>
+<li><p>The meta database should be available now. </p>
+</li>
+</ul>
+
+<h2 id="head-502c700a492393627aa3b744dc148450d664d102">Installation</h2>
+
+<ul>
+<li><p>Download freevo-audio-albumtree-0.x.x.tar.gz </p>
+</li>
+<li>
+<pre>
+su root
+tar -zxvf freevo-audio-albumtree-0.x.x.tar.gz
+cd freevo-audio-albumtree-0.x.x
+python setup.py install
+exit
+</pre>
+</li>
+</ul>
+
+<h2 id="head-69daa43822171977dc7a0b9b762789408a62971a">Configuration</h2>
+
+<ul>
+<li style="list-style-type:none"><p>Edit your local_config.py and add this: </p>
+</li>
+</ul>
+
+<pre>
+plugin.activate('audio.album_tree')
+AUDIO_ALBUM_TREE_SPEC = []
+
+#You could add all trees below:, but you probably only want 1 or 2 of them:
+AUDIO_ALBUM_TREE_SPEC.append({'name':'Artist/Album/Track'
+     ,'spec':["artist","album","track||'-'||title"]
+     ,'alt_grouping':[None,None,'track']
+    })
+#A case sensitive tree like above...
+#Is easy to convert to a convert to a case insensitive tree like below:    
+AUDIO_ALBUM_TREE_SPEC.append({'name':'nocase:artist/album/Track'
+     ,'spec':["lower(artist)","lower(album)","track||'-'||title"]
+     ,'alt_grouping':[None,None,'track']
+    })
+
+#my favorite layout:
+AUDIO_ALBUM_TREE_SPEC.append({'name':'(A-Z)/Artist/Album-Year/Track'
+    ,'spec':["upper(substr(artist,0,1))"
+            ,"artist","album||'-'||year"
+            ,"track||'-'||title"]
+    ,'alt_grouping':[None,None,'year||album','track']
+    })
+
+#you can comment out a tree definition like this:
+#AUDIO_ALBUM_TREE_SPEC.append({'name':'Artist-Album/Track'
+#    ,'spec':["artist||'-'||album","track||'-'||title"]
+#    ,'alt_grouping':[None,'track']
+#    })
+
+#More Examples:
+AUDIO_ALBUM_TREE_SPEC.append({'name':'Year/Artist-Album/Track'
+    ,'spec':["year","artist||'-'||album","track||'-'||title"]
+    ,'alt_grouping':[None,None,None,'track']
+    })
+
+AUDIO_ALBUM_TREE_SPEC.append({'name':'Dirtitle/Artist/Album/Track'
+    ,'spec':["dirtitle","artist","album","track||'-'||title"]
+    ,'alt_grouping':[None,None,None,'track']
+    })
+
+#see http://www.sqlite.org/lang_expr.html for "scripting" functions
+#available fields in the meta database:id,dirtitle,path,filename,type,artist,title
+#,album,year,track,track_total,bpm,last_play,play_count,start_time,end_time,rating
+
+#I need more fields in the meta-database for better trees!
+#Fields not in meta-database : genre,album_artist,comment,grouping,etc..
+</pre>
+
+<h2 id="head-89688de432c16235f5016e3bc98fa1c8a336e09b">Post Installation</h2>
+
+<p>New plugins are not immediately visible on the freevo webserver. </p>
+<p>You might want to restart the  <a href="Webserver.html">freevo webserver</a> after the installation of a new plugin. </p>
+<p>Back to <strong><a href="AudioPlugins.html">AudioPlugins</a></strong> </p>
+
+<h2 id="head-87fb2d3067cc5332424bea9535511c294b084eea">Notes</h2>
+
+<p>mvo: I had some problems with freevo cache , only lower case .mp3's were scanned and the windows drive I mounted had some *.Mp3 and some *.MP3 albums.... Those wil not be scanned by freevo. 1.5.3 Pease mail me ,or better <a href="mailto:freevo-users@sourceforge.net"><img src="modern/img/moin-email.png" alt="[MAILTO]" height="10" width="14"> freevo-users@sourceforge.net</a> if you have te same problem. I will submit a patch if there is some demand. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-05-19 17:49:01 by <span title="cp562554-a.landg1.lb.home.nl">mvoncken</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/PluginAudioAlbumTree">http://freevo.sourceforge.net/cgi-bin/doc/PluginAudioAlbumTree</a></p>
+</div> <!-- end page -->
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>IdlebarPlugin</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Freevo Plugin Writing HOWTO"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="The Different Types of Plugins"
+HREF="c145.html"><LINK
+REL="PREVIOUS"
+TITLE="ItemPlugin"
+HREF="x200.html"><LINK
+REL="NEXT"
+TITLE="MimetypePlugin"
+HREF="x219.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Freevo Plugin Writing HOWTO: Writing your own plugins for Freevo</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x200.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. The Different Types of Plugins</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x219.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN211"
+>3.5. IdlebarPlugin</A
+></H1
+><P
+>Idlebar plugins are deceptively simple. Only two methods are reccomedded to be implemented. There is the init method which most often calls the parent init and sets any class variables based on arguments to it. The other method is draw. Draw as its name suggests draws in the idlebar area assigned to the plugin.</P
+><P
+>Draw is where most of the action happens. Basically you get a reference to the plugin, the X coordinate to start drawing at, an osd object to use to call all the drawing methods, and a tuple containing a type and object (what do they do? have never seen them used).</P
+><P
+>The most complicated part is probably the drawing methods. Basically we can write text and, draw images. The osd variable actually is the Plugin_Area class which is a skin_area subclass and not the real osd class you would expect. You can look in freevo/src/skins/main/area.py and freevo/src/skins/main/main.py for class definitions and possible methods. The osd variable is also how we get and set the font we wish to use.</P
+><P
+>Here is a full out example:</P
+><PRE
+CLASS="PROGRAMLISTING"
+>import random
+from plugins.idlebar import IdleBarPlugin
+
+# for a simple example put in a file called YeaNay.py in
+# /usr/local/freevo/src/plugins/idlebar/
+class PluginInterface(IdleBarPlugin):
+    """
+    Shows Yea or Nay randomly as text in the idlebar
+
+    Activate with:
+    plugin.activate('idlebar.YeaNay',   level=45)
+    """
+    def __init__(self):
+        IdleBarPlugin.__init__(self)
+        if ( random.randrange(2) ):
+            self.yeanay = 'yea'
+        else:
+            self.yeanay = 'nay'
+
+    def draw(self, (type, object), x, osd):
+        font  = osd.get_font('clock')
+        idlebar_height = 60
+        w = font.font.stringsize( self.yeanay )
+        h = font.font.height
+        if h &#62; idlebar_height:
+            h = idlebar_height
+        osd.write_text( self.yeanay, font, None,
+                        ( x + 5 ),
+                        ( osd.y + ( idlebar_height - h ) / 2 ),
+                        ( w + 1 ), h , 'right', 'center')
+        return 0
+      </PRE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x200.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x219.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>ItemPlugin</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c145.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>MimetypePlugin</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

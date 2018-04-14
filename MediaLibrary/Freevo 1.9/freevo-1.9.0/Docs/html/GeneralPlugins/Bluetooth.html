@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>GeneralPlugins/Bluetooth - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="../modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="../modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="../modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/GeneralPlugins/Bluetooth?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/GeneralPlugins/Bluetooth?action=print">
+<link rel="Up" href="/cgi-bin/doc/GeneralPlugins">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="../Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">GeneralPlugins/Bluetooth</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h2 id="head-10130044ff97594810342b5cb759e3814d250267">Bluetooth remote control plugin</h2>
+
+<p>This is a plugin that let's you control Freevo with your cellphone. It will work with all phones based on Symbian OS that support Event Reporting. Newer phones seem to lack this feature. When I get some spare time I'll hack together some J2ME application. </p>
+<p>Reported to work with Ericsson T68, SonyEricsson T610 and Siemens S55.  The Nokia N-Gage does _not_ work (event reporting not supported). </p>
+<p>Download count is currently at 2550. Yet there is a very small amount of emails in my inbox, not counting spam.  If you get it to work, PLEASE email Freevo version, cellphone type and if possible the configuration you use.  ikea/ieka can be contacted on lmq137t at tninet.se or tankdriverikea at gmail.com </p>
+<p>Please read the README file included, it contains all the information you need (almost) to get it working right away. </p>
+<p>New features: </p>
+<ul>
+<li><p> Button exploring ("freevo bluebutton" Press a button on the phone and see what it's called. Used for buttonconfiguration.) </p>
+</li>
+<li><p> Keylock feature (Makes it send commands only if the keypad lock is on. See the instructions for more info) </p>
+</li>
+<li><p> Sleeping (Don't chew all CPU power, check the config) </p>
+</li>
+<li><p> Keep alive (Might fix the disconnection problem by sending "ATI") </p>
+</li>
+</ul>
+<p>Requirements: </p>
+<ul>
+<li><p> A Bluetooth phone, a Bluetooth dongle. The phone should be able to receive AT (Hayes) commands, and it must have a certain command that sends all keypad events to the computer. (It's "AT+CMER=3,2,0,0,0", if you send it to your phone with minicom it should say "OK" back.) </p>
+</li>
+<li><p> The Bluetooth Subsystem (kernel) </p>
+</li>
+</ul>
+<p>If you need any help you can find my email adress in the plugin source. Please read the README file first. </p>
+<p>Keysettings for T68 and T610 is default, with the report of Siemens S55, this was submitted: 
+</p>
+<pre>
+BLUE_CMDS = {
+     'V' : 'DISPLAY',
+     'S' : 'VOL-',
+     'E' : 'VOL+',
+     '1' : 'PLAY',
+     '2' : 'UP',
+     '3' : 'STOP',
+     '4' : 'LEFT',
+     '5' : 'SELECT',
+     '6' : 'RIGHT',
+     '7' : 'REW',
+     '8' : 'DOWN',
+     '9' : 'FFWD',
+     '0' : 'EXIT',
+     }
+</pre>
+<p>Note that this does NOT use the keylock feature. </p>
+<p>PleaseUpdate : Can someone who uses the plugin verify that all the info is still correct for freevo 1.5.x Info for older freevo versions can be deleted. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-06-29 10:47:07 by <span title="195.67.18.73">ieka</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/GeneralPlugins/Bluetooth">http://freevo.sourceforge.net/cgi-bin/doc/GeneralPlugins/Bluetooth</a></p>
+</div> <!-- end page -->
+</body>
+</html>

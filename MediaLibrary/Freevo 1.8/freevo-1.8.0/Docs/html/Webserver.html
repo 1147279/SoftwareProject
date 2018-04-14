@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>Webserver - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/Webserver?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/Webserver?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">Webserver</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>Site Index: </p>
+<ol>
+
+<li>
+<a href="#head-4fa78e13b6bfa46726ae2ab00d1538774cacb11f">Introduction</a>
+</li>
+
+<li>
+<a href="#head-cdcb2a5a93809998ad0d5d830dd9bd3781dcb750">Setup</a>
+</li>
+
+<li>
+<a href="#head-4e5bccd41350606c2be63282b51535b15a843083">Start manually</a>
+</li>
+
+<li>
+<a href="#head-7160444f2270c1c2c3bf305386fb1c5dffcc9acf">Start as plugin</a>
+</li>
+
+<li>
+<a href="#head-8b7294b59aee58352cc205246499665805cf25c4">Start with initscript</a>
+<ol>
+
+<li>
+<a href="#head-505bfbf793668ae786d0a3aedaa394c24e26db1a">Gentoo</a>
+</li>
+
+<li>
+<a href="#head-9ef667c0d7b72734366c4fd96c2a2e7d2a1c3a23">Other distributions</a>
+</li>
+
+</ol>
+
+<li>
+<a href="#head-1184e9fc53db708d3b5f92057de5a6fa66facd90">Start from inittab</a>
+</li>
+
+<li>
+<a href="#head-c45ca0e8faf33b4337009c0723e1ddadb1a22876">Usage</a>
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-4fa78e13b6bfa46726ae2ab00d1538774cacb11f">Introduction</h2>
+
+<p>The webserver enables you to schedule recordings with a webbrowser, have a list of your image, movie and audio directories and more ... To schedule recordings you have to configure and start the <a href="Recordserver.html">Recordserver</a>. </p>
+
+<h2 id="head-cdcb2a5a93809998ad0d5d830dd9bd3781dcb750">Setup</h2>
+
+<p>edit WWW_USERS in local_conf.py  </p>
+<p>provide yourself with a username and password.  </p>
+<p>edit WWW_PORT  </p>
+<p>if you would like not to have to remember to put the port number in the URL you can change the number to 80 here, if you have NO other webserver on this machine on that port and you run the process starting the server as root (inittab and init script are root, plugin may not be).  </p>
+<p>to check for another webserver:  
+</p>
+<pre>
+# netstat -ln 
+</pre>
+<p>look in the fourth column if any entry has 0.0.0.0:80 than there is already a webserver running there.  </p>
+
+<h2 id="head-4e5bccd41350606c2be63282b51535b15a843083">Start manually</h2>
+
+<p>To start the webserver manually:  
+</p>
+<pre>
+freevo webserver start
+</pre>
+<p>To stop the webserver manually:  
+</p>
+<pre>
+freevo webserver stop 
+</pre>
+
+<h2 id="head-7160444f2270c1c2c3bf305386fb1c5dffcc9acf">Start as plugin</h2>
+
+<p>To start is like other plugins, add the following to your local_conf.py : 
+</p>
+<pre>
+plugin.activate('www') 
+</pre>
+<p>DXR3 users must use the webserver in either inittab or boot scripts. it will not work for them in plugin mode. </p>
+
+<h2 id="head-8b7294b59aee58352cc205246499665805cf25c4">Start with initscript</h2>
+
+
+<h3 id="head-505bfbf793668ae786d0a3aedaa394c24e26db1a">Gentoo</h3>
+
+<p>If you emerged freevo from portage : </p>
+<ul>
+<li><p> Edit the config script : /etc/conf.d/freevo </p>
+</li>
+<li><p> Add Freevo script to the default runlevel : </p>
+</li>
+</ul>
+
+<pre>
+rc-update add freevo default
+</pre>
+
+<h3 id="head-9ef667c0d7b72734366c4fd96c2a2e7d2a1c3a23">Other distributions</h3>
+
+<p>PleaseUpdate </p>
+
+<h2 id="head-1184e9fc53db708d3b5f92057de5a6fa66facd90">Start from inittab</h2>
+
+<p>PleaseUpdate </p>
+
+<h2 id="head-c45ca0e8faf33b4337009c0723e1ddadb1a22876">Usage</h2>
+
+<p>After you started the webserver you can point your browser to <a href="http://name:port"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://name:port</a> Where name is the name of the computer where the webserver is started and port is the port you have configured with 'WWW_PORT' </p>
+<p>Username and password will be asked. If you want to access this workstation from the internet, don't forget to  open / forward the port if you have a firewall or router. </p>
+<p>If you have a dhcp internet ip adres I suggest using something like <a href="http://www.dyndns.org/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.dyndns.org/</a>. </p>
+<p>The webserver also has some wap pages. Point your webbrowser to <a href="http://name:port/wap_login.rpy"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://name:port/wap_login.rpy</a> , after loging in there will be a basic wap record page. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-01-30 21:35:41 by <span title="someone.aub.auc.dk">HenrikFarre</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/Webserver">http://freevo.sourceforge.net/cgi-bin/doc/Webserver</a></p>
+</div> <!-- end page -->
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>Analoguefreq - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/Analoguefreq?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/Analoguefreq?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">Analoguefreq</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h2 id="head-57d7b6bf38196babca879acd1fb244869562299c">Use frequencies in mencoder instead of channels</h2>
+
+<p>The channel list is a convention on which frequencies are allowed to be broadcasted in  some countries.  Cable operators need more channels and have the possibility to use  frequencies which are not allowed for Antenna transmission. (Frequencies, used by  the military, is such a exemple).  So first you need to add the non-standard frequencies to you're local_conf.py file. This is a illustrated example of my TV_CHANNELS settings </p>
+
+<pre>
+TV_CHANNELS = [
+    ( 'bbcworld', 'BBC World', 'bbcworld' ),
+    ( 'bbc1', 'BBC1', 'bbc1' ),
+    ( 'bbc2', 'BBC2', 'bbc2' ),
+    ... 
+</pre>
+<p>The last parameter of every item in the list will be mapped to a frequency </p>
+<p>So this is a part of my FREQUENCY_TABLE  The frequencies are in Khz </p>
+
+<pre>
+FREQUENCY_TABLE = {
+     'bbcworld' : 294250,
+     'bbc1': 266250,
+     'bbc2': 273250,
+     ...
+</pre>
+<p>Check with you're local cable tv supplier (website?) to find out. </p>
+<p>This would work correctly with Tvtime, but not with mencoder. As you see in this example, it will try to pass a channel  parameter I have defined in freevo to mencoder </p>
+
+<pre>
+2004/07/28 22:40 CEST [*RecordServer*] popen  
+/usr/bin/mencoder tv:// -tv driver=v4l2:input=0:norm=pal:channel=bbcworld...
+</pre>
+<p>A channel setting mencoder doesn't understand. </p>
+<p>Basically a tvtuner will tune in with a specific frequency and is not  aware of channels. Channel descriptions are different, regarding the  standard (pal,secam,ntsc) or the country you're living in. As I described  above, Cable operators don't have to follow these conventions, cause they  where designed with antenna broadcast in mind. </p>
+<p>I've modified the VCR_CMD to use a frequency instead of channels.  The mencoder recording program supports the use of freq instead of channels. </p>
+
+<pre>
+#           ':channel=%(channel)s' +        # Filled in by Freevo
+#           ':freq=%(frequency)s' +        # Filled in by Freevo
+           ':freq=%(frequencyMhz)s' +
+</pre>
+<p>The frequency in Khz defined in FREQUENCY_TABLE needs to be divided by 1000, since mencoder uses  the frequency in Mhz </p>
+<p>To be able to introduce the parameter frequencyMhz, wich is identical to default parameter frequency, except it's using Mhz instead of Khz as required by mencoder I modified the file ....freevo/tv/plugins/generic_record.py </p>
+<p>These are my modifications </p>
+
+<pre>
+ def Record(self, rec_prog):
+        frequency = self.fc.chanSet(str(rec_prog.tunerid), 'record plugin')
+       # modif gedeco
+        frequencyT = str(frequency)
+        frequencyT1 = len(frequencyT)
+        frequencyleftpointer = frequencyT1-3
+        frequencyA = frequencyT[0:frequencyleftpointer]
+        frequencyB = frequencyT[frequencyleftpointer:frequencyT1]
+        frequencyMh = frequencyA + '.' + frequencyB
+        frequencyMhz = str(frequencyMh)
+       # end modif gedeco
+        rec_prog.filename = tv_util.getProgFilename(rec_prog)
+
+        cl_options = { 'channel'  : rec_prog.tunerid,
+                       # modif gedeco
+                       'frequencyMhz' : frequencyMhz,
+                       # modif gedeco
+                       'frequency' : frequency,
+
+</pre>
+<p>A python programmer will find this probably a kludge --- which it is. I'm not a programmer. So somebody capable of streamlining this, go ahead. But using the frequency would be a much better way to drive mencoder, cause both are depending on different channel lists. Made to confuse. </p>
+<p>Thnx to Mick, who put me on the right track </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-01-25 14:42:38 by <span title="83.141.77.130">JohnMolohan</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/Analoguefreq">http://freevo.sourceforge.net/cgi-bin/doc/Analoguefreq</a></p>
+</div> <!-- end page -->
+</body>
+</html>

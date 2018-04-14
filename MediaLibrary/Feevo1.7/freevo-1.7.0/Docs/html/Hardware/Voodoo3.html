@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>Hardware/Voodoo3 - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="../modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="../modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="../modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/Hardware/Voodoo3?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/Hardware/Voodoo3?action=print">
+<link rel="Up" href="/cgi-bin/doc/Hardware">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="../Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">Hardware/Voodoo3</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h3 id="head-0df128d008ab187b77b7efe61d6087382f25f057">Voodoo 3 Setup</h3>
+
+<p>Using the lm_sensors &amp; i2c packages it is possible to run X on the tv-out to display freevo. Download and install from <a href="http://secure.netroedge.com/~lm78/"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://secure.netroedge.com/~lm78/</a> first. This was tested using Fedora. </p>
+
+<h4 id="head-e532bb5f56adec962a883795332bb1cf8da3bf17">Kernel Modules</h4>
+
+<p>In the 2.4 kernel the card uses the following modules located under Character devices in the kernel configuration. </p>
+<p>i2c-core, i2c-algo-bit, i2c-voodoo3, i2c-proc, i2c-dev, bt869, eeprom. </p>
+<p>These can be compiled into the kernel or as called as modules using modprobe. </p>
+
+<h4 id="head-275b9d6b480c50ccd6dea17d496dea8769dc1225">XF86Config Configuration</h4>
+
+<p>The output from the card can be displayed in 640x480 or 800x600 both in only depth 16 colour. The correct settings must be added to '/etc/X11/XF86Config' as the card requires special modelines. They are - </p>
+<p>**** I've managed to get the TV-Out work at 24 bit color depth with my Voodoo3 3000  **** </p>
+<p>**** you can see the difference right away, just echo 24 &gt; /proc/sys/dev/sensors/bt869-i2c-1-44/depth </p>
+<p>**** and yes, I tried 32 and it didn't work <img src="../modern/img/smile4.png" alt=";)" height="15" width="15"> </p>
+<p>***** The modeline "720X576PAL" worked best for my TV - no black borders - unfortunately a little is overscanned. </p>
+<pre>
+[...] 
+    ModeLine "640x480PAL"   29.50       640  675  678  944  480  530  535  625
+    ModeLine "800x600PAL"   36.00       800  818  820  960  600  653  655  750
+    ModeLine "720x576PAL"   27.50       720  744  800  880  576  581  583  625
+    ModeLine "640x480NTSC"  28.195793   640  656  658  784  480  520  525  600
+    ModeLine "800x600NTSC"  38.769241   800  812  814  880  600  646  649  735
+    [...]
+    Subsection "Display"
+      Depth          16
+      Modes       "1280x1024" "800x600PAL" "800x600" "720x576PAL" "640x480PAL" "640x480"
+      # Or for NTSC:
+      #Modes       "1280x1024" "800x600NTSC" "800x600" "640x480NTSC" "640x480"
+    [...]
+[...]
+</pre>
+
+<h4 id="head-fd7750dc94ea949bc47903da1da0c9950530900d">BT869 Chip Configuration</h4>
+
+<p>Then the card needs to be set to use a resolution and whether to use ntsc or not. </p>
+
+<h5 id="head-89a000fecbea95dcaa407057bdf544980c43e5db">Manual Configuration</h5>
+
+<p>This can be done manually be running </p>
+<pre>
+echo 0 &gt; /proc/sys/dev/sensors/bt869-i2c-1-44/ntsc 
+echo "640 480" &gt; /proc/sys/dev/sensors/bt869-i2c-1-44/res
+</pre>
+<p>or </p>
+<pre>
+echo 0 &gt; /proc/sys/dev/sensors/bt869-i2c-0-44/ntsc 
+echo "800 600" &gt; /proc/sys/dev/sensors/bt869-i2c-0-44/res
+</pre>
+
+<h5 id="head-3a585ac902ba241b8def6a9a390e1b802ad0043a">Auto Configuration</h5>
+
+<p>This can be automated on startup using the '/etc/sysctl.conf' file. Just add to the file </p>
+<pre>
+[...] 
+dev.sensors.bt869-i2c-0-44.ntsc = 0
+dev.sensors.bt869-i2c-0-44.res = 800 600
+[...]
+</pre>
+<p>This will update the bt869 chip just before X loads. </p>
+
+<h4 id="head-05917f263886a8f4b71c5829c99d71111bfda751">Kernel 2.6</h4>
+
+<p>The bt869 chip driver has not been ported to the 2.6 kernel yet. I2c and lm_sensors have however been fully built in barr this and some other external drivers. </p>
+<p>Quick 2.6 hack: make sure i2c_voodoo3 and i2c_dev are built and loaded. </p>
+<p>i2cset 1 0x44 0xC6 0x001 &amp; i2cset 1 0x44 0x0ba 0x80 &amp; i2cset 1 0x44 0xa0 0x80 &amp; i2cset 1 0x44 0xba 0x20 &amp; i2cset 1 0x44 0x0C6 0x001 &amp; i2cset 1 0x44 0xC4 0x1 &amp; i2cset 1 0x44 0xC8 0x0 &amp; i2cset 1 0x44 0xa0 0x91 &amp; i2cset 1 0x44 0xC4 1 &amp; i2cset 1 0x44 0x6c 0x80 &amp; i2cset 1 0x44 0xba 0x80 &amp; i2cset 1 0x44 0xB8 2 &amp; i2cset 1 0x44 0xa0 0x91 &amp; i2cset 1 0x44 0xba 0x20 &amp; </p>
+<p>Changes Depth to 16Bpp and res to 800 x 600 NTSC </p>
+<p>The &amp;'s are required becuase of a 5 second delay built into i2cset. (All of them must be completed withen seconds of each other.) </p>
+<p>The following made my 24Bpp 720x576PAL S-Video-out work (perhaps you have to call it twice): </p>
+<p>i2cset 1 0x44 0xC6 0x001 &amp; i2cset 1 0x44 0x0ba 0x80 &amp; i2cset 1 0x44 0xa0 0x80 &amp; i2cset 1 0x44 0xba 0x20 &amp; i2cset 1 0x44 0x0C6 0x001 &amp; i2cset 1 0x44 0xC4 0x1 &amp; i2cset 1 0x44 0xC8 0x0 &amp; i2cset 1 0x44 0xa0 0x91 &amp; i2cset 1 0x44 0xC4 1 &amp; i2cset 1 0x44 0x6c 0x80 &amp; i2cset 1 0x44 0xba 0x80 &amp; i2cset 1 0x44 0xB8 2 &amp; i2cset 1 0x44 0xC8 0x0&amp;i2cset 1 0x44 0x6e 0x00&amp;i2cset 1 0x44 0x70 0x02&amp;i2cset 1 0x44 0x72 0x00&amp;i2cset 1 0x44 0x74 0x01&amp;i2cset 1 0x44 0x76 0xe0&amp;i2cset 1 0x44 0x78 0xd0&amp;i2cset 1 0x44 0x7a 0x80&amp;i2cset 1 0x44 0x7c 0x98&amp;i2cset 1 0x44 0x7e 0x58&amp;i2cset 1 0x44 0x80 0x20&amp;i2cset 1 0x44 0x82 0x16&amp;i2cset 1 0x44 0x84 0x22&amp;i2cset 1 0x44 0x86 0xa6&amp;i2cset 1 0x44 0x88 0x00&amp;i2cset 1 0x44 0x8a 0x78&amp;i2cset 1 0x44 0x8c 0x80&amp;i2cset 1 0x44 0x8e 0x03&amp;i2cset 1 0x44 0x90 0x71&amp;i2cset 1 0x44 0x92 0x2a&amp;i2cset 1 0x44 0x94 0x40&amp;i2cset 1 0x44 0x96 0x0a&amp;i2cset 1 0x44 0x98 0x00&amp;i2cset 1 0x44 0x9a 0x50&amp;i2cset 1 0x44 0x9c 0x30&amp;i2cset 1 0x44 0x9e 0x0&amp;i2cset 1 0x44 0xa0 0x8c&amp;i2cset 1 0x44 0xa2 0x24&amp;i2cset 1 0x44 0xa4 0xf0&amp;i2cset 1 0x44 0xa6 0x57&amp;i2cset 1 0x44 0xa8 0x82&amp;i2cset 1 0x44 0xaa 0x49&amp;i2cset 1 0x44 0xac 0x8c&amp;i2cset 1 0x44 0xae 0xb4&amp;i2cset 1 0x44 0xb0 0xe0&amp;i2cset 1 0x44 0xb2 0x45&amp;i2cset 1 0x44 0xb4 0x29&amp;i2cset 1 0x44 0xb6 0x00&amp;i2cset 1 0x44 0xc4 0x01&amp;i2cset 1 0x44 0xc6 0x00&amp;i2cset 1 0x44 0xc8 0x40&amp;i2cset 1 0x44 0xca 0xc0&amp;i2cset 1 0x44 0xcc 0xc0&amp;i2cset 1 0x44 0xd6 0x00&amp;i2cset 1 0x44 0x0C6 0x000&amp;i2cset 1 0x44 0xC4 1 &amp; i2cset 1 0x44 0xba 0x20 </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-01-10 11:09:12 by <span title="212.17.56.2">JohnMolohan</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/Hardware/Voodoo3">http://freevo.sourceforge.net/cgi-bin/doc/Hardware/Voodoo3</a></p>
+</div> <!-- end page -->
+</body>
+</html>

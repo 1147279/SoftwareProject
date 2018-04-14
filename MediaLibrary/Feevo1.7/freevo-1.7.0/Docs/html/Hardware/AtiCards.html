@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>Hardware/AtiCards - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="../modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="../modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="../modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/Hardware/AtiCards?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/Hardware/AtiCards?action=print">
+<link rel="Up" href="/cgi-bin/doc/Hardware">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="../Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">Hardware/AtiCards</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>Site Index: </p>
+<ol>
+
+<li>
+<a href="#head-8d38d8e6e77f54f417b255a1a57a3d2e2795d907">Radeon 7000</a>
+<ol>
+
+<li>
+<a href="#head-ae976b004e67222bd286259958a6c17cf7ccbf8c">Easy</a>
+</li>
+
+<li>
+<a href="#head-f1e88d970147f19a5604411e7c480e64c67cfc33">Harder</a>
+</li>
+
+</ol>
+
+<li>
+<a href="#head-98730616e136791b50e925f0725a36a3e840f37c">Radeon 7500</a>
+<ol>
+
+<li>
+<a href="#head-0f664620c3bce7b6440db961c031905ada51519e">fbdev</a>
+</li>
+
+<li>
+<a href="#head-9c08aa6285c7072102f48c4e6c07f7841b4b2881">GATOS</a>
+</li>
+
+</ol>
+
+<li>
+<a href="#head-6beff4aeec41bc81f9acf4857ed6dd2d0d55c307">Radeon 8500</a>
+<ol>
+
+<li>
+<a href="#head-5798b57a7674471f82b9495bfe1147868fde1f93">Radeonfb</a>
+</li>
+
+</ol>
+
+<li>
+<a href="#head-1b44bb182cec078be7f3e1110543b19a7d227227">ATI closed source drivers</a>
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-8d38d8e6e77f54f417b255a1a57a3d2e2795d907">Radeon 7000</h2>
+
+<p><em>From TJ O'Connor's email:</em> </p>
+<p>Reference the radeon TV-Out issue: </p>
+<p>I've got a complex and an easy solution for you: </p>
+
+<h3 id="head-ae976b004e67222bd286259958a6c17cf7ccbf8c">Easy</h3>
+
+<p>Replace the line driver="radeon" in your <tt>XF86Config-4</tt> file with driver="vesa". In the display section, ensure you have modes of "800x600" and "640x480" at least for output to tv (my tv can take an 800x600 but when running through my vcr, I can only display 640x480.)  </p>
+<p>In your /etc/lilo.conf set your vga=791 and run lilo. Or make the same change in your grub.conf if you use grub as a bootloader. Then turn off your machine and restart with the tv plugged in and turned on. Once logged in change to "800x600", using CTRL-ALT-MINUS to change to the applicable resolution. </p>
+<p>When you get to one of the modes such as "800x600", you should see the display on your screen. Then run freevo fullscreen and it should look pretty. </p>
+
+<h3 id="head-f1e88d970147f19a5604411e7c480e64c67cfc33">Harder</h3>
+
+<p>Same concept. But run 2 separate X Servers. One with your normal resolution such as 1400x1050 or whatever. Then run a second X Server on virtual terminal 8 using only an 800x600 mode in the "display" section. You can then leave freevo running fulltime on vt8 and do your normal work on vt7. Switch between the two screens using CTRL-ALT-F7/F8. </p>
+<p>For an added benefit, buy a cheap IR receiver from Zapway or Irman and program power button on your universal television remote control to use the command '/usr/bin/switchto vt8' to "power on freevo." Then tag the off button on the remote to '/usr/bin/switchto vt7', which will not be visible on the tv screen. Anyways, hope it make sense. </p>
+<p>Here is a Radeon7000SimpleConfig for <tt>/etc/X11/XF86Config-4</tt> that will work only in "800x600", you can modify it from there. </p>
+
+<h2 id="head-98730616e136791b50e925f0725a36a3e840f37c">Radeon 7500</h2>
+
+
+<h3 id="head-0f664620c3bce7b6440db961c031905ada51519e">fbdev</h3>
+
+<p>I managed to use the ATI Radeon (fbdev) driver,  setting my monitor to 800x600 @ 60Hz and setting my screen resolution to 800x600 - 16bit (max allowed).  Note this particular driver will not allow 3D Hardware Acceleration, so older machines will lag when viewing videos.  Also video players like Mplayer and XINE might need some tweaking to work in Framebuffer mode.  This worked fine going first through a VCR then to my television.  Enjoy! </p>
+<p>Andrew Paranczuk (<strong>andrew</strong> <em>dot</em> <strong>paranczuk</strong> <em>at</em> <strong>utoronto</strong> <em>dot</em> <strong>ca</strong>) </p>
+
+<h3 id="head-9c08aa6285c7072102f48c4e6c07f7841b4b2881">GATOS</h3>
+
+<p>I manage to get it working with Gatos (<a href="http://gatos.sf.net"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://gatos.sf.net</a>)  ati.2 driver &amp; Debian (testing). 3D and tv ouput are working.  I run 2 separate X server, 1 for my monitor  and the other for the TV. Some hacks necessery to get GATOS working. i.e. commenting undefined R200 cards.I also manage to get TV working  with km, but there's a PAL freeze bug that has not been fix :(.   </p>
+<p>To get tv ouput and 3D working, get debian, xserver-xfree86 source and  dpkg-build in preparation to build ati.2.  Then follow instruction from <a href="http://www.realh.co.uk/linux_tv_howto/ar01s04.html"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.realh.co.uk/linux_tv_howto/ar01s04.html</a> </p>
+<p>Here is a <a href="../Radeon7500SimpleConfig.html">Radeon7500SimpleConfig</a> for <tt>/etc/X11/XF86Config-4</tt> with 2 layout for a monitor and a TV output.You can try it out with this command </p>
+<p># XFree86 -layout &lt;Identifier&gt; </p>
+<p>Khairulmizam Samsudin (<strong>xource</strong>  <em>at</em> <strong>users</strong> <em>dot</em> <strong>sourceforge</strong> <em>dot</em> <strong>net</strong>) </p>
+
+<h2 id="head-6beff4aeec41bc81f9acf4857ed6dd2d0d55c307">Radeon 8500</h2>
+
+
+<h3 id="head-5798b57a7674471f82b9495bfe1147868fde1f93">Radeonfb</h3>
+
+<p>In the first half of 2003, radeonfb was becoming stable. The cards are fast, but TV-out with the radeonfb was basically impossible due to licensing of Macrovision etc.  A fine card if you don't want TV-out or you accept going with X+TV-out in previous section. </p>
+
+<h2 id="head-1b44bb182cec078be7f3e1110543b19a7d227227">ATI closed source drivers</h2>
+
+<p>ATI have released binary X drivers at <a href="https://support.ati.com/ics/support/default.asp?deptID=894"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> https://support.ati.com/ics/support/default.asp?deptID=894</a> which support TV-out on RADEON 8500 and later AGP or PCI Express, as well as FireGL 8700 and later. The drivers will be available for most distros - try a google search. Run "man radeon" for more info about the tv-out options. You will need a device section similar to the following in your /etc/X11/xorg.conf or /etc/X11/XF86config file. </p>
+
+<pre>
+Section "Device"
+        Identifier "ATI Technologies, Inc. Radeon 9200 Pro (RV280)"
+        Driver "fglrx"
+        Option "no_accel"            "no"
+        Option "no_dri"              "no"
+        Option "mtrr"                "off"   # disable DRI mtrr mapper, driver has its own code for mtrr
+        Option "DesktopSetup"        "0x00000100" # this sets up "clone" mode - both TV and CRT see the same image
+        Option "MonitorLayout"       "CRT,STV"   # this enables the CRT and TV-out interfaces 
+        Option "NoTV"                "no"    # enable tv-out
+        Option "TVStandard"          "PAL-B" # change this as required
+        Option "TVHSizeAdj"          "0"
+        Option "TVVSizeAdj"          "0"
+        Option "TVHPosAdj"           "0"
+        Option "TVVPosAdj"           "0"
+        Option "TVHStartAdj"         "0"
+        Option "TVColorAdj"          "0"
+        Option "GammaCorrectionI"    "0x00000000"
+        Option "GammaCorrectionII"   "0x00000000"
+        Option "Capabilities"        "0x00000000"
+        Option "VideoOverlay"        "on"
+        Option "OpenGLOverlay"       "off"
+        Option "UseFastTLS"          "0"
+        Option "BlockSignalsOnLock"  "on"
+        Option "UseInternalAGPGART"  "yes"
+        Option "ForceGenericCPU"     "no"
+        Option "OverlayOnCRTC2"      "on"    # This enables XV on your secondary device
+        Option "MergedFB"            "on"
+        BusID  "PCI:1:0:0"
+EndSection
+</pre>
+<p>The important option here is OverlayOnCRTC2. If you only have a TV connected and no CRT, the TV seems to always be the secondary devicem no matter what your MonitorLayout section is set to. You want to enable XV on your TV device, otherwise you'll only see mplayer/xine output on your CRT, and the TV will show a dark blue rectangle. If you disable XV (Option "no_dri" "yes") then mplayer/xine will be very very slow. </p>
+<p>Note: the man page states that the OverlayOnCRTC2 has been replaced by the XV attribute called XV_SWITCHCRT. Apparently you can run "xvattr -a XV_SWITCHCRT -v 0" and "xvattr -a XV_SWITCHCRT -v 1" to switch the overlay between the first and second display adapters. This didnt work for me however it may work for you. </p>
+<p>- Darryl Young (<strong>dizfvo</strong> <em>at</em> <strong>youngs-home</strong> <em>dot</em> <strong>net</strong>) </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-04-23 13:55:55 by <span title="user1-203.utsc-res.utoronto.ca">AndrewParanczuk</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/Hardware/AtiCards">http://freevo.sourceforge.net/cgi-bin/doc/Hardware/AtiCards</a></p>
+</div> <!-- end page -->
+</body>
+</html>

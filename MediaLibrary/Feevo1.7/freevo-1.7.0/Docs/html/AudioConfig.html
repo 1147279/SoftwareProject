@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>AudioConfig - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/AudioConfig?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/AudioConfig?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">AudioConfig</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h2 id="head-318e740278730eb1c5707e2a84ab4bdee6db9a71">General</h2>
+
+<p>Freevo is able to play a whole list of audio formats, the most important are probably mp3 and ogg. The default player is mplayer, but you can change that with the variable AUDIO_PREFERED_PLAYER in your <em>local_conf.py</em>. </p>
+<p>The list AUDIO_SUFFIX tells freevo which files it should treat as audio files and with PLAYLIST_SUFFIX you determine which files should be treated as playlists. Moreover you should tell freevo, where to look for audio files: 
+</p>
+<pre>
+AUDIO_ITEMS = [ ('music', '/place/of/your/music'), ('more music', '/place/of/more/music')]
+</pre>
+<p>If you want to use web radio, you should also put the appropriate fxd file in that list (see <a href="AudioFxd.html">AudioFxd</a>). </p>
+
+<h2 id="head-f6e1f81d33779c2b1b6a9b7d3946608d9b9c9279">Audio Cds</h2>
+
+<p>Freevo is of course also able to play your good old audio cds. If you put a cd in one of your drives and the cd is detected as audio cd, freevo will display it in your audio menu. Just choose a title and start listening to your music.  Freevo will try to fetch information about your cd (name, artists, tiltles) over cddb, if possible.   If you have problems with playing music cds, check if all necessary links are there, for example /dev/cdrom should be a link to your drive. If the audio is stuttering, it may help if you use hdparm to finetune your ide drives. Maybe something like this helps: 
+</p>
+<pre>
+ hdparm -d1 -a8 -u1 -c1 /dev/cdrom 
+</pre>
+<p>Depending on what your plugin for audio is (freevo plugins -l will help to know it), you could have to make these modifications instead to local_conf.py in order to make the audio cd stop stuttering  : - remove the xine audio plugin in order to use mplayer for audio 
+</p>
+<pre>
+plugin.remove('audio.xine')
+</pre>
+<p>and modify the MPLAYER_ARGS options :  - uncomment all the lines between the brackets - remove the "-cdda speed=2" option </p>
+
+<h2 id="head-cf524c59d8c238ec7b0717d7f14c177480ad7cfa">Covers</h2>
+
+<p>If you put a file named cover.jpg or cover.png in a music directory freevo will display that image for that directory instead of the usual directory icon. Moreover that cover will be displayed while playing music from that directory. It is also possible to have individual covers for each song.  Just put a file named title.png or title.jpg in the directory, title must match the name of the music file.  For each file freevo will first check if there is a individual cover, if that fails, it will try to use the image of the directory. </p>
+
+<h3 id="head-4fc3e7a0508fe827407e5bdd9c4b9889c5568046">Plugins for Audio</h3>
+
+<p>There are a number of additional features available for Freevo's audio center - FM radio players, cover art downloading, etc. - please see the plugin section for details. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-02-20 09:42:17 by <span title="AToulouse-152-1-46-20.w82-125.abo.wanadoo.fr">MarcoBianciotto</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/AudioConfig">http://freevo.sourceforge.net/cgi-bin/doc/AudioConfig</a></p>
+</div> <!-- end page -->
+</body>
+</html>

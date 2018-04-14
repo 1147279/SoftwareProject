@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>GeneralPlugins/Wakeupshutdown - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="../modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="../modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="../modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/GeneralPlugins/Wakeupshutdown?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/GeneralPlugins/Wakeupshutdown?action=print">
+<link rel="Up" href="/cgi-bin/doc/GeneralPlugins">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="../Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">GeneralPlugins/Wakeupshutdown</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h2 id="head-de51a9d98c026f8ce68d25186d4713e34120ceb2">Plugins for automatic shutdown and wakeup</h2>
+
+<p>This plugins might be what your are looking for,  if you do not want to have your freevo box running all the time,  but nevertheless be able to record everything no matter at what time of the day it is coming. </p>
+<p>This plugin provides a improved shutdown plugin as a replacement of the original shutdown plugin. At every shutdown it programs the system for a wakeup at the  start time of the next scheduled recording. At the moment two different wakeup methodes are supported: <strong>acpi</strong> and <strong>nvram</strong>. Moreover this package also contains a second plugin named wakeupschedule.timer, which shuts down the system automatically after a certain time of idleness.  </p>
+<p>This plugin is not part of the core distribution of freevo, but it can be download at: </p>
+<p><a href="http://www.ikp.uni-koeln.de/~tanja/freevo/wakeupshutdown.tar.gz"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.ikp.uni-koeln.de/~tanja/freevo/wakeupshutdown.tar.gz</a> </p>
+<p>Author: Tanja Striepling (owigera at web de) </p>
+<p>To install this plugins, just copy the file <tt>&nbsp;wakeupshutdown.py&nbsp;</tt> to <tt>&nbsp;path/to/your/freevo/src/plugins&nbsp;</tt>. </p>
+
+<h3 id="head-49592251c797ec0269dd8bbcacc303f7ad19c084">The wakeupschedule plugin</h3>
+
+<p>To activate and configure this plugin put the following in your <tt>local_conf.py</tt>: </p>
+
+<pre>
+plugin.remove('shutdown')
+plugin.activate('wakeupshutdown',level=90)
+
+# To make use of this plugin you must allow a system shutdown from freevos menu
+ENABLE_SHUTDOWN_SYS = 1               
+# If you enable this, you will get a warning about running or soon starting 
+# recordings when you choose to shutdown the system (recommended)
+CONFIRM_SHUTDOWN    = 1
+# if you do not run freevo as root, you must use sudo for the shutdown commands
+SHUTDOWN_SYS_CMD = 'sudo shutdown -h now'  
+RESTART_SYS_CMD  = 'sudo shutdown -r now'
+# choose your wakeup methode here:    
+SHUTWAKEUP_METHODE = 'acpi'
+# you also need root permissions for this, so you may need to use sudo here, too
+WAKEUP_CMD = 'sudo /usr/local/bin/acpi_wakeup.sh'
+# time your system needs for the boot process
+BOOTTIME_PADDING = 180
+</pre>
+<p>You can choose to use acpi or nvram for the wakeup, depending on what you prefer and what methode is supported by your bios.  </p>
+
+<h4 id="head-e5c1755d557868ef233381525c21fe508c03143b">Nvram</h4>
+
+<p>The nvram methode uses a program which manipulates the Non-Volatile RAM of your bios. You will need the module nvram for your kernel and the program nvram-wakeup. See <a href="http://sourceforge.net/projects/nvram-wakeup"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://sourceforge.net/projects/nvram-wakeup</a> for more information.  </p>
+<p>If you have one of the bioses that needs a reboot for nvram to work correctly, a reboot is done instead of a shutdown and a file is written as reboot flag. You then also need the reboothelper that comes with this plugins. Just copy the file rebootflag.py in <tt>/path/to/your/freevo/src/helper</tt>. Run the reboot helper in a early stage of your boot process to check for that file. If the helper finds that flag, it will remove the flag and will shutdown the system  completly this time. Running freevo  
+</p>
+<pre>
+rebootflag --help
+</pre>
+<p>should give you some more information on the usage of this helper.  </p>
+
+<h4 id="head-baf847bb02598887c4616d3b1fe36b3fbab56794">ACPI</h4>
+
+<p>An easier way is to use acpi, (if your bios supports it). This methode uses the wakeup on alarm function that most bioses have. The wakeup time is set by a simple  
+</p>
+<pre>
+echo 2004-08-02 20:15:00 &gt;/proc/acpi/alarm
+</pre>
+<p>The problem is that only the time is used by the bios and not the date, this  means then that your system will wakeup every day at 20:15. (For me not really a problem, because my freevo box is running once a day anyway) On most mainbords you will have to DISABLE "Wake on Timer", "Resume on Alarm",  "RTC Alarm Resume" or similar things for the acpi wakeup methode to work. If you decide to use acpi, you also need the small script "acpi_wakeup.sh" which is bundled with this plugin. </p>
+
+<h3 id="head-8c0d4d10a51987bcc072d81ec14810a9ccc55a25">The wakeupshutdown.timer plugin</h3>
+
+<p>This plugin is a optional addition for the wakeupshutdown plugin for automatic shutdown of the system after a certain time of idleness. </p>
+<p>To activate and configure this plugin put the following in your local_conf.py: 
+</p>
+<pre>
+plugin.activate('wakeupshutdown.timer')
+
+# after what time of idleness should the system shutdown (in secs)
+TIMER_DELAY = 1800
+# do not shutdown, if the next recording starts in less than this 
+TIMER_NOSHUTDOWN_PADDING = 900
+# do not shutdown if one of this programs is running
+EXTERNAL_CMDS = ['transcode','cdrecord']
+</pre>
+<p>The plugin checks menu activity, running recordings and (if you provide a list) also for other programs which might be running in the background like encoding jobs. </p>
+<p>There is a menu entry in the shutdown for pausing/resuming the timer  for automatic shutdown. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-06-05 11:33:05 by <span title="p50872C30.dip0.t-ipconnect.de">TanjaStriepling</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/GeneralPlugins/Wakeupshutdown">http://freevo.sourceforge.net/cgi-bin/doc/GeneralPlugins/Wakeupshutdown</a></p>
+</div> <!-- end page -->
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Flake8 plugin &#8212; Radon 1.4.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/solar.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.4.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/MathJax.js?config=TeX-AMS_HTML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Radon 1.4.2 documentation" href="index.html" />
+    <link rel="next" title="Using radon programmatically" href="api.html" />
+    <link rel="prev" title="Command-line Usage" href="commandline.html" /><link href='http://fonts.googleapis.com/css?family=PT+Mono|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+<link href="_static/solarized-dark.css" rel="stylesheet">
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="Using radon programmatically"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="commandline.html" title="Command-line Usage"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Radon 1.4.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="commandline.html"
+                        title="previous chapter">Command-line Usage</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api.html"
+                        title="next chapter">Using radon programmatically</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/flake8.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="flake8-plugin">
+<h1>Flake8 plugin<a class="headerlink" href="#flake8-plugin" title="Permalink to this headline">¶</a></h1>
+<p>Radon exposes a plugin for the Flake8 tool. In order to use it you will have to
+install both <cite>radon</cite> and <cite>flake8</cite>.</p>
+<p>To enable the Radon checker, you will have to supply <em>at least</em> one of the
+following options:</p>
+<dl class="option">
+<dt id="cmdoption-flake8--radon-max-cc">
+<code class="descname">--radon-max-cc</code><code class="descclassname"> &lt;int&gt;</code><a class="headerlink" href="#cmdoption-flake8--radon-max-cc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the cyclomatic complexity threshold. The default value is <cite>10</cite>. Blocks
+with a greater complexity will be reported by the tool.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-flake8--radon-no-assert">
+<code class="descname">--radon-no-assert</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-flake8--radon-no-assert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instruct radon not to count <cite>assert</cite> statements towards cyclomatic
+complexity. The default behaviour is the opposite.</p>
+</dd></dl>
+
+<p>For more information visit the <a class="reference external" href="http://flake8.readthedocs.org/en/latest/">Flake8 documentation</a>.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="Using radon programmatically"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="commandline.html" title="Command-line Usage"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Radon 1.4.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012-2013-2014-2015-2016, Michele Lacchia.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.9. Theme by <a href="http://github.com/vkvn">vkvn</a>
+    </div>
+  </body>
+</html>

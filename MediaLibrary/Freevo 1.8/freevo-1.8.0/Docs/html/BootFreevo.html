@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>BootFreevo - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/BootFreevo?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/BootFreevo?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">BootFreevo</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h2 id="head-af96c1c8715717bd19e3faa35901ad1c6fdbf058">Boot directly into freevo</h2>
+
+<p>After Freevo has been installed correctly and verified to work when run from the command prompt, the system can be configured for standalone operation where Freevo will startup automatically without the need for entering a username and password. You should consider, that standalone operation implies that the system will be somewhat 'insecure'.  </p>
+<p>1. Put the following in <em>/etc/inittab</em> 
+</p>
+<pre>
+ id:3:initdefault: 
+</pre>
+<p> and 
+</p>
+<pre>
+1:3:respawn:/sbin/mingetty --autologin USER tty1 
+</pre>
+<p> After the next boot (in runlevel 3) your USER will be automatically logged in on the first console tty1. </p>
+<p>2. Put the following in your USER's <em>.bash_profile</em>: 
+</p>
+<pre>
+ case "`tty`" in  
+    /dev/tty1) clear &amp;&amp; freevo &amp;&gt;/dev/null;  
+ esac 
+</pre>
+<p> </p>
+<p>This will start freevo automatically, when your USER logs in on tty1.  </p>
+<p>If you start Freevo with the option <tt>-fs</tt>, Freevo will start as windowmanager, and X is started automatically. Otherwise it will try to use the framebuffer device. Thus you should make sure that the appropriate output device (X or framebuffer) is working correctly before you try this.  </p>
+<p><strong>Alternative solution:</strong> </p>
+<p>Edit <em>/etc/inittab</em> as above, but put the following in your USER's <em>.bash_profile</em>: 
+</p>
+<pre>
+startx
+</pre>
+<p><tt>startx</tt> will read your USER's <em>.xinitrc</em>, which could contain: 
+</p>
+<pre>
+nvidia-settings -l # used to adjust overscan/color ect on nVidia cards.
+
+xset s noblank
+xset s off
+xset -dpms
+
+exec freevo
+</pre>
+<p>It may be that you don't have the program mingetty, but getty. Unfortunately the <tt>--autologin</tt> option seems not to be supported by getty, but you can install mingetty instead. The only reason to prefer getty over mingetty is, if you want to you use console over a modem connection or something similar. It also might be - depending on your distribution - that the file <em>inittab</em> is called different in your system. These things are tested with a debian system. </p>
+
+<h2 id="head-8a07ac50ac5b89a0e7d79525b6728a7df139e798">Boot directly into Freevo: Alternative Config</h2>
+
+<p>This is working on Fedora Core 4. </p>
+<p>I have choosen to configure and adjust configuration as user root. The user freevo would only be a user who can use "freevo". With VNC, you could take over the desktop for user root.  <a href="http://www.realvnc.com/faq.html#x0"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.realvnc.com/faq.html#x0</a> </p>
+<p>This makes this a usefull way of configuration. Typicaly, you would connect a freevo box to a TV set instead of a monitor, without keyboard or mouse attached or in a placement where configuring the freevo box is uncomfortable.  You get also the advantage of using another pc of controlling freevo as a alternative to a remote control. </p>
+<p>In the "Login Screen" configuration, you could add a automatic login user with a timeout. I created such a user called freevo. To start up freevo I first created a batch file, called startfreevo, which should startup freevo in my proper language. 
+</p>
+<pre>
+LANG=nl;/usr/bin/freevo
+</pre>
+<p>I'm Dutch speaking so this why I use LANG=nl in the batch file. The root user would work under the default English language screen, when starting freevo. I prefer using defaults screens for configuration jobs. Sometimes you've get the bugs pop up in translated version. Also a handy way for seeing the difference. </p>
+<p>Now I had created a .Xclients file in the home directory of user freevo. Permissions and rights are important! 
+</p>
+<pre>
+[root@localhost freevo]# pwd
+/home/freevo
+[root@localhost freevo]# ls -l .Xclients
+-rwxr-xr-x  1 freevo freevo 19 Jun 29 20:35 .Xclients
+[root@localhost freevo]#
+</pre>
+<p>In the .Xclients file, I just refer to the location of the batch file. </p>
+<p>If I don't login as root in a predefined time, freevo starts up automaticly. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-06-30 12:02:17 by <span title="uu194-7-26-14.unknown.uunet.be">GeertDecorte</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/BootFreevo">http://freevo.sourceforge.net/cgi-bin/doc/BootFreevo</a></p>
+</div> <!-- end page -->
+</body>
+</html>

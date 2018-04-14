@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>GeneralPlugins/USB - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="../modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="../modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="../modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/GeneralPlugins/USB?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/GeneralPlugins/USB?action=print">
+<link rel="Up" href="/cgi-bin/doc/GeneralPlugins">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="../Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">GeneralPlugins/USB</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h2 id="head-33bfb1525bb466e11aa09d7bc50a7105b6cc1e3e">USB</h2>
+
+<p>This Plugin to scan for usb devices. You should activate this plugin if you use mainmenu plugins for special usb devices like usbstorage.py. </p>
+<p>You can also set USB_HOTPLUG in your local_config.py to call an external program when a device is added. USB_HOTPLUG is a list with actions. Each action is also a list of device, message and program to call. Limitation: this works only when Freevo shows the menu and is not running a video. </p>
+<p>Example: call pilot-xfer when a pda with the id 082d:0100 is pluged in: 
+</p>
+<pre>
+plugin.activate('usb')
+USB_HOTPLUG = [ ('082d:0100', 'Synchronizing',
+                 '/usr/bin/pilot-xfer -t -u /local/visor/current') ]
+</pre>
+<p>Other example, mount usb storage device when it is hotplugged. Limitations : </p>
+<ul>
+<li><p> It will not unmount when unplugged </p>
+</li>
+<li><p> Without using <a class="external" href="http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> udev</a> your device doesn't has a persistent name and if you us multiple usb device you don't know if it is /dev/sda, /dev/sdb1, .... </p>
+</li>
+</ul>
+
+<pre>
+plugin.activate('usb')
+USB_HOTPLUG = [ ('0d7d:0150', 'Mounting USB stick',
+                 'mount /dev/sde1 /mnt/usbstick') ]
+</pre>
+<p>To find the producktid:vendorid of the USB device, look in the kernel messages or use the command lsusb. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-01-10 18:23:47 by <span title="209.11-201-80.adsl.skynet.be">BHeremans</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/GeneralPlugins/USB">http://freevo.sourceforge.net/cgi-bin/doc/GeneralPlugins/USB</a></p>
+</div> <!-- end page -->
+</body>
+</html>

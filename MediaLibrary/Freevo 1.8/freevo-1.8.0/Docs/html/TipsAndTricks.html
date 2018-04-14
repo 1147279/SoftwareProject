@@ -1,0 +1,391 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>TipsAndTricks - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/TipsAndTricks?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/TipsAndTricks?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">TipsAndTricks</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<ol>
+
+<li>
+<a href="#head-d0d29c951db52e6900718f1c9aa0cd0a39ecb9eb">Tips, Tricks and usefull scripts</a>
+</li>
+
+<li>
+<a href="#head-b7ef44d3b19afedc4930179f55a1ca8efaaeb845">Transcoding shows that are recorded from DVB</a>
+</li>
+
+<li>
+<a href="#head-df27e729271cae27e514cd41a4d50b40e869f16c">Setting the time from the DVB signal</a>
+</li>
+
+<li>
+<a href="#head-2d5627a1fb9343db93e7441b68f8a1d879b585a8">Creating slideshows from a bunch of images</a>
+</li>
+
+<li>
+<a href="#head-73e5226052af320f57bbc9c269a2cb13a9038f5a">Get Daily Cartoons on your Freevo</a>
+</li>
+
+<li>
+<a href="#head-b80396cec753730795068eec8fe4c7c56e26bfb1">Mounting remote fs's</a>
+</li>
+
+<li>
+<a href="#head-db91224fa7a4669ca68bd74edaf964abb85a21df">Starting Freevo (X11) without a mouse</a>
+</li>
+
+<li>
+<a href="#head-b7530ea9b7506ee78b53db4c82339904479ba82a">Get rid of blue borders (playing movies/tv)</a>
+</li>
+
+<li>
+<a href="#head-89efcc0bfa869b83fb53923e14b0b95c2e495e2f">Normalize mplayer Audio Output</a>
+</li>
+
+<li>
+<a href="#head-1d05cdb982531dee65b0f3d20548b880722069ae">Using submount instead of automount</a>
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-d0d29c951db52e6900718f1c9aa0cd0a39ecb9eb">Tips, Tricks and usefull scripts</h2>
+
+<p>There is a lot which can be done with freevo.  This page should help you to tweak freevo and enhance its use with usefull additional scripts. Sometimes features are more in how you use what you have than adding new options. </p>
+<p><strong>Feel free to add scripts and hints here, that you like to share with other freevo users.</strong> </p>
+
+<h2 id="head-b7ef44d3b19afedc4930179f55a1ca8efaaeb845">Transcoding shows that are recorded from DVB</h2>
+
+<p>After programs have been recorded, you can transcode them to save some space. Here's one that I use to transcode to ogm. I'm using ogm since you need to extract the audio to normalize it anyway, so I might as well use the ogg container. The other thing to note is the -mc 10, which tells mencoder to trust the A/V sync in the input stream, rather than trying to correct the sync itself. </p>
+<p>This video bitrate is rather high for the size, it will probably work just as well at 800kbit. </p>
+
+<pre>
+#!/bin/bash -x
+
+NICE="20"
+VBITRATE="1100"
+AQUALITY="3"
+
+VCODEC_OPTS="vbitrate=$VBITRATE:vhq:keyint=250"
+ACODEC_OPTS="preset=$ABITRATE"
+
+VFILTER="pp=fd,scale=480:272"
+
+EXTRA_OPTS="-aspect 16:9 -mc 10"
+
+WAV_FILE="${1}.wav"
+OGG_FILE="${1}-audio.ogg"
+AVI_FILE="${1}-video.avi"
+
+rm -f frameno.avi "$WAV_FILE" "$OGG_FILE" "$AVI_FILE"
+
+nice -n $NICE mencoder ${EXTRA_OPTS} -ovc frameno -oac copy -o frameno.avi "$1"                                               &amp;&amp; \
+nice -n $NICE mplayer  ${EXTRA_OPTS} -vc dummy -vo null  -hardframedrop -ao pcm -aofile "$WAV_FILE" "$1"                      &amp;&amp; \
+nice -n $NICE normalize "$WAV_FILE"                                                                                           &amp;&amp; \
+nice -n $NICE oggenc "-q${AQUALITY}" "-o${OGG_FILE}" "${WAV_FILE}"                                                            &amp;&amp; \
+nice -n $NICE mencoder ${EXTRA_OPTS} -vf $VFILTER -ovc lavc -lavcopts ${VCODEC_OPTS}:vpass=1 -oac copy -o /dev/null "$1"      &amp;&amp; \
+nice -n $NICE mencoder ${EXTRA_OPTS} -vf $VFILTER -ovc lavc -lavcopts ${VCODEC_OPTS}:vpass=2 -oac copy -o "${AVI_FILE}" "$1"  &amp;&amp; \
+nice -n $NICE ogmmerge -o "$2" -A "$AVI_FILE" "$OGG_FILE"                                                                     &amp;&amp; \
+rm -f divx2pass.log frameno.avi "$WAV_FILE" "$OGG_FILE" "$AVI_FILE"                                                           || \
+( echo "Transcode Failed" &amp;&amp; \
+exit 10 )
+
+# done
+echo "Transcode Successful"
+</pre>
+<p>Note: To create an avi from the above change the oggenc line to be as below 
+</p>
+<pre>
+nice -n $NICE lame -q ${AQUALITY}  "${WAV_FILE}" "${OGG_FILE}" 
+</pre>
+<p>and the ogmmerge line to use avimerge (found in the transcode package) as show below 
+</p>
+<pre>
+nice -n $NICE avimerge -o "$2" -i "$AVI_FILE" -p "$OGG_FILE" -A 0 
+</pre>
+<p> </p>
+<p>Here's another script I use to generate the thumbnails: 
+</p>
+<pre>
+#!/bin/bash -x
+
+INPUT="$1"
+OUTPUT="$2"
+
+TEMPFILE="/tmp/thumnailer$$"
+
+nice -n 20 transcode -V -i "${INPUT}" -y jpg,null -o "${TEMPFILE}" -c 2000-2001
+mv "${TEMPFILE}000000.jpg" "${OUTPUT}"
+</pre>
+<p>This one is a daemon I start at boot time to monitor the recordings directory and transcode the files after the capture is complete. It also updates the FXD with the extension of the transcoded file. </p>
+
+<pre>
+#!/bin/bash
+
+CAPTURE_EXTENSION="ps"
+TRANSCODED_EXTENSION="ogm"
+THUMBNAIL_EXTENSION="jpg"
+
+TRANSCODER="${HOME}/commands/transcoder"
+THUMBNAILER="${HOME}/commands/thumbnailer"
+
+
+RECORDING_DIR="${HOME}/recordings"
+
+cd "$RECORDING_DIR"
+
+while ((1)) ; do
+        echo Sleeping
+        sleep 300
+        echo Waking up
+        date
+        for CAPTURED_FILE in `find . -mmin +5 -name "*.${CAPTURE_EXTENSION}"` ; do
+                echo "Processing File ${CAPTURED_FILE}"
+                TRANSCODED_FILE=`echo ${CAPTURED_FILE} | sed "s/${CAPTURE_EXTENSION}\$/${TRANSCODED_EXTENSION}/"`
+                FXD_FILE=`echo ${CAPTURED_FILE} | sed "s/${CAPTURE_EXTENSION}\$/fxd/"`
+                THUMBNAIL_FILE=`echo ${CAPTURED_FILE} | sed "s/${CAPTURE_EXTENSION}\$/${THUMBNAIL_EXTENSION}/"`
+                echo "Transcoded File is ${TRANSCODED_FILE}"
+
+                if [ -e ${TRANSCODED_FILE} ] ; then
+                        echo "Transcoded file already exists! - deleting it"
+                        rm "${TRANSCODED_FILE}"
+                fi
+                echo "Transcoding file ${CAPTURED_FILE}"
+
+                ${TRANSCODER} "${CAPTURED_FILE}" "${TRANSCODED_FILE}"
+
+                if [ $? = 0 ] ; then
+                        echo "Transcoding Success"
+
+                        if [ -e ${FXD_FILE} ] ; then
+                                echo "Fixing FXD"
+                                sed -i "s/\\.${CAPTURE_EXTENSION}/\\.${TRANSCODED_EXTENSION}/" "${FXD_FILE}"
+                        fi
+
+                        ${THUMBNAILER} "${TRANSCODED_FILE}" "${THUMBNAIL_FILE}"
+
+                        echo "Deleting ${CAPTURED_FILE}"
+                        rm -f "${CAPTURED_FILE}"
+                else
+                        echo "Failed to transcode ${CAPTURED_FILE} !!!"
+                        rm "${TRANSCODED_FILE}"
+                fi
+        done
+done
+</pre>
+<p>Hopefully that will give you a starting point to create your own transcoding setup. </p>
+
+<h2 id="head-df27e729271cae27e514cd41a4d50b40e869f16c">Setting the time from the DVB signal</h2>
+
+<p>There is a small program called 'dvbdate' in the dvb-utils package, which can be used to set the system time from the dvb signal. For that purpose you must tune your dvb card to an appropriate channel and run <em>dvbdate -s</em> as root. </p>
+<p>I have a small script which is executed during boot up: 
+</p>
+<pre>
+#!/bin/bash
+
+# tune the dvb card to an channel
+tzap -c /etc/channels.conf ZDF&amp;
+
+#this stops the script when tzap could not be launched
+#(maybe the dvb device is not ready)
+if ps |grep $! &gt;/dev/null;then
+
+# start dvbdate 
+dvbdate -sf 
+
+# kill the tuning process
+kill $!
+fi
+</pre>
+<p>Of course you must use the right 'zap' application for your kind of DVB (tzap, szap or czap). And replace <em>ZDF</em> with the name of one of your channels. </p>
+
+<h2 id="head-2d5627a1fb9343db93e7441b68f8a1d879b585a8">Creating slideshows from a bunch of images</h2>
+
+<p>This might help you to create a <a href="ImageUsage.html">slide show</a> from a couple of images. It is just a bit of bash code: 
+</p>
+<pre>
+echo "[Slides]" &gt; blah.ssr; ls -B -I \*.ssr | perl -ln -e 'print "FileName: \"$_\"; Caption: \"Image\"; Delay: \"5\";"' &gt;&gt; blah.ssr 
+</pre>
+<p>This shall be a single line. Note the ' before print, the ending one is just before &gt;&gt; blah.ssr It will create a slideshow file, in the current directory, called blah.ssr that contains all files in the current directory EXCEPT *.ssr and *~ - if you do not desire this, remove the -B from the ls command. The delay is here set to 5 seconds, but you can change that number. To change the output file, just change the blah.ssr references to &lt;what you want it to be called&gt;.ssr. You can change the default Caption and Image, to whatever you like, but be mindful of the quotemarks. </p>
+
+<h2 id="head-73e5226052af320f57bbc9c269a2cb13a9038f5a">Get Daily Cartoons on your Freevo</h2>
+
+<p>(By Tom Van den Bon) </p>
+<p>1. Create your own cartoons folder:  
+</p>
+<pre>
+mkdir /pictures/cartoons
+</pre>
+<p>2. Edit your local_conf.py to point to your picture folder: 
+</p>
+<pre>
+IMAGE_ITEMS = [
+      ('Cartoons', '/pictures/cartoons'),
+            ... ]
+</pre>
+<p>3. After you have installed dailystrips use dailystrips -list to get a list of all available cartoons.                                                                                                            </p>
+<p>4. Create a script called getcartoons containing the following: 
+</p>
+<pre>
+#!/bin/sh
+# get my fav cartoons
+dailystrips --local -stripdir -save -basedir /pictures/cartoons dilbert garfield thefifthwave
+</pre>
+<p>                                                            </p>
+<p>5. Add it to your cron jobs.  Depending on your distro either add a link to it in your cron.daily or add a line like this to your crontab: 
+</p>
+<pre>
+0 4 * * * /usr/local/bin/getcartoons
+</pre>
+<p>Dailystrips will put all the cartoons in their own respective directory and you can navigate it via the freevo interface. </p>
+
+<h2 id="head-b80396cec753730795068eec8fe4c7c56e26bfb1">Mounting remote fs's</h2>
+
+<p>A relative simple way to automount remote file systems is to use autofs. After install  use the following config files.  
+</p>
+<pre>
+cat /etc/autofs/auto.master
+# $Id: auto.master,v 1.1 2000/08/08 17:53:33 achim Exp $ 
+# Sample auto.master file # Format of this file:
+# mountpoint map options
+# For details of the format look at autofs(8).
+/smbnet /etc/autofs/auto.smbnet --timeout=30
+
+cat /etc/autofs/auto.smbnet
+# $Id: auto.misc,v 1.2 2002/10/27 05:21:15 bcowan Exp $
+# This is an automounter map and it has the following format 
+# key [ -mount-options-separated-by-comma ] location 
+# Details may be found in the autofs(5) manpage
+#boot           -fstype=ext2            :/dev/hda1
+#cd             -fstype=iso9660,ro      :/dev/cdrom
+#floppy         -fstype=auto            :/dev/fd0
+storage         -fstype=smbfs,users,rw,username=someuser,password=somepass   ://storage/Storage
+camera          -fstype=auto,nosuid,nodev,noexec,user,gid=100,umask=000      :/dev/sda1
+</pre>
+<p>An entry /smbnet should show up in / dir when autofs is started from init.d. To make sure autofs is started correctly  The output of 'ps ax | grep autofs' should be something like  
+</p>
+<pre>
+5410 ?        S      0:00 /usr/sbin/automount --timeout 30 /smbnet file /etc/autofs/auto.smbnet  
+</pre>
+<p>cd to /smbnet/storage and it should automagicly mount the filesystem </p>
+<p>After this edit local.conf.py and add the following in the VIDEO_ITEMS section or another ITEMS section if thats on your share.  
+</p>
+<pre>
+VIDEO_ITEMS = [ ('Storage movies','storage:/smbnet/storage')]
+</pre>
+<p>Notice the hostname xp or storage before the path, it tries to ping the hostname and when succesfull the entry shows up in the menu, if not succesfull it doesn't show up and the filesystem isn't mounted.  </p>
+
+<h2 id="head-db91224fa7a4669ca68bd74edaf964abb85a21df">Starting Freevo (X11) without a mouse</h2>
+
+<p>If you are running Freevo in X11, and you dont have/want a mouse installed on the computer; you can tell X11 to ignore the mouse if it cant open the device. The option is called <strong>AllowMouseOpenFail</strong> and it is a server boolean option. To enable this feature, open up the XF86Config-4 file and add that as an option. The best part is that if you connect a mouse later, it will work without any changes. 
+</p>
+<pre>
+cat /etc/X11/XF86Config-4
+...
+Section "ServerLayout"
+    Screen    "Default Screen"
+    Option    "AllowMouseOpenFail"    "true"
+...
+EndSection
+</pre>
+
+<h2 id="head-b7530ea9b7506ee78b53db4c82339904479ba82a">Get rid of blue borders (playing movies/tv)</h2>
+
+<p>To get rid of blue borders while playing movies or watching tv you can use the following tool: 
+</p>
+<pre>
+/usr/bin/xvattr -a XV_COLORKEY -v 0
+</pre>
+<p>It turns the blue borders black. This problem appears with XV video out mode. To start this command on freevo startup, set 
+</p>
+<pre>
+OSD_SDL_EXEC_AFTER_STARTUP = "/usr/bin/xvattr -a XV_COLORKEY -v 0"
+</pre>
+<p>in your local_conf.py. Optionally you can start your own script with multiple commands on startup.   </p>
+
+<h2 id="head-89efcc0bfa869b83fb53923e14b0b95c2e495e2f">Normalize mplayer Audio Output</h2>
+
+<p>For the user running as freevo, put this in their ~/.mplayer/config to normalize the audio output: </p>
+
+<pre>
+-aop=list=volnorm
+</pre>
+
+<h2 id="head-1d05cdb982531dee65b0f3d20548b880722069ae">Using submount instead of automount</h2>
+
+<p>Everyone knows the behaviour of automount: You put in a CD or DVD and it gets automaticly mounted. When finished using the CD, you can't use the eject button, because the CD (DVD) is still mounted. Without a supplementary umount command or rebooting (rebooting in linux ???) you can't get the CD out of the tray. </p>
+<p><strong>If you're only intention is to use the PC for freevo, it's recommended to disable any automatic mounting of the DVD/CD player.</strong> Freevo is capable to handle this itself. Most distributions come with automount activated by default. Most likely this will happen from /etc/fstab. </p>
+<p>Otherwise you could use submount. </p>
+<p><a href="http://sourceforge.net/projects/submount/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://sourceforge.net/projects/submount/</a> </p>
+<p>Download it from the download section and execute the installation instructions with care. There is a kernel module to be loaded and a aditional program part to be installed. Both need to be compilled from source. </p>
+<p>The loaded kernel module: 
+</p>
+<pre>
+[root@localhost freevo]# lsmod
+Module                  Size  Used by
+subfs                   9088  0
+</pre>
+<p>This part has been tested on Fedora Core 4 and Fedora Core 2 </p>
+<p>You need to stop automount </p>
+<p><tt>&nbsp;service&nbsp;autofs&nbsp;stop&nbsp;</tt> </p>
+<p>and prevent the autofs service from being started ay boot time: use ntsysv </p>
+<p>Modify the /etc/fstab file in the following way </p>
+
+<pre>
+# original line
+#/dev/hda                /media/cdrecorder       auto    pamconsole,exec,noauto,managed 0 0
+# install subfs
+# This part is a shameless copy/paste out of subfs docs for easy review
+#/dev/scd0 /cdrom udf:iso9660 ro,noauto,owner 0 0
+#   becomes
+#/dev/scd0 /cdrom subfs fs=udf:iso9660,ro 0 0
+# The working line:
+/dev/hda /media/cdrecorder subfs fs=udf:iso9660,ro 0 0
+</pre>
+<p>(my dvd is /dev/hda) </p>
+<p>submount will automaticly umount the dvd when not in use anymore. The eject button of the dvd- or cdrom drive should work without extra interference. The DVD tray should behave as it was powered by a commercial product. Mandriva has default supermount installed with works the same. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-09-22 04:25:16 by <span title="1-1-8-7a.kt.gbg.bostream.se">JohanLinner</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/TipsAndTricks">http://freevo.sourceforge.net/cgi-bin/doc/TipsAndTricks</a></p>
+</div> <!-- end page -->
+</body>
+</html>

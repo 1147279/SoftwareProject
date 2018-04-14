@@ -1,0 +1,12 @@
+************* Module NetworkCode
+E:  7, 1: Method should have "self" as first argument (no-self-argument)
+E:  8, 9: Value 'listItem' is unsubscriptable (unsubscriptable-object)
+************* Module Algorithm1
+E:  7, 1: Method should have "self" as first argument (no-self-argument)
+E:  8, 9: Value 'listItem' is unsubscriptable (unsubscriptable-object)
+************* Module NetworkCode
+E:  7, 1: Method should have "self" as first argument (no-self-argument)
+E:  8, 9: Value 'listItem' is unsubscriptable (unsubscriptable-object)
+************* Module Algorithm1
+E:  7, 1: Method should have "self" as first argument (no-self-argument)
+E:  8, 9: Value 'listItem' is unsubscriptable (unsubscriptable-object)

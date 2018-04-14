@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>Hardware - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/Hardware?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/Hardware?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">Hardware</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>Site Index: </p>
+<ol>
+
+<li>
+<a href="#head-eb96c2ac3f6fd7c107f9beefbcf8925224634009">CPU Speed</a>
+</li>
+
+<li>
+<a href="#head-ae6016e0563b69c5da68f090afbd72e56cc209ad">Videocards</a>
+</li>
+
+<li>
+<a href="#head-08d3e17954c2916077d649a62bb936db5e455d3b">Analog TV Capture Cards</a>
+</li>
+
+<li>
+<a href="#head-e66e12def7c1f0a7fd15e985d59c99a1195a4ad5">Digital TV Capture Cards (DVB)</a>
+</li>
+
+<li>
+<a href="#head-8b3c020f2f306904e341db2326231647d4f81dcb">Remote Controls</a>
+</li>
+
+<li>
+<a href="#head-c68f83d684fbe1c19a36169ded480956a674ffbb">Breathing hard disk LED</a>
+</li>
+
+<li>
+<a href="#head-f815992c8b406bcacf5190f3cba46a1105413dfd">Links</a>
+<ol>
+
+<li>
+<a href="#head-90672369ae511fc37680bd82574b5c48360c316c">PVR Hardware Database</a>
+</li>
+
+<li>
+<a href="#head-37febc7dac9c6dc0629fcce4c90b24a574099022">Freevo hardware Page</a>
+</li>
+
+</ol>
+
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-eb96c2ac3f6fd7c107f9beefbcf8925224634009">CPU Speed</h2>
+
+<p>An AMD Athlon XP 2500+ (Barton core) with a Hauppage WinTV PVR 350 uses about 10 to 15 % CPU time playing back DVD to X VGA out, 2% capturing from Composite-in and 1% listening to FM Radio. More details to follow. </p>
+<p>An Intel Celeron 566Mhz (Coppermine) uses about 70% CPU time playing back DVD to X VGA out, using <a href="Hardware/Nvidia.html">hardware acceleration</a> on a nVidia GeForce4MX440. </p>
+<p>An AMD Duron 1600+ uses about 30% CPU time playing DVD, XVid/DivX, TV with deinterlacing filters under MPlayer (xvidix driver) to X VGA out and 2% CPU time playing MP3/Ogg internet streams under MPlayer [256Mb RAM, really cheap ASRock motherboard, Turtle Beach Santa Cruz audio card, Asus analog TV/FM card, Matrox G400 dual-head 32Mb SGRAM video card] </p>
+<p>PleaseUpdate : <em>Add more statistics about what CPUs are required (basic, MP3, Divx, DVD, recording). </em></p>
+
+<h2 id="head-ae6016e0563b69c5da68f090afbd72e56cc209ad">Videocards</h2>
+
+<ul>
+<li><p> <a href="Hardware/Nvidia.html">Nvidia</a> </p>
+</li>
+<li><p> <a href="Hardware/G400.html">G400,G450, and other Matrox cards</a> </p>
+</li>
+<li><p> <a href="Hardware/AtiCards.html">ATI video cards</a> </p>
+</li>
+<li><p> <a href="Hardware/DXR3.html">Dxr3</a> </p>
+</li>
+<li><p> <a href="Hardware/Voodoo3.html">Voodoo3</a> </p>
+</li>
+</ul>
+
+<h2 id="head-08d3e17954c2916077d649a62bb936db5e455d3b">Analog TV Capture Cards</h2>
+
+<p>Any video card that supports the <a class="external" href="http://bytesex.org/bttv/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> v4l</a> or <a class="external" href="http://bytesex.org/bttv/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> v4l2</a> API. Should be possible to use with freevo. However, If you are looking into new hardware, some models are highlighted. </p>
+<ul>
+<li><p> <a href="Hardware/bttv.html">TV Cards using the bttv module</a> </p>
+</li>
+<li><p> <a href="Hardware/ivtv.html">TV Cards using the ivtv driver (pvr)</a> </p>
+</li>
+</ul>
+
+<h2 id="head-e66e12def7c1f0a7fd15e985d59c99a1195a4ad5">Digital TV Capture Cards (DVB)</h2>
+
+<p>If you have a so called full featured card, which means one with a hardware mpeg decoder on board, your card probably also supports the <a class="external" href="http://bytesex.org/bttv/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> v4l</a> or <a class="external" href="http://bytesex.org/bttv/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> v4l2</a> API. The configuration should then be similar to that of a analog TV Capture Card. </p>
+<p>Moreover you can use <strong>budget DVB cards</strong> with freevo.  Have a look at <a class="external" href="http://www.linuxtv.org/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.linuxtv.org/</a>, to find information which cards could be used with linux. The complicated thing is to choose the right modules for your card,  and often it is necessary to download the newest drivers from CVS, because there is so much development going on in that area and there are many new models around. But when your card is working under linux, the rest is quite easy, just follow the instructions on <a href="DVBConfig.html">DVB</a>. On this page you can find some notes on special cards: </p>
+<ul>
+<li><p> <a href="Hardware/DVBCards.html">DVB cards</a> </p>
+</li>
+</ul>
+
+<h2 id="head-8b3c020f2f306904e341db2326231647d4f81dcb">Remote Controls</h2>
+
+<p>Every remote which could be used with <a class="external" href="http://www.lirc.org/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> lirc</a>, can be used to control freevo. See <a href="Lirc.html">Lirc</a> to learn more about how to configure a remote for freevo.  </p>
+<p>Here are some notes on special models: </p>
+<ul>
+<li><p> <a href="Hardware/StreamzapUSBRemote.html">Streamzap USB Remote</a> </p>
+</li>
+<li><p> <a href="Hardware/ATIUSBRemote.html">ATI USB Remote</a> </p>
+</li>
+<li><p> <a href="Hardware/MicrosoftMediaCenterUSBRemote.html">Microsoft Media Center USB Remote</a> </p>
+</li>
+<li><p> Remote provided with the Hauppauge Cards. Sample config files can be found at the <a class="external" href="Lirc.html"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> Lirc Install Steps</a>. </p>
+</li>
+<li><p> For combating repeating buttons and further <a class="external" href="http://www.lirc.org/html/configure.html#lircrc_format"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> lircrc configuration click here</a>. </p>
+</li>
+</ul>
+
+<h2 id="head-c68f83d684fbe1c19a36169ded480956a674ffbb">Breathing hard disk LED</h2>
+
+<p>When watching a movie, listening to music or otherwise freevo'ing it can be a little anoying to have a hard disk LED flickering at you, especially if like me you have a stupidly bright blue light. After some discussion on the mailing list a circuit has been developed to slow the rate at which an led flickers creating a Breathing HDD LED. </p>
+
+<pre>
+HDD +5v +------+--------[ R1 ]----+
+               | + C1             |
+              ===                ---  &gt; LED
+               |                 \_/  &gt;
+               |                =====
+               |                  |
+     0v +------+------------------+
+</pre>
+<p>R is given by the voltage and the current your LED needs. C is calculated as follows: The rise time for C (0-97%) is equal to 5*t with t= R * C. </p>
+<p>To fade in 1s from 0 -97%: R = U/I C = 1s/(5 * R) </p>
+<p>Thanks to Christoph Gysin and Chris Ellis for their help. </p>
+
+<h2 id="head-f815992c8b406bcacf5190f3cba46a1105413dfd">Links</h2>
+
+
+<h3 id="head-90672369ae511fc37680bd82574b5c48360c316c">PVR Hardware Database</h3>
+
+<p>Website contains database of hardware used by people creating their own PVR's. <a href="http://pvrhw.goldfish.org/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://pvrhw.goldfish.org/</a> </p>
+
+<h3 id="head-37febc7dac9c6dc0629fcce4c90b24a574099022">Freevo hardware Page</h3>
+
+<p>For hints what people are using : <a href="http://freevo.sourceforge.net/hardware.html"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://freevo.sourceforge.net/hardware.html</a> </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-07-17 10:42:45 by <span title="90.174-136-217.adsl.skynet.be">GeertDecorte</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/Hardware">http://freevo.sourceforge.net/cgi-bin/doc/Hardware</a></p>
+</div> <!-- end page -->
+</body>
+</html>

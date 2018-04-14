@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>Hardware/DVBCards - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="../modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="../modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="../modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/Hardware/DVBCards?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/Hardware/DVBCards?action=print">
+<link rel="Up" href="/cgi-bin/doc/Hardware">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="../Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">Hardware/DVBCards</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<ol>
+
+<li>
+<a href="#head-cb215aa94beabd35fab5a71567142d0d53dfdb14">Intro</a>
+</li>
+
+<li>
+<a href="#head-4a5aaf5655182d5a5f9f4f042b3c0eae931cce7c">DVB-C</a>
+</li>
+
+<li>
+<a href="#head-8f2a4a5df90cc50261841eb8fb3a3b9537a773d1">DVB-S</a>
+</li>
+
+<li>
+<a href="#head-9dacdff4626861ac13c7bff203b21cac5e46a1bb">DVB-T</a>
+<ol>
+
+<li>
+<a href="#head-2b68c6674d52cbec847ada95899e0c6f266c4140">Nova-t</a>
+</li>
+
+<li>
+<a href="#head-a78214da20c2973db91849d0fd095f62cb3c28af">Airstar2</a>
+</li>
+
+</ol>
+
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-cb215aa94beabd35fab5a71567142d0d53dfdb14">Intro</h2>
+
+<p>PleaseUpdate: If you have any experience with models not mentioned here, please do not hesitate to share you insights with other freevo users. </p>
+<p>You always can find the newest drivers and informations on DVB for linux on <a href="http://linuxtv.org"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://linuxtv.org</a>. </p>
+<p>If you need new stuff from their CVS, do the following: 
+</p>
+<pre>
+cvs -d :pserver:anonymous@linuxtv.org:/cvs/linuxtv login
+</pre>
+<p>When prompted for the password, just press <tt>Enter</tt>. Then type: 
+</p>
+<pre>
+cvs -d :pserver:anonymous@linuxtv.org:/cvs/linuxtv co dvb-kernel
+</pre>
+<p>That will create a dvb-kernel directory in your current directory. Then enter that new directory and type: 
+</p>
+<pre>
+./makelinks &lt;path to your kernel source&gt;
+</pre>
+<p>After that go to your kernel source directory, configure your kernel in the usual way, choose the modules for your DVB card, compile and pray that the needed modules compile fine... </p>
+
+<h2 id="head-4a5aaf5655182d5a5f9f4f042b3c0eae931cce7c">DVB-C</h2>
+
+<p>DVB-C stands for digital broadcast via cable. </p>
+
+<h2 id="head-8f2a4a5df90cc50261841eb8fb3a3b9537a773d1">DVB-S</h2>
+
+<p>DVB-S stands for digital broadcast via satelite. </p>
+
+<h2 id="head-9dacdff4626861ac13c7bff203b21cac5e46a1bb">DVB-T</h2>
+
+<p>DVB-T stands for terrestrial digital broadcast. </p>
+
+<h3 id="head-2b68c6674d52cbec847ada95899e0c6f266c4140">Nova-t</h3>
+
+<p>There is more than one type of this card around. This is about the rev 1.2  with the Philips tuner (SAA7146). You need the following modules: </p>
+<ul>
+<li><p> <tt>budget-ci</tt> </p>
+</li>
+<li><p> <tt>tda1004x</tt> </p>
+</li>
+<li><p> <tt>saa7146</tt> </p>
+</li>
+</ul>
+<p>Note that the module for this card is called budget-ci although it has no common interface. Moreover you need <a class="external" href="http://linux-hotplug.sourceforge.net/:"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> hotplug</a> and a firmware file. In the CVS of <a href="http://linuxtv.org"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://linuxtv.org</a> there is a script which you can use to download the right firmware file. It is in <tt>/dvb-kernel/linux/Documentation/dvb&nbsp;</tt> and is called <tt>get_dvb_firmware</tt>. Just run it and copy the resulting file in <tt>usr/lib/hotplug/firmware</tt> or in  <tt>/etc/hotplug/firmware</tt>. (The right location depends on your distribution.) Hotplug is then loading the needed firmware file automatically.  </p>
+
+<h3 id="head-a78214da20c2973db91849d0fd095f62cb3c28af">Airstar2</h3>
+
+<p>To use the Airstar2 card form TechniSat one needs basically the following modules: </p>
+<ul>
+<li><p> <tt>skystar2</tt> </p>
+</li>
+<li><p> <tt>mt352</tt> </p>
+</li>
+</ul>
+<p><tt>skystar2</tt> is the same module you would need for the TechniSat DVB-S card Skystar2, but <tt>mt352</tt> is special for DVB-T, so do not confuse it with the <tt>mt312</tt> module for the Skystar2. </p>
+<p>The Airstar is working quite reliable, but the time to change channels seems a bit long for my liking (6-8 secs). </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-01-02 18:41:28 by <span title="p508D5BDD.dip0.t-ipconnect.de">TanjaStriepling</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/Hardware/DVBCards">http://freevo.sourceforge.net/cgi-bin/doc/Hardware/DVBCards</a></p>
+</div> <!-- end page -->
+</body>
+</html>

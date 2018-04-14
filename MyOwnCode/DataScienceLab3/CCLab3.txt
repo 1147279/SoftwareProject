@@ -1,0 +1,8 @@
+Algorithm1.py
+    M 28:1 matrixMultiply.reducer - B (9)
+    C 5:0 matrixMultiply - A (5)
+    M 10:1 matrixMultiply.mapper - A (5)
+    M 7:1 matrixMultiply.sortbyJ - A (1)
+
+4 blocks (classes, functions, methods) analyzed.
+Average complexity: A (5.0)

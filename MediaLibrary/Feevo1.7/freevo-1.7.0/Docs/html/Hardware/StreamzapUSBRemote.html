@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>Hardware/StreamzapUSBRemote - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="../modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="../modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="../modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/Hardware/StreamzapUSBRemote?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/Hardware/StreamzapUSBRemote?action=print">
+<link rel="Up" href="/cgi-bin/doc/Hardware">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="../Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">Hardware/StreamzapUSBRemote</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p><strong>Notice:</strong> I'm not sure when the patch went in, but the Streamzap has finally been included as a supported remote of the lirc project. This means no more patching! Simply follow the directions for installing from cvs (<a href="http://lirc.org/cvs.html"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://lirc.org/cvs.html</a>) and you should be good to go!! (May 5, 2005) </p>
+<ol>
+
+<li>
+<a href="#head-92e4ba88b1ca9ed1c87a6762f51d100e6f2f9326">Intro</a>
+</li>
+
+<li>
+<a href="#head-fd913ca6c6dbb79729e5fa64957b72c7211508eb">FC2</a>
+</li>
+
+<li>
+<a href="#head-42fcc13a8d7fd314fc6a03a36bc7837e233b4a9c">Lorenzo's Gentoo instructions</a>
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-92e4ba88b1ca9ed1c87a6762f51d100e6f2f9326">Intro</h2>
+
+<p>The Streamzap USB Remote is a wonderful remote is available from thinkgeek.com and actually I bought mine at my local CompUSA. The remote is USB and works very nicely with the Streamzap patch to the lirc project. </p>
+<p>The Streamzap USB patch to Lirc is available here <a href="http://sourceforge.net/projects/szremote/"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://sourceforge.net/projects/szremote/</a> </p>
+<p>Note that the diff will not patch correctly against the release version 0.6.6 you must patch against the CVS version. My binary reports a version numbe of 0.7.0pre1. So I'm assuming anything newer then this should be alright.. </p>
+<p>If anybody needs help with it, you may reach me at josh at engr dot arizona dot edu </p>
+
+<h2 id="head-fd913ca6c6dbb79729e5fa64957b72c7211508eb">FC2</h2>
+
+<p>Below are the rough steps I used to get a Streamzap remote working on FC2 2.6.10. I did it a bit by trial and error, and the steps will reflect that. If someone can clean up the steps and make them more dircet, please do so. </p>
+<p>1. Update your system to Kernel 2.6.10 if it is not already. You do NOT need the kernel sources! </p>
+<p>2. Goto <a href="http://lirc.org/cvs.html"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://lirc.org/cvs.html</a> and follow the directions there for checking out lirc.  </p>
+<p>3. Go to <a href="http://www.grangenet.net/~greg/streamzap.html"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.grangenet.net/~greg/streamzap.html</a> and download the patch kit. Follow the instructions to patch lirc. It will fail on setup.sh. Look at the rejections and you'll see you simply need to add the text "streamzap" to two places in the file. Questions? send me a note: freevolist at desboroughs dot net. I have updated the patch to work against cvs as of 1/29/2005. You can get the updated patch here: <a href="http://www.desboroughs.net/streamzap/streamzap-lirc-cvs20050129-kernel-2.6.X-patch.gz"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.desboroughs.net/streamzap/streamzap-lirc-cvs20050129-kernel-2.6.X-patch.gz</a> </p>
+<p>4. Now perform the ./autogen.sh and ./setup.sh steps </p>
+<p>5. When confure runs, it will eventually die and say that you don't have the kernel sources installed. Now run this command: ./configure --with-kerneldir=/lib/modules/2.6.10-1.9_FC2/build/ --with-driver=streamzap   </p>
+<p>6. Run make and then make install </p>
+<p>7. Shutdown the box (I plugged in my Streamzap at this point and crashed the system) </p>
+<p>8. Plug in the streamzap "dongle" to a usb port </p>
+<p>9. Boot the machine </p>
+<p>10. Login, open a shell. You should be able to run lircd and then run irw. Press some buttons on the remote and hopefully you see your button presses reported back. </p>
+<p>11. Now install freevo. Since I'm running RedHat I used yum for this. Unfortunately, yum also installed lirc 6 something and it whacked my functional lirc. We'll fix that in a minute. </p>
+<p>12. Use yum to install mplayer (should probably be done before step 11, not after).  </p>
+<p>13. Installed lirc again (hey, I told you this was trial and error!) <a href="http://prdownloads.sf.net/freevo/lirc-0.7.0-1_fc2.i386.rpm"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://prdownloads.sf.net/freevo/lirc-0.7.0-1_fc2.i386.rpm</a>  </p>
+<p>14. Installed pylirc: <a href="http://prdownloads.sourceforge.net/freevo/pylirc-0.0.4-1_fc2.i386.rpm"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://prdownloads.sourceforge.net/freevo/pylirc-0.0.4-1_fc2.i386.rpm</a>  </p>
+<p>15. Still could'nt get irw to work. If you are ever in this situation, run lircd with the -n option. Now run irw in a seperate console. You'll probably see lircd crash in the first console and print the reason while it died.  </p>
+<p>16. Get rid of old lirc:  mv /dev/lirc /dev/lirc.old </p>
+<p>17. Get rid of old lircd: mv /dev/lircd /dev/lircd.old </p>
+<p>18. cd to your lirc src </p>
+<p>19. Run make install </p>
+<p>20. irw should now work again </p>
+<p>21. Copy the file /usr/share/freevo/contrib/lirc/streamzap to /etc/freevo. Rename it to lircrc      </p>
+<p>22. Start freevo and enjoy your new remote control funtionality! </p>
+<p>Again, please streamline the above as needed. I am a very novice linux user and probably went far out of my way on some of this stuff. </p>
+<p>-Davin (feevolist at desboroughs dot net) </p>
+
+<h2 id="head-42fcc13a8d7fd314fc6a03a36bc7837e233b4a9c">Lorenzo's Gentoo instructions</h2>
+
+<p>Check your achitecture (i686, i386, etc) (uname -m will do the work) Download and install kernel image (apt-get install kernel-image-2.6.10-1-xxx) Download and install corresponding kernel headers (apt-get install kernel-headers-2.6.10-1-xxx) Configure your bootloader to use your new kernel ( for LILO you should add something like that to your /etc/lilo.conf image=/boot/vmlinuz-2.6.10-1-686 </p>
+<ul>
+<li style="list-style-type:none"><p>label=Linux-2.6.10 initrd=/boot/initrd.img-2.6.10-1-686 </p>
+</li>
+</ul>
+<p>and then issue the command lilo) </p>
+<p>Reboot your machine (from this time on, my Debian box started speaking deutsche...guess I did  something wrecked) Now make a correct symlink to tell your box where to find stuff (ln -s /path/to/kernel-header /usr/src/linux  The path will probably be  /usr/src/kernel-headers-2.6.10-1-xxx) Download LIRC cvs ( cvs -z8 -d:pserver:<a href="mailto:anonymous@cvs.sourceforge.net"><img src="../modern/img/moin-email.png" alt="[MAILTO]" height="10" width="14"> anonymous@cvs.sourceforge.net</a>:/cvsroot/lirc co lirc ) Download patch ( wget  <a href="http://www.desboroughs.net/streamzap/streamzap-lirc-cvs20050129-kernel-2.6.X-patch.gz"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.desboroughs.net/streamzap/streamzap-lirc-cvs20050129-kernel-2.6.X-patch.gz</a> ) Now you should apply patch ( go to your lirc directory and copy there the patch, then issue gunzip -c  <a href="http://www.desboroughs.net/streamzap/streamzap-lirc-cvs20050129-kernel-2.6.X-patch.gz"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.desboroughs.net/streamzap/streamzap-lirc-cvs20050129-kernel-2.6.X-patch.gz</a> |  patch -p1 ) </p>
+<p>Issue autogen.sh and then setup.sh. Select USB Devices and the Streamzap Select save &amp; configure Now make &amp;&amp; make install Reboot your machine (kinda windoze) </p>
+<p>When it comes up, open two terminals and launch lircd -n in one and irw in  the second Push some buttons (world, my finger is on the button -push the button-) and  you should see some output. Now add to your /etc/apt/sources-list the following two lines : </p>
+<p>deb <a href="http://freevo.sourceforge.net/debian"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://freevo.sourceforge.net/debian</a> unstable main deb <a href="ftp://ftp.nerim.net/debian-marillat/"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> ftp://ftp.nerim.net/debian-marillat/</a>  unstable main </p>
+<p>Launch apt-get update </p>
+<p>Now install mplayer (apt-get install mplayer) Install Freevo (apt-get install freevo) </p>
+<p>Ok, we're almost there... Now you need a file to configure the buttons on  your remote. There is one in the source distribution of freevo, grab it ( wget  <a href="http://puzzle.dl.sourceforge.net/sourceforge/freevo/freevo-1.5.3.tar.gz"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://puzzle.dl.sourceforge.net/sourceforge/freevo/freevo-1.5.3.tar.gz</a> )  and unpack it (tar -zxvf freevo-1.5.3.tar.gz) The file you need should be contrib/lirc/streamzap. Copy it in /etc/freevo. Open your local_conf.py and add the line LIRCRC = '/etc/freevo/streamzap' </p>
+<p>At this point, evrything was ok for me, except that only root was able to  launch freevo without getting an error from lirc.py. Just permission crap,  so go to your /dev/ directory and chmod 666 (the number of the beast) lirc and lircd. </p>
+<p>Ok. At this point configure your freevo as usual, launch it and astonish all  your media-center addicted friends ! </p>
+<p>This is,as far as I remember some beer and lotsa cofee later, a  step-by-step. Lemme know if you lack something. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-05-06 13:31:45 by <span title="69-163-36-6.lndnnh.adelphia.net">DavinDesborough</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/Hardware/StreamzapUSBRemote">http://freevo.sourceforge.net/cgi-bin/doc/Hardware/StreamzapUSBRemote</a></p>
+</div> <!-- end page -->
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>XMLTVDutch - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/XMLTVDutch?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/XMLTVDutch?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">XMLTVDutch</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h3 id="head-98e37466f3fe150edc771023b2a681a7ca9473e5">Dutch listings</h3>
+
+<p><em>tv_grab_nl</em> as found in xmltv-grabbers-0.5.39-59.rhfc3.at.rpm is a bit broken, it throws several errors, it missed the rename of ¨VRT TV1¨, but for the rest it works. <em>tv<span class="u">grab_nl_wolf</em> is in worse shape, the output seems to confuse freevo, claiming no channel info is available. </span></p>
+<p>You might want to try <em>grab_tv_nl_gert</em> from <a href="http://xmltv.assies.info/dist/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://xmltv.assies.info/dist/</a>. </p>
+<p>Now there are two ways to get your TV.xml in place: 
+</p>
+<pre>
+tv_grab_nl &gt; /tmp/TV.xml 
+</pre>
+<p>(possibly as nightly cronjob) </p>
+<p>or configure <em>local_conf.py</em>to use the grabber of your choice: 
+</p>
+<pre>
+XMLTV_GRABBER = 'tv_grab_nl' 
+</pre>
+<p>and then call  
+</p>
+<pre>
+freevo tv_grab
+</pre>
+<p>to update your program info. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-03-27 21:47:47 by <span title="tuxick.xs4all.nl">tuxick</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/XMLTVDutch">http://freevo.sourceforge.net/cgi-bin/doc/XMLTVDutch</a></p>
+</div> <!-- end page -->
+</body>
+</html>

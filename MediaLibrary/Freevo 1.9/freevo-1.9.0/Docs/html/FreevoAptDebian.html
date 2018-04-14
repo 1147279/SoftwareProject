@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>FreevoAptDebian - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/FreevoAptDebian?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/FreevoAptDebian?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">FreevoAptDebian</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h2 id="head-3cef4d3a4f7d03b1301598d68564e02bd2f22f85">Freevo Apt for debian</h2>
+
+<p>A Debian apt source is available and includes all the dependencies you'll need. </p>
+<p>You should add this to your /etc/apt/sources.list file: 
+</p>
+<pre>
+deb http://freevo.sourceforge.net/debian unstable main
+deb ftp://ftp.nerim.net/debian-marillat/  unstable main
+</pre>
+<p>(The second source provides mplayer and other multimedia packages) </p>
+<p>To fetch all the dependencies you'll require to run Freevo simply run 
+</p>
+<pre>
+apt-get update
+apt-get install freevo
+</pre>
+<p>If you are using a debian 'stable' version such as the version called 'woody', your regular /etc/apt/sources.list will be not be configured by default in such a way that allows apt-get to find all the dependencies. In particular, things such as python2.3 are not included in the 'woody' release. If you don't fear an update of your installation you could update your /etc/apt/sources.list by changing 'stable' and 'woody' into 'sarge' and rerun the two commands listed above. </p>
+<p>If you are installing afresh, it would be wise to choose a version of Debian like 'sarge' so that your apt sources will enable apt-get to find all the dependencies for the freevo package. By the time you read this, 'sarge' may already be lifted from 'testing' to 'stable' (May 2005). </p>
+
+<h3 id="head-9de83c5a361b26bcf8cfb1ca1ba18c5d856f9390">Ubuntu: See FreevoAptUbuntu</h3>
+
+<p>Some hints for installing freevo on the Debian-based Ubuntu distribution can be found under <a href="FreevoAptUbuntu.html">FreevoAptUbuntu</a>. </p>
+<p>is the following now obsolete? </p>
+<p>ERROR: Since UBUNTU install python2.4 by default and pylirc and mmpython are only for python2.3, it's not so easy to install. I'm thinking uninstalling python2.4 and install 2.3, but I'm not sure if any application that my system needs python2.4. Any suggestion? Thanks </p>
+<ul>
+<li style="list-style-type:none"><p>I've tried uninstalling python2.4 using aptitude (which removes all dependencies as well) on a scratch box;  it doesn't solve the problem <img src="modern/img/sad.png" alt=":(" height="15" width="15">  Trying to install freevo results in a new dependency hell: </p>
+</li>
+</ul>
+
+<pre>
+# aptitude install freevo
+Reading package lists... Done
+Building dependency tree
+Reading extended state information
+Initializing package states... Done
+E: Unable to correct problems, you have held broken packages.
+E: Unable to correct dependencies, some packages cannot be installed
+E: Unable to resolve some dependencies!
+Some packages had unmet dependencies.  This may mean that you have
+requested an impossible situation or if you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+
+The following packages have unmet dependencies:
+  freevo: Depends: python (&lt; 2.4) but 2.4.1-0ubuntu2 is to be installed.
+#
+</pre>
+<ul>
+<li style="list-style-type:none"><p>Even forcing installing it's installation (with python2.3 installed), just doesn't work either: </p>
+</li>
+</ul>
+
+<pre>
+# /usr/bin/freevo
+can't find python version with installed freevo
+</pre>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-09-13 11:56:14 by <span title="diufpc230.unifr.ch">DavidBuchmann</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/FreevoAptDebian">http://freevo.sourceforge.net/cgi-bin/doc/FreevoAptDebian</a></p>
+</div> <!-- end page -->
+</body>
+</html>

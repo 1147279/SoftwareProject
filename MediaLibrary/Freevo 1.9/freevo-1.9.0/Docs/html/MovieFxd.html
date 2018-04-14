@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>MovieFxd - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/MovieFxd?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/MovieFxd?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">MovieFxd</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<ol>
+
+<li>
+<a href="#head-f4d108aa5c978e272ea5477767f3d858c4cd9371">Movies General</a>
+</li>
+
+<li>
+<a href="#head-2ca400c398f81850ecdfd9812b29bfdafcb11915">Cover Image</a>
+</li>
+
+<li>
+<a href="#head-e52f841cf0dbb79f2b88e1740a43490d91abfe0c">Video</a>
+</li>
+
+<li>
+<a href="#head-217ef521802427b8cb36ba2017bf76f740fed8b7">Variants</a>
+</li>
+
+<li>
+<a href="#head-2847b214e35dd47a9606485d5f73b85b9d30c9f2">Info</a>
+</li>
+
+<li>
+<a href="#head-a3cea9611205d126a4b3bc512dcbc3ae59ace238">Tools</a>
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-f4d108aa5c978e272ea5477767f3d858c4cd9371">Movies General</h2>
+
+<p>Movie related FXD files contain a &lt;movie&gt;...&lt;/movie&gt; tree directly under the top level &lt;freevo&gt; tag.  The movie tag can include information about a cover image, a video source, variants (for instance, different language audio tracks), and other information. </p>
+<p>Here is an example FXD: </p>
+
+<pre>
+&lt;?xml version="1.0" ?&gt;
+&lt;freevo&gt;
+  &lt;movie title="My Movie Title"&gt;
+    &lt;cover-img source="http://url/to/cover/provider"&gt;MyMovie.jpg&lt;/cover-img&gt;
+    &lt;video&gt;
+      &lt;file id="f1"&gt;MyMovie.avi&lt;/file&gt;
+    &lt;/video&gt;
+    &lt;info&gt;
+      &lt;genre&gt;Genre&lt;/genre&gt;
+      &lt;runtime&gt;123 minutes&lt;/runtime&gt;
+      &lt;rating&gt;8/10&lt;/rating&gt;
+      &lt;tagline&gt;The best movie ever!&lt;/tagline&gt;
+      &lt;plot&gt;Some long description&lt;/plot&gt;
+    &lt;/info&gt;
+  &lt;/movie&gt;
+&lt;/freevo&gt;
+</pre>
+
+<h2 id="head-2ca400c398f81850ecdfd9812b29bfdafcb11915">Cover Image</h2>
+
+<p>The cover-img tag defines the image to use for this movie--typically a movie poster or DVD box art.  A simple example: 
+</p>
+<pre>
+&lt;freevo&gt;
+   &lt;movie title="My Movie"&gt;
+      &lt;cover-img source="movieposter.jpg"/&gt;
+      [...]
+   &lt;/movie&gt;
+&lt;/freevo&gt;
+</pre>
+
+<h2 id="head-e52f841cf0dbb79f2b88e1740a43490d91abfe0c">Video</h2>
+
+<p>The video tag defines all of the parts that make up a movie.  For instance, a movie that spans multiple VCDs or that has been broken up into multiple AVI files.  Each video definition needs to have a unique id (which may be referred to in the variants section below).   </p>
+<p>Valid child tags for &lt;video&gt; are &lt;dvd&gt;, &lt;vcd&gt;, and &lt;file&gt;.  See the DTD for additional details. </p>
+<p>A simple example: 
+</p>
+<pre>
+&lt;freevo&gt;
+   &lt;movie title="My Video"&gt;
+      &lt;video&gt;
+         &lt;file id="part1" name="My Video, Part 1"&gt;file1.avi&lt;/file&gt;
+         &lt;file id="part2" name="My Video, Part 2"&gt;file2.avi&lt;/file&gt;
+      &lt;/video&gt;
+      [...]
+   &lt;/movie&gt;
+&lt;/freevo&gt;
+</pre>
+
+<h2 id="head-217ef521802427b8cb36ba2017bf76f740fed8b7">Variants</h2>
+
+<p>Sometimes movies contain several soundtracks or subtitles. On DVDs this will work automagically, but for plain files it is sometimes easier to specify it explicitly. You can use the &lt;variants&gt;-tags in this case. A simple example will look like this: 
+</p>
+<pre>
+&lt;freevo&gt;
+   &lt;movie&gt;
+      [...]
+      &lt;video&gt;
+         &lt;file id="p1"&gt;file1.avi&lt;/file&gt;
+      &lt;/video&gt;
+      [...]
+      &lt;variants&gt;
+         &lt;variant name="Soundtrack German"&gt;
+            &lt;part ref="p1"&gt;
+               &lt;audio&gt;audiofile.mp3&lt;/audio&gt;
+            &lt;/part&gt;
+         &lt;/variant&gt;
+      &lt;/variants&gt;
+      [...]
+   &lt;/movie&gt;
+&lt;/freevo&gt;
+</pre>
+<p>This will link in an extra external audio-file to be played back. The ref-Parameter in part references the corresponding file in &lt;video&gt;. You can then use "Show Variants" in the play-menu to select this track. However in most cases extra soundtracks are encoded into the same file. You can then try to use following structure: 
+</p>
+<pre>
+&lt;freevo&gt;
+   &lt;movie&gt;
+      [...]
+      &lt;variants&gt;
+         &lt;variant name="Soundtrack German" mplayer-options="-aid 0"&gt;
+            &lt;part ref="p1"&gt;&lt;/part&gt;
+         &lt;/variant&gt;
+      &lt;/variants&gt;
+      [...]
+   &lt;/movie&gt;
+&lt;/freevo&gt;
+</pre>
+<p>Notice the mplayer-options parameter. With -aid &lt;number&gt; a soundtrack is specified. There a different tags for audio and subtitles. For a complete reference, see the DTD file in Docs/freevo_XML_data.dtd. </p>
+
+<h2 id="head-2847b214e35dd47a9606485d5f73b85b9d30c9f2">Info</h2>
+
+<p>The info tag contains various tags with movie metadata.  This includes an URL, genre, year, runtime, tagline, plot, and rating.  See the DTD for more info. </p>
+
+<h2 id="head-a3cea9611205d126a4b3bc512dcbc3ae59ace238">Tools</h2>
+
+<p>If you have a collection of movie files, think about using freevo/util/fxdimdb.py to help you generate a complete FXD file by querying imdb.com and impawards.com. File's header points to html doc. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2004-12-19 11:45:10 by <span title="chauvat.net1.nerim.net">NicolasChauvat</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/MovieFxd">http://freevo.sourceforge.net/cgi-bin/doc/MovieFxd</a></p>
+</div> <!-- end page -->
+</body>
+</html>

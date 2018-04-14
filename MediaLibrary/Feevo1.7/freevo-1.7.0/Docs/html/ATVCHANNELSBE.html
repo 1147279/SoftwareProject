@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>ATVCHANNELSBE - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/ATVCHANNELSBE?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/ATVCHANNELSBE?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">ATVCHANNELSBE</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p><strong>1. configuring freevo.conf</strong> </p>
+<pre>
+chanlist = europe-west 
+tv = pal</pre>
+<p><strong>2. Obtaining the Belgian Channel list</strong> </p>
+<p>Copy pasting my example won't probably work for most users in Belgium. So I just describe how I created mine. This description should work for almost every Dutch speaking cable user in Belgium. First of all, the channels you select in Belgium, depend on the location you live. Antenna reception isn't used much anymore in Belgium. Most users are using cable. I will discuss only cable. </p>
+<p>A very usefull internet link to obtain a up-to-date list for subscribers to Mixt-ICS also known as Telenet: </p>
+<p><a href="http://www.zenders.be/keuze.jsp"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.zenders.be/keuze.jsp</a> </p>
+<p>You have to enter the zipcode of the city you live in. </p>
+<p><em>(Mixt-ICS is the biggest operator in the Dutch speaking part of the country, so this description would be usefull in 90% of all cases)</em> </p>
+<p><strong>3. Freevo's channel notation compared with Belgian notation</strong> </p>
+<p>You find this in the freq.py file </p>
+<p>This would be the description you find in .../freevo/tv/freq.py </p>
+
+<pre>
+PAL_EUROPE = FREQ_CCIR_I_III + FREQ_CCIR_SL_SH + FREQ_CCIR_H + FREQ_UHF
+</pre>
+<p>For instance, I just grabbed this as a example out of the website I mentioned </p>
+
+<pre>
+vijfTV / ESPN / Discovery M09 S9 88 161,25
+</pre>
+<p>While vijfTV / ESPN / Discovery is a description of the channel, M09,S9 and 88 are in fact all the same. It are channel numbers. Probably this has been done this way for ease of use on different brands of TV. None of the channels would match exactly freevo's definition. For use, most important is the frequency: 161.25 Mhz The freq.py file is using the frequencies in Khz thus this would be 161250 KHZ </p>
+<pre>
+FREQ_CCIR_SL_SH = [ 
+                      ...                
+                      ("SE9",     161250),</pre>
+<p>From the freq.py, we find a frequency of 161250 Khz stands for channel SE9 </p>
+<p><strong>4. Merging this in a usefull channel for local_conf.py</strong> </p>
+<pre>
+TV_CHANNELS =[ 
+                                                                                                                   
+                 ( 'vijftv', 'VijfTV', 'SE9' ),
+                 ( 'ned1', 'Nederland 1', 'E9' )
+             ]</pre>
+<p><strong>5. Help, some channels are not in freq.py</strong> </p>
+<p>This is normal. There is even a historical reason for this. This would probably one of the reasons why a Belgian setup differs from others. Frequencies had been attributed with antenna transmisson in mind. We are discussing cable. In order to put more TV stations on the cable, the Belgian cable operators used so called "Forbidden frequencies". These frequencies where forbidden for different reasons AND were only forbidden for Antenna transmission. Channels used by the miltary would be a example of such forbidden area. A Cable network is a private network, which can't interfer with antenna transmissons. </p>
+<p>Let's give a example </p>
+<p>This would be the official setup for National geographic Channel in my region. </p>
+<p><tt>National&nbsp;Geographic&nbsp;Channel&nbsp;H18&nbsp;S38&nbsp;117/138&nbsp;442,25&nbsp;</tt> </p>
+<p>If you search freq.py, you won't find the matching channel for a frequency of 442250 Khz. It simply doesn't exist. Because freq.py contains official standards and frequencies. </p>
+<p>You can solve this by adding a frequency for this channel into local_conf.py </p>
+<pre>
+FREQUENCY_TABLE = { 
+      'nbcngc'         : 442250,
+                     } </pre>
+<p>The TV channels section would become </p>
+<pre>
+TV_CHANNELS =[ 
+                  ( 'nbcngc', 'Nation. Geog.', 'nbcngc' ),
+                   ... 
+</pre>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-03-17 11:36:59 by <span title="gatekeepermons.telindus.be">GeertDecorte</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/ATVCHANNELSBE">http://freevo.sourceforge.net/cgi-bin/doc/ATVCHANNELSBE</a></p>
+</div> <!-- end page -->
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>XMLTVlogos - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/XMLTVlogos?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/XMLTVlogos?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">XMLTVlogos</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h2 id="head-f47b6031e8a2954618ff4f15ce9c7d1200fcabf6">Channel Logos</h2>
+
+<p>Run <tt>freevo&nbsp;makelogos</tt> </p>
+<p>It uses the information in the '/tmp/TV.xml' file, which has url's for the logos, to locate and grab the images. The logos are stored and will be displayed in the channel list. It's a know bug that the images are scaled in the tv guide to fit the given rectangle. </p>
+<p><strong>Update as of January 25, 2005</strong> </p>
+<p>I just started using xmltv and in order to get <tt>freevo&nbsp;makelogos</tt> to work I first had to run <tt>tv_grab_na_icons</tt> to get the icons on my system. In retrospect, this seems fairly obvious, but it is not pointed out in the above directions. </p>
+<p><strong>Update as of March 6, 2005 (okay_awright)</strong> </p>
+<p>If you don't use a XMLTV grabber (e.g. nxtvepg for european broadcasts) and there is no URL pointing to icons or TV channels logos in your XMLTV file, you may manually add your own TV logos and bypass <tt>freevo&nbsp;makelogos</tt>. </p>
+<p>First download/copy/edit/create/whatever one PNG file for each channel referenced in your TV_CHANNELS variable in your local_config.py. These files must be renamed according to their own channel id listed in your TV_CHANNELS variable [format: &lt;channel_id&gt;.png]. Then add a new variable TV_LOGOS inside your local_config.py that specifies the directory containing these new logos. </p>
+<p>Beware that their size ratio must be proportional to the current Freevo font in use and if you don't want to see them deformed and overscaled. Empirically it seems that 47x11 files look good enough within the default Freevo skins/fonts combinations. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-03-06 22:50:32 by <span title="marriere-4-82-227-215-70.fbx.proxad.net"><a href="okay_awright.html">okay awright</a></span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/XMLTVlogos">http://freevo.sourceforge.net/cgi-bin/doc/XMLTVlogos</a></p>
+</div> <!-- end page -->
+</body>
+</html>

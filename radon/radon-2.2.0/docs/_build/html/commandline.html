@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Command-line Usage &#8212; Radon 1.4.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/solar.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.4.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/MathJax.js?config=TeX-AMS_HTML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Radon 1.4.2 documentation" href="index.html" />
+    <link rel="next" title="Flake8 plugin" href="flake8.html" />
+    <link rel="prev" title="Introduction to Code Metrics" href="intro.html" /><link href='http://fonts.googleapis.com/css?family=PT+Mono|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+<link href="_static/solarized-dark.css" rel="stylesheet">
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="flake8.html" title="Flake8 plugin"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="Introduction to Code Metrics"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Radon 1.4.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Command-line Usage</a><ul>
+<li><a class="reference internal" href="#the-cc-command">The <strong class="command">cc</strong> command</a><ul>
+<li><a class="reference internal" href="#options">Options</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-mi-command">The <strong class="command">mi</strong> command</a><ul>
+<li><a class="reference internal" href="#id1">Options</a></li>
+<li><a class="reference internal" href="#id2">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-raw-command">The <strong class="command">raw</strong> command</a><ul>
+<li><a class="reference internal" href="#id4">Options</a></li>
+<li><a class="reference internal" href="#id5">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="intro.html"
+                        title="previous chapter">Introduction to Code Metrics</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="flake8.html"
+                        title="next chapter">Flake8 plugin</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/commandline.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="command-line-usage">
+<h1>Command-line Usage<a class="headerlink" href="#command-line-usage" title="Permalink to this headline">¶</a></h1>
+<p>Radon currently has three commands:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong class="command">cc</strong>: compute Cyclomatic Complexity</li>
+<li><strong class="command">raw</strong>: compute raw metrics</li>
+<li><strong class="command">mi</strong>: compute Maintainability Index</li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">On some systems, such as Windows, the default encoding is not UTF-8. If you
+are using Unicode characters in your Python file, and want to analyze it
+with Radon, you&#8217;ll have to set the <cite>RADONFILESENCODING</cite> to <cite>UTF-8</cite>.</p>
+</div>
+<div class="section" id="the-cc-command">
+<h2>The <strong class="command">cc</strong> command<a class="headerlink" href="#the-cc-command" title="Permalink to this headline">¶</a></h2>
+<p>This command analyzes Python source files and compute Cyclomatic Complexity.
+The output can be filtered by specifying the <a class="reference internal" href="#cmdoption-cc-n"><code class="xref std std-option docutils literal"><span class="pre">-n</span></code></a> and <a class="reference internal" href="#cmdoption-cc-x"><code class="xref std std-option docutils literal"><span class="pre">-x</span></code></a>
+flags. By default, the complexity score is not displayed, the option
+<a class="reference internal" href="#cmdoption-cc-s"><code class="xref std std-option docutils literal"><span class="pre">-s</span></code></a> (show complexity) toggles this behaviour. File or directories
+exclusion is supported through glob patterns. Every positional argument is
+interpreted as a path. The program then walks through its children and analyzes
+Python files.
+Every block will be ranked from A (best complexity score) to F (worst one).
+Ranks corresponds to complexity scores as follows:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="11%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CC score</th>
+<th class="head">Rank</th>
+<th class="head">Risk</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1 - 5</td>
+<td>A</td>
+<td>low - simple block</td>
+</tr>
+<tr class="row-odd"><td>6 - 10</td>
+<td>B</td>
+<td>low - well structured and stable block</td>
+</tr>
+<tr class="row-even"><td>11 - 20</td>
+<td>C</td>
+<td>moderate - slightly complex block</td>
+</tr>
+<tr class="row-odd"><td>21 - 30</td>
+<td>D</td>
+<td>more than moderate - more complex block</td>
+</tr>
+<tr class="row-even"><td>31 - 40</td>
+<td>E</td>
+<td>high - complex block, alarming</td>
+</tr>
+<tr class="row-odd"><td>41+</td>
+<td>F</td>
+<td>very high - error-prone, unstable block</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Blocks are also classified into three types: functions, methods and classes.
+They&#8217;re listed by letter in the command output for convenience when scanning
+through a longer list of blocks:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="60%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Block type</th>
+<th class="head">Letter</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Function</td>
+<td>F</td>
+</tr>
+<tr class="row-odd"><td>Method</td>
+<td>M</td>
+</tr>
+<tr class="row-even"><td>Class</td>
+<td>C</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<div class="section" id="options">
+<h3>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h3>
+<dl class="option">
+<dt id="cmdoption-cc-x">
+<span id="cmdoption-cc--max"></span><code class="descname">-x</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--max</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-cc-x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the maximum complexity rank to display.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-cc-n">
+<span id="cmdoption-cc--min"></span><code class="descname">-n</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--min</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-cc-n" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the minimum complexity rank to display.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-cc-a">
+<span id="cmdoption-cc--average"></span><code class="descname">-a</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--average</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-cc-a" title="Permalink to this definition">¶</a></dt>
+<dd><p>If given, at the end of the analysis show the average Cyclomatic
+Complexity. This option is influenced by <code class="xref std std-option docutils literal"><span class="pre">-x,</span> <span class="pre">--max</span></code> and
+<code class="xref std std-option docutils literal"><span class="pre">-n,</span> <span class="pre">--min</span></code> options.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-cc--total-average">
+<code class="descname">--total-average</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-cc--total-average" title="Permalink to this definition">¶</a></dt>
+<dd><p>Like <code class="xref std std-option docutils literal"><span class="pre">-a,</span> <span class="pre">--average</span></code>, but it is not influenced by <cite>min</cite> and <cite>max</cite>.
+Every analyzed block is counted, no matter whether it is displayed or not.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-cc-s">
+<span id="cmdoption-cc--show_complexity"></span><code class="descname">-s</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--show_complexity</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-cc-s" title="Permalink to this definition">¶</a></dt>
+<dd><p>If given, show the complexity score along with its rank.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-cc-e">
+<span id="cmdoption-cc--exclude"></span><code class="descname">-e</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--exclude</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-cc-e" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exclude files only when their path matches one of these glob patterns.
+Usually needs quoting at the command line.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-cc-i">
+<span id="cmdoption-cc--ignore"></span><code class="descname">-i</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--ignore</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-cc-i" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ignore directories when their name matches one of these glob patterns: radon
+won&#8217;t even descend into them. By default, hidden directories (starting with
+&#8216;.&#8217;) are ignored.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-cc-o">
+<span id="cmdoption-cc--order"></span><code class="descname">-o</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--order</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-cc-o" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ordering function for the results. Can be one of:</p>
+<blockquote>
+<div><ul class="simple">
+<li><cite>SCORE</cite>: order by cyclomatic complexity (descending):</li>
+<li><cite>LINES</cite>: order by line numbers;</li>
+<li><cite>ALPHA</cite>: order by block names (alphabetically).</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-cc-j">
+<span id="cmdoption-cc--json"></span><code class="descname">-j</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--json</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-cc-j" title="Permalink to this definition">¶</a></dt>
+<dd><p>If given, the results will be converted into JSON. This is useful in case
+you need to export the results to another application.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-cc--xml">
+<code class="descname">--xml</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-cc--xml" title="Permalink to this definition">¶</a></dt>
+<dd><p>If given, the results will be converted into XML. Note that not all the
+information is kept. This is specifically targeted to Jenkin&#8217;s plugin CCM.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-cc--no-assert">
+<code class="descname">--no-assert</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-cc--no-assert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does not count assert statements when computing complexity. This is because
+Python can be run with an optimize flag which removes assert statements.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ radon cc path
+</pre></div>
+</div>
+<p>Radon will walk through the subdirectories of path and will analyze all
+child nodes (every Python file it encounters).</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ radon cc -e &quot;path/tests*,path/docs/*&quot; path
+</pre></div>
+</div>
+<p>As in the above example, Radon will walk the directories, excluding paths
+matching <code class="docutils literal"><span class="pre">path/tests/*</span></code> and <code class="docutils literal"><span class="pre">path/docs/*</span></code>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Remember to quote the patterns, otherwise your shell might expand them!</p>
+</div>
+<p>Depending on the single cases, a more suitable alternative might be this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ radon cc -i &quot;docs,tests&quot; path
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cat path/to/file.py | radon cc -
+</pre></div>
+</div>
+<p>Setting the path to &#8220;-&#8221; will cause Radon to analyze code from stdin</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ radon cc --min B --max E path
+</pre></div>
+</div>
+<p>Here Radon will only display blocks ranked between B and E (i.e. from <code class="docutils literal"><span class="pre">CC=6</span></code>
+to <code class="docutils literal"><span class="pre">CC=40</span></code>).</p>
+</div>
+</div>
+<div class="section" id="the-mi-command">
+<h2>The <strong class="command">mi</strong> command<a class="headerlink" href="#the-mi-command" title="Permalink to this headline">¶</a></h2>
+<p>This command analyzes Python source code files and compute the Maintainability
+Index score.
+Every positional argument is treated as a starting point from which to walk
+looking for Python files (as in the <strong class="command">cc</strong> command). Paths can be
+excluded with the <a class="reference internal" href="#cmdoption-mi-e"><code class="xref std std-option docutils literal"><span class="pre">-e</span></code></a> option.
+The Maintainability Index is always in the range 0-100. MI is ranked as
+follows:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="18%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">MI score</th>
+<th class="head">Rank</th>
+<th class="head">Maintainability</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>100 - 20</td>
+<td>A</td>
+<td>Very high</td>
+</tr>
+<tr class="row-odd"><td>19 - 10</td>
+<td>B</td>
+<td>Medium</td>
+</tr>
+<tr class="row-even"><td>9 - 0</td>
+<td>C</td>
+<td>Extremely low</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<div class="section" id="id1">
+<h3>Options<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<dl class="option">
+<dt id="cmdoption-mi-x">
+<span id="cmdoption-mi--max"></span><code class="descname">-x</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--max</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-mi-x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the maximum MI to display.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-mi-n">
+<span id="cmdoption-mi--min"></span><code class="descname">-n</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--min</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-mi-n" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the minimum MI to display.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-mi-e">
+<span id="cmdoption-mi--exclude"></span><code class="descname">-e</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--exclude</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-mi-e" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exclude files only when their path matches one of these glob patterns.
+Usually needs quoting at the command line.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-mi-i">
+<span id="cmdoption-mi--ignore"></span><code class="descname">-i</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--ignore</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-mi-i" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ignore directories when their name matches one of these glob patterns: radon
+won&#8217;t even descend into them. By default, hidden directories (starting with
+&#8216;.&#8217;) are ignored.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-mi-m">
+<span id="cmdoption-mi--multi"></span><code class="descname">-m</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--multi</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-mi-m" title="Permalink to this definition">¶</a></dt>
+<dd><p>If given, Radon will not count multiline strings as comments.
+Most of the time this is safe since multiline strings are used as functions
+docstrings, but one should be aware that their use is not limited to that
+and sometimes it would be wrong to count them as comment lines.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-mi-s">
+<span id="cmdoption-mi--show"></span><code class="descname">-s</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--show</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-mi-s" title="Permalink to this definition">¶</a></dt>
+<dd><p>If given, the actual MI value is shown in results, alongside the rank.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-mi-j">
+<span id="cmdoption-mi--json"></span><code class="descname">-j</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--json</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-mi-j" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format results in JSON.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="id2">
+<h3>Examples<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ radon mi path1 path2
+</pre></div>
+</div>
+<p>Analyze every Python file under <em>path1</em> or <em>path2</em>. It checks recursively in
+every subdirectory.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ radon mi path1 -e &quot;path1/tests/*&quot;
+</pre></div>
+</div>
+<p>Like the previous example, but excluding from the analysis every path that
+matches <cite>path1/tests/*</cite>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ radon mi -m path1
+</pre></div>
+</div>
+<p>Like the previous examples, but does not count multiline strings as comments.</p>
+</div>
+</div>
+<div class="section" id="the-raw-command">
+<h2>The <strong class="command">raw</strong> command<a class="headerlink" href="#the-raw-command" title="Permalink to this headline">¶</a></h2>
+<p>This command analyzes the given Python modules in order to compute raw metrics.
+These include:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>LOC</strong>: the total number of lines of code</li>
+<li><strong>LLOC</strong>: the number of logical lines of code</li>
+<li><strong>SLOC</strong>: the number of source lines of code - not necessarily
+corresponding to the <strong>LLOC</strong> <a class="reference internal" href="#wikipedia" id="id3">[Wikipedia]</a></li>
+<li><strong>comments</strong>: the number of Python comment lines (i.e. only single-line
+comments <code class="docutils literal"><span class="pre">#</span></code>)</li>
+<li><strong>multi</strong>: the number of lines representing multi-line strings</li>
+<li><strong>blank</strong>: the number of blank lines (or whitespace-only ones)</li>
+</ul>
+</div></blockquote>
+<p>The equation <span class="math">\(sloc + blank = loc\)</span> should always hold.</p>
+<table class="docutils citation" frame="void" id="wikipedia" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[Wikipedia]</a></td><td>More information on <strong>LOC</strong>, <strong>SLOC</strong>, <strong>LLOC</strong> here: <a class="reference external" href="http://en.wikipedia.org/wiki/Source_lines_of_code">http://en.wikipedia.org/wiki/Source_lines_of_code</a></td></tr>
+</tbody>
+</table>
+<div class="section" id="id4">
+<h3>Options<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<dl class="option">
+<dt id="cmdoption-raw-e">
+<span id="cmdoption-raw--exclude"></span><code class="descname">-e</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--exclude</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-raw-e" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exclude files only when their path matches one of these glob patterns.
+Usually needs quoting at the command line.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-raw-i">
+<span id="cmdoption-raw--ignore"></span><code class="descname">-i</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--ignore</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-raw-i" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ignore directories when their name matches one of these glob patterns: radon
+won&#8217;t even descend into them. By default, hidden directories (starting with
+&#8216;.&#8217;) are ignored.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-raw-s">
+<span id="cmdoption-raw--summary"></span><code class="descname">-s</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--summary</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-raw-s" title="Permalink to this definition">¶</a></dt>
+<dd><p>If given, at the end of the analysis a summary of the gathered
+metrics will be shown.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-raw-j">
+<span id="cmdoption-raw--json"></span><code class="descname">-j</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--json</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-raw-j" title="Permalink to this definition">¶</a></dt>
+<dd><p>If given, the results will be converted into JSON.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="id5">
+<h3>Examples<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ radon raw path1 path2
+</pre></div>
+</div>
+<p>Analyze every Python file under <em>path1</em> or <em>path2</em>. It checks recursively in
+every subdirectory.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ radon raw path1 -e &quot;path1/tests/*&quot;
+</pre></div>
+</div>
+<p>Like the previous example, but excluding from the analysis every path that
+matches <code class="docutils literal"><span class="pre">path1/tests/*</span></code>.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="flake8.html" title="Flake8 plugin"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="Introduction to Code Metrics"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Radon 1.4.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012-2013-2014-2015-2016, Michele Lacchia.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.9. Theme by <a href="http://github.com/vkvn">vkvn</a>
+    </div>
+  </body>
+</html>

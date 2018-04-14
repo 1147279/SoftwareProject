@@ -1,0 +1,228 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Frequently Asked Questions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Freevo Installation HOWTO"
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE="Related Documents / Websites"
+HREF="x288.html"><LINK
+REL="NEXT"
+TITLE="Freevo User Manual"
+HREF="c322.html"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Freevo Installation HOWTO: Build your own media box with Freevo and Linux</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x288.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c322.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="AEN302"
+></A
+>Chapter 7. Frequently Asked Questions</H1
+><DIV
+CLASS="QANDASET"
+><DL
+><DT
+>7.1. <A
+HREF="c302.html#AEN306"
+>Does Freevo support DVD menus?</A
+></DT
+><DT
+>7.2. <A
+HREF="c302.html#AEN311"
+>Does Freevo rip/encode CD's?</A
+></DT
+><DT
+>7.3. <A
+HREF="c302.html#AEN316"
+>Why are the audio and video out of sync while watching live TV?</A
+></DT
+></DL
+><DIV
+CLASS="QANDAENTRY"
+><DIV
+CLASS="QUESTION"
+><P
+><A
+NAME="AEN306"
+></A
+><B
+>7.1. </B
+>Does Freevo support DVD menus?</P
+></DIV
+><DIV
+CLASS="ANSWER"
+><P
+><B
+> </B
+>There is initial support as of Freevo 1.3.2, which allows you to browse to
+different chapters on the DVD, however actual DVD menus are not currently 
+supported. Xine does support DVD menus are there is currently a plugin in 
+development that may work with DVD menus, however I have not tried it.
+      </P
+></DIV
+></DIV
+><DIV
+CLASS="QANDAENTRY"
+><DIV
+CLASS="QUESTION"
+><P
+><A
+NAME="AEN311"
+></A
+><B
+>7.2. </B
+>Does Freevo rip/encode CD's?</P
+></DIV
+><DIV
+CLASS="ANSWER"
+><P
+><B
+> </B
+>There is a CD ripping plugin that should be available in CVS. For more information regarding this plugin you may wish to consult the mailing list.
+      </P
+></DIV
+></DIV
+><DIV
+CLASS="QANDAENTRY"
+><DIV
+CLASS="QUESTION"
+><P
+><A
+NAME="AEN316"
+></A
+><B
+>7.3. </B
+>Why are the audio and video out of sync while watching live TV?</P
+></DIV
+><DIV
+CLASS="ANSWER"
+><P
+><B
+> </B
+>Apparently, this is an MPlayer problem. Currently, the Freevo team is looking int possible fixes to the problem. The problem is that MPlayer reads video directly from your captuer card (usually /dev/video0) and sound from your sound card. The sound however, is routed through your sound card from your TV tuner card, resulting in a/v sync problems. 
+      </P
+><P
+>The solution that works for me is outlined in <A
+HREF="x90.html#TVTIME"
+>the tvtime section</A
+>. The tvtime plugin works perfectly for me. It also offers VBI support and other onscreen display goodies.
+      </P
+></DIV
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x288.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c322.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Related Documents / Websites</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Freevo User Manual</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

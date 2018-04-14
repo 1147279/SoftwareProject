@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>FXDFiles - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/FXDFiles?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/FXDFiles?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">FXDFiles</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>Site Index: </p>
+<ol>
+
+<li>
+<a href="#head-b310abfa0737c60d82f06c144bacd399ebfb6cc1">Overview</a>
+</li>
+
+<li>
+<a href="#head-356054ac7d0c55e3b330fa2ed38c9355ee35de7f">Multi-Disc Sets</a>
+</li>
+
+<li>
+<a href="#head-a3521d4fb726429e6a5cf37d4389a2413d52da32">Directory as a playitem</a>
+</li>
+
+<li>
+<a href="#head-53b17b5865bf84cd3cfe12442545ffd186562d36">Skins</a>
+</li>
+
+</ol>
+<p> </p>
+<p>Subpages: </p>
+<ul>
+<li><p> <a href="MovieFxd.html">Movie</a> </p>
+</li>
+<li><p> <a href="AudioFxd.html">Music</a> </p>
+</li>
+<li><p> <a href="ImageFxd.html">Image</a> </p>
+</li>
+<li><p> <a href="PlaylistFxd.html">Playlists</a> </p>
+</li>
+<li><p> Container </p>
+</li>
+<li><p> <a href="CommandsFxd.html">Commands</a> </p>
+</li>
+</ul>
+
+<h2 id="head-b310abfa0737c60d82f06c144bacd399ebfb6cc1">Overview</h2>
+
+<p>FXD files are special XML files that Freevo uses to define links to "external" media and to define the appearance of directories and files.  An external source can be elsewhere in your filesystem, on cdrom, or even a DVD or (S)VCD.  You can even use FXD files to run external programs. FXD files are a very powerful tool to customize freevo. </p>
+<p>A DTD is provided in the Freevo installation in "Docs/freevo_XML_data.dtd," but at the time of this writing, the DTD file was outdated and no longer valid. Waiting for this doc to be updated, you can have a look at PleaseUpdate) </p>
+<p>The root element in FXD files is &lt;freevo&gt;. PleaseUpdate: A few more words about the general structure of such a file </p>
+
+<h2 id="head-356054ac7d0c55e3b330fa2ed38c9355ee35de7f">Multi-Disc Sets</h2>
+
+<p>A disc-set contains a set of related discs--for example, all CD-ROMs containing files of a given TV show. </p>
+<p>PleaseUpdate: This needs to be researched and documented more, also a example would be useful. </p>
+
+<h2 id="head-a3521d4fb726429e6a5cf37d4389a2413d52da32">Directory as a playitem</h2>
+
+<p>The whole directory can be handled as a single playitem. This is useful when directory contains only one movie but several files (e.g. cd1.mpg, cd2.mpg, movie.nfo, movie.jpg, movie.sub). Placing fxd file in the directory with the same name as a directory (movie_name/movie_name.fxd) makes freevo to handle directory as a playitem and not as a directory. </p>
+<p>PleaseUpdate: This also needs a small example. </p>
+
+<h2 id="head-53b17b5865bf84cd3cfe12442545ffd186562d36">Skins</h2>
+
+<p>FXD files can be used to override the appearance of an individual directory.  Please see <a href="Skins.html">Skins</a> for details. </p>
+<p>PleaseUpdate: add a small example here </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-01-05 12:28:59 by <span title="mail.gcd.ie">JohnMolohan</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/FXDFiles">http://freevo.sourceforge.net/cgi-bin/doc/FXDFiles</a></p>
+</div> <!-- end page -->
+</body>
+</html>

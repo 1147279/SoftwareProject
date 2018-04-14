@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>AudioFxd - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/AudioFxd?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/AudioFxd?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">AudioFxd</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<ol>
+
+<li>
+<a href="#head-41111a1509a92bc1db106eb124d169913de34dfa">Music General</a>
+</li>
+
+<li>
+<a href="#head-4aa66ed11b4cac29e41dcd70c1b1c09bf12b5662">Streaming Audio</a>
+<ol>
+
+<li>
+<a href="#head-1df02ead7acfd2b2a0e2edcce8381b91ce776e04">Starcast Grabber</a>
+</li>
+
+</ol>
+
+<li>
+<a href="#head-71a319ecd63d5df1ad8b761559f52e1a692dada8">Local Audio</a>
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-41111a1509a92bc1db106eb124d169913de34dfa">Music General</h2>
+
+<p>FXD files can define an external music source, such as a net radio station.   </p>
+<p>If what you need is to define a cover for an album, just use the AUDIO_COVER_REGEXP from freevo_local.conf.  Using the default value, you just need to name (or link) your file front.jpg or cover-f.jpg. </p>
+
+<h2 id="head-4aa66ed11b4cac29e41dcd70c1b1c09bf12b5662">Streaming Audio</h2>
+
+<p>For streaming radio you need to create a fxd file with links to the stations you need and then add this file to your local_conf.py freevo will support any station that can be streamed with mplayer or xine </p>
+<p>E.G local_conf.py 
+</p>
+<pre>
+AUDIO_ITEMS = [ ('Muziek', '/home/freevo/media/muziek'),
+                ('Nadine', '/home/freevo/media/nadine/'), 
+                ('Addie', '/home/addie/'), 
+                ('Mp3 Speler', '/mnt/gadgets/'), 
+                 '/home/freevo/.freevo/webradio.fxd' ]
+</pre>
+<p>In this case your fxd file would be /home/freevo/.freevo/webradio.fxd and it would have entries as below </p>
+
+<pre>
+&lt;?xml version="1.0" ?&gt;
+&lt;freevo&gt;
+  &lt;container title="Radiostations" type="webradio"&gt;
+                &lt;audio title="Radio 1"&gt;
+                        &lt;url&gt;http://www.omroep.nl/radio1/radio1-breed.asx&lt;/url&gt;
+                        &lt;info&gt;
+                                &lt;link&gt;http://www.radio1.nl&lt;/link&gt;
+                                &lt;bitrate&gt;64&lt;/bitrate&gt;
+                                &lt;description&gt;De radiozender voor nieuws en sport.&lt;/description&gt;
+                        &lt;/info&gt;
+                        &lt;playlist/&gt;
+                        &lt;reconnect/&gt;
+                &lt;/audio&gt;
+                &lt;audio title="Radio 2"&gt;
+                        &lt;url&gt;http://www.omroep.nl/radio2/radio2-breed.asx&lt;/url&gt;
+                        &lt;info&gt;
+                                &lt;link&gt;http://www.radio2.nl&lt;/link&gt;
+                                &lt;bitrate&gt;64&lt;/bitrate&gt;
+                                &lt;description&gt;Je hoort nog eens wat.&lt;/description&gt;
+                        &lt;/info&gt;
+                        &lt;playlist/&gt;
+                        &lt;reconnect/&gt;
+                &lt;/audio&gt;
+    &lt;info&gt;
+      &lt;description&gt;Radio stations on the internet...&lt;/description&gt;
+    &lt;/info&gt;
+  &lt;/container&gt;
+&lt;/freevo&gt;
+</pre>
+
+<h3 id="head-1df02ead7acfd2b2a0e2edcce8381b91ce776e04">Starcast Grabber</h3>
+
+<p>This project is a set of perl scripts that enables you to access Shoutcast and Icecast streams.  </p>
+<p>The scripts grab web pages according to hardcoded queries (like 'get the most listened radios and with available slots'), parse the html pages and pack information into a fxd file. </p>
+<p>URL: <a class="external" href="http://sourceforge.net/projects/starcastgrab/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://sourceforge.net/projects/starcastgrab/</a> </p>
+<p>A logo downloader was implemented, you have to modify the hardcoded path of the logo storage ($logo_dir in the perl script). </p>
+<p>By default, the script gets all genres such as Rock, Funk, etc.... If you only want some of them, just edit the genre list at the begining of the script. </p>
+<p>Usage example: 
+</p>
+<pre>
+
+/* 
+   This retrieves 10 first most listened radios 
+   for each genre (Funk, Rock...) from shoutcast web page 
+ */
+perl shoutcast_grabber.pl -d 10 -o /usr/share/freevo/fxd/shoutcast.fxd -quiet
+
+/* 
+   Add this entry in the audio files list in local_conf.py : 
+ */
+MUSIC_DIR = [ ('Shoutcast webradio','fxd/shoutcast.fxd') 
+            ]
+
+</pre>
+<p>You can also add a cron entry into crontab to automatically update the fxd file <img src="modern/img/smile4.png" alt=";-)" height="15" width="15"> </p>
+<p>PleaseUpdate: Should the code be adjusted so that this is not all part of the &lt;freevo&gt; element, but instead wrapped pushed down a level such as &lt;freevo&gt;&lt;music&gt;...title, logo, audio, etc...&lt;/music&gt;&lt;/freevo&gt;? </p>
+
+<h2 id="head-71a319ecd63d5df1ad8b761559f52e1a692dada8">Local Audio</h2>
+
+<p>PleaseUpdate: How to write &lt;audio&gt; tags, container, etc.  </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-04-01 10:29:23 by <span title="83.141.77.130">JohnMolohan</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/AudioFxd">http://freevo.sourceforge.net/cgi-bin/doc/AudioFxd</a></p>
+</div> <!-- end page -->
+</body>
+</html>

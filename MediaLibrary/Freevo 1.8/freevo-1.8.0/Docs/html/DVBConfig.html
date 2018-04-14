@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>DVBConfig - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/DVBConfig?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/DVBConfig?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">DVBConfig</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>You can use mplayer or xine with DVB. </p>
+<p>Create a 'channels.conf', make sure no '/' are in the names (mplayer doesn't like that). Put it into the .mplayer (and .xine) directory in your home. Add your <tt>TV_CHANNELS</tt> configuration to the 'local_conf.py': </p>
+
+<pre>
+TV_CHANNELS = [
+    ( 'ard.de', 'ARD', 'Das Erste RB' ), 
+    ( 'zdf.de', 'ZDF', 'ZDF' ),
+    ( 'ndr.de', 'NDR', 'NDR RB' ), 
+    ( 'rtl.de', 'RTL', 'RTL Television' ), 
+    ( 'sat1.de', 'SAT.1', 'SAT.1' ), 
+    ( 'rtl2.de', 'RTL 2', 'RTL2' ), 
+    ( 'prosieben.de', 'PRO 7', 'ProSieben' ), 
+    ( 'kabel1.de', 'KABEL 1', 'KABEL1' ), 
+    ( 'vox.de', 'VOX', 'VOX' ), 
+    ( 'n24.de', 'N24', 'N24' ), 
+    ( 'arte-tv.com', 'ARTE', 'arte' ), 
+    ( 'C3sat.de', '3SAT', 'Info 3sat' ), 
+    ( 'superrtl.de', 'Super RTL', 'Super RTL' ), 
+    ( 'kika.de', 'Kika', 'Doku KiKa' ) ]
+</pre>
+<p>The first line is the <a href="XMLTV.html">XMLTV</a> name, the second the Freevo display name and the last the 'channels.conf' name. Use <tt>tv_grab</tt> and after that <tt>tv_grab&nbsp;--query</tt> to get a template for your configuration. </p>
+<p>Now switch the VideoGroup to dvb. Add to your 'local_conf.py' </p>
+
+<pre>
+VIDEO_GROUPS[0].group_type = 'dvb'
+</pre>
+<p>If you override in 'local_conf.py' the default <tt>MPLAYER_ARGS</tt> with your own values then be sure that there is a 'dvb' key present. 
+</p>
+<pre>
+MPLAYER_ARGS = { 'dvd'    : '-cache 8192',
+                 'vcd'    : '-cache 4096',
+                 'cd'     : '-cache 1024 -cdda speed=2',
+                 'tv'     : '-nocache',
+                 'ivtv'   : '-cache 8192',
+                 'dvb'    : '-vf pp=de/fd -cache 1024',
+                 'avi'    : '-cache 5000 -idx',
+                 'rm'     : '-cache 5000 -forceidx',
+                 'rmvb'   : '-cache 5000 -forceidx',
+                 'default': '-cache 5000'
+                 }
+</pre>
+<p>For recording change <tt>VRC_CMD</tt>:  
+</p>
+<pre>
+VCR_CMD = CONF.mplayer + ' -dumpstream -dumpfile %(filename)s "dvb://%(channel)s"'
+TV_RECORDFILE_SUFFIX = '.ts'
+</pre>
+<p>This will dump the stream to your disk, just as it is, without any further compression. A usual movie with a length of 90 min, will result in a file of around 3 GB. That is okay if you have a lot of free place and/or if you have just recorded the show for watching it once and then deleting it afterwards but if you want to keep the recording you probably want to transform it to a smaller format. To get an idea of how to achieve that, have a look on "<a href="TipsAndTricks.html">TipsAndTricks</a>". </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-01-05 11:00:05 by <span title="mail.gcd.ie">JohnMolohan</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/DVBConfig">http://freevo.sourceforge.net/cgi-bin/doc/DVBConfig</a></p>
+</div> <!-- end page -->
+</body>
+</html>

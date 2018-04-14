@@ -1,0 +1,273 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>MainMenuPlugin</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Freevo Plugin Writing HOWTO"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="The Different Types of Plugins"
+HREF="c145.html"><LINK
+REL="PREVIOUS"
+TITLE="DaemonPlugin"
+HREF="x153.html"><LINK
+REL="NEXT"
+TITLE="ItemPlugin"
+HREF="x200.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Freevo Plugin Writing HOWTO: Writing your own plugins for Freevo</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x153.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. The Different Types of Plugins</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x200.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN187"
+>3.3. MainMenuPlugin</A
+></H1
+><P
+>	A MainMenuPlugin is a plugin that adds items to the main menu. The main
+	menu can also be the main menu for the different types of media, like
+	the video main menu. E.g. if you put your plugin in
+	<TT
+CLASS="FILENAME"
+>video/plugins</TT
+>, it will be shown in the video main
+	menu. The user can also force which kind of menu by setting the
+	<CODE
+CLASS="VARNAME"
+>type</CODE
+> when calling
+	<CODE
+CLASS="FUNCTION"
+>plugin.activate</CODE
+>.
+      </P
+><P
+>	Examples for this kind of plugin are all items in the main menu and the
+	<CODE
+CLASS="VARNAME"
+>rom_drives</CODE
+> plugin, adding all possible rom drives to
+	the sub main menus.
+      </P
+><P
+>	A MainMenuPlugin only needs to define the function
+	<PRE
+CLASS="PROGRAMLISTING"
+>def items(self, parent):</PRE
+>returning a list
+	of items for the menu.
+      </P
+><P
+> A full up example:</P
+><PRE
+CLASS="PROGRAMLISTING"
+>import os
+import config
+import plugin
+import menu
+import rc
+
+from item import Item
+from image.imageitem import ImageItem
+
+# In addition to these two classes you might need a specialized subclass
+# of Item to put in your menu. Here i used ImageItem for brevity.
+
+# This is the item that does most of the action. It builds the menu
+# that happens after clicking on the module.
+class CoolMainMenuItem(Item):
+    def __init__(self, parent, neededargument):
+        Item.__init__(self, parent, skin_type='image')
+        self.name = _( 'APOD' )
+        self.importantData = neededargument
+
+    # this is what happens when you click on the module in the menu
+    def actions(self):
+        return [ ( self.create_cool_menu , 'Show Cool Module' ) ]
+
+    # creates a submenu with two choices
+    def create_cool_menu(self, arg=None, menuw=None):
+        myitems = []
+	myitems += [menu.MenuItem(_('Cool Choice1'), action=self.doChoice1)]
+	myitems += [menu.MenuItem(_('Cool Choice2'), action=self.doChoice2)]
+        cool_menu = menu.Menu( _( 'Cool Menu' ), myitems)
+        rc.app(None)
+        menuw.pushmenu(cool_menu)
+        menuw.refresh()
+
+    # create a submenu again this time with image items
+    def doChoice1(self, arg=None, menuw=None):
+        mylistofitems = []
+        mylistofobjects = some_func_that_returns_you_list()
+
+        for myobject in mylistofobjects:
+            img_item = ImageItem(myobject, self)
+            mylistofitems += [ img_item ]
+
+        if (len(mylistofitems) == 0):
+            mylistofitems += [menu.MenuItem(_('No Objects found'),
+                              menuw.back_one_menu, 0)]
+
+        myobjectmenu = menu.Menu(_('My Image Objects'), mylistofitems,
+                                 reload_func=menuw.back_one_menu )
+
+        rc.app(None)
+        menuw.pushmenu(myobjectmenu)
+        menuw.refresh()
+
+    # display an image if we select this option in the menu
+    def doChoice2(self, arg=None, menuw=None):
+        imgitem = ImageItem(self.importantData, self)
+	imgitem.view(menuw=menuw)
+
+# This class basically only exists to give the item to the main menu and
+# to setup variables to pass to the real meat of the plugin above. The
+# reason for this setup is that plugins generally don't have eventhandlers
+# and mimetype stuff needed for menus so we create a shell for an Item to take
+# over and do the cool stuff.
+class PluginInterface(plugin.MainMenuPlugin):
+    """
+    Put your description of your cool plugin here.
+
+    plugin.activate('cool', args=('/tmp/cool.jpg',))
+
+    """
+    def __init__(self, cooldata=None):
+        if not cooldata:
+            self.reason = _('Need an arg to display.')
+            return
+	
+	if not os.path.isfile(cooldata):
+	    self.reason = _('%s does not exist.') % cooldata
+            return
+
+	self.importantData = cooldata
+
+        # init the plugin
+        plugin.MainMenuPlugin.__init__(self)
+
+    def items(self, parent):
+            return [ CoolMainMenuItem(parent, self.importantData) ]
+	                                                                                    
+
+
+      </PRE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x153.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x200.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>DaemonPlugin</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c145.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>ItemPlugin</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

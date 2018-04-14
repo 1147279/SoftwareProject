@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>TroubleShooting - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/TroubleShooting?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/TroubleShooting?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">TroubleShooting</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>When troubleshooting there are a few steps you need to follow to make your life reposting an issue, and our life trying to resolve the issue, easier. </p>
+
+<h2 id="head-f908b6b66657b3f1a7cb4763e2e7e7850484fb9d">Step 0</h2>
+
+<p>Check this Wiki, the <a href="FAQ.html">FAQ</a> and the archives of the mailing lists, maybe you find any hints. </p>
+
+<h2 id="head-3b668a582fb6733752d8890025b5b2428172fd47">Step 1</h2>
+
+<p>Produce more debug information. Add this lines to <em>local_conf.py </em>: 
+</p>
+<pre>
+DEBUG=1 
+CHILDAPP_DEBUG = 1
+</pre>
+<p>Then restart Freevo! This will turn on verbose output of most of the plugins. Warning: you'll get more info than you need, but more is better than less... </p>
+<p>Freevo's logging output will be saved in <tt>/var/log/freevo/main-X.log&nbsp;</tt>, where X is the uid of the user, who runs freevo. Moreover the <tt>stdout&nbsp;</tt> and <tt>stderr&nbsp;</tt> of every application freevo launches will be saved in correspondent files in <tt>/var/log/freevo&nbsp;</tt>. If freevo doesn't have access to <tt>/var/log/freevo</tt> then you will find the log files in <tt>/tmp/freevo</tt>. You can create the <tt>/var/log/freevo</tt> directory manually if it wasn't created when you installed freevo to stop freevo saving the log files in the <tt>/tmp/freevo</tt> dir. The problem with the log files in <tt>/tmp&nbsp;</tt> is, that everything there is usually deleted when you shutdown your system. </p>
+
+<h2 id="head-80df5b3d1a855d5fa1af2e3611ed71c4fce37313">Step 2</h2>
+
+<p>Use the menu to try whatever it is you are trouble shooting, then scroll through the log files for some information on what happens in the background. </p>
+
+<h3 id="head-034ac028ada1912821a0649c786f91eb3b3aa831">Recordserver</h3>
+
+<p>Check the log file: 
+</p>
+<pre>
+/var/log/freevo/recordserver-0.log
+</pre>
+<p>Try the command you find. Does it run? If so then maybe you have a permissions issue. Freevo 1.5.X can be running as any user you specify and thus that user needs the permissions set for recording device access and of course for the directories the recording should be saved. </p>
+
+<h3 id="head-3d923d54973871ddb9797c02f8a119e1d7f013ab">Other Applications</h3>
+
+<p>Check the output files of freevo's childapplications. For example: 
+</p>
+<pre>
+/var/log/freevo/mplayer-stdout.log
+/var/log/freevo/mplayer-strerr.log
+</pre>
+<p>Maybe you find a hint. Maybe it is something as wrong/unknown options.  As above, try the command freevo runs. Does it work? If so, try it as the freevo user. If not, there's your issue.. </p>
+<p>An example: sometimes DVDs ripped to DivX by mencoder cannot be played by freevo. They can be played by mplayer directly, however. Looking in <em>local_conf.py</em> we see that the "-idx" option is specified with mplayer when it runs .avi files. Normally this is unnecessary, because its purpose is to rebuild broken avi indexes and most avi files don't need this. Usually it does no harm, but with the mencoded files in question it causes a bunch of error messages and mplayer quits. The fix is simply to remove the "-idx" from the mplayer options in <em>local_conf.py</em>. </p>
+
+<h2 id="head-485508ed7cb99a81fb03c9005377ccab4372a8e7">Step 3</h2>
+
+<p>If you still can't find the cause of the issue, post a query to the <a class="external" href="http://sourceforge.net/mail/?group_id=46652"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> mailing list</a>. Please include the relevant settings in your <em>local_conf.py</em> <strong>and</strong> the relevant log file output.  </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-05-08 15:28:22 by <span title="p5083291B.dip0.t-ipconnect.de">DominikRoettsches</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/TroubleShooting">http://freevo.sourceforge.net/cgi-bin/doc/TroubleShooting</a></p>
+</div> <!-- end page -->
+</body>
+</html>

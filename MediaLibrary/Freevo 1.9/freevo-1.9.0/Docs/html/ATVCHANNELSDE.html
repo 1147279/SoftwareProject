@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>ATVCHANNELSDE - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/ATVCHANNELSDE?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/ATVCHANNELSDE?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">ATVCHANNELSDE</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>Hier ist ein TV_CHANNELS Abschnitt aus meiner <em>local_conf.py</em>  (this is the channels section from my <em>local_conf.py</em>). </p>
+
+<pre>
+# germany - iesy.tv channels
+TV_CHANNELS = [ (  ''                   ,   ''                  ,  ''        ),
+                (  'ard.de'             ,   'ARD'               ,  'E5'      ),
+                (  'zdf.de'             ,   'ZDF'               ,  'E7'      ),
+                (  'rtl.de'             ,   'RTL'               ,  'E10'     ),
+                (  'rtl2.de'            ,   'RTL 2'             ,  'S7'      ),
+                (  'sat1.de'            ,   'SAT.1'             ,  'E9'      ),
+                (  'vox.de'             ,   'VOX'               ,  'S10'     ),
+                (  'prosieben.de'       ,   'PRO 7'             ,  'E11'     ),
+                (  'kabel1.de'          ,   'KABEL 1'           ,  'S18'     ),
+                (  'C3sat.de'           ,   '3SAT'              ,  'E12'     ),
+                (  'arte-tv.com'        ,   'ARTE'              ,  'S4'      ),
+                (  'eurosport.de'       ,   'Eurosport'         ,  'S11'     ),
+                (  'dsf.com'            ,   'DSF'               ,  'S12'     ),
+                (  'ndr.de'             ,   'NDR'               ,  'E8'      ),
+                (  'mdr.de'             ,   'MDR'               ,  'S20'     ),
+                (  'hr-online.de'       ,   'HESSEN'            ,  'E6'      ),
+                (  'wdr.de'             ,   'WDR'               ,  'S16'     ),
+                (  'swr.de'             ,   'SW III'            ,  'S5'      ),
+                (  'C3.br-online.de'    ,   'BAYERN'            ,  'S6'      ),
+                (  'superrtl.de'        ,   'Super RTL'         ,  'S19'     ),
+                (  'neunlive.de'        ,   '9 LIVE'            ,  'S21'     ),
+                (  'phoenix.de'         ,   'PHOENIX'           ,  'S8'      ),
+                (  'n-tv.de'            ,   'N-TV'              ,  'S9'      ),
+                (  'n24.de'             ,   'N24'               ,  'S24'     ),
+                (  'nbc.com'            ,   'NBC'               ,  'S22'     ),
+                (  ''                   ,   'bloomberg'         ,  'S25'     ),
+                (  ''                   ,   'hse24'             ,  'S35'     ),
+                (  'tv%205.tvtoday.de'  ,   'TV 5'              ,  'S13'     ),
+                (  'bbcworld.com'       ,   'BBC World'         ,  'S22'     ),
+                (  'viva.tv'            ,   'VIVA'              ,  'S15'     ),
+                (  'mtv.de'             ,   'MTV'               ,  'S17'     ),
+                (  'mtv2.de'            ,   'MTV2'              ,  'S14'     )
+              ]
+</pre>
+<ul>
+<li style="list-style-type:none"><p>have phun ! </p>
+</li>
+</ul>
+<p>Hier ist meine (Baden-Württemberg, <strong>KabelBW</strong>) </p>
+
+<pre>
+TV_CHANNELS = [ ('CNI0DC1', 'ARD',                     'E2'),
+                ('CNI0DC2', 'ZDF',                     'E4'),
+                ('CNI0DE0', 'SW 3 Baden-Wuerttemberg', 'E8'),
+                ('CNI0DCF', 'Hessen 3 Landesweit',     'E5'),
+                ('CNI0DE6', 'WDR-3 Landesweit', 'SE12'),
+                ('CNI0DC9', 'KI.KA', 'SE5', ('1234567','0600','2059')),
+                ('CNI0DD4', 'NDR',   'SE5', ('1234567','2100','2359'),
+                                            ('1234567','0000','0559')),
+                ('CNI0DCB', 'BR-3 Landesweit', 'SE11'),
+                ('CNI0D94', 'PRO 7',            'SE17'),
+                ('CNI0DB9', 'SAT 1',            'E9'),
+                ('CNI0D92', 'Kabel 1',  'SE7'),
+                ('CNI0D8E', 'VOX',              'SE8'),
+                ('CNI0DAB', 'RTL',              'E10', ('67','0000','2359'),
+                                                       ('12345','1830','2359'),
+                                                       ('12345','0000','1759')),
+                ('08',      'RNF LIFE',         'E10', ('12345','1800','1829')),
+                ('CNI0D8F', 'RTL 2',            'SE10'),
+                ('CNI0D8A', 'Super RTL',        'SE16'),
+                ('CNI0DC7', '3sat',             'E11'),
+                ('CNI0D85', 'ARTE',             'SE6', ('1234567','1400','2359'),
+                                                       ('1234567','0000','0259')),
+                ('10',      'Euronews',         'SE6', ('1234567','0300','1359')),
+                ('CNI4D54', 'MTV',      'SE18'),
+                ('CNI0D88', 'VIVA',             'E12'),
+                ('CNI0D8C', 'n-tv',             'E7'),
+                ('CNI0D8D', 'Deutsches Sportfernsehen', 'SE13'),
+                ('CNI0DBA', 'Neun Live',        'SE14'),
+                ('CNI0DC8', 'Phoenix',  'E6'),
+                ('CNI0D91', 'Eurosport',        'SE15'),
+                ('17', 'CNN', 'SE9'),
+                ('CNIF500', 'TV5',      'S22'),
+                ('28', 'RNF Plus',      'SE20'),
+                ('CNI2F03', 'France 3',         'E3'),
+                ('12', 'VIVA Plus',         'S23'),
+                ('34', 'QVC', 'S35'),
+                ('29', 'NBC Europe',    'S21'),
+                ('32', 'SonnenklarTV',  'S24'),
+                ('33', 'HSE24', 'SE19'),
+                ('CNI0D7A', 'N24',      'SE4'),
+                ('CNI0DFE', 'mdr',  'S25', ('1234567','0500','1859')),     
+                ('36',      'CNBC', 'S25', ('1234567','1900','2359'),
+                                           ('1234567','0000','0459')),     
+                ('35', 'KabelBW',               'S40')]
+</pre>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-04-16 19:18:55 by <span title="pD9F78CE5.dip0.t-ipconnect.de">ThorstenPferdekaemper</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/ATVCHANNELSDE">http://freevo.sourceforge.net/cgi-bin/doc/ATVCHANNELSDE</a></p>
+</div> <!-- end page -->
+</body>
+</html>

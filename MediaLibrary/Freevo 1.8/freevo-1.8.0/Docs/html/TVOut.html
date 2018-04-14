@@ -1,0 +1,228 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>TVOut - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/TVOut?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/TVOut?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">TVOut</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>Have a look on <a class="external" href="http://freevo.sourceforge.netHardware.html"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> Supported Hardware</a> to find some information on how to set up graphic cards for TV-Out. There are guides and tips for several models. </p>
+<p>A good resolution is 800x600 and common values are: </p>
+<ul>
+<li style="list-style-type:none"><div>
+<table>
+<tr>
+<td>
+<p>HorizSync 30-50</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>VertRefresh 60</p>
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+<p>Unfortunately with TV-Out there is often a black border around the picture, so that not the whole TV-screen is used. A possible solution is 'overscan'. (There are special tools to set that up ) You can set the picture to a size slightly bigger than the visible screen, and get rid of those black borders. But then freevo's OSD might not fit into the visible part. </p>
+<p>To correct that effect you can use OSD_OVERSCAN_X and OSD_OVERSCAN_Y in "local_conf.py". You can shrink freevo's OSD to a size which fits perfectly into the visible part of your screen. Just play a little with those values until you have a satisfying result. </p>
+<p>If it is necessary to call some programs or scripts for configuring the TV-Out, while freevo is already running, you can use OSD_SDL_EXEC_AFTER_STARTUP. For example I need to call nvtv -t -r 800,600 -s Huge -S PAL, to configure the TV-Out of my nvidia card.  </p>
+<p>Another solution with Nvidias ClosedSourceDriver: </p>
+<p>If you are using Nvidia´s closed source driver with X11 and your video card does not support overscan it happens there is a black border around the picture. You can tweak freevo to fit the whole TV´s screen this way: </p>
+<p>(This is taken from my setup. PAL TV and a Geforce2 MX400) </p>
+<p>XF86Config: </p>
+<hr class="hr6">
+<p> 
+</p>
+<pre>
+# Monitor
+Section "Monitor"
+  Identifier   "Monitor[0]"
+  ModelName    "4311U"
+  VendorName   "iiyama --&gt; LCD"
+  HorizSync    24.8-80
+  VertRefresh  56-85
+  Option       "dpms"
+EndSection
+
+# Fernseher
+Section "Monitor"
+  Identifier   "Monitor[1]"
+        ModelName    "TV-PAL"
+        HorizSync    24.0 - 80.0
+        VertRefresh  50.0 - 75.0
+        Option      "nodpms"
+        Option      "noddc"
+# Set for 4:3 display
+#       DisplaySize     300 225
+# Set for 16:9 display
+#       DisplaySize     400 225
+
+        #Refresh Rate 60Hz
+        ModeLine "720x480" 26.7 720 736 808 896 480 481 484 497
+        ModeLine "720x576" 32.7 720 744 816 912 576 577 580 597
+        Modeline "768x576"  31.24 768 824 904 1016  576 577 580 615
+        ModeLine "848x480" 31.5 848 864 952 1056 480 481 484 497
+        ModeLine "856x480" 31.7 856 872 960 1064 480 481 484 497
+        ModeLine "1024x512" 41.3 1024 1056 1160 1296 512 513 516 531
+        ModeLine "1280x768" 80.1 1280 1344 1480 1680 768 769 772 795
+        ModeLine "1440x1050" 126.2 1440 1536 1688 1936 1050 1051 1054 1087
+
+        #Refresh Rate 75Hz
+#       ModeLine "720x480" 34.9 720 752 824 928 480 481 484 502
+#       ModeLine "720x576" 42.6 720 760 832 944 576 577 580 602
+#       ModeLine "848x480" 41.0 848 880 968 1088 480 481 484 502
+#       ModeLine "856x480" 41.3 856 888 976 1096 480 481 484 502
+#       ModeLine "1024x512" 53.3 1024 1072 1176 1328 512 513 516 535
+#       ModeLine "1280x768" 103.0 1280 1360 1496 1712 768 769 772 802
+#       ModeLine "1440x1050" 160.0 1440 1536 1696 1952 1050 1051 1054 1096
+
+        #Refresh Rate 85Hz
+#       ModeLine "1280x768" 118.5 1280 1368 1504 1728 768 769 772 807
+#       ModeLine "1440x1050" 184.5 1440 1544 1704 1968 1050 1051 1054 1103
+#       ModeLine "848x480" 47.4 848 888 976 1104 480 481 484 505
+EndSection
+
+Section "Screen"
+  DefaultDepth 24
+        SubSection "Display"
+                Viewport   0 0
+                Depth     24
+#               Modes    "1280x1024" "1280x960" "1152x864" "1024x768""800x600" "640x480"
+#               Modes    "800x600"
+               Modes    "720x576"
+#                Modes    "768x576"
+        EndSubSection
+  Device       "Device[0]"
+  Identifier   "VGA"
+  Monitor      "Monitor[0]"
+EndSection
+
+Section "Screen"
+  DefaultDepth 24
+        SubSection "Display"
+                Viewport   0 0
+                Depth     24
+#               Modes    "1280x1024" "1280x960" "1152x864" "1024x768" "800x600" "640x480"
+#               Modes    "800x600"
+               Modes    "720x576"
+#                Modes    "768x576"
+        EndSubSection
+  Device       "Device[1]"
+  Identifier   "TV"
+  Monitor      "Monitor[1]"
+EndSection
+
+# TV out
+Section "Device"
+  BoardName    "GeForce-2"
+#  BusID        "1:5:0"
+  Driver       "nvidia"
+  Identifier   "Device[1]"
+  Screen       0
+  VendorName   "Nvidia"
+  Option        "UseEdidFreqs"     "0"
+  Option        "IgnoreEdid"       "1"
+  Option        "GenerateRTList"   "0"
+  Option        "NoLogo"        "on"
+  Option        "DigitalVibrance" "120"
+  Option        "RenderAccel" "on"
+  Option        "CursorShadow"  "off"
+  Option        "CursorShadowAlpha"     "32"
+  Option        "CursorShadowXOffset"   "2"
+  Option        "CursorShadowYOffset"   "2"
+  Option        "TVOutFormat"           "COMPOSITE"
+  Option        "TVStandard"            "PAL-B"
+  Option        "ConnectedMonitor"      "TV"
+  Option        "TVOverScan"            "0.9"
+EndSection
+
+# VGA out
+Section "Device"
+  BoardName    "GeForce-2"
+#  BusID        "1:5:0"
+  Driver       "nvidia"
+  Identifier   "Device[0]"
+  Screen       0
+  VendorName   "Nvidia"
+  Option        "NoLogo"        "on"
+  Option        "CursorShadow"  "on"
+  Option        "CursorShadowAlpha"     "32"
+  Option        "CursorShadowXOffset"   "2"
+  Option        "CursorShadowYOffset"   "2"
+EndSection
+
+Section "ServerLayout"
+  Identifier   "Layout[all]"
+  InputDevice  "Keyboard0" "CoreKeyboard"
+  InputDevice  "Mouse0" "CorePointer"
+  Screen       "TV"
+  Option "blank time"    "254"
+  Option "off time"      "254"
+#  Option       "Clone" "off"
+#  Option       "Xinerama" "off"
+EndSection
+</pre>
+<hr class="hr6">
+<p> </p>
+<p>This gives me a bit too large image on my TV. Now I use Freevo´s OVERSCAN_[X|Y] feature to center the OSD (in /etc/freevo/local_config.py): 
+</p>
+<pre>
+OSD_OVERSCAN_X = 45
+OSD_OVERSCAN_Y = 35
+</pre>
+<p>(this cuts the OSD area by 45 pixels left and right and 35 pixel from top and bottom.) </p>
+<p>The Freevo menu is now centered. Now its time for xine (my DVD player) (in /etc/freevo/local_config.py): 
+</p>
+<pre>
+XINE_COMMAND = '%s --hide-gui -pq -g -B --geometry %sx%s+30+45 --no-splash' % \
+                 (CONF.xine, CONF.width-30, CONF.height-45)
+</pre>
+<p>As you can see I added the 30 and 45 pixels to the offset (--geometry %sx%s+30+45) where the xine window should be placed and restricted the display area to the screensize decremented by the OVERSCAN_[X|Y] values.  </p>
+<p>Voilà! Xine plays really nice now <img src="modern/img/smile.png" alt=":)" height="15" width="15"> </p>
+<p>Whats left is to configure mplayer like xine. </p>
+<p>Unfortunatly I was unable to get this working. It seems mplayer does not honor my "-geometry" settings like xine does. If somebody figured this out please add it here. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-01-14 11:21:16 by <span title="INODEB251.kfunigraz.ac.at">ThomasZangl</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/TVOut">http://freevo.sourceforge.net/cgi-bin/doc/TVOut</a></p>
+</div> <!-- end page -->
+</body>
+</html>

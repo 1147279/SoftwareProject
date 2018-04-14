@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>AudioUsage - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/AudioUsage?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/AudioUsage?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">AudioUsage</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>Site Index: </p>
+<ol>
+
+<li>
+<a href="#head-e4ad4bba64292b30866af144e77f4e779dfcc98a">General</a>
+</li>
+
+<li>
+<a href="#head-71c99c5952687bfe0b936d3fdde7287a0b5815b8">Playlists</a>
+</li>
+
+<li>
+<a href="#head-3469044baeae1c807412f254becb9aaa097fc93c">Streaming</a>
+</li>
+
+<li>
+<a href="#head-34dc5017765785062d994b1a762cbdbb1003b2bd">BINS Compatibility</a>
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-e4ad4bba64292b30866af144e77f4e779dfcc98a">General</h2>
+
+<p>The main menu item Listen to Music contains all which is associated with music. You find your music directories here (as defined in local_conf.py, see <a href="AudioConfig.html">AudioConfig</a>) and your cd drives. If you have activated additional audio plugins you may also find special menu items for them. </p>
+<p>You can navigate in the usual way through folders to get to your music files (MP3 and Ogg Vorbis). Freevo uses the id3tags to determine which information it should display for your music files. In addition to artist, title and length, the album and the year are displayed if the information is available.  </p>
+<p>When you press SELECT or PLAY on a song, freevo starts playing that file. You can stop the song with STOP or with EXIT. Moreover there are the following commands available: PAUSE, REW, FFWD. While playing music, LEFT has the same effect as REW and RIGHT the same as FFWD.  </p>
+<p>For customisation of the music directories like displaying covers of songs or albums see <a href="AudioConfig.html">AudioConfig</a>. </p>
+
+<h2 id="head-71c99c5952687bfe0b936d3fdde7287a0b5815b8">Playlists</h2>
+
+<p>Freevo can treat the whole directory as a implicit playlist. When one song is over, Freevo will continue on with the next song. If you do not want that, you should remove 'audio' from the list DIRECTORY_CREATE_PLAYLIST in <em>local_conf.py</em>. Freevo can also play all titles in the directory randomly. If there are subdirectories it can create a second playlist, which in addition contains all songs of the subdirectories. This list also could be played randomly. You can get these playlists by pressing ENTER when you have selected a folder. You can even have an extra item in your directories for the random playlist, just set DIRECTORY_ADD_RANDOM_PLAYLIST to '1' in your <em>local_conf.py</em>. </p>
+<p>Moreover the variable DIRECTORY_ADD_PLAYLIST_FILES determines, whether any other playlist files that freevo finds in a directory should be displayed, or not. Playlists should have the extension 'm3u'. (see PLAYLIST_SUFFIX in local_conf.py) </p>
+<p>While freevo is playing a playlist, you can skip to the next song with DOWN or go back to the last song with UP. </p>
+<p>There is a plugin which allows you to manually create playlists with freevo. Consult the documentation on  audio plugins. </p>
+
+<h2 id="head-3469044baeae1c807412f254becb9aaa097fc93c">Streaming</h2>
+
+<p>It is possible to use external audio sources with freevo, for example web radio. If you are interested in that, have a look at <a href="AudioFxd.html">Audio FXD Files</a>. </p>
+
+<h2 id="head-34dc5017765785062d994b1a762cbdbb1003b2bd">BINS Compatibility</h2>
+
+<p>If you use <a class="external" href="http://bins.sautret.org/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> BINS</a> to store album artwork, Freevo will look for and automatically pick up a BINS-compatible album.xml file in each music folder. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-01-05 11:47:17 by <span title="mail.gcd.ie">JohnMolohan</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/AudioUsage">http://freevo.sourceforge.net/cgi-bin/doc/AudioUsage</a></p>
+</div> <!-- end page -->
+</body>
+</html>

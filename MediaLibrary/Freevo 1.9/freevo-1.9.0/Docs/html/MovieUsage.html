@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>MovieUsage - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/MovieUsage?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/MovieUsage?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">MovieUsage</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>Site Index: </p>
+<ol>
+
+<li>
+<a href="#head-e037812467fe62e4e010e065b5749d77c801926f">General</a>
+</li>
+
+<li>
+<a href="#head-5bbf38a50769783e7b8841ac14849773e3d8deeb">Movie images</a>
+</li>
+
+<li>
+<a href="#head-93d1eddfa7cd33d811d2758d8b2f1b3018274cd3">FXD files for movies</a>
+</li>
+
+</ol>
+<p> </p>
+
+<h3 id="head-e037812467fe62e4e010e065b5749d77c801926f">General</h3>
+
+<p>The main menu item Watch A Movie contains all which is associated with movies. You find your movie directories here (as defined in local_conf.py, see <a href="MovieConfig.html">MovieConfig</a>) and your cd/dvd drives.  </p>
+<p>Freevo shows all you rom drives in the MOVIE MAIN MENU (set the variable ROM_DRIVES in the config file if the auto detection doesn't work). You don't need to mount the disc, freevo will automatically mount and umount the drive. After you insert a new disc, the MAIN MENU will update. You have complete control over your drive, the EJECT button on the drive should work all the time, except when you play a file from the disc and when you browse the disc with freevo. </p>
+<p>You can use mplayer or xine for watching movies. Both players support a variety of codecs. You can give freevo lists which kind of files should be played by mplayer and which by xine, see <a href="MovieConfig.html">MovieConfig</a>.  </p>
+<p>The big advantage of xine is that it supports the menus which are on DVDs. If you use xine for DVDs, selecting a DVD will start the main movie. Pressing MENU should show the dvd menu, and pressing GUIDE should show the chapter menu. You can navigate in this menu with LEFT, RIGHT, UP, DOWN and SELECT. The language is changed by the LANG button and the subtitle by the SUBTITLE button. See <a href="KeyMaps.html">KeyMaps</a> </p>
+
+<h3 id="head-5bbf38a50769783e7b8841ac14849773e3d8deeb">Movie images</h3>
+
+<p>You can drop a JPEG or PNG image file with the same basename as the movie into the folder and this image will be used for this movie. </p>
+<p>Example: movie.png will be used for movie.avi </p>
+<p>There is also a generic way for images of tv shows. Recordings for tv shows have a common name scheme. If you drop an image with the name of the show into the tv show image directory, this image will be taken. The name of the image _must_ be lower case. You can specify a directory for tv show images in freevo_config.py, the default is 
+</p>
+<pre>
+TV_SHOW_DATA_DIR = "tv-show-images/"
+</pre>
+<p>Example: if you have tv-show-images/show.png, this image will be used for "Show 2x10 - A cool episode.avi" </p>
+
+<h3 id="head-93d1eddfa7cd33d811d2758d8b2f1b3018274cd3">FXD files for movies</h3>
+
+<p>A more complex way is the FXD support for movies. The FXD file is a special XML file that contains a link to a movie.  The movie can be on your hard disk, on CD-ROM or even a DVD or (S)VCD. The FXD file contains the title, the image and a list of files.  FXD files can also be used to define alternate audio tracks or to string together the pieces of a movie that spans multiple media files.  You can use imdb.py in freevos helpers directory to create these FXD files. </p>
+<p>If you store the id of the DVD/VCD/SVCD/CD in the FXD file (use --add-id as parameter for imdb.py). Freevo will display the title and the image in the MOVIE MENU menu when you insert the disc. The FXD files for this feature are searched in DIR_MOVIES and in MOVIE_DATA_DIR. </p>
+<p>See <a href="MovieFxd.html">MovieFxd</a> for more detail and some examples. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-01-05 11:44:21 by <span title="mail.gcd.ie">JohnMolohan</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/MovieUsage">http://freevo.sourceforge.net/cgi-bin/doc/MovieUsage</a></p>
+</div> <!-- end page -->
+</body>
+</html>

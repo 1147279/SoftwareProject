@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>GeneralPlugins/Icecast - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="../modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="../modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="../modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/GeneralPlugins/Icecast?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/GeneralPlugins/Icecast?action=print">
+<link rel="Up" href="/cgi-bin/doc/GeneralPlugins">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="../Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">GeneralPlugins/Icecast</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>Which icecast should i get? </p>
+<p>If you have mp3's for right now i believe you need to get ices-0.2.3.tar.gz. I believe you can use this with the icecast cvs server but not sure. I still use icecast-1.3.12.tar.gz with my copy of ices. Otherwise if you have completely shifted to Ogg Vorbs then you can use all the cvs version of icecast2 from <a href="http://www.xiph.org/cvs.html"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.xiph.org/cvs.html</a>. </p>
+<p>OK how do I install? </p>
+<ol type="1">
+<li><p>first download and install the ices and icecast versions you need. </p>
+</li>
+<li class="gap"><p>edit your /usr/local/icecast/conf/icecast.conf </p>
+<ul>
+<li><p> reduce the max clients to 5 </p>
+</li>
+<li><p> change the encoder_password, admin_password, and oper_password </p>
+</li>
+<li><p> comment out touch_freq. i don't publicize my server. </p>
+</li>
+<li><p> set the server_name </p>
+</li>
+<li><p> set reverse_lookups 0 (an internal network no dns ) </p>
+</li>
+<li><p> set console mode to 2 (we don't want to background and don't want an open terminal there) </p>
+</li>
+</ul>
+</li>
+<li class="gap"><p>then use the mounts.aut, users.aut and groups.aut so that i can control access to the admin interface. (otherwise it is open for anyone to change) </p>
+</li>
+<li class="gap"><p>add the following into your local_conf.py (making path changes where needed): </p>
+</li>
+</ol>
+<ul>
+<li style="list-style-type:none">
+<pre>
+ plugin.activate('icecast')
+
+ ICECAST_WWW_PAGE = 1
+ ICECAST_CMD = '/usr/local/icecast/bin/icecast'
+ ICECAST_CONF_DIR = '/usr/local/icecast/conf'
+ ICES_CMD = '/usr/local/icecast/bin/ices'
+ ICES_OPTIONS = [ '-d', 'FreevoIcecast',
+                  '-g', 'Rock',
+                  '-m', '/freevo',
+                  '-n', 'Freevo_Music_Collection',
+                  '-P', 'hackme',
+                  '-s',
+                  '-r' ]
+ ICES_DEF_LIST = '/usr/local/freevo_data/Music/ROCK/mymix.m3u'
+ </pre>
+<p>  </p>
+</li>
+</ul>
+<p>You should then be able to hear music! an example m3u list to use to connect to your icecast server using xmms (change the ip to the one for your freevo box). </p>
+<ul>
+<li style="list-style-type:none">
+<pre>
+ #EXTM3U
+ #EXTINF:-1,Freevo_Music_Collection
+ </pre>
+</li>
+</ul>
+<p>Are there any special things i should know? </p>
+<p>I have an implicit -F &lt;playlist&gt; at the end of ICES_OPTIONS and we have an implicit -d ICECAST_CONF_DIR at the end of the icecast invocation. These may not work with icecast2 but i haven't tried them yet. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-01-10 18:10:29 by <span title="209.11-201-80.adsl.skynet.be">BHeremans</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/GeneralPlugins/Icecast">http://freevo.sourceforge.net/cgi-bin/doc/GeneralPlugins/Icecast</a></p>
+</div> <!-- end page -->
+</body>
+</html>

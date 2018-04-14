@@ -1,0 +1,225 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Which files to Import</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Freevo Plugin Writing HOWTO"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Notes for writing a plugin"
+HREF="c223.html"><LINK
+REL="PREVIOUS"
+TITLE="Documenting the Plugin"
+HREF="x232.html"><LINK
+REL="NEXT"
+TITLE="User Configuartion"
+HREF="x276.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Freevo Plugin Writing HOWTO: Writing your own plugins for Freevo</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x232.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 4. Notes for writing a plugin</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x276.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN245"
+>4.3. Which files to Import</A
+></H1
+><P
+>	You will need to import other parts of Freevo do make your plugin
+	work. Most common are the following modules:
+      </P
+><P
+>	<DIV
+CLASS="TABLE"
+><A
+NAME="AEN249"
+></A
+><P
+><B
+>Table 4-1. Module list</B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><TBODY
+><TR
+><TD
+>config</TD
+><TD
+>Basic configuration of Freevo. This also contains the
+		  settings from <TT
+CLASS="FILENAME"
+>local_conf.py</TT
+>.</TD
+></TR
+><TR
+><TD
+>plugin</TD
+><TD
+>This contains all basic classes and functions for the
+		  plugin interface.</TD
+></TR
+><TR
+><TD
+>event</TD
+><TD
+>Some pre-defined events and the class
+		  <CODE
+CLASS="VARNAME"
+>Event</CODE
+>to build your own events.</TD
+></TR
+><TR
+><TD
+>menu</TD
+><TD
+>Contains the class <CODE
+CLASS="FUNCTION"
+>Menu</CODE
+> to create
+		  menus for the plugin. This module also conatins
+		  <CODE
+CLASS="FUNCTION"
+>MenuItem</CODE
+>, a pre-defined item to put in
+		  a menu</TD
+></TR
+><TR
+><TD
+>item</TD
+><TD
+>This module contains the basic
+		  <CODE
+CLASS="FUNCTION"
+>Item</CODE
+> class to put into a menu.</TD
+></TR
+><TR
+><TD
+>rc</TD
+><TD
+>Functions for putting an event into the event queue</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+>
+      </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x232.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x276.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Documenting the Plugin</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c223.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>User Configuartion</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

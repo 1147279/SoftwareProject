@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>Hardware/MicrosoftMediaCenterUSBRemote - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="../modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="../modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="../modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/Hardware/MicrosoftMediaCenterUSBRemote?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/Hardware/MicrosoftMediaCenterUSBRemote?action=print">
+<link rel="Up" href="/cgi-bin/doc/Hardware">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="../Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">Hardware/MicrosoftMediaCenterUSBRemote</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h2 id="head-82fbe6aa13c4b500d48a620589dd809143b90d75">Microsoft Media Center Usb Remote Control</h2>
+
+<p>Altough this remote has been branded with the mark of the beast, it's a very usefull device for creating a media center pc. </p>
+<p>First: verify if the usb identity of the device matches the ID below. In case of a older version, the mceusb already availble through lirc-0.7.1 should work. </p>
+<pre>
+[root@freevo ~]# lsusb 
+Bus 003 Device 002: ID 0471:0815 Philips</pre>
+<p>I use Fedora Core 4 with a lirc-0.7.1 version on board </p>
+<pre>
+[root@freevo ~]# rpm -q lirc 
+lirc-0.7.1-3</pre>
+<p>Everything you need to install </p>
+<p><a href="http://blatter.com/mceusb/"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://blatter.com/mceusb/</a> </p>
+<p>You need either to modify /etc/init.d/lirc to start up the device /dev/lirc0 or make a link from /dev/lirc to /dev/lirc0 </p>
+<p>You could use irw to check the keys pressed and modify /etc/freevo/lircrc </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-07-18 14:14:08 by <span title="uu194-7-26-14.unknown.uunet.be">GeertDecorte</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/Hardware/MicrosoftMediaCenterUSBRemote">http://freevo.sourceforge.net/cgi-bin/doc/Hardware/MicrosoftMediaCenterUSBRemote</a></p>
+</div> <!-- end page -->
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>XMLTVUS - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/XMLTVUS?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/XMLTVUS?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">XMLTVUS</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h3 id="head-b8fd255d382331cb79e5cf40591ae47af7fb5be8">North American listings</h3>
+
+<p>In order to use XMLTV for North America, you will need to create a Zap2It Data Direct). </p>
+<p>Once you have your Data Direct account, you will need to create a "channel lineup" within it (via the Zap2It web interface).  This lineup describes the channels which will be included in your XMLTV downloads.  They are normally defined by specifying your zip/postal code and then choosing your service provider (e.g. a cable company). </p>
+<p>Because the provider of North American listings has recently stopped providing stop time data, an extra step is required to guess the stop times if you are a user of the <em>tv_grab_na</em> tool. The simplest way to fix it is to re-process the guide with <em>tv_sort</em>, which will fix the broken listings. (<em>tv_sort</em> is included with xmltv, so you shouldn't need to install anything). </p>
+
+<pre>
+#!/bin/sh
+
+todayis=`date +%Y%m%d`
+/usr/bin/tv_grab_na --days 1 | tv_sort &gt; $HOME/freevo/xmltv/listings_$todayis.xml
+rm -f /tmp/TV.xml
+ln -s $HOME/freevo/xmltv/listings_$todayis.xml /tmp/TV.xml
+</pre>
+<p>(This recipe seems to be outdated now (or does Data Direct suffer the same problem)? It's cleaner than the generic download script at the top of the section, anyway, and runs once you add _dd to the command-name.  Should also note that this script assumes (AFAICS) you will be running as the freevo user (or at least someone to whose $HOME directory every other user has access)). </p>
+<p>Upgrading Notes: </p>
+<ul>
+<li style="list-style-type:none"><p>XMLTV 0.5.32 is out tv_grab_na_dd from version 0.5.31 was a preview release 0.5.32 has different arguments. zap2it has notified XMLTV developers that changes to their site in mid may 2004 will break tv_grab_na. </p>
+<p>XMLTV will discontinue tv_grab_na in further releases in favor of tv_grab_na_dd. </p>
+<p>UPDATE Apr 2/04 from XMLTV website: The latest version is 0.5.31. This fixes some grabber problems with the changeover from winter to summer time in many countries, and <strong>adds a new grabber tv_grab_na_dd for US and Canadian listings</strong> using the Zap2it Data Direct service. (Sign up using certificate code TGYM-ZKOC-BUTV). It also has some other fixes in various grabbers and tv_check </p>
+<p>TIP: Upgrade to XMLTV 5.23 or higher as earlier versions will now give you an error similar to "check your postal code/zip code" </p>
+</li>
+</ul>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-01-25 12:12:34 by <span title="83.141.77.130">JohnMolohan</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/XMLTVUS">http://freevo.sourceforge.net/cgi-bin/doc/XMLTVUS</a></p>
+</div> <!-- end page -->
+</body>
+</html>

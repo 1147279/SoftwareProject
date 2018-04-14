@@ -1,0 +1,2744 @@
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-gui (pythonFiles.usb)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-gui (pythonFiles.mediainfo)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.flickr)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-event (pythonFiles.ivtv_record)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-gui (pythonFiles.lastfm)
+
+      \-item (pythonFiles.lastfm)
+
+      \-menu (pythonFiles.lastfm)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-area (pythonFiles.tvlisting_area)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.youtube)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-tv (pythonFiles.config)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.xmradio)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-gui (pythonFiles.upsoon)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-gui (pythonFiles.videoitem)
+
+      \-item (pythonFiles.videoitem)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-gui (pythonFiles.dvdimage)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-gui (pythonFiles.transcode)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-event (pythonFiles.rc)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-distutils (pythonFiles.setup)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-gui (pythonFiles.encoding)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.imageitem)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.remind)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-area (pythonFiles.textentry_area)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.playlist)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.gphoto)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.scheduled_recordings)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-evfallback (pythonFiles.evdev)
+
+      \-linuxevent (pythonFiles.evdev)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-base (pythonFiles.transition)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.headlines)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-directory (pythonFiles.musicip)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.cinemovies_trailers)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-gui (pythonFiles.shutdown)
+
+      \-item (pythonFiles.shutdown)
+
+      \-plugin (pythonFiles.shutdown)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-Container (pythonFiles.Progressbar)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-directory (pythonFiles.recordings_manager)
+
+      \-gui (pythonFiles.recordings_manager)
+
+      \-item (pythonFiles.recordings_manager)
+
+      \-menu (pythonFiles.recordings_manager)
+
+      \-playlist (pythonFiles.recordings_manager)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-Border (pythonFiles.Container)
+
+      \-Color (pythonFiles.Container)
+
+      \-GUIObject (pythonFiles.Container)
+
+      \-LayoutManagers (pythonFiles.Container)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-encodingcore (pythonFiles.encodingserver)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-gui (pythonFiles.vpodcast)
+
+      \-item (pythonFiles.vpodcast)
+
+      \-menu (pythonFiles.vpodcast)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-event (pythonFiles.plugin)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-audioitem (pythonFiles.audiodiskitem)
+
+      \-directory (pythonFiles.audiodiskitem)
+
+      \-item (pythonFiles.audiodiskitem)
+
+      \-playlist (pythonFiles.audiodiskitem)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-gui (pythonFiles.item)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.home_automation)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-gui (pythonFiles.freeboxtv)
+
+      \-item (pythonFiles.freeboxtv)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-commdetectcore (pythonFiles.commdetectserver)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-directory (pythonFiles.rom_drives)
+
+      \-gui (pythonFiles.rom_drives)
+
+      \-item (pythonFiles.rom_drives)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-area (pythonFiles.buttongroup_area)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-Container (pythonFiles.Window)
+
+      \-GUIObject (pythonFiles.Window)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-gui (pythonFiles.shoppingcart)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-gui (pythonFiles.search_programs)
+
+      \-item (pythonFiles.search_programs)
+
+      \-menu (pythonFiles.search_programs)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.genesisitem)
+
+      \-zipped_rom (pythonFiles.genesisitem)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.oneclick)
+
+      \-weatherdata (pythonFiles.oneclick)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-gui (pythonFiles.viewer)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-event (pythonFiles.itv)
+
+      \-item (pythonFiles.itv)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-base (pythonFiles.marquee)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-gui (pythonFiles.apodcast)
+
+      \-item (pythonFiles.apodcast)
+
+      \-menu (pythonFiles.apodcast)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-childapp (pythonFiles.dvdcopy)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-area (pythonFiles.main)
+
+      \-buttongroup_area (pythonFiles.main)
+
+      \-default_areas (pythonFiles.main)
+
+      \-gui (pythonFiles.main)
+
+      \-info_area (pythonFiles.main)
+
+      \-listing_area (pythonFiles.main)
+
+      \-scrollabletext_area (pythonFiles.main)
+
+      \-textentry_area (pythonFiles.main)
+
+      \-tvlisting_area (pythonFiles.main)
+
+      \-view_area (pythonFiles.main)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-tv (pythonFiles.makelogos)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.apod)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-vfs (pythonFiles.misc)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-menu (pythonFiles.vfd)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.fxdhandler)
+
+      \-videoitem (pythonFiles.fxdhandler)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-favoriteitem (pythonFiles.programitem)
+
+      \-item (pythonFiles.programitem)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-gui (pythonFiles.radio)
+
+      \-item (pythonFiles.radio)
+
+      \-menu (pythonFiles.radio)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.genericitem)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-osd (pythonFiles.bmovl)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.linkbrowser)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-area (pythonFiles.listing_area)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.appletrailers)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-menu (pythonFiles.lcd)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-screensaver (pythonFiles.plugins)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.mediamenu)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.audioitem)
+
+      \-player (pythonFiles.audioitem)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-plugin (pythonFiles.configlib)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-menu (pythonFiles.udpremote)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.command)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-area (pythonFiles.scrollabletext_area)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-gui (pythonFiles.mpd_status)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-PopupBox (pythonFiles.ProgressBox)
+
+      \-Progressbar (pythonFiles.ProgressBox)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-gui (pythonFiles.directory)
+
+      \-item (pythonFiles.directory)
+
+      \-playlist (pythonFiles.directory)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-gui (pythonFiles.fxdarchive)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-gui (pythonFiles.album_tree)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.favoriteitem)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.mameitem)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-directory (pythonFiles.tvmenu)
+
+      \-item (pythonFiles.tvmenu)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-Border (pythonFiles.LetterBoxGroup)
+
+      \-Button (pythonFiles.LetterBoxGroup)
+
+      \-Container (pythonFiles.LetterBoxGroup)
+
+      \-GUIObject (pythonFiles.LetterBoxGroup)
+
+      \-LayoutManagers (pythonFiles.LetterBoxGroup)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.tvguide)
+
+      \-programitem (pythonFiles.tvguide)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.view_favorites)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.mpd)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-Container (pythonFiles.Panel)
+
+      \-LayoutManagers (pythonFiles.Panel)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-gui (pythonFiles.menu)
+
+      \-item (pythonFiles.menu)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-area (pythonFiles.view_area)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.manual_record)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.MainMenuPlugin)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-area (pythonFiles.info_area)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-playlist (pythonFiles.freevoscreensaver)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-area (pythonFiles.default_areas)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-directory (pythonFiles.usbstorage)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-gui (pythonFiles.autoshutdown)
+
+      \-item (pythonFiles.autoshutdown)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-directory (pythonFiles.view_recordings)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.snesitem)
+
+      \-zipped_rom (pythonFiles.snesitem)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    pythonFiles 
+
+      \-item (pythonFiles.buttonbar)
+
+      \-menu (pythonFiles.buttonbar)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-tv 
+
+        \-v4l2 (src.config)
+
+        \-xmltv (src.config)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-animation 
+
+        \-base (src.animation.transition)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-animation 
+
+        \-base (src.animation.marquee)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-event (src.rc)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-item (src.playlist)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-evfallback (src.evdev)
+
+      \-linuxevent (src.evdev)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-tv 
+
+        \-favoriteitem (src.tv.programitem)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-tv 
+
+        \-programitem (src.tv.tvguide)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-event (src.plugin)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-gui 
+
+      | \-AlertBox (src.item)
+
+      \-util (src.item)
+
+        \-mediainfo (src.item)
+
+        \-vfs (src.item)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-image 
+
+        \-imageitem (src.image)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-games 
+
+        \-zipped_rom (src.games.genesisitem)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-games 
+
+        \-genericitem (src.games)
+
+        \-genesisitem (src.games)
+
+        \-mameitem (src.games)
+
+        \-snesitem (src.games)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-games 
+
+        \-zipped_rom (src.games.snesitem)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-gui 
+
+      | \-ConfirmBox (src.main)
+
+      \-item (src.main)
+
+      \-plugins 
+
+        \-shutdown (src.main)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-plugins 
+
+        \-weatherdata (src.plugins.oneclick)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-skins 
+
+        \-main 
+
+          \-area (src.skins.main.tvlisting_area)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-skins 
+
+        \-main 
+
+          \-area (src.skins.main.textentry_area)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-skins 
+
+        \-main 
+
+          \-area (src.skins.main.buttongroup_area)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-skins 
+
+        \-main 
+
+          \-area (src.skins.main.main)
+
+          \-buttongroup_area (src.skins.main.main)
+
+          \-default_areas (src.skins.main.main)
+
+          \-info_area (src.skins.main.main)
+
+          \-listing_area (src.skins.main.main)
+
+          \-scrollabletext_area (src.skins.main.main)
+
+          \-textentry_area (src.skins.main.main)
+
+          \-tvlisting_area (src.skins.main.main)
+
+          \-view_area (src.skins.main.main)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-skins 
+
+        \-main 
+
+          \-area (src.skins.main.listing_area)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-skins 
+
+        \-main 
+
+          \-area (src.skins.main.scrollabletext_area)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-skins 
+
+        \-main 
+
+          \-area (src.skins.main.view_area)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-skins 
+
+        \-main 
+
+          \-area (src.skins.main.info_area)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-skins 
+
+        \-main 
+
+          \-area (src.skins.main.default_areas)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-gui 
+
+      | \-AlertBox (src.directory)
+
+      | \-InputBox (src.directory)
+
+      | \-ProgressBox (src.directory)
+
+      \-item (src.directory)
+
+      \-playlist (src.directory)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-util 
+
+        \-vfs (src.util.misc)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-audio 
+
+        \-audioitem (src.audio.audiodiskitem)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-audio 
+
+        \-player (src.audio.audioitem)
+
+        \-plugins 
+
+          \-freevo_scrobbler (src.audio.audioitem)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-audio 
+
+        \-audiodiskitem (src.audio)
+
+        \-audioitem (src.audio)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-gui 
+
+      | \-AlertBox (src.menu)
+
+      | \-GUIObject (src.menu)
+
+      | \-sounds (src.menu)
+
+      \-item (src.menu)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-video 
+
+        \-videoitem (src.video.fxdhandler)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-video 
+
+        \-videoitem (src.video)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-gui 
+
+        \-Container (src.gui.Progressbar)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-gui 
+
+        \-Border (src.gui.Container)
+
+        \-Color (src.gui.Container)
+
+        \-GUIObject (src.gui.Container)
+
+        \-LayoutManagers (src.gui.Container)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-gui 
+
+        \-Container (src.gui.Window)
+
+        \-GUIObject (src.gui.Window)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-gui 
+
+        \-PopupBox (src.gui.ProgressBox)
+
+        \-Progressbar (src.gui.ProgressBox)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-gui 
+
+        \-Border (src.gui.LetterBoxGroup)
+
+        \-Button (src.gui.LetterBoxGroup)
+
+        \-Container (src.gui.LetterBoxGroup)
+
+        \-GUIObject (src.gui.LetterBoxGroup)
+
+        \-LayoutManagers (src.gui.LetterBoxGroup)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    src 
+
+      \-gui 
+
+        \-Container (src.gui.Panel)
+
+        \-LayoutManagers (src.gui.Panel)
+
+
+
+
+
+
+
+External dependencies
+
+---------------------
+
+::
+
+
+
+    item (MainMenuPlugin)
+
+
+
+
+
+
+

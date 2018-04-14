@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>Nxtvepg - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/Nxtvepg?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/Nxtvepg?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">Nxtvepg</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p><strong>Update as of March 6, 2005 (okay_awright)</strong> </p>
+
+<h2 id="head-48bfce7ff780918bbba5ddc71a259c1368ffc203">Overview</h2>
+
+<p>If you reside in France, Germany, Belgim, Switzerland or Turkey and if you use an analogic TV card receiver, you may use the EPG airwave transmissions (a protocol similar to Teletext) via <a class="external" href="http://nxtvepg.sourceforge.net/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> nxtvepg</a> instead of the Xmltv internet "grabbers" to retrieve your TV guide. The main advantages of using nxtvepg are speed and convenience. Xmltv grabbers are rather slow and rely on Internet websites to provide the channels listing, some of these websites change their contents quickly and you usually have to wait for an Xmltv program update to be able to get your TV guide back. Nxtvepg does not have such limitations and can produce an XML formatted TV guide fully compatible with Xmltv and Freevo. Finally, no internet connection is required for nxtvepg to work. On the other hand, its obvious disadvantages are limited area coverage and restricted usability to airwave broadcasts. </p>
+<p>Once you have successfully configured nxtvepg you are close to a working TV setup for Freevo. Please refer to the configuration section for TV_Channels to complete your setup. </p>
+
+<h2 id="head-2a9c578b0ca3e0135b4e17130ed4987fd88a786a">Installation</h2>
+
+
+<h3 id="head-dab9df88dd84aff6aad61d417f58c8a8ea35b753">From source</h3>
+
+<p>TODO </p>
+
+<h3 id="head-e3995104029129dd28f0a450a913cf3382d02bdf">From packages</h3>
+
+<p><em><strong>Mandrake</strong></em>: <tt>urpmi&nbsp;nxtvepg</tt> </p>
+<p><em><strong>Gentoo</strong></em>: <tt>emerge&nbsp;nxtvepg</tt> </p>
+<p>TODO </p>
+
+<h2 id="head-797bf8471d6e5e7f05076a41ae02957b25a821f0">Configuration</h2>
+
+<p><em>NB: You must have X to be able to configure nxtvepg the first time, once properly configured nxtvepg can be used with a pure Freevo framebuffer setup (sadly it still needs to be compiled against X11 libraries and headers: a small design flaw IMveryHO). One solution if you don't want to install a full working X server is to generate a configuration file on another PC and then tweak this one on purpose, by hand. Nxtvepg is both a daemon able to run without a X server backend and a Tcl/Tk GUI that has no use in our situation, apart from the preliminary setup.</em> </p>
+<p>Please note that your TV card must properly work before proceeding any further. If you can not correctly receive your regular airwave broadcasts you have to first fix this. </p>
+<p>Launch your X server and then nxtvepg (without any switch). In the main menu, select "Configure" and then "Provider scan...". Then choose what suits you best under the "Channel table:" frame, please note that nxtvepg is able to read a working Xawtv channel listing if you already have a customized channels list (tick radio box "Load from TV app."). Press "Start Scan" and wait for nxtvepg to detect which channels do advertize EPG info (your airwave antenna must be correctly plugged in of course). Once done, press "Dismiss" and click on "Select Provider..." sub-menu item to check that the channels previously detected have been taken in consideration. Then head to the sub-menu "Merge Providers..."; here you will be able to choose which database providers you want to use at the same time (FYI, in France, Canal+ stores a full 7 days long TV guide instead of M6 which only stores 3 days). Under the "Acquisition mode..." sub-menu, press the "Help" button and select which mode you prefer accordingly; "Cyclic: Now-&gt;Near-&gt;All" seems to be a good compromise in most cases. You can now quit the application (and perhaps even terminate your X server). If everything's fine, a working nxtvepg configuration file should have been created. </p>
+<p>Nxtvepg has to run in background to retrieve your TV guide. Create a service/initscript that launches nxtvepg daemon at each boot (one example is provided below). Beware that your TV card driver module is loaded before this script. Once nxtvepg daemon is running you can get your channels listing anytime. A first approach is to create a shell script that will create a XML file easily readable under Freevo (don't forget to do a <tt>chmod&nbsp;a+rx</tt> on it): </p>
+<p><tt>vi&nbsp;/usr/local/sbin/nxtvepg2xmltv</tt> 
+</p>
+<pre>
+#!/bin/sh
+/usr/bin/nxtvepg -rcfile /usr/local/share/nxtvepgrc -dump xml -provider merged &gt; /tmp/TV.xml 2 &gt; /dev/null
+</pre>
+<p>"-rcfile" is used when you want to enforce the use of special configuration file: more about that below, if you remove this switch nxtvepg will load ~/.nxtvepgrc, "-dump xml" will tell nxtvepg to save a Xmltv compliant TV guide, add "-provider merged" when you've selected more than one EPG provider channel within the GUI. Nxtvepg documentation is your best friend here. </p>
+<p>Now you can add a cron job to automatically retrieve your TV guide listing at regular intervals (e.g. every three days from boot): </p>
+<p><tt>su&nbsp;root&nbsp;-c&nbsp;"crontab&nbsp;-e"</tt> 
+</p>
+<pre>
+* * * * */3 /usr/local/sbin/nxtvepg2xmltv
+</pre>
+<p>One nice touch is to fill your TV guide as soon as nxtvepg is launched, to do so you have to duplicate your nxtvepg configuration file (during boot, no user is already logged and by default the daemon tries to read the file .nxtvepgrc under the home directory of the user who started the application). For instance, copy the .nxtvepgrc file located under the home directory of the user you used to configure the application to /usr/local/share/nxtvepgrc. Then add a reference to the above script in your initialization script, just after nxtvepg is called. </p>
+<p>Here is an example of such initialization script for Gentoo: </p>
+<p><tt>vi&nbsp;/etc/init.d/nxtvepg</tt> 
+</p>
+<pre>
+#!/sbin/runscript
+
+depend() {
+        # il faut être sûr que le module saa7134 est chargé
+        need modules
+}
+
+start() {
+        # display to the user what you're doing
+        ebegin "Starting nxTVview EPG daemon"
+        # Start the process as a daemon
+        /usr/bin/nxtvepg -rcfile /usr/local/share/nxtvepgrc -daemon
+        THRICE=2
+        while test $THRICE -gt 0
+        do
+                /usr/local/sbin/nxtvepg2xmltv
+                HEADER=`head -n 1 /tmp/TV.xml | grep "&lt;?xml"`
+                if [ -n "$HEADER" ]; then
+                        break
+                fi
+                THRICE=`expr $THRICE - 1`
+                sleep 1
+        done
+        # output success or failure
+        eend $?
+}
+
+stop() {
+        # display a message to the user
+        ebegin "Stopping nxTVview EPG daemon"
+        # stop the daemon
+        #killall nxtvepg
+        /usr/bin/nxtvepg -rcfile /usr/local/share/nxtvepgrc -daemonstop
+        # output success or failure
+        eend $?
+}
+</pre>
+<p><tt>rc-update&nbsp;add&nbsp;nxtvepg&nbsp;default</tt> </p>
+<p>Nxtvepg configuration is over. </p>
+
+<h2 id="head-9d1db8bca235ca749ca7c2521da51ee2e3d3da72">Usage</h2>
+
+<p>Now synchronize your TV_CHANNELS variable with your freshly produced Xmltv file content, you may follow the <a href="XMLTVUsefreevo.html">XMLTVUsefreevo</a> section if your in need for help on this specific subject. </p>
+<p>If you want to get channel logos inside Freevo you can have a look at <a href="XMLTVlogos.html">XMLTVlogos</a>. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-03-19 03:17:31 by <span title="marriere-4-82-227-215-70.fbx.proxad.net"><a href="okay_awright.html">okay awright</a></span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/Nxtvepg">http://freevo.sourceforge.net/cgi-bin/doc/Nxtvepg</a></p>
+</div> <!-- end page -->
+</body>
+</html>

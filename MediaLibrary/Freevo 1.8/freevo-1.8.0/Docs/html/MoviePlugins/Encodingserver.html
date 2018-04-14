@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>MoviePlugins/Encodingserver - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="../modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="../modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="../modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/MoviePlugins/Encodingserver?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/MoviePlugins/Encodingserver?action=print">
+<link rel="Up" href="/cgi-bin/doc/MoviePlugins">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="../Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">MoviePlugins/Encodingserver</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<ul>
+<li style="list-style-type:none"><p>Written by den_RDC     </p>
+</li>
+</ul>
+<p>Saturday, 02 October 2004 A small introduction + setup guide to Encodingserver (a freevo package) Encodingserver Guide 1.0 What is Encodigserver Encodingserver is a Freevo package that supports the encoding of DVD disks and DVD-on-HD's. In the future, file re-encoding (transcoding) will also be supported. Currently Encodingserver requires the following things: </p>
+<ul>
+<li><p> Freevo 1.5_rc1 or higher </p>
+</li>
+<li><p> Mplayer &amp; mencoder 1.0_pre3 (older version may or may not work) </p>
+</li>
+<li><p> XViD (and mplayer compiled with XViD support) if you want to use XViD encoding </p>
+</li>
+</ul>
+<p>How do i install &amp; configure encodingserver? </p>
+<p>Download the package from the Freevo website under the addons section, GordianKnot's resize thing if you know that, but automagically). After a few hours, the encoded avi will popup in your (first) movie directory. FAQ </p>
+<ul>
+<li><p> Q: How do i monitor the encoding process? A: Currently you can't do that. An idlebar plugin is in the works. </p>
+</li>
+<li><p> Q: Is there a log? A : Yes, look inb /tmp/encodingserver/encodingserver.log </p>
+</li>
+<li><p> Q: How much diskspace do i need? A : You need a few hundred MB in /tmp, and enough free space to hold the encoded files in your movie directory (depending on the selected profile, at least 700 or 1400 MB </p>
+</li>
+</ul>
+<p>Problems When you have problems, you can run the server part by doing: python /path/to/freevo/helpers/encodingserver.py debug . This will start the server with realtime logging to the console, so you can follow what happens. It will then also printout mencoder's output messages. You can contact me (den_RDC) with bugreports or problems on the freevo-devel mailinglist or on the freevo irc channel (#freevo on irc.freenode.org) For developpers IF there are people that want to make another plugin or a webserver extension that uses Encodingserver's server part, they can find a complete documentation of the XMLRPC interface i use here. The usage is pretty similar to recordingserver. Changelog </p>
+<ul>
+<li><p> 1.0 - Initial release of this document - applies to encoding_package R30 </p>
+</li>
+</ul>
+<p>Last Updated ( Saturday, 02 October 2004 ) </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-01-10 11:39:21 by <span title="212.17.56.2">JohnMolohan</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/MoviePlugins/Encodingserver">http://freevo.sourceforge.net/cgi-bin/doc/MoviePlugins/Encodingserver</a></p>
+</div> <!-- end page -->
+</body>
+</html>

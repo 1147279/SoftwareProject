@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>FreevoAptUbuntu - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/FreevoAptUbuntu?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/FreevoAptUbuntu?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">FreevoAptUbuntu</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>Installing on ubuntu hoary works like normal Debian(<a href="FreevoAptDebian.html">FreevoAptDebian</a>) installation(you may have to force the install) with(at the time of writing, 17.5.2005, 1.5.3) a little modification to /usr/bin/freevo. </p>
+<p>If you get this: "can't find python version with installed freevo" </p>
+<p>Then do this: </p>
+<p>su (get root) </p>
+<p>nano /usr/bin/freevo (open a editor) </p>
+<p>And change this: 
+</p>
+<pre>
+def get_python(check_freevo):
+    """
+    get the newest version of python [ with freevo installed ]
+    """
+    if float(sys.version[0:3]) &gt;= 2.3:
+        # python seems to be ok
+        search = ('python', 'python2') ### change 'python' to 'python2.3' (ugly but works)
+    elif float(sys.version[0:3]) &gt;= 2.2:
+        # try python2.3, else take python
+        search = ('python2.3', 'python')
+    else:
+        # python is too old, try to find python2.3 or python2
+        search = ('python2.3', 'python2')
+</pre>
+<p>If you know your python you can always do it better. This seems to work for me:) Freevo 2.0 doesn't propably have this problem. </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-07-17 02:17:19 by <span title="a84-230-91-132.elisa-laajakaista.fi">ElmoMäntynen</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/FreevoAptUbuntu">http://freevo.sourceforge.net/cgi-bin/doc/FreevoAptUbuntu</a></p>
+</div> <!-- end page -->
+</body>
+</html>

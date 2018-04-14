@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>Mandrake - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/Mandrake?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/Mandrake?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">Mandrake</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+
+<h2 id="head-d6c8f88eecc4f941cce5a5ad7ee3cfd3949d90e3">Mandrake 10.1 or above (inc. cooker)</h2>
+
+<p>Freevo 1.5 is part of Mdk10.1 or above. You just have to run 
+</p>
+<pre>
+urpmi freevo
+</pre>
+<p>Note: you may have to configure software repositories for urpmi. There is a wizard called easy urpmi to assist in this task (see <a href="http://www.urpmi-addmedia.org/"><img src="modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.urpmi-addmedia.org/</a>). You should have sources for PLF and Contrib. </p>
+<p>Note: There's a problem with the PIL library on mandrake 10.1 so if you can't see images thumbnails or folders the problem may come from there. </p>
+<p>To get it to work, downgrade the python-imaging package on Mandrake to release #3 (python-imaging-1.1.4-3mdk) which can be found in the main RPMS tree of the mandrake 10.0 version and works like a charm. </p>
+<p>do as root :  
+</p>
+<pre>
+# urpme python-imaging
+# curl
+ftp://ftp.tu-chemnitz.de/pub/linux/mandrakelinux/official/10.0/i586/Mandrake
+/RPMS/python-imaging-1.1.4-3mdk.i586.rpm -o python-imaging-1.1.4-3mdk.i586.rpm
+# urmpi python-imaging-1.1.4-3mdk.i586.rpm
+</pre>
+<p>(Example with a German repositorie of mandrake 10.0, for an i586 install) </p>
+<p>Note: Mandrake 10.1 comes with freevo version 1.5.1. As of 25 Jan 2005 updated packages are available for cooker (1.5.3 at the moment). </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-01-25 11:00:20 by <span title="83.141.77.130">JohnMolohan</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/Mandrake">http://freevo.sourceforge.net/cgi-bin/doc/Mandrake</a></p>
+</div> <!-- end page -->
+</body>
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Using radon programmatically &#8212; Radon 1.4.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/solar.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.4.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/MathJax.js?config=TeX-AMS_HTML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Radon 1.4.2 documentation" href="index.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="Flake8 plugin" href="flake8.html" /><link href='http://fonts.googleapis.com/css?family=PT+Mono|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+<link href="_static/solarized-dark.css" rel="stylesheet">
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="changelog.html" title="Changelog"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="flake8.html" title="Flake8 plugin"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Radon 1.4.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Using radon programmatically</a><ul>
+<li><a class="reference internal" href="#module-radon.complexity">Cyclomatic Complexity</a></li>
+<li><a class="reference internal" href="#module-radon.raw">Raw metrics</a></li>
+<li><a class="reference internal" href="#module-radon.metrics">Other metrics</a></li>
+<li><a class="reference internal" href="#module-radon.visitors">Visitors</a></li>
+<li><a class="reference internal" href="#module-radon.cli.harvest">Harvesters</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="flake8.html"
+                        title="previous chapter">Flake8 plugin</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="changelog.html"
+                        title="next chapter">Changelog</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/api.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="using-radon-programmatically">
+<h1>Using radon programmatically<a class="headerlink" href="#using-radon-programmatically" title="Permalink to this headline">¶</a></h1>
+<p>Radon has a set of functions and classes that you can call from within your
+program to analyze files.</p>
+<p>Radon&#8217;s API is composed of three layers:</p>
+<ul>
+<li><p class="first">at the very bottom (the lowest level) there are the <strong>Visitors</strong>: with these
+classes one can build an AST out of the code and get basic metrics.
+Currently, there are two available visitors:
+<a class="reference internal" href="#radon.visitors.ComplexityVisitor" title="radon.visitors.ComplexityVisitor"><code class="xref py py-class docutils literal"><span class="pre">ComplexityVisitor</span></code></a> and
+<a class="reference internal" href="#radon.visitors.HalsteadVisitor" title="radon.visitors.HalsteadVisitor"><code class="xref py py-class docutils literal"><span class="pre">HalsteadVisitor</span></code></a>. With the former one analyzes the
+cyclomatic complexity of the code, while the latter gathers the so-called
+Halstead metrics. With those and other raw metrics one can compute the
+Maintainability Index. Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">radon.visitors</span> <span class="kn">import</span> <span class="n">ComplexityVisitor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">ComplexityVisitor</span><span class="o">.</span><span class="n">from_code</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="go">def factorial(n):</span>
+<span class="go">    if n &lt; 2: return 1</span>
+<span class="go">    return n * factorial(n - 1)</span>
+
+<span class="go">def foo(bar):</span>
+<span class="go">    return sum(i for i in range(bar ** 2) if bar % i)</span>
+<span class="go">&#39;&#39;&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">functions</span>
+<span class="go">[Function(name=&#39;factorial&#39;, lineno=2, col_offset=0, endline=4, is_method=False,</span>
+<span class="go">classname=None, closures=[], complexity=2),</span>
+<span class="go">Function(name=&#39;foo&#39;, lineno=6, col_offset=0, endline=7, is_method=False, classname=None,</span>
+<span class="go">closures=[], complexity=3)]</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">at a higher level, there are helper functions residing in separate modules.
+For cyclomatic complexity, one can use those inside <a class="reference internal" href="#module-radon.complexity" title="radon.complexity: Complexity-related helper functions."><code class="xref py py-mod docutils literal"><span class="pre">radon.complexity</span></code></a>.
+For Halstead metrics and MI index those inside <a class="reference internal" href="#module-radon.metrics" title="radon.metrics: Halstead and Maintainability Index functions."><code class="xref py py-mod docutils literal"><span class="pre">radon.metrics</span></code></a>. Finally,
+for raw metrics (that includes SLOC, LLOC, LOC, &amp;c.) one can use the function
+<a class="reference internal" href="#radon.raw.analyze" title="radon.raw.analyze"><code class="xref py py-func docutils literal"><span class="pre">analyze()</span></code></a> inside the <a class="reference internal" href="#module-radon.raw" title="radon.raw: Raw metrics functions."><code class="xref py py-mod docutils literal"><span class="pre">radon.raw</span></code></a> module. With the
+majority of these functions the result is an object (<code class="docutils literal"><span class="pre">Module</span></code> object in the
+case of raw metrics) or a list of objects (<code class="docutils literal"><span class="pre">Function</span></code> or <code class="docutils literal"><span class="pre">Class</span></code> objects
+for cyclomatic complexity). Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">radon.complexity</span> <span class="kn">import</span> <span class="n">cc_rank</span><span class="p">,</span> <span class="n">cc_visit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc_rank</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">cc_rank</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">cc_rank</span><span class="p">(</span><span class="mi">14</span><span class="p">),</span> <span class="n">cc_rank</span><span class="p">(</span><span class="mi">23</span><span class="p">)</span>
+<span class="go">(&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cc_visit</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="go">class A(object):</span>
+<span class="go">    def meth(self):</span>
+<span class="go">        return sum(i for i in range(10) if i - 2 &lt; 5)</span>
+
+<span class="go">def fib(n):</span>
+<span class="go">    if n &lt; 2: return 1</span>
+<span class="go">    return fib(n - 1) + fib(n - 2)</span>
+<span class="go">&#39;&#39;&#39;)</span>
+
+<span class="go">[Function(name=&#39;fib&#39;, lineno=6, col_offset=0, endline=8, is_method=False, classname=None,</span>
+<span class="go">closures=[], complexity=2), Class(name=&#39;A&#39;, lineno=2, col_offset=0, endline=4,</span>
+<span class="go">methods=[Function(name=&#39;meth&#39;, lineno=3, col_offset=4, endline=4, is_method=True,</span>
+<span class="go">classname=&#39;A&#39;, closures=[], complexity=3)], real_complexity=3),</span>
+<span class="go">Function(name=&#39;meth&#39;, lineno=3, col_offset=4, endline=4, is_method=True, classname=&#39;A&#39;,</span>
+<span class="go">closures=[], complexity=3)]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">radon.raw</span> <span class="kn">import</span> <span class="n">analyze</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">analyze</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;def _split_tokens(tokens, token, value):</span>
+<span class="go">    &#39;&#39;&#39;Split a list of tokens on the specified token pair (token, value),</span>
+<span class="go">    where *token* is the token type (i.e. its code) and *value* its actual</span>
+<span class="go">    value in the code.</span>
+<span class="go">    &#39;&#39;&#39;</span>
+<span class="go">    res = [[]]</span>
+<span class="go">    for token_values in tokens:</span>
+<span class="go">        if (token, value) == token_values[:2]:</span>
+<span class="go">            res.append([])</span>
+<span class="go">            continue</span>
+<span class="go">        res[-1].append(token_values)</span>
+<span class="go">    return res</span>
+<span class="go">&quot;&quot;&quot;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Module</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">lloc</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">sloc</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">multi</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">at the highest level there are the <strong>Harvesters</strong>. A Harvester implements all
+the business logic of the CLI interface. To use a Harvester, it&#8217;s sufficient
+to create a <code class="xref py py-class docutils literal"><span class="pre">Config</span></code> object (which contains all the config
+values) and pass it to the Harvester instance along with a list of paths to
+analyze. An Harvester can then export its result to various formats (for
+cyclomatic complexity both JSON and XML are available). It&#8217;s possible to find
+an example for this in the <a class="reference external" href="https://github.com/rubik/xenon/blob/master/xenon/core.py">Xenon project</a>.</p>
+</li>
+</ul>
+<div class="section" id="module-radon.complexity">
+<span id="cyclomatic-complexity"></span><h2>Cyclomatic Complexity<a class="headerlink" href="#module-radon.complexity" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="radon.complexity.cc_visit">
+<code class="descclassname">radon.complexity.</code><code class="descname">cc_visit</code><span class="sig-paren">(</span><em>code</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#radon.complexity.cc_visit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visit the given code with <a class="reference internal" href="#radon.visitors.ComplexityVisitor" title="radon.visitors.ComplexityVisitor"><code class="xref py py-class docutils literal"><span class="pre">ComplexityVisitor</span></code></a>.
+All the keyword arguments are directly passed to the visitor.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="radon.complexity.cc_visit_ast">
+<code class="descclassname">radon.complexity.</code><code class="descname">cc_visit_ast</code><span class="sig-paren">(</span><em>ast_node</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#radon.complexity.cc_visit_ast" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visit the AST node with <a class="reference internal" href="#radon.visitors.ComplexityVisitor" title="radon.visitors.ComplexityVisitor"><code class="xref py py-class docutils literal"><span class="pre">ComplexityVisitor</span></code></a>. All
+the keyword arguments are directly passed to the visitor.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="radon.complexity.cc_rank">
+<code class="descclassname">radon.complexity.</code><code class="descname">cc_rank</code><span class="sig-paren">(</span><em>cc</em><span class="sig-paren">)</span><a class="headerlink" href="#radon.complexity.cc_rank" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rank the complexity score from A to F, where A stands for the simplest
+and best score and F the most complex and worst one:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>1 - 5</td>
+<td>A (low risk - simple block)</td>
+</tr>
+<tr class="row-even"><td>6 - 10</td>
+<td>B (low risk - well structured and stable block)</td>
+</tr>
+<tr class="row-odd"><td>11 - 20</td>
+<td>C (moderate risk - slightly complex block)</td>
+</tr>
+<tr class="row-even"><td>21 - 30</td>
+<td>D (more than moderate risk - more complex block)</td>
+</tr>
+<tr class="row-odd"><td>31 - 40</td>
+<td>E (high risk - complex block, alarming)</td>
+</tr>
+<tr class="row-even"><td>41+</td>
+<td>F (very high risk - error-prone, unstable block)</td>
+</tr>
+</tbody>
+</table>
+<p>Here <em>block</em> is used in place of function, method or class.</p>
+<p>The formula used to convert the score into an index is the following:</p>
+<div class="math">
+\[\text{rank} = \left \lceil \dfrac{\text{score}}{10} \right \rceil
+- H(5 - \text{score})\]</div>
+<p>where <code class="docutils literal"><span class="pre">H(s)</span></code> stands for the Heaviside Step Function.
+The rank is then associated to a letter (0 = A, 5 = F).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="radon.complexity.sorted_results">
+<code class="descclassname">radon.complexity.</code><code class="descname">sorted_results</code><span class="sig-paren">(</span><em>blocks</em>, <em>order=SCORE</em><span class="sig-paren">)</span><a class="headerlink" href="#radon.complexity.sorted_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a ComplexityVisitor instance, returns a list of sorted blocks
+with respect to complexity. A block is a either
+<code class="xref py py-class docutils literal"><span class="pre">Function</span></code> object or a
+<code class="xref py py-class docutils literal"><span class="pre">Class</span></code> object.
+The blocks are sorted in descending order from the block with the highest
+complexity.</p>
+<p>The optional <cite>order</cite> parameter indicates how to sort the blocks. It can be:</p>
+<blockquote>
+<div><ul class="simple">
+<li><cite>LINES</cite>: sort by line numbering;</li>
+<li><cite>ALPHA</cite>: sort by name (from A to Z);</li>
+<li><cite>SCORE</cite>: sorty by score (descending).</li>
+</ul>
+</div></blockquote>
+<p>Default is <cite>SCORE</cite>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-radon.raw">
+<span id="raw-metrics"></span><h2>Raw metrics<a class="headerlink" href="#module-radon.raw" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="radon.raw.analyze">
+<code class="descclassname">radon.raw.</code><code class="descname">analyze</code><span class="sig-paren">(</span><em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#radon.raw.analyze" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyze the source code and return a namedtuple with the following
+fields:</p>
+<blockquote>
+<div><ul>
+<li><p class="first"><strong>loc</strong>: The number of lines of code (total)</p>
+</li>
+<li><p class="first"><strong>lloc</strong>: The number of logical lines of code</p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>sloc</strong>: The number of source lines of code (not necessarily</dt>
+<dd><p class="first last">corresponding to the LLOC)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first"><strong>comments</strong>: The number of Python comment lines</p>
+</li>
+<li><p class="first"><strong>multi</strong>: The number of lines which represent multi-line strings</p>
+</li>
+<li><p class="first"><strong>blank</strong>: The number of blank lines (or whitespace-only ones)</p>
+</li>
+</ul>
+</div></blockquote>
+<p>The equation <span class="math">\(sloc + blanks = loc\)</span> should always hold.
+Multiline strings are not counted as comments, since, to the Python
+interpreter, they are not comments but strings.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-radon.metrics">
+<span id="other-metrics"></span><h2>Other metrics<a class="headerlink" href="#module-radon.metrics" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="radon.metrics.h_visit">
+<code class="descclassname">radon.metrics.</code><code class="descname">h_visit</code><span class="sig-paren">(</span><em>code</em><span class="sig-paren">)</span><a class="headerlink" href="#radon.metrics.h_visit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compile the code into an AST tree and then pass it to
+<a class="reference internal" href="#radon.metrics.h_visit_ast" title="radon.metrics.h_visit_ast"><code class="xref py py-func docutils literal"><span class="pre">h_visit_ast()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="radon.metrics.h_visit_ast">
+<code class="descclassname">radon.metrics.</code><code class="descname">h_visit_ast</code><span class="sig-paren">(</span><em>ast_node</em><span class="sig-paren">)</span><a class="headerlink" href="#radon.metrics.h_visit_ast" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visit the AST node using the <a class="reference internal" href="#radon.visitors.HalsteadVisitor" title="radon.visitors.HalsteadVisitor"><code class="xref py py-class docutils literal"><span class="pre">HalsteadVisitor</span></code></a>
+visitor. A namedtuple with the following fields is returned:</p>
+<blockquote>
+<div><ul class="simple">
+<li>h1: the number of distinct operators</li>
+<li>h2: the number of distinct operands</li>
+<li>N1: the total number of operators</li>
+<li>N2: the total number of operands</li>
+<li>h: the vocabulary, i.e. h1 + h2</li>
+<li>N: the length, i.e. N1 + N2</li>
+<li>calculated_length: h1 * log2(h1) + h2 * log2(h2)</li>
+<li>volume: V = N * log2(h)</li>
+<li>difficulty: D = h1 / 2 * N2 / h2</li>
+<li>effort: E = D * V</li>
+<li>time: T = E / 18 seconds</li>
+<li>bugs: B = V / 3000 - an estimate of the errors in the implementation</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="radon.metrics.mi_visit">
+<code class="descclassname">radon.metrics.</code><code class="descname">mi_visit</code><span class="sig-paren">(</span><em>code</em>, <em>multi</em><span class="sig-paren">)</span><a class="headerlink" href="#radon.metrics.mi_visit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visit the code and compute the Maintainability Index (MI) from it.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="radon.metrics.mi_rank">
+<code class="descclassname">radon.metrics.</code><code class="descname">mi_rank</code><span class="sig-paren">(</span><em>score</em><span class="sig-paren">)</span><a class="headerlink" href="#radon.metrics.mi_rank" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rank the score with a letter:</p>
+<ul class="simple">
+<li>A if <span class="math">\(\text{score} &gt; 19\)</span>;</li>
+<li>B if <span class="math">\(9 &lt; \text{score} \le 19\)</span>;</li>
+<li>C if <span class="math">\(\text{score} \le 9\)</span>.</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="radon.metrics.mi_parameters">
+<code class="descclassname">radon.metrics.</code><code class="descname">mi_parameters</code><span class="sig-paren">(</span><em>code</em>, <em>count_multi=True</em><span class="sig-paren">)</span><a class="headerlink" href="#radon.metrics.mi_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a source code snippet, compute the necessary parameters to
+compute the Maintainability Index metric. These include:</p>
+<blockquote>
+<div><ul class="simple">
+<li>the Halstead Volume</li>
+<li>the Cyclomatic Complexity</li>
+<li>the number of LLOC (Logical Lines of Code)</li>
+<li>the percent of lines of comment</li>
+</ul>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>multi</strong> &#8211; If True, then count multiline strings as comment lines as
+well. This is not always safe because Python multiline strings are not
+always docstrings.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="radon.metrics.mi_compute">
+<code class="descclassname">radon.metrics.</code><code class="descname">mi_compute</code><span class="sig-paren">(</span><em>halstead_volume</em>, <em>complexity</em>, <em>sloc</em>, <em>comments</em><span class="sig-paren">)</span><a class="headerlink" href="#radon.metrics.mi_compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the Maintainability Index (MI) given the Halstead Volume, the
+Cyclomatic Complexity, the SLOC number and the number of comment lines.
+Usually it is not used directly but instead <a class="reference internal" href="#radon.metrics.mi_visit" title="radon.metrics.mi_visit"><code class="xref py py-func docutils literal"><span class="pre">mi_visit()</span></code></a>
+is preferred.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-radon.visitors">
+<span id="visitors"></span><h2>Visitors<a class="headerlink" href="#module-radon.visitors" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="radon.visitors.ComplexityVisitor">
+<em class="property">class </em><code class="descclassname">radon.visitors.</code><code class="descname">ComplexityVisitor</code><span class="sig-paren">(</span><em>to_method=False</em>, <em>classname=None</em>, <em>off=True</em>, <em>no_assert=False</em><span class="sig-paren">)</span><a class="headerlink" href="#radon.visitors.ComplexityVisitor" title="Permalink to this definition">¶</a></dt>
+<dd><p>A visitor that keeps track of the cyclomatic complexity of
+the elements.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>to_method</strong> &#8211; If True, every function is treated as a method. In this
+case the <em>classname</em> parameter is used as class name.</li>
+<li><strong>classname</strong> &#8211; Name of parent class.</li>
+<li><strong>off</strong> &#8211; If True, the starting value for the complexity is set to 1,
+otherwise to 0.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="radon.visitors.HalsteadVisitor">
+<em class="property">class </em><code class="descclassname">radon.visitors.</code><code class="descname">HalsteadVisitor</code><span class="sig-paren">(</span><em>context=None</em><span class="sig-paren">)</span><a class="headerlink" href="#radon.visitors.HalsteadVisitor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visitor that keeps track of operators and operands, in order to compute
+Halstead metrics (see <a class="reference internal" href="#radon.metrics.h_visit" title="radon.metrics.h_visit"><code class="xref py py-func docutils literal"><span class="pre">radon.metrics.h_visit()</span></code></a>).</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-radon.cli.harvest">
+<span id="harvesters"></span><h2>Harvesters<a class="headerlink" href="#module-radon.cli.harvest" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="radon.cli.harvest.Harvester">
+<em class="property">class </em><code class="descclassname">radon.cli.harvest.</code><code class="descname">Harvester</code><span class="sig-paren">(</span><em>paths</em>, <em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#radon.cli.harvest.Harvester" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class defining the interface of a Harvester object.</p>
+<p>A Harvester has the following lifecycle:</p>
+<ol class="arabic simple">
+<li><strong>Initialization</strong>: <cite>h = Harvester(paths, config)</cite></li>
+<li><strong>Execution</strong>: <cite>r = h.results</cite>. <cite>results</cite> holds an iterable object.
+The first time <cite>results</cite> is accessed, <cite>h.run()</cite> is called. This method
+should not be subclassed. Instead, the <a class="reference internal" href="#radon.cli.harvest.Harvester.gobble" title="radon.cli.harvest.Harvester.gobble"><code class="xref py py-meth docutils literal"><span class="pre">gobble()</span></code></a> method should be
+implemented.</li>
+<li><strong>Reporting</strong>: the methods <em>as_json</em> and <em>as_xml</em> return a string
+with the corrisponding format. The method <em>to_terminal</em> is a generator
+that yields the lines to be printed in the terminal.</li>
+</ol>
+<p>This class is meant to be subclasses and cannot be used directly, since
+the methods <a class="reference internal" href="#radon.cli.harvest.Harvester.gobble" title="radon.cli.harvest.Harvester.gobble"><code class="xref py py-meth docutils literal"><span class="pre">gobble()</span></code></a>, <a class="reference internal" href="#radon.cli.harvest.Harvester.as_xml" title="radon.cli.harvest.Harvester.as_xml"><code class="xref py py-meth docutils literal"><span class="pre">as_xml()</span></code></a> and <a class="reference internal" href="#radon.cli.harvest.Harvester.to_terminal" title="radon.cli.harvest.Harvester.to_terminal"><code class="xref py py-meth docutils literal"><span class="pre">to_terminal()</span></code></a> are
+not implemented.</p>
+<dl class="method">
+<dt id="radon.cli.harvest.Harvester.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>paths</em>, <em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#radon.cli.harvest.Harvester.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the Harvester.</p>
+<p><em>paths</em> is a list of paths to analyze.
+<em>config</em> is a <code class="xref py py-class docutils literal"><span class="pre">Config</span></code> object holding the
+configuration values specific to the Harvester.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="radon.cli.harvest.Harvester.as_codeclimate_issues">
+<code class="descname">as_codeclimate_issues</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#radon.cli.harvest.Harvester.as_codeclimate_issues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format the results as Code Climate issues.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="radon.cli.harvest.Harvester.as_json">
+<code class="descname">as_json</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#radon.cli.harvest.Harvester.as_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format the results as JSON.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="radon.cli.harvest.Harvester.as_xml">
+<code class="descname">as_xml</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#radon.cli.harvest.Harvester.as_xml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format the results as XML.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="radon.cli.harvest.Harvester.gobble">
+<code class="descname">gobble</code><span class="sig-paren">(</span><em>fobj</em><span class="sig-paren">)</span><a class="headerlink" href="#radon.cli.harvest.Harvester.gobble" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subclasses must implement this method to define behavior.</p>
+<p>This method is called for every file to analyze. <em>fobj</em> is the file
+object. This method should return the results from the analysis,
+preferably a dictionary.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="radon.cli.harvest.Harvester.results">
+<code class="descname">results</code><a class="headerlink" href="#radon.cli.harvest.Harvester.results" title="Permalink to this definition">¶</a></dt>
+<dd><p>This property holds the results of the analysis.</p>
+<p>The first time it is accessed, an iterator is returned. Its
+elements are cached into a list as it is iterated over. Therefore, if
+<cite>results</cite> is accessed multiple times after the first one, a list will
+be returned.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="radon.cli.harvest.Harvester.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#radon.cli.harvest.Harvester.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start the analysis. For every file, this method calls the
+<a class="reference internal" href="#radon.cli.harvest.Harvester.gobble" title="radon.cli.harvest.Harvester.gobble"><code class="xref py py-meth docutils literal"><span class="pre">gobble()</span></code></a> method. Results are yielded as tuple:
+<code class="docutils literal"><span class="pre">(filename,</span> <span class="pre">analysis_results)</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="radon.cli.harvest.Harvester.to_terminal">
+<code class="descname">to_terminal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#radon.cli.harvest.Harvester.to_terminal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yields tuples representing lines to be printed to a terminal.</p>
+<p>The tuples have the following format: <code class="docutils literal"><span class="pre">(line,</span> <span class="pre">args,</span> <span class="pre">kwargs)</span></code>.
+The line is then formatted with <cite>line.format(*args, **kwargs)</cite>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="radon.cli.harvest.CCHarvester">
+<em class="property">class </em><code class="descclassname">radon.cli.harvest.</code><code class="descname">CCHarvester</code><span class="sig-paren">(</span><em>paths</em>, <em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#radon.cli.harvest.CCHarvester" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class that analyzes Python modules&#8217; Cyclomatic Complexity.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="radon.cli.harvest.RawHarvester">
+<em class="property">class </em><code class="descclassname">radon.cli.harvest.</code><code class="descname">RawHarvester</code><span class="sig-paren">(</span><em>paths</em>, <em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#radon.cli.harvest.RawHarvester" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class that analyzes Python modules&#8217; raw metrics.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="radon.cli.harvest.MIHarvester">
+<em class="property">class </em><code class="descclassname">radon.cli.harvest.</code><code class="descname">MIHarvester</code><span class="sig-paren">(</span><em>paths</em>, <em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#radon.cli.harvest.MIHarvester" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class that analyzes Python modules&#8217; Maintainability Index.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="changelog.html" title="Changelog"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="flake8.html" title="Flake8 plugin"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Radon 1.4.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012-2013-2014-2015-2016, Michele Lacchia.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.9. Theme by <a href="http://github.com/vkvn">vkvn</a>
+    </div>
+  </body>
+</html>

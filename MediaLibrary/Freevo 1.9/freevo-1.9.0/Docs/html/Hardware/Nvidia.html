@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>Hardware/Nvidia - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="../modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="../modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="../modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/Hardware/Nvidia?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/Hardware/Nvidia?action=print">
+<link rel="Up" href="/cgi-bin/doc/Hardware">
+<link rel="Appendix" title="freevo-bootsplash.tgz" href="/cgi-bin/doc/Hardware/Nvidia?action=AttachFile&amp;do=get&amp;target=freevo-bootsplash.tgz">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="../Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">Hardware/Nvidia</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>Download the latest nvidia driver from <a href="http://www.nvidia.com"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.nvidia.com</a> make sure your system doesn't have X running and execute the installer. The installer will ask you some simple questions and then install the driver, if this installation fails then the nvidia linux forums normally have a solution to the problem. <a class="external" href="http://www.nvnews.net/vbulletin/forumdisplay.php?f=14"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.nvnews.net/vbulletin/forumdisplay.php?f=14</a> </p>
+<p>Edit your /etc/X11/( XF86Config | xorg.conf ) and in the Device section set the following; 
+</p>
+<pre>
+Section "Device"
+        Identifier  "Videocard0"
+        Driver      "nvidia"
+        VendorName  "nVidia"
+        Option      "TVStandard" "PAL-I"
+        Option      "ConnectedMonitor" "TV"
+        Option      "NoLogo" "True"
+        Option      "RenderAccel" "True"
+        BoardName   "NVIDIA GeForce FX 5200"
+EndSection
+</pre>
+<p>That should now start in TV-Out mode aslong as your resolution is set to 800x600 (or other TV Out capable display modes??) </p>
+<p>Also for Side Band Addressing and Fast Writes add the following to your /etc/( modules.conf | modprobe.conf ) 
+</p>
+<pre>
+options nvidia NVreg_EnableAGPSBA=1 NVreg_EnableAGPFW=1
+</pre>
+<p>Lifted from the nVidia linux readme... </p>
+<p>The "TVStandard" option should be added to your screen section; valid values are: 
+</p>
+<pre>
+"PAL-B"  : used in Belgium, Denmark, Finland, Germany, Guinea,
+           Hong Kong, India, Indonesia, Italy, Malaysia, The
+           Netherlands, Norway, Portugal, Singapore, Spain,
+           Sweden, and Switzerland
+"PAL-D"  : used in China and North Korea
+"PAL-G"  : used in Denmark, Finland, Germany, Italy, Malaysia,
+           The Netherlands, Norway, Portugal, Spain, Sweden,
+           and Switzerland
+"PAL-H"  : used in Belgium
+"PAL-I"  : used in Hong Kong and The United Kingdom
+"PAL-K1" : used in Guinea
+"PAL-M"  : used in Brazil
+"PAL-N"  : used in France, Paraguay, and Uruguay
+"PAL-NC" : used in Argentina
+"NTSC-J" : used in Japan
+"NTSC-M" : used in Canada, Chile, Colombia, Costa Rica, Ecuador,
+           Haiti, Honduras, Mexico, Panama, Puerto Rico, South
+           Korea, Taiwan, United States of America, and Venezuela
+</pre>
+
+<h3 id="head-c48cab0f32017bffb60f6ed411412034e6631a3e">Overscan</h3>
+
+<p>When setting up my FX 5200 card I noticed that the <tt>TV</tt><tt>Over</tt><tt>Scan</tt> Option in my <tt>XF</tt><tt>86</tt><tt>Config</tt> was ignored. However when playing with the nvidia-settings tool I had control over OverScan, but somehow it did not save OverScan settings in the  <tt>.nvidia-settings-rc.</tt> </p>
+<p>By adding the following line to my <tt>.nvidia-settings-rc</tt> I fixed the Overscan problem: 
+</p>
+<pre>
+0/TVOverScan[TV-0]=21
+</pre>
+<p>My <tt>.xsession</tt> file to load settings at xstart: 
+</p>
+<pre>
+#!/bin/bash
+# load nvidia settings
+if [ -x /usr/bin/nvidia-settings -a -r $HOME/.nvidia-settings-rc ]; then
+/usr/bin/nvidia-settings --load-config-only &amp;&gt; /dev/null &amp;
+fi
+
+/usr/bin/X11/xmodmap ~/.Xmodmap
+exec freevo
+</pre>
+<p>The part in <tt>X</tt><tt>F86</tt><tt>Config-4</tt>: 
+</p>
+<pre>
+Section "Device"
+        Identifier      "Generic Video Card"
+        Driver          "nvidia"
+        Option "nologo" "true"
+        Option "NvAGP" "2"
+        Option "TwinView" "True"
+        Option "TwinViewOrientation" "Clone"
+        Option "ConnectedMonitor" "CRT, TV"
+        Option "MetaModes" "800x600,800x600;640x480,640x480"
+        Option "TVStandard" "PAL-B"
+        Option "TVOutFormat" "COMPOSITE"
+        Option "SecondMonitorHorizSync" "30-50"
+        Option "SecondMonitorVertRefresh" "60"
+EndSection
+</pre>
+<p>My setup: 2.6.8 kernel with nvidia-kernel module </p>
+
+<h3 id="head-648654d186927146a3a671a47771f8f331733b8a">Hardware accelerated playback</h3>
+
+<p>nVidia GeForce 4 (and the CLE266 chipset on Via Epia boards) support hardware accelerated playback of MPEG 1/2 streams, e.g. DVDs (not divX and stuff like that). From nVidia's readme file for the 1.0-6629 drivers: </p>
+
+<pre>
+(app-p) APPENDIX P: XVMC SUPPORT 
+__________________________________________________________________________
+
+This release includes support for the X-Video Motion Compensation (XvMC)
+version 1.0 API on GeForce4 and GeForce FX products only.  There is a static
+library "libXvMCNVIDIA.a" and a dynamic one "libXvMCNVIDIA_dynamic.so"
+which is suitable for dlopening.  GeForce4 MX and GeForce FX products support 
+both XvMC's "IDCT" and "motion-compensation" levels of acceleration.  
+GeForce4 Ti products only support the motion-compensation level.  AI44 and IA44
+subpictures are supported.  4:2:0 Surfaces up to 2032x2032 are supported.
+
+libXvMCNVIDIA observes the XVMC_DEBUG environment variable and will
+provide some debug output to stderr when set to an appropriate integer
+value.  '0' disables debug output.  '1' enables debug output for failure
+conditions.  '2' or higher enables output of warning messages.
+</pre>
+<p>Both mplayer and xine support xvmc. This makes it almost possible to play DVDs 100% smooth on a Intel Celeron 566Mhz (xine uses around 70% cpu) </p>
+
+<h3 id="head-b92184b098490864e7bb1d81ce96d1de6bc87a31">VESA framebuffer and TV-out</h3>
+
+<p>When you connect a nVidia card to a TV and try to enable a VESA frambuffer (to use bootsplash  for example), you should have many problems. Don't try to enable the rivafb driver, it isn't compatible with the closed source nVidia driver (a warning message inform you when you install it). And more over, it seems that connecting a TV disable some possibilities of the VESA framebuffer.  From my experience, I couldn't enable the VESA VGA framefuffer using the standards driver in  current kernel (2.6.8). Here is a solution to activate it and to have a beautiful freevo splash  screen ;). To obtain this, you have to patch your kernel. </p>
+<p>First, you have to install a new version of vesa driver: vesafb-tng which is a new and more  functional version of the vesafb linux driver. All you have to know about this driver is at:  <a href="http://dev.gentoo.org/~spock/projects/vesafb-tng/"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://dev.gentoo.org/~spock/projects/vesafb-tng/</a> </p>
+<p>Download the appropriate patch and apply it to your kernel sources. 
+</p>
+<pre>
+cd /usr/src/linux
+cat &lt;path_to_patch_file&gt;/&lt;patch_file&gt; | patch -p1
+</pre>
+<p>Then you should download the bootsplash patch if it's not included in your kernel sources. You can download it at <a href="http://www.bootsplash.de/files/"><img src="../modern/img/moin-www.png" alt="[WWW]" height="11" width="11"> http://www.bootsplash.de/files/</a>. Install the appropriate patch as the  previous one. At the same time install bootspash utilities (bootsplash package in many distro). </p>
+<p>Then you should configure your kernel (make menuconfig). Here is the modifications you need to apply: 
+</p>
+<pre>
+Code maturity level options  ---&gt;
+   [*] Prompt for development and/or incomplete code/drivers
+Processor type and features  ---&gt;
+   [*] MTRR (Memory Type Range Register) support
+Device Drivers  ---&gt;
+   Block devices  ---&gt;
+       &lt;*&gt; Loopback device support
+       &lt;*&gt; RAM disk support
+       (8192) Default RAM disk size
+       [*]   Initial RAM disk (initrd) support
+Graphics support  ---&gt;
+   [*] Support for frame buffer devices
+   [*]   VESA VGA graphics support
+           VESA driver type (vesafb-tng) ---&gt;
+   (640x480@60) VESA default mode
+   Console display driver support  ---&gt;
+       [*]   Video mode selection support
+       &lt;*&gt; Framebuffer Console support
+   Bootsplash configuration  ---&gt;
+       [*] Bootup splash screen
+</pre>
+<p>Build (make) and install (make install) your kernel. </p>
+<p>Download a theme or use the freevo splash themes attached to this page (published in  freevo-devel mailing list). Patch your initrd file to add the splash images. 
+</p>
+<pre>
+splash -s -f /etc/bootsplash/themes/freevo/config/bootsplash-800x600.cfg &gt;&gt; /boot/initrd.splash
+</pre>
+<p>Configure your boot loader. Here is the modifications you should apply for lilo to your  /etc/lilo.conf 
+</p>
+<pre>
+image=/boot/vmlinuz-2.6.8
+       label=Splash-2.6.8
+       read-only
+       initrd=/boot/initrd.splash
+       append="video=vesafb:ypan,800x600-32@60 splash=silent"
+</pre>
+<p>Run lilo, reboot and enjoy with your freevo graphical startup ! </p>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-06-14 10:47:53 by <span title="peidor.student.utwente.nl">Peidor</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/Hardware/Nvidia">http://freevo.sourceforge.net/cgi-bin/doc/Hardware/Nvidia</a></p>
+</div> <!-- end page -->
+</body>
+</html>

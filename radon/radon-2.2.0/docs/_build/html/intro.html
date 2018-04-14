@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction to Code Metrics &#8212; Radon 1.4.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/solar.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.4.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/MathJax.js?config=TeX-AMS_HTML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Radon 1.4.2 documentation" href="index.html" />
+    <link rel="next" title="Command-line Usage" href="commandline.html" />
+    <link rel="prev" title="Welcome to Radon’s documentation!" href="index.html" /><link href='http://fonts.googleapis.com/css?family=PT+Mono|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+<link href="_static/solarized-dark.css" rel="stylesheet">
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="commandline.html" title="Command-line Usage"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Radon’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Radon 1.4.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Introduction to Code Metrics</a><ul>
+<li><a class="reference internal" href="#cyclomatic-complexity">Cyclomatic Complexity</a></li>
+<li><a class="reference internal" href="#maintainability-index">Maintainability Index</a></li>
+<li><a class="reference internal" href="#raw-metrics">Raw Metrics</a></li>
+<li><a class="reference internal" href="#halstead-metrics">Halstead Metrics</a></li>
+<li><a class="reference internal" href="#further-reading">Further Reading</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to Radon&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="commandline.html"
+                        title="next chapter">Command-line Usage</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/intro.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="introduction-to-code-metrics">
+<h1>Introduction to Code Metrics<a class="headerlink" href="#introduction-to-code-metrics" title="Permalink to this headline">¶</a></h1>
+<p>This section contains a brief explanations of the metrics that Radon can
+compute.</p>
+<div class="section" id="cyclomatic-complexity">
+<h2>Cyclomatic Complexity<a class="headerlink" href="#cyclomatic-complexity" title="Permalink to this headline">¶</a></h2>
+<p>Cyclomatic Complexity corresponds to the number of decisions a block of code
+contains plus 1. This number (also called McCabe number) is equal to the number
+of linearly independent paths through the code. This number can be used as a
+guide when testing conditional logic in blocks.</p>
+<p>Radon analyzes the AST tree of a Python program to compute Cyclomatic
+Complexity. Statements have the following effects on Cyclomatic Complexity:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="11%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Construct</th>
+<th class="head">Effect on CC</th>
+<th class="head">Reasoning</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>if</td>
+<td>+1</td>
+<td>An <cite>if</cite> statement is a single decision.</td>
+</tr>
+<tr class="row-odd"><td>elif</td>
+<td>+1</td>
+<td>The <cite>elif</cite> statement adds another decision.</td>
+</tr>
+<tr class="row-even"><td>else</td>
+<td>+0</td>
+<td>The <cite>else</cite> statement does not cause a new decision. The decision is at the <cite>if</cite>.</td>
+</tr>
+<tr class="row-odd"><td>for</td>
+<td>+1</td>
+<td>There is a decision at the start of the loop.</td>
+</tr>
+<tr class="row-even"><td>while</td>
+<td>+1</td>
+<td>There is a decision at the <cite>while</cite> statement.</td>
+</tr>
+<tr class="row-odd"><td>except</td>
+<td>+1</td>
+<td>Each <cite>except</cite> branch adds a new conditional path of execution.</td>
+</tr>
+<tr class="row-even"><td>finally</td>
+<td>+0</td>
+<td>The finally block is unconditionally executed.</td>
+</tr>
+<tr class="row-odd"><td>with</td>
+<td>+1</td>
+<td>The <cite>with</cite> statement roughly corresponds to a try/except block (see PEP 343 for details).</td>
+</tr>
+<tr class="row-even"><td>assert</td>
+<td>+1</td>
+<td>The <cite>assert</cite> statement internally roughly equals a conditional statement.</td>
+</tr>
+<tr class="row-odd"><td>Comprehension</td>
+<td>+1</td>
+<td>A list/set/dict comprehension of generator expression is equivalent to a for loop.</td>
+</tr>
+<tr class="row-even"><td>Boolean Operator</td>
+<td>+1</td>
+<td>Every boolean operator (and, or) adds a decision point.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="maintainability-index">
+<h2>Maintainability Index<a class="headerlink" href="#maintainability-index" title="Permalink to this headline">¶</a></h2>
+<p>Maintainability Index is a software metric which measures how maintainable
+(easy to support and change) the source code is. The maintainability index is
+calculated as a factored formula consisting of SLOC (Source Lines Of Code),
+Cyclomatic Complexity and Halstead volume. It is used in several automated
+software metric tools, including the Microsoft Visual Studio 2010 development
+environment, which uses a shifted scale (0 to 100) derivative.</p>
+<p>Common formulas are:</p>
+<ul>
+<li><p class="first">the original formula:</p>
+<div class="math">
+\[MI = 171 - 5.2 \ln V - 0.23 G - 16.2 \ln L\]</div>
+</li>
+<li><p class="first">the derivative used by SEI:</p>
+<div class="math">
+\[MI = 171 - 5.2\log_2 V - 0.23 G - 16.2 \log_2 L + 50 \sin(\sqrt{2.4 C})\]</div>
+</li>
+<li><p class="first">the derivative used by Visual Studio:</p>
+<div class="math">
+\[MI = \max \left [ 0, 100\dfrac{171 - 5.2\ln V - 0.23 G - 16.2 \ln L}{171} \right ].\]</div>
+</li>
+</ul>
+<p>Radon uses another derivative, computed from both SEI derivative and Visual
+Studio one:</p>
+<div class="math">
+\[MI = \max \left [ 0, 100\dfrac{171 - 5.2\ln V - 0.23 G - 16.2 \ln L + 50 \sin(\sqrt{2.4 C}))}{171} \right ]\]</div>
+<dl class="docutils">
+<dt>Where:</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">V</span></code> is the Halstead Volume (see below);</li>
+<li><code class="docutils literal"><span class="pre">G</span></code> is the total Cyclomatic Complexity;</li>
+<li><code class="docutils literal"><span class="pre">L</span></code> is the number of Source Lines of Code (SLOC);</li>
+<li><code class="docutils literal"><span class="pre">C</span></code> is the percent of comment lines (important: converted to radians).</li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Maintainability Index is still a very experimental metric, and
+should not be taken into account as seriously as the other metrics.</p>
+</div>
+</div>
+<div class="section" id="raw-metrics">
+<h2>Raw Metrics<a class="headerlink" href="#raw-metrics" title="Permalink to this headline">¶</a></h2>
+<p>The following are the definitions employed by Radon:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>LOC</strong>: The total number of lines of code. It does not necessarily
+correspond to the number of lines in the file.</li>
+<li><strong>LLOC</strong>: The number of logical lines of code. Every logical line of code
+contains exactly one statement.</li>
+<li><strong>SLOC</strong>: The number of source lines of code - not necessarily
+corresponding to the <strong>LLOC</strong>.</li>
+<li>Comments: The number of comment lines. Multi-line strings are not counted
+as comment since, to the Python interpreter, they are just strings.</li>
+<li>Multi: The number of lines which represent multi-line strings.</li>
+<li>Blanks: The number of blank lines (or whitespace-only ones).</li>
+</ul>
+</div></blockquote>
+<p>The equation <code class="docutils literal"><span class="pre">SLOC</span> <span class="pre">-</span> <span class="pre">Single</span> <span class="pre">comments</span> <span class="pre">-</span> <span class="pre">Multi</span> <span class="pre">=</span> <span class="pre">LOC</span></code> should always hold.
+Additionally, comment stats are calculated:</p>
+<blockquote>
+<div><ul class="simple">
+<li><cite>C % L</cite>: the ratio between number of comment lines and <strong>LOC</strong>,
+expressed as a percentage;</li>
+<li><cite>C % S</cite>: the ratio between number of comment lines and <strong>SLOC</strong>,
+expressed as a percentage;</li>
+<li><cite>C + M % L</cite>: the ratio between number of comment and multiline strings
+lines and <strong>LOC</strong>, expressed as a percentage.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="halstead-metrics">
+<h2>Halstead Metrics<a class="headerlink" href="#halstead-metrics" title="Permalink to this headline">¶</a></h2>
+<p>Halstead&#8217;s goal was to identify measurable properties of software, and the
+relations between them. These numbers are statically computed from the source
+code:</p>
+<blockquote>
+<div><ul class="simple">
+<li><span class="math">\(\eta_1\)</span> = the number of distinct operators</li>
+<li><span class="math">\(\eta_2\)</span> = the number of distinct operands</li>
+<li><span class="math">\(N_1\)</span> = the total number of operators</li>
+<li><span class="math">\(N_2\)</span> = the total number of operands</li>
+</ul>
+</div></blockquote>
+<p>From these numbers several measures can be calculated:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Program vocabulary: <span class="math">\(\eta = \eta_1 + \eta_2\)</span></li>
+<li>Program length: <span class="math">\(N = N_1 + N_2\)</span></li>
+<li>Calculated program length: <span class="math">\(\widehat{N} = \eta_1 \log_2 \eta_1 +
+\eta_2 \log_2 \eta_2\)</span></li>
+<li>Volume: <span class="math">\(V = N \log_2 \eta\)</span></li>
+<li>Difficulty: <span class="math">\(D = \dfrac{\eta_1}{2} \cdot \dfrac{N_2}{\eta_2}\)</span></li>
+<li>Effort: <span class="math">\(E = D \cdot V\)</span></li>
+<li>Time required to program: <span class="math">\(T = \dfrac{E}{18}\)</span> seconds</li>
+<li>Number of delivered bugs: <span class="math">\(B = \dfrac{V}{3000}\)</span>.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="further-reading">
+<h2>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Paul Omand and Jack Hagemeister. “Metrics for assessing a software system’s
+maintainability”. Proceedings International Conference on Software
+Mainatenance (ICSM), 1992. (<a class="reference external" href="http://dx.doi.org/10.1109/ICSM.1992.242525">doi</a>)</li>
+<li>Don M. Coleman, Dan Ash, Bruce Lowther, Paul W. Oman. Using Metrics to
+Evaluate Software System Maintainability. IEEE Computer 27(8), 1994. (<a class="reference external" href="http://doi.ieeecomputersociety.org/10.1109/2.303623">doi</a>, <a class="reference external" href="http://www.ecs.csun.edu/~rlingard/comp589/ColemanPaper.pdf">postprint</a>)</li>
+<li><a class="reference external" href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx">Maintainability Index Range and Meaning</a>.
+Code Analysis Team Blog, blogs.msdn, 20 November 2007.</li>
+<li>Arie van Deursen, <a class="reference external" href="http://avandeursen.com/2014/08/29/think-twice-before-using-the-maintainability-index/">Think Twice Before Using the “Maintainability Index”</a>.</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="commandline.html" title="Command-line Usage"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Radon’s documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Radon 1.4.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012-2013-2014-2015-2016, Michele Lacchia.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.9. Theme by <a href="http://github.com/vkvn">vkvn</a>
+    </div>
+  </body>
+</html>

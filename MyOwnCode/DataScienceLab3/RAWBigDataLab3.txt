@@ -1,0 +1,36 @@
+NetworkCode.py
+    LOC: 120
+    LLOC: 83
+    SLOC: 81
+    Comments: 16
+    Single comments: 16
+    Multi: 0
+    Blank: 23
+    - Comment Stats
+        (C % L): 13%
+        (C % S): 20%
+        (C + M % L): 13%
+Algorithm1.py
+    LOC: 120
+    LLOC: 83
+    SLOC: 81
+    Comments: 16
+    Single comments: 16
+    Multi: 0
+    Blank: 23
+    - Comment Stats
+        (C % L): 13%
+        (C % S): 20%
+        (C + M % L): 13%
+** Total **
+    LOC: 240
+    LLOC: 166
+    SLOC: 162
+    Comments: 32
+    Single comments: 32
+    Multi: 0
+    Blank: 46
+    - Comment Stats
+        (C % L): 13%
+        (C % S): 20%
+        (C + M % L): 13%

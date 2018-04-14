@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+
+<title>DevelopPlugins - Freevo Wiki</title>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="modern/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="modern/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="modern/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="modern/css/freevo.css">
+
+<link rel="alternate" title="Freevo Wiki Recent Changes" href="/cgi-bin/doc/RecentChanges?action=rss_rc&amp;ddiffs=1&amp;unique=1" type="application/rss+xml">
+<link rel="Start" href="/cgi-bin/doc/Index">
+<link rel="Alternate" title="Wiki Markup" href="/cgi-bin/doc/DevelopPlugins?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/cgi-bin/doc/DevelopPlugins?action=print">
+<link rel="Search" href="/cgi-bin/doc/FindPage">
+<link rel="Index" href="/cgi-bin/doc/TitleIndex">
+<link rel="Glossary" href="/cgi-bin/doc/WordIndex">
+<link rel="Help" href="/cgi-bin/doc/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+            <!-- Header Logo and Status Line -->
+<div id="titlebar"><span class="name"><a href="http://freevo.sourceforge.net/" target="_blank">Freevo</a></span></div>
+<div id="header">
+<ul>
+
+	<li id="current"><a href="Index.html">User Documentation</a></li>
+        
+</ul>
+</div>
+<p>&nbsp;</p>
+<div id="page" lang="en" dir="ltr"><!-- start page -->
+
+
+<h1 id="title">DevelopPlugins</h1>
+<div lang="en" id="content" dir="ltr">
+<a id="top"></a>
+<p>Site Index: </p>
+<ol>
+
+<li>
+<a href="#head-966ef518903e37ffb3684fbab33f1321d100b3b7">Intro</a>
+</li>
+
+<li>
+<a href="#head-fe53c4eb42f08db74f7a8f9b16f5f3525365ed9d">Item plugins</a>
+</li>
+
+<li>
+<a href="#head-bcdb83517466d0c34edd1ef8202b23f6be0d82c5">Idlebar plugins</a>
+</li>
+
+</ol>
+<p> </p>
+
+<h2 id="head-966ef518903e37ffb3684fbab33f1321d100b3b7">Intro</h2>
+
+<p>It is quite simple to write your own plugins. Have a look at the code example below. If that didn't scare you away... try looking at some of the code in <tt>src/plugins&nbsp;or&nbsp;src/(video|audio|image|games)/plugins&nbsp;</tt> and before you blow it you are writing the next fabulous Freevo plugin <img src="modern/img/smile.png" alt=":-)" height="15" width="15">  </p>
+
+<h2 id="head-fe53c4eb42f08db74f7a8f9b16f5f3525365ed9d">Item plugins</h2>
+
+<p>Item plugins give you the possibility to define actions which should be performed on items of a special kind. Those actions can then be accessed from within the item context menu (pressing ENTER not SELECT on the item). You can define every kind of command or script here as an action. An easy example of this kind of plugin is the video.mover plugin. As it's a video plugin it is placed in <tt>src/video/plugins&nbsp;</tt>.  </p>
+<p>An item plugin is a subclass of the <tt>PluginInterface</tt> class which has at least the following functions: </p>
+<ul>
+<li><p> actions: This function returns a list of possible actions for this item (or an empty list).  </p>
+<ul>
+<li style="list-style-type:none">
+<pre>
+    def actions(self,item): 
+        if SOMECONDITION:
+            return [ (self.COMMAND,'Name of menu entry')] 
+        return [] 
+   </pre>
+<p>Each action item is a pair function/description. With SOMECONDITION you can finetune for which items this actions should be available  </p>
+</li>
+</ul>
+</li>
+<li class="gap"><p> One or several commands that should be available </p>
+<ul>
+<li style="list-style-type:none">
+<pre>
+    def COMMAND(self,arg=None, menuw=None):
+        item = self.item 
+        os.system('command') 
+        menuw.delete_menu(arg, menuw) 
+   </pre>
+<p>You can define as many of this commands as you like.  </p>
+</li>
+</ul>
+</li>
+</ul>
+<p>To make this more clear for you, here is another example: </p>
+<p>I wrote a small script called <tt>ts2avi.sh&nbsp;</tt> to encode my recordings to avi. We watch most recordings within the next few days and delete the files after that, so not all of them are worth further encoding. Thus I created menu entries for encoding using a item plugin. I have two entries, which call the script with different parameters. The plugin file is called <tt>ts2avi.py&nbsp;</tt> and is placed in <tt>src/video/plugins&nbsp;</tt>. </p>
+
+<pre>
+import os  
+import plugin
+import config
+
+class PluginInterface(plugin.ItemPlugin):
+    """
+    Plugin to encode ts files
+    
+    Activate:
+    plugin.activate('video.ts2avi')
+    
+    This plugin creates additional entries in the context menu of ts-files 
+    for encoding those files to avi. 
+    One can choose among several methods for different formats.
+     
+    """
+    
+    def __init__(self):
+        plugin.ItemPlugin.__init__(self)
+                
+    #Actions: 
+    def actions(self,item): 
+        self.item = item
+        # Conditions: this actions are displayed for files with the extension 'ts'
+        if item.mode == 'file' and os.path.splitext(item.filename)[1] == '.ts': 
+            return [ (self.encode_to_avi_normal, 'Encode to avi (4:3)'),(self.encode_to_avi_letter,'Encode to avi (letterbox)')] 
+        return [] 
+
+    # Commands: The script is called as 'ts2avi &lt;filename.ts&gt; &lt;filename&gt; &lt;bitrate&gt; &lt;norm/letter&gt;'
+    def encode_to_avi_normal(self,arg=None, menuw=None):
+        item = self.item 
+        os.system('ts2avi.sh "%s" "%s" 900 norm &amp;' % (item.filename,os.path.splitext(item.filename)[0])) 
+        menuw.delete_menu(arg, menuw) 
+ 
+    def encode_to_avi_letter(self,arg=None, menuw=None):
+        item = self.item 
+        os.system('ts2avi.sh "%s" "%s" 900 letter &amp;' % (item.filename,os.path.splitext(item.filename)[0])) 
+        menuw.delete_menu(arg, menuw) 
+
+</pre>
+
+<h2 id="head-bcdb83517466d0c34edd1ef8202b23f6be0d82c5">Idlebar plugins</h2>
+
+<p>Idlebar plugins are ideal to display some information about your system. There are already a couple of such plugins, most of them are located in <tt>/src/plugins/idlebar/__init__.py&nbsp;</tt>. If you want to add another one, the easiest way is to add your code to that file, too. </p>
+<p>Idlebar plugins consist of one class, which has at least a draw method, which draws its information to the idlebar. Most of them have also one additional method to get the needed information from the system and of course there could be more helper methods. From within the draw function you can call <tt>osd.draw_image&nbsp;</tt> to display a image and <tt>osd.write_text&nbsp;</tt> for text. The draw function must return the width of the displayed information, so that the next idlebar plugin knows where it can start to draw. </p>
+<p>Here is a simple example, which displays the free space on a given mount point in the idlebar, which is quite useful in order to monitor the available diskplace for recordings. </p>
+
+<pre>
+import util.fileops as util
+
+class diskfree(IdleBarPlugin):
+    """
+    Displays the amount of free disk space
+    
+    Activate with:
+    plugin.activate('idlebar.diskfree', level=30, args=('/mountpoint'))
+    
+    This plugin displays the total amount of free disk space on a given mount point  
+    """
+    def __init__(self, mount='/'):
+        IdleBarPlugin.__init__(self)
+        self.mount = mount
+        self.time = 0
+        self.diskfree = 0
+
+        
+    def getDiskFree(self):
+        """
+        Determine amount of freedisk space
+        Update maximum every 30 seconds
+        
+        """ 
+        if (time.time()-self.time)&gt;30:
+            self.time = time.time()
+            freespace = util.freespace(self.mount)
+            self.diskfree = _('%iGb') % (((freespace / 1024) / 1024) / 1024)
+    
+    def draw(self, (type,object),x,osd):
+        """
+        Drawing to idlebar
+        """ 
+        
+        self.getDiskFree()
+        font = osd.get_font('small0')
+        widthdf = 0
+        widthdf = font.stringsize(self.diskfree)
+        osd.draw_image(os.path.join(config.ICON_DIR, 'misc/chartpie.png' ),(x, osd.y + 7, -1, -1))
+        osd.write_text(self.diskfree, font, None, x + 15, osd.y + 55 - font.h, widthdf, font.h, 'left', 'top')
+      
+        return widthdf + 15     
+</pre>
+<a id="bottom"></a>
+
+</div>
+<p id="pageinfo" class="info" lang="en" dir="ltr">last edited 2005-05-07 12:14:20 by <span title="dslam252-96-59-81.dyndsl.versatel.nl">TomParker</span>
+<br>current version: <a href="http://freevo.sourceforge.net/cgi-bin/doc/DevelopPlugins">http://freevo.sourceforge.net/cgi-bin/doc/DevelopPlugins</a></p>
+</div> <!-- end page -->
+</body>
+</html>
