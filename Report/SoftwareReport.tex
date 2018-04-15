@@ -41,6 +41,7 @@
                         % which can be found as esplatex.ps and epslatex.pdf
                         % at: http://www.ctan.org/tex-archive/info/
 
+
 %\usepackage{psfrag}    % Written by Craig Barratt, Michael C. Grant,
                         % and David Carlisle
                         % This package allows you to substitute LaTeX
@@ -101,13 +102,15 @@
                         % midfloat.sty package (by the same author) as IEEE
                         % does not format its papers in such ways.
 
+
+
 \usepackage{amsmath}  
 \usepackage{lettrine}
 \usepackage{titlesec}
 \usepackage{graphics}
 \usepackage{ragged2e}
 \usepackage{multicol}
-\usepackage{amsmath}
+\usepackage[linesnumbered,ruled]{algorithm2e}
 %\usepackage{titlesec} % From the American Mathematical Society
                         % A popular package that provides many helpful commands
                         % for dealing with mathematics. Note that the AMSmath
@@ -120,7 +123,7 @@
                         % installed on most LaTeX systems. The latest version
                         % and documentation can be obtained at:
                         % http://www.ctan.org/tex-archive/macros/latex/required/amslatex/math/
-
+\usepackage{listings}
 
 
 % Other popular packages for formatting tables and equations include:
@@ -198,6 +201,61 @@ The metrics being used in this project are the following:
 \item Dependencies
 \end{itemize}
 \noindent
+The tools used to calculate these metrics are Radon, Pylint, Graphviz, Webdot and Snakefood. Each of these metrics used are explained in the subsections below.
+
+\subsection{Cyclomatic Complexity}
+\noindent
+The cyclomatic complexity metric, calculated using the Radon tool, is used to determine the number of distinct paths a program can take during running. It gives the developer an idea of how many decisions are being made by their code. There are various constructs and conditional statements or decisions that have an effect on the cyclomatic complexity of any program. These and their additive  effects on the cyclomatic complexity are shown in the table below. 
+
+\begin{table}[H]
+\centering
+\caption{Statements and their effects on cyclomatic complexity}
+\label{my-label}
+\begin{tabular}{|l|l|}
+\hline
+Statement         & Effect On Cyclomatic Complexity \\ \hline
+If                & 1                               \\ \hline
+Elif              & 1                               \\ \hline
+Else              & 0                               \\ \hline
+For               & 1                               \\ \hline
+While             & 1                               \\ \hline
+Except            & 1                               \\ \hline
+Finally           & 0                               \\ \hline
+With              & 1                               \\ \hline
+Assert            & 1                               \\ \hline
+Comprehension     & 1                               \\ \hline
+Boolean Operators & 1                               \\ \hline
+\end{tabular}
+\end{table}
+
+\noindent
+An example (not the author's code base) and its cyclomatic complexity are shown in figure 1 and the paragraph that follows respectively. 
+
+
+\lstinputlisting[caption=Example code to explain cyclomatic complexity metric.,language=python]{dog.py}
+
+\noindent
+While this code is simple and may not follow the best programming practices it is sufficient to explain how the cyclomatic complexity metric works. There are four ways this code can run. The first being if the dog is hungry and it is home then the dog will be fed. The second being if the dog is hungry but is not home then the dog will be located and fed. The third way is if the dog is not hungry and is not home then the dog will be located. The last way is if the dog is not hungry but is home then nothing is to be done. Because there are four ways this program can be run the cyclomatic complexity of this code is 4????????.\\  
+
+
+
+\noindent
+Radon was used to calculate the cyclomatic complexity of the various code bases analysed in this project. Radon's cyclomatic complexity measurement outputs a letter between A and F along with a score larger than zero relating to the number of decisions. A relates to a section of code that has less than five decisions while F relates to more than 41 decisions. \\
+
+\noindent
+The cyclomatic complexity command on Radon returns these letters and scores for each class, method and function in a section of code. Code with many decisions means many different ways the code can run which leads to high risk that code may not behave as the developer expects or intends. It is ideal to have a cyclomatic complexity score of less than 10 or B \cite{mcCabe}.  
+
+
+\subsection{Maintainability Index}
+\noindent
+The maintainability index, calculated using the Radon tool, is used to determine how easily a section of code can be maintained. This metric measures how easy it would be to change this code in future. The maintainability index as a metric was introduced is calculated using the equation below. 
+
+
+\begin{equation}
+\resizebox{0.5\textwidth}{!}{ $MI = \emph{max} [0,100*\frac{171-5.2\ln\emph{V}-0.23\emph{G} -16.2\ln\emph{L} + 50\sin(\sqrt{2.4\emph{C}}) }{171}]$}
+\end{equation}
+Where V is the Halstead volume, G is cyclomatic complexity, L is the number of source lines of code and C is the percent of comment lines in the program converted to radians.
+
 
 \section{Code Base Analysis}
 \noindent
@@ -206,49 +264,23 @@ The metrics being used in this project are the following:
 \noindent
 
 
-
-\noindent
-The code will be stored on a public repository on Github as will any papers or files relating to the project that are used to aid the authors. Anybody who wishes to validate the results of this project will then be able to download the source code and required files and will be able to test it on their own edge devices. 
 \section{Preliminary Results}
 \noindent
-whoops
 
 \section{Explanation of the Rest of the Work to be Accomplished}
 \noindent
-There are a number of tasks that still need to be done. Firstly the authors need to aqquire the smartphones and tablets that will be used as edge devices, root them and install ubuntu on them. Secondly the data that will be used to simulate the data that is produced by the sensors needs to be aqquired. Two types of data are needed data that is generated in realtime so as to mirror a device that monitors real time information such as weather stations that transmit data as it is generated and data that is generated and is only trasnmitted after a certain amount of time or after a certain amount of data has been collected for example weekly electrical load profiles for a smart house where data is collected throughout the week allof which is only transmitted at the end of each week.\\
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\noindent
-After programming the Android devices via the SD cards, they are to be tested accordingly in order to determine whether they perform the required tasks. The authors will also research and implement the optimum techniques for accelerated computation.\\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\noindent
-More research into what various compression algortihms and filtering techniques exist in the areaa of edge and fog computing is to be done. The top performing algortihms and techniques are then to be implemented on the smartphones and tablets (edge devices). Actually using the compression and filtering techniques when transmitting the data between devices and the fog gateway should be at the discretion of the authors so that when testing takes place comparisons are made easy. Additionally, tests need to be developed and for this multiple types of queries have to be identified as the basis for the tests. At the time of writing the types of queries that are to be used are select queries (with conditions), mathematical select queries that return the sum or the aggregate of the data in the selection, join queries and possibly insert and delete queries. 
 
 \section{Methods for Validations of Expected Results and Exceptions}
 \noindent
-At the time of writing this proposal it was unclear as to which languages and libraries would be used and therefore the most accurate timing method could not be determined. Once this information is known , research will be done to find the most accurate timing procedure. The time will be started when the query takes place and will stop when the result is returned. It is expected that when compression and filtering is implemented the time will be significantly shorter than when there is neither filtering nor compression. It is unclear how much faster it will be with the filtering and compression however that is part of the projects goal, to find out how much faster edge and fog computing queries can be run. \\
-
-\noindent
-Along with the time measurement there need also be another measurement that takes place to determine whether the query has returned the correct result. Accelerating the process of edge and fog computing is important however so is the integrity of the data as it is not helpful reducing the response time if this incurrs substantial errors. To validate the query results the result of the query when using compression and filtering will be compared with the result of the query when compression and filtering are not used. If identical then both results were succesfully generated and if not then a closer look will need to be taken at the data returned by the compression and filtering technique. It is important to note that bloom filters when used do, although not very often, return false positives. False positives would mean returning data that should not be there however without the filtering there would be significantly more data that need not be there so it is assumed that false positives are not fatal as overally the data will still have been significantly compressed and therefore the response time reduced.
 
 
 \section{Risk Management}
 \noindent
-An immediate risk that is facing the project is damaging the devices used, which could possibly compromise the reliablilty of the data collected and/or used.\\
+
 
 \section{Literature Review}
 \noindent
-According to \cite{accelerating}, there exist a number of compression algorithms in edge computing. Some of the more popular types of edge compression are various forms of time series compression whether it be sampling or representing a time period by the average of all the values within that time period \cite{time1}. This is a valid form of compression however it introduces a level of fuzziness as the values are not true values and the value at any given time can never be exact. Depending on the time period over which the average is calculated these averages'accuracy will vary. The more accurate the average the less compressed the data, this method therefore is not ideal. \\
-
-\noindent
-Another method suggested by \cite{PIP} is using perceptually important points to represent the data. This method also introduces fuzziness and like the previous method depending on the number of perceptually important points the representations accuracy varies in a manner that is inversely proportional to the compression rate.  Furthermore these compression methods are suited for data sets as opposed to data streams as stated in \cite{accelerating}. \\
-
-bbbbbbeeeeeeeeeeefffffffffffooooooooooorrrrrrrrrreeeeeeeeeeee
-
-\noindent
-The suggested method for this project is the use of a Bloom filter which is a way to  test if a piece of data exists in a set or not. 
-
 
 
 
@@ -275,23 +307,8 @@ The suggested method for this project is the use of a Bloom filter which is a wa
 \begin{thebibliography}{5}
 
 
-\bibitem{accelerating} Apostolos Papageorgiou, Bin Cheng, Erno Kovacs, Real-Time Data Reduction at the Network Edge of Internet-of-Things Systems. NEC Laboratories Europe Heidelberg, Germany, 2015.
+\bibitem{mcCabe} Apostolos Papageorgiou, Bin Cheng, Erno Kovacs, Real-Time Data Reduction at the Network Edge of Internet-of-Things Systems. NEC Laboratories Europe Heidelberg, Germany, 2015.
 
-\bibitem{time1}
-B.-K. Yi and C. Faloutsos. Fast Time Sequence Indexing for Arbitrary
-Lp Norms. In Proceedings of the 26th International Conference on
-Very Large Data Bases, VLDB ’00, pages 385–394. Morgan Kaufmann
-Publishers Inc., 2000.
-
-\bibitem{PIP}
-F. Chung, T. Fu, R. Luk, and V. Ng. Flexible time series pattern
-matching based on Perceptually Important Points. In International
-Joint Conference on Artificial Intelligence, Workshop on Learning from
-Temporal and Spatial Data, pages 1–7, 2001.
-
-
-\bibitem{PIP}
-Weisong Shi, Fellow, IEEE, Jie Cao, Student Member, IEEE, Quan Zhang, Student Member, IEEE, Youhuizi Li, and Lanyu Xu. Edge Computing: Vision and Challenges. 
 
 
 
