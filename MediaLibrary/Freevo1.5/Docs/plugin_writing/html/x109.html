@@ -1,0 +1,298 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Using the skin</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="Freevo Plugin Writing HOWTO"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Internal Structure"
+HREF="c50.html"><LINK
+REL="PREVIOUS"
+TITLE="GUI Objects"
+HREF="x105.html"><LINK
+REL="NEXT"
+TITLE="The Different Types of Plugins"
+HREF="c145.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Freevo Plugin Writing HOWTO: Writing your own plugins for Freevo</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x105.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. Internal Structure</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c145.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN109"
+></A
+>2.5. Using the skin</H1
+><P
+>	Some plugins may want to draw something on the screen. One example is
+	the weather plugin (external plugin, download it from
+	<TT
+CLASS="VARNAME"
+>http://freevo.sf.net/addons/</TT
+>). Since this has
+	nothing to do with the normal menu system, such plugins also need an
+	eventhandler to react on buttons. 
+      </P
+><P
+>	Since Freevo knows nothing about which elements should be displayed
+	and were to put them, the plugin needs to define a fxd file in
+	<TT
+CLASS="FILENAME"
+>share/skins/plugins</TT
+> with the needed
+	information. 
+      </P
+><P
+>	<PRE
+CLASS="PROGRAMLISTING"
+>&#60;?xml version="1.0" ?&#62;
+&#60;freevo&#62;
+  &#60;skin geometry="800x600"&#62;
+    &#60;foo&#62;
+      &#60;screen layout="screen" x="0" y="0" width="800" height="600"/&#62;
+      &#60;title .../&#62;
+      &#60;view  .../&#62;
+    &#60;/foo&#62;
+  &#60;/skin&#62;
+&#60;/freevo&#62;
+	</PRE
+>
+      </P
+><P
+>	Now the freevo skin has fxd information about the type
+	<TT
+CLASS="VARNAME"
+>foo</TT
+>, but doesn't know which areas are allowed (ok,
+	the skin could guess it). So the plugin needs to call
+	<PRE
+CLASS="PROGRAMLISTING"
+>skin.register('foo', ('screen', 'title', 'view', 'plugin'))</PRE
+> 
+	once. Now the plugin can call
+	<PRE
+CLASS="PROGRAMLISTING"
+>skin.draw('foo', item)</PRE
+> to draw
+	<TT
+CLASS="VARNAME"
+>item</TT
+> with the settings of <TT
+CLASS="VARNAME"
+>foo</TT
+>. 
+      </P
+><P
+>So far so good, but it may happen that the plugin needs an area
+	which isn't defined right now. The default areas for Freevo are
+	<TT
+CLASS="VARNAME"
+>screen</TT
+>, <TT
+CLASS="VARNAME"
+>title</TT
+>,
+	<TT
+CLASS="VARNAME"
+>subtitle</TT
+>, <TT
+CLASS="VARNAME"
+>listing</TT
+>,
+	<TT
+CLASS="VARNAME"
+>info</TT
+>, <TT
+CLASS="VARNAME"
+>view</TT
+> and
+	<TT
+CLASS="VARNAME"
+>plugin</TT
+>. The plugin area is used for smaller
+	plugins to draw on the screen, e.g. the idlebar.
+      </P
+><P
+>	To create an area of your own, you first need to define it in the fxd
+	file:
+      </P
+><P
+>	<PRE
+CLASS="PROGRAMLISTING"
+>&#60;?xml version="1.0" ?&#62;
+&#60;freevo&#62;
+  &#60;skin geometry="800x600"&#62;
+    &#60;foo&#62;
+      &#60;screen layout="screen" x="0" y="0" width="800" height="600"/&#62;
+      &#60;foo_area layout="foo" x="10" y="100" width="300" height="200"/&#62;
+    &#60;/foo&#62;
+  &#60;/skin&#62;
+
+  &#60;layout label="foo"&#62;
+    &#60;background&#62;
+      ...
+    &#60;/background&#62;
+    &#60;content ...&#62;
+      ...
+    &#60;/content&#62;
+  &#60;/layout&#62;
+&#60;/freevo&#62;
+	</PRE
+>
+      </P
+><P
+>	Now the skin has fxd information about an area
+	<TT
+CLASS="VARNAME"
+>foo</TT
+>. The skin knows were it is and can also draw
+	the background of the layout. But it needs an object to draw the real
+	content. The following example defines a class which inherits from
+	<TT
+CLASS="VARNAME"
+>skin.Area</TT
+>. It defines itself as class to draw
+	<TT
+CLASS="VARNAME"
+>foo_area</TT
+>. The skin now calls the function
+	<TT
+CLASS="FUNCTION"
+>update_content_needed</TT
+> to check if the area needs
+	an update (return <TT
+CLASS="VARNAME"
+>True</TT
+> or
+	<TT
+CLASS="VARNAME"
+>False</TT
+>). When Freevo knows that an update is
+	needed, this function may not be called after all. The real work is
+	done is <TT
+CLASS="FUNCTION"
+>update_content</TT
+>. 
+      </P
+><P
+>	(add more doc here)
+      </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x105.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c145.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>GUI Objects</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c50.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>The Different Types of Plugins</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

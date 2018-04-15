@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Events</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="Freevo Plugin Writing HOWTO"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Internal Structure"
+HREF="c50.html"><LINK
+REL="PREVIOUS"
+TITLE="Internal Structure"
+HREF="c50.html"><LINK
+REL="NEXT"
+TITLE="The Menu System"
+HREF="x69.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Freevo Plugin Writing HOWTO: Writing your own plugins for Freevo</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c50.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. Internal Structure</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x69.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN55"
+></A
+>2.2. Events</H1
+><P
+>	The communication between input devices (remote control or keyboard)
+	and the menu or the application is based on events. It's also possible
+	that a plugin sends an event to other parts of Freevo. The mapping
+	between keys and the events depends on the application type (menu,
+	video, audio, etc). See <TT
+CLASS="FILENAME"
+>event.py</TT
+> for details about
+	the default event mapping.
+      </P
+><P
+>	A event is an identifier string and optional an argument. The event
+	itself can be compared with a string, comparing two event objects only
+	compares the identifier. This makes it possible to check for events
+	without caring for the argument.
+      </P
+><P
+>	An event is send into Freevo with the function
+	<TT
+CLASS="FUNCTION"
+>rc.post_event</TT
+>. The events are stored in a fifo
+	queue. If an event is in the queue, Freevo tries to find the correct
+	eventhandler for this event. If the menu is active, Freevo will pass
+	the event to the current selected item. Each item will send the event
+	to it's parent if it doesn't consume the event. If the event wasn't
+	consumed by one of the menu items, it will be passed to the
+	DaemonPlugins (see <A
+HREF="x153.html#DAEMON"
+>DaemonPlugins section</A
+>
+	for deatils).
+      </P
+><P
+>	Instead of the class <TT
+CLASS="CLASSNAME"
+>Event</TT
+>, the plugin can use
+	the functions helper functions in <TT
+CLASS="FILENAME"
+>plugin.py</TT
+>
+	<TT
+CLASS="FUNCTION"
+>event</TT
+> to create and <TT
+CLASS="FUNCTION"
+>isevent</TT
+>
+	to get the name of an event. This functions adds the string
+	<TT
+CLASS="FUNCTION"
+>PLUGIN_EVENT</TT
+> to the event name. The media menu has
+	some extra redraw checkings if the event has something to do with a
+	plugin. 
+      </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c50.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x69.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Internal Structure</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c50.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>The Menu System</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

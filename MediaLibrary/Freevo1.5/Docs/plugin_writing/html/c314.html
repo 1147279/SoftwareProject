@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Plugin Distribution</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="Freevo Plugin Writing HOWTO"
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE="i18n support"
+HREF="x301.html"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Freevo Plugin Writing HOWTO: Writing your own plugins for Freevo</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x301.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+>&nbsp;</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="AEN314"
+></A
+>Chapter 5. Plugin Distribution</H1
+><A
+NAME="EXTERNAL"
+></A
+><P
+>      If you wrote a plugin, it would be nice to send it to the Freevo mailing
+      list. If you like (and we), we could integrate the plugin into the Freevo
+      distribution. If you don't want that, or your plugin is very special and
+      we won't include it, there is a way to build an external plugin with the
+      Freevo distutils as installer. We will add a plugin (or a link to a
+      plugin) on the Freevo homepage if it's build for the Freevo distutils. 
+    </P
+><P
+>      The Freevo distutils are an enhancement for Freevo of the normal Python
+      distutils. To install a plugin, the user only needs to call
+      <B
+CLASS="COMMAND"
+>freevo install tarball.tgz</B
+>. To make this work, the
+      plugin needs to use the same directory structure as the Freevo
+      distribution and a <TT
+CLASS="FILENAME"
+>setup.py</TT
+> and
+      <TT
+CLASS="FILENAME"
+>MANIFEST.in</TT
+> file in the root directory.
+    </P
+><P
+>      The directory structure should only conatin the needed directories and an
+      empty <TT
+CLASS="FILENAME"
+>__init__.py</TT
+> in the plugin directory. The
+      <TT
+CLASS="FILENAME"
+>__init__.py</TT
+> is needed by Python. Since the
+      <TT
+CLASS="FILENAME"
+>__init__.py</TT
+> isn't empty for
+      <TT
+CLASS="FILENAME"
+>plugins/idlebar/</TT
+>, it's not possible to write external
+      idlebar plugins at the moment (you could place it in the normal plugin
+      dir, that works). We are working on a solution to fix that.
+      E.g if your plugin is a video plugin (video.foo) and contains one image
+      <TT
+CLASS="FILENAME"
+>foo.png</TT
+>, the directory structure may look like this:
+      <PRE
+CLASS="PROGRAMLISTING"
+>root
+  |--&#62; setup.py
+  |--&#62; MANIFEST.in
+  |
+  |--&#62; share
+  | |--&#62; images
+  | | |--&#62; foo.png
+  |
+  |--&#62; src
+  | |--&#62; video
+  | | |--&#62; plugins
+  | | | |--&#62; __init__.py (empty)
+  | | | |--&#62; foo.py
+      </PRE
+>
+    </P
+><P
+>      The MANIFEST.in file describes a list of files to be included in the
+      distribution (you can build a source distribution by calling
+      <B
+CLASS="COMMAND"
+>python setup.py sdist</B
+>).
+      <PRE
+CLASS="PROGRAMLISTING"
+>recursive-include src *.py
+recursive-include share *
+include *
+
+      </PRE
+>
+    </P
+><P
+>      The <TT
+CLASS="FILENAME"
+>setup.py</TT
+> script is a Python distutils script
+      with some default attributes for Freevo. If the plugin uses the Freevo
+      file structure, a setup script could look like this:
+      <PRE
+CLASS="PROGRAMLISTING"
+>#!/usr/bin/env python
+
+"""Setup script for my freevo plugin."""
+
+
+__revision__ = "$Id: setup.py,v 1.1 2003/11/15 12:31:34 dischi Exp $"
+
+from distutils.core import setup, Extension
+import distutils.command.install
+import freevo.util.distutils
+
+# now start the python magic
+setup (name = "nice_plugin",
+       version = '0.1',
+       description = "My first plugin",
+       author = "me",
+       author_email = "my@mail.address",
+       url = "http://i-also-have-a-web.address",
+
+       package_dir = freevo.util.distutils.package_dir,
+       packages = freevo.util.distutils.packages,
+       data_files = freevo.util.distutils.data_files
+       )
+      </PRE
+>
+      For more details about the parameter for the setup function, read the
+      Python manual. 
+    </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x301.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>&nbsp;</TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>i18n support</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>&nbsp;</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
