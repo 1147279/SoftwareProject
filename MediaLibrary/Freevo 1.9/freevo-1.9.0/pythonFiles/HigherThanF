@@ -1,0 +1,38 @@
+skin_utils.py
+    F 62:0 format_image - F (50)
+tvlisting_area.py
+    M 153:4 TVListing_Area.update_content - F (45)
+mplayer.py
+    M 110:4 MPlayer.play - F (73)
+rom_drives.py
+    M 580:4 Identify_Thread.identify - F (70)
+    M 336:4 RemovableMedia.capabilities_text - F (43)
+feedparser.py
+    M 692:4 _FeedParserMixin.pop - F (71)
+    M 1881:4 _MicroformatsParser.getPropertyValue - F (57)
+    F 3357:0 parse - F (55)
+viewer.py
+    M 97:4 ImageViewer.view - F (47)
+vfd.py
+    M 783:4 PluginInterface.eventhandler - F (43)
+fxdhandler.py
+    F 38:0 parse_movie - F (42)
+edit_favorite.py
+    M 211:4 EditFavorite.eventhandler - F (53)
+linkbrowser.py
+    M 128:4 Link.cwd - F (47)
+listing_area.py
+    M 195:4 Listing_Area.update_content - F (88)
+directory.py
+    M 586:4 DirItem.__build - F (63)
+osd.py
+    M 1165:4 OSD.drawstringframed - F (65)
+    M 501:4 OSD._cb - F (61)
+menu_Item.py
+    ERROR: expected an indented block (<unknown>, line 15)
+menu.py
+    M 723:4 MenuWidget.eventhandler - F (55)
+xmltv.py
+    M 409:4 Writer.addProgramme - F (44)
+strptime.py
+    F 408:0 strptime - F (41)
