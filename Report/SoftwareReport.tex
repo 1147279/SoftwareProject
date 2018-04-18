@@ -1,4 +1,4 @@
-\documentclass[11pt,journal, a4paper]{IEEEtran}
+\documentclass[10.5pt,journal, a4paper]{IEEEtran}
 
 \makeatletter
 \newcommand\subparagraph{%
@@ -281,7 +281,6 @@ There are eight Halstead metrics that are used. These are calculated using a num
 \item $n_{2}$ = Number of distinct operands
 \item $N_{1}$ = Total number of operators
 \item $N_{2}$ = Total number of operands
-\item $N_{1}$ = Total number of operators
 \item $n$ = $n_{1} + n_{2}$
 \item $N$ = $N_{1} + N_{2}$
 \end{itemize}
@@ -326,7 +325,7 @@ One can also exclude internal files from being included in the graph meaning tha
 
 \section{Analysis}
 \noindent
-This section covers the analysis of four code bases. The first being the authors own code developed to perform matrix multiplication of large matrices using the mapReduce techniques in MrJob. The second, third and fourth are versions 1.7, 1.8 and 1.9 of Freevo the media center written in Python \cite{Freevo}. This section aims firstly to verify the accuracy of tools used to calculate the various metrics by using them on the authors own small code base. Secodnly this section aims to critically analyse and interpret the metrics calculated using the three releases of Freevo that have been downloaded. 
+This section covers the analysis of four code bases. The first being the authors own code developed to perform matrix multiplication of large matrices using the mapReduce techniques in MrJob. The second, third and fourth are versions 1.7, 1.8 and 1.9 of Freevo the media center written in Python \cite{Freevo}. This section aims firstly to verify the accuracy of tools used to calculate the various metrics by using them on the authors own small code base. Secondly this section aims to critically analyse and interpret the metrics calculated using the three releases of Freevo that have been downloaded. 
 
 \subsection{Metric Tool Result Verification Using Small Code Base}
 \noindent
@@ -371,29 +370,64 @@ The results of running the coverage tool gives a coverage of 78\%. This is due t
 
 
 \subsubsection{Halstead}
+\noindent
+The results of the Halstead metric calculations of interest are shown below:
+\begin{itemize}
+\item $n_{1}$ = 5
+\item $n_{2}$ = 47
+\item $N_{1}$ = 26
+\item $N_{2}$ = 52
+\item Difficulty = 2.76
+\item Effort = 1229.83
+\end{itemize}
 
-
+\noindent
+When counting the number of operators ($n_{1}$) it can be seen that there are indeed 5 distinct operators namely '+', '=', '==', '!=' and '*'. Furthermore upon review it seems that the difficulty metric captures the difficulty of writing/understanding this code quite effectively while the effort metric seems to over exaggerate the amount of elementary mental discriminations necessary to code this algorithm. 
 
 \subsubsection{Dependencies}
+\noindent
 This code is dependent on three libraries as can be seen in the first three lines of code. The MRJob library the os library and the time library. When snakefood is run to determine dependencies the following graph is the result. 
 
  \begin{figure}[H]
  \centering 
- \includegraphics[width=\columnwidth]{myown}
+ \includegraphics[width=\columnwidth]{Algo1}
  \centering 
-  \caption {Lighting design for Sasol wax warehouse storage area using first set of lights }
+  \caption {Dependency Diagram. }
  \end{figure}
 
+This proves that the dependency metric behaves as it should. 
 
 
 
 
-
-\section{Literature Review}
+\subsection{Freevo Code Base Analysis} 
 \noindent
+What follows is the analysis using the chosen metrics of three major releases of the Freevo Media Center application. For each metric a summary output is given and any interesting points are elaborated upon. 
+
+\subsubsection{Cyclomatic Complexity}
+
+\paragraph{Freevo 1.7}
+\noindent
+The average cyclomatic complexity of all the methods/classes and functions in all of the python files in the source code is 4.0219. This is, according to \cite{mcCabe} a very good cyclomatic complexity. This average result however is extremely misleading as upon further inspection there are 73 methods/functions/classes with a cyclomatic complexity above 21 and 30 with a cyclomatic complexity of above 31 which is as Radon defines it alarmingly high and needs attention. There is one function that has a cyclomatic complexity of 102 which is unreasonably high and is most likely causing a number of bugs. This is the menu widget event handler method within the menu.py file. \\ 
+
+\paragraph{Freevo 1.8}
+\noindent
+The average cyclomatic complexity of all the methods/classes and functions in all of the python files in the source code is 3.805. Which again is an extremely good score when it comes to cyclomatic complexity. It seems at a glance that the complexity has decreased which is counter-intuitive. However as before there are many classes/methods/functions with very high complexities. There are 94 classes/methods/functions with a cyclomatic complexity of higher than 21 and 39 classes/methods/functions with a cyclomatic complexity of higher than 31. The highest is once again the menu widget event handler method which has gone from a cyclomatic complexity of 102 to 116. 
+
+\paragraph{Freevo 1.9}
+\noindent
+The average cyclomatic complexity of all the methods/classes and functions in all of the python files in the source code is 3.630. Yet again it appears that the cyclomatic complexity overall has decreased which implies good coding and significant effort was put in to make sure the complexity was well managed however as is the case for the previous two releases this result is misleading. There are 121 classes/methods/functions with a cylomatic complexity of higher than 21 and there are 48 methods/classes/functions with a cyclomatic complexity of higher than 31. Once again both of these numbers have increased quite significantly. One noteworthy piece of information is that the menu widget event handler method has decreased significantly from 116 to 55. \\
+
+\noindent
+A graph showing the number of very high error prone unstable blocks (i.e. cyclomatic complexity of higher than 41) over the three releases along with the misleading average cyclomatic complexity can be seen in figure 2 below. This graph indicates that while average cyclomatic complexity may be a tempting metric to use it does not give a good idea about the actual complexity of the program until you investigate each class, method and function individually. 
 
 
-
+ \begin{figure}[H]
+ \centering 
+ \includegraphics[width=\columnwidth]{CCcomp}
+ \centering 
+  \caption {Cyclomatic Complexity Graph. }
+ \end{figure}
 
 
 
