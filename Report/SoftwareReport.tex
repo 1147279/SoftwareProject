@@ -124,7 +124,7 @@
                         % and documentation can be obtained at:
                         % http://www.ctan.org/tex-archive/macros/latex/required/amslatex/math/
 \usepackage{listings}
-
+\lstset{breaklines=true}
 
 % Other popular packages for formatting tables and equations include:
 
@@ -172,7 +172,7 @@
 % Write abstract here
 
 \begin{abstract}
-Due to the rising popularity in the area of Internet of Things (IoT) there has been significant research done on how to implement edge and fog computing in order to improve the speed and efficiency of any communication between edge devices, the fog gateway and the cloud if necessary. Edge and fog computing involve data transmission whether it is between edge devices, between edge devices and fog nodes or between fog gateways and the cloud. All of these forms of transmission can be made more efficient and faster using certain filtering and compression techniques. Using filtering and compression techniques will speed up response time and use less bandwidth which  will not only improve user experience but make the edge and fog computing processes more efficient in terms of space, time and energy. This would have direct effects on the efficiency of IoT systems. 
+
 \end{abstract}
 
 
@@ -190,7 +190,7 @@ The Chosen Metrics section details which metrics have been selected to allow for
 
 
 
-\section{Chosen Metrics}
+\section{Understanding Chosen Metrics}
 \noindent
 The metrics being used in this project are the following:
 \begin{itemize}
@@ -235,12 +235,12 @@ An example (not the author's code base) and its cyclomatic complexity are shown 
 \lstinputlisting[caption=Example code to explain cyclomatic complexity metric.,language=python]{dog.py}
 
 \noindent
-While this code is simple and may not follow the best programming practices it is sufficient to explain how the cyclomatic complexity metric works. There are four ways this code can run. The first being if the dog is hungry and it is home then the dog will be fed. The second being if the dog is hungry but is not home then the dog will be located and fed. The third way is if the dog is not hungry and is not home then the dog will be located. The last way is if the dog is not hungry but is home then nothing is to be done. Because there are four ways this program can be run the cyclomatic complexity of this code is 4????????.\\  
+While this code is simple and may not follow the best programming practices it is sufficient to explain how the cyclomatic complexity metric works. There are four ways this code can run. The first being if the dog is hungry and it is home then the dog will be fed. The second being if the dog is hungry but is not home then the dog will be located and fed. The third way is if the dog is not hungry and is not home then the dog will be located. The last way is if the dog is not hungry but is home then nothing is to be done. Because there are four ways this program can be run the cyclomatic complexity of this code is 4.\\  
 
 
 
 \noindent
-Radon was used to calculate the cyclomatic complexity of the various code bases analysed in this project. Radon's cyclomatic complexity measurement outputs a letter between A and F along with a score larger than zero relating to the number of decisions. A relates to a section of code that has less than five decisions while F relates to more than 41 decisions. \\
+Radon was used to calculate the cyclomatic complexity of the various code bases analysed in this project. Radon's cyclomatic complexity measurement outputs a letter between A and F along with a score larger than zero relating to the number of decisions. A relates to a section of code that has less than five decisions while F relates to more than 41 decisions. The scores and letters are produced for each class, method and function.\\
 
 \noindent
 The cyclomatic complexity command on Radon returns these letters and scores for each class, method and function in a section of code. Code with many decisions means many different ways the code can run which leads to high risk that code may not behave as the developer expects or intends. It is ideal to have a cyclomatic complexity score of less than 10 or B \cite{mcCabe}.  
@@ -254,42 +254,145 @@ The maintainability index, calculated using the Radon tool, is used to determine
 \begin{equation}
 \resizebox{0.5\textwidth}{!}{ $MI = \emph{max} [0,100*\frac{171-5.2\ln\emph{V}-0.23\emph{G} -16.2\ln\emph{L} + 50\sin(\sqrt{2.4\emph{C}}) }{171}]$}
 \end{equation}
-Where V is the Halstead volume, G is cyclomatic complexity, L is the number of source lines of code and C is the percent of comment lines in the program converted to radians.
+Where V is the Halstead volume, G is cyclomatic complexity, L is the number of source lines of code and C is the percent of comment lines in the program converted to radians. This equation is Radon's variation from the original maintainability index formula. In \cite{MI1} Coleman et al. using a slightly different equation state that a maintainability index of above 85 is ideal and relates to code that is easy to maintain and update, while code with a maintainability index of between 85 and 65 is fairly maintainable and a maintainability index of less than 65 relates to code that is very difficult to maintain. Translating these values generated from the formula used in \cite{MI1} to values generated from the formula in equation 1 above (used by Radon); A value of 85 and above using Coleman's formula corresponds to a value of 20 and above, a value of between 85 and 65 using Coleman's formula corresponds to a values between 20 and 10 and a value of below 65 using Coleman's formula corresponds to a value below 10. \\
 
-
-\section{Code Base Analysis}
 \noindent
+For programs that are long term and will have many releases this metric is very important as it helps developers ensure that their code is written in a way that allows it to be changed and improved easily. This will help developers in the future tasked with working on that code perhaps to add new features or fix bugs. In \cite{Linux} various versions of the Linux kernel are analysed using the maintainability index and it can be seen that with each new release the maintainability index actually increases. This shows how having a good initial maintainability index helps future developers add on to and sustain existing code.
 
-\section{Experimental Setup and Computational Model}
+
+\subsection{Coverage}
+\noindent 
+The coverage metric, calculated using the Coverage tool, can be used to determine the percentage of the code that was actually executed when the code runs. This metric is useful in determining code that is no longer used or is not a key piece of the code. Sometimes in a program added features may incorporate the functionality of old features therefore meaning the old functions are no longer used and are therefore purposeless and should be removed. This however is not the main advantage of using this metric.\\
+
 \noindent
+The main advantage of using this metric is its ability to determine which portions of the code are being tested. If the coverage command is run with the test code as the argument then the coverage returned will be what percentage of the code has run as a result of testing. This allows the developers to see if they are testing all of the code and if not to see which sections of the code are not being run by the tests. \\
 
-
-\section{Preliminary Results}
 \noindent
+As testing is an extremely important part of software development, making sure that the tests are exhaustive is imperative as this allows developers to confidently say that there code is performing exactly is intended (so long as tests have been designed correctly). The coverage metric returns values of coverage for each file that is run when the program is passed to the coverage command. It is also able to tell the developer which lines are missed during execution. 
 
-\section{Explanation of the Rest of the Work to be Accomplished}
+
+
+\subsection{Halstead Metrics}
 \noindent
+There are eight Halstead metrics that are used. These are calculated using a number of properties determined using the source code. These properties are:
 
+\begin{itemize}
+\item $n_{1}$ = Number of distinct operators
+\item $n_{2}$ = Number of distinct operands
+\item $N_{1}$ = Total number of operators
+\item $N_{2}$ = Total number of operands
+\item $N_{1}$ = Total number of operators
+\item $n$ = $n_{1} + n_{2}$
+\item $N$ = $N_{1} + N_{2}$
+\end{itemize}
 
-\section{Methods for Validations of Expected Results and Exceptions}
 \noindent
+These properties are used to calculate the eight Halstead metrics that Radon focuses on, vocabulary, length, calculated program length, volume, difficulty, effort, time to program and number of bugs. This report focuses on the difficulty and effort metrics. To understand the measurements it is important to first understand the terms operators and operands. Operators are any symbols that represent an action that has an effect on whatever is being acted on. Operands are what operators have effects on. Examples of operators are '+', '-', 'or' and even ''=='. Examples of operand are any variables or any constants and magic numbers in the code. 
 
-
-\section{Risk Management}
+\subsubsection{Difficulty}
 \noindent
+The formula for Halstead's difficulty as given by the Radon tool is:
+
+\begin{equation}
+ D  = \frac{n_{1}}{2}*\frac{N_{2}}{n_{2}}
+\end{equation}
+
+This metric while often used as a measure of how difficult it is to read and understand the code later it also gives developers an idea as to how error prone the code being measured is. Seeing that the formula has that ratio of total number of operands and number of distinct operands, shows that the difficulty is higher if the same operands are used multiple times in the code, this is a characteristic of what is often called Spaghetti Code \cite{SPAG}. \\
+
+\noindent
+Errors are often made when operations take place. A simple example that can go unnoticed is using the '=' operator in an if statement as opposed to '==' which will result in behaviour that was not intended by the developer. This metric is useful for determining whether or not good programming practices have been used. Where good programming practices are used the difficulty metric will be low for example the code in listing 1 has a difficulty level of 0.75. 
+
+\subsubsection{Effort}
+\noindent
+The formula for Halstead's effort as given by the Radon tool is:
+
+
+\begin{equation}
+ E = \frac{n_{1}N_{2}N\log_2n}{2n_{2}}
+\end{equation}
+
+\noindent
+This metric gives developers an idea as to the level of mental activity required to code an already established algorithm. For example knowing how to transpose a matrix how much mental activity is needed to program a function that does it. It is not immediately clear what this metric measures without knowing the unit of measurement. The unit of measurement of the effort metric as defined by Halstead is elementary mental discriminations \cite{HALS}. \\
+
+\noindent
+Given that a discrimination is a recognition of the difference between one thing and another this helps explain that the unit of measurement relates to the number of decisions the developer has to make with regards to the statements and conditions that could be used to accomplish a goal and how many decisions are made to determine the correct way in which to do it. High effort relates to code that is complex to implement and will most likely also be complex to maintain and change in future. The effort level of the code in listing 1 is 15.6. 
+
+\section{Dependencies}
+\noindent
+The dependencies metric used in this report is Snakefood which is a graphic metric. It reads the source code and checks what classes, files, libraries etc. that a piece of code depends on. It then draws a graph connecting code that has dependencies to the code that it depends on. This can be done in two ways, using the --follow option makes sure that the code not only checks the immediate dependencies of the code in question but also checks for dependency within those code bases. This can cause the graph to be extremely saturated. Running the command without the --follow instruction just shows the immediate dependencies. This however is not a full picture and does not provide a good enough idea to developers of how heavily their code depends on other code. \\
+
+\noindent
+One can also exclude internal files from being included in the graph meaning that only code from external libraries will be included in the graph. This is often helpful when determining how difficult it would be to change from one library to another if a different library that performs better is found. It is is important to have the ability to change from one library to the other as libraries are constantly changing and being improved. 
+
+\section{Analysis}
+\noindent
+This section covers the analysis of four code bases. The first being the authors own code developed to perform matrix multiplication of large matrices using the mapReduce techniques in MrJob. The second, third and fourth are versions 1.7, 1.8 and 1.9 of Freevo the media center written in Python \cite{Freevo}. This section aims firstly to verify the accuracy of tools used to calculate the various metrics by using them on the authors own small code base. Secodnly this section aims to critically analyse and interpret the metrics calculated using the three releases of Freevo that have been downloaded. 
+
+\subsection{Metric Tool Result Verification Using Small Code Base}
+\noindent
+The code in listing 2 is the authors code base. The purpose of this code is to use mapReduce to implement matrix multiplication of two matrices given in matrix market format in files outA1.list and outB1.list. The code reads the files and uses the indices and values given in the files to generate key, value pairs which are then used to map the inputs. These key value pairs are then used to reduce the entries and do the multiplication. The output of this code is a file with the resultant matrix in matrix market format. The code base depends on the MRJob, os and time libraries. The metrics are addressed in the sections below. 
+
+\subsubsection{Cyclomatic Complexity}
+\noindent
+The results of running Radon for cyclomatic complexity gives this as an output:
+\begin{itemize}
+\item C 5:0 matrixMultiply - A (5)
+\item M 7:1 matrixMultiply.sortbyJ - A (1)
+\item M 10:1 matrixMultiply.mapper - A (5)
+\item M 28:1 matrixMultiply.reducer - B (9)
+\item Average complexity: A (5.0)
+\end{itemize}
+
+\noindent 
+The sortbyJ and mapper methods are analysed to validate the cyclomatic complexity metric calculation done by the Radon tool. Within the sortbyJ method there are no decisions in this method and therefore there is only one way this method can go and that is why the cyclomatic complexity is 1. \\
+
+\noindent 
+In the mapper method there are a number of decisions, the first being line 13 where it checks if the line has 3 entries or not. That is already two ways the program can go (i.e. cyclomatic complexity = at least 2). Within that decision is another decision on line 15 which determines if the line is from the first file or the second. This creates another way that the program can go (cyclomatic complexity = 3). The next decision is associated with the for loop in line 18 where there is a check whether k is within the range or not thus creating another path for the program to go down if k is within the range (cyclomatic complexity = 4). Then the next decision occurs within the for loop inside the else, on line 23. Again and in the same way as above this for loop creates another path depending on the variable i and whether it is in the specified range or not (cyclomatic complexity = 5). This analysis proves that the correct value has been returned for the mapper method. 
+
+
+
+\subsubsection{Maintainability Index}
+\noindent
+The results of running Radon for maintainability index gives this as an output:
+\begin{itemize}
+\item Algorithm1.py - A (58.95)
+\end{itemize}
+
+\noindent
+This is according to Radon a high maintainability index which means changing this code in future would not be difficult. To verify this result it is important to calculate all necessary variables used in equation 1 for MI above. V Halstead's volume which for this code is calculated to be 444.6 as explained in the Halstead metrics verification subsection below. G in this formula is the cyclomatic complexity calculated above to be 5. L is the number of source lines of code which is 81. C is the percentage of the code that is comments. There are 14 lines of comments which makes the percentage comments 12.7\%. Using equation 1 the maintainability index when calculated is 55.366. It is assumed that the difference (6\% difference) comes from rounding errors. This verifies that the maintainability index metric calculation takes place correctly. 
+
+
+
+
+\subsubsection{Coverage}
+\noindent
+The results of running the coverage tool gives a coverage of 78\%. This is due to the fact that the contents of the outA1.list file and outB1.list file are representative of matrices of size 100x100 and there is a portion of the code that only executes if there is a column or row vector involved in the multiplication. This code is between line 79 to line 98. The actual amount of source lines of code in this section is 17. The actual amount of source lines of code in the whole program is 81. The percentage that is run is therefore $\frac{81-17}{81}*100 = 79\% $. This verifies that the coverage metric is calculated correctly. 
+
+
+
+\subsubsection{Halstead}
+
+
+
+\subsubsection{Dependencies}
+This code is dependent on three libraries as can be seen in the first three lines of code. The MRJob library the os library and the time library. When snakefood is run to determine dependencies the following graph is the result. 
+
+ \begin{figure}[H]
+ \centering 
+ \includegraphics[width=\columnwidth]{myown}
+ \centering 
+  \caption {Lighting design for Sasol wax warehouse storage area using first set of lights }
+ \end{figure}
+
+
+
+
 
 
 \section{Literature Review}
 \noindent
 
 
-
-\section{Schedule and Time-line}
-\noindent
-
-
-\section{Summary of Proposal and Planned Additional Work to Complete}
-\noindent
 
 
 
@@ -307,38 +410,41 @@ Where V is the Halstead volume, G is cyclomatic complexity, L is the number of s
 \begin{thebibliography}{5}
 
 
-\bibitem{mcCabe} Apostolos Papageorgiou, Bin Cheng, Erno Kovacs, Real-Time Data Reduction at the Network Edge of Internet-of-Things Systems. NEC Laboratories Europe Heidelberg, Germany, 2015.
+  
+\bibitem{mcCabe} Thomas J. McCabe, "A Complexity Measure". IEEE Transactions on Software Engineering, Vol. SE-2, No.4, December 1976. \\
+
+
+\bibitem{MI1} Don Coleman, Dan Ash, Bruce Lowther, Paul Oman, "Using Metrics to Evaluate Software System Maintainability". Computing Practices, August 1994. \\
 
 
 
 
-
-
-% \bibitem{c2} W.-K. Chen, Linear Networks and Systems (Book style).	Belmont, CA: Wadsworth, 1993, pp. 123Ð135.
-% \bibitem{c3} H. Poor, An Introduction to Signal Detection and Estimation.   New York: Springer-Verlag, 1985, ch. 4.
-% \bibitem{c4} B. Smith, ÒAn approach to graphs of linear forms (Unpublished work style),Ó unpublished.
-% \bibitem{c5} E. H. Miller, ÒA note on reflector arrays (Periodical styleÑAccepted for publication),Ó IEEE Trans. Antennas Propagat., to be publised.
-% \bibitem{c6} J. Wang, ÒFundamentals of erbium-doped fiber amplifiers arrays (Periodical styleÑSubmitted for publication),Ó IEEE J. Quantum Electron., submitted for publication.
-% \bibitem{c7} C. J. Kaufman, Rocky Mountain Research Lab., Boulder, CO, private communication, May 1995.
-% \bibitem{c8} Y. Yorozu, M. Hirano, K. Oka, and Y. Tagawa, ÒElectron spectroscopy studies on magneto-optical media and plastic substrate interfaces(Translation Journals style),Ó IEEE Transl. J. Magn.Jpn., vol. 2, Aug. 1987, pp. 740Ð741 [Dig. 9th Annu. Conf. Magnetics Japan, 1982, p. 301].
-% \bibitem{c9} M. Young, The Techincal Writers Handbook.  Mill Valley, CA: University Science, 1989.
-% \bibitem{c10} J. U. Duncombe, ÒInfrared navigationÑPart I: An assessment of feasibility (Periodical style),Ó IEEE Trans. Electron Devices, vol. ED-11, pp. 34Ð39, Jan. 1959.
-% \bibitem{c11} S. Chen, B. Mulgrew, and P. M. Grant, ÒA clustering technique for digital communications channel equalization using radial basis function networks,Ó IEEE Trans. Neural Networks, vol. 4, pp. 570Ð578, July 1993.
-% \bibitem{c12} R. W. Lucky, ÒAutomatic equalization for digital communication,Ó Bell Syst. Tech. J., vol. 44, no. 4, pp. 547Ð588, Apr. 1965.
-% \bibitem{c13} S. P. Bingulac, ÒOn the compatibility of adaptive controllers (Published Conference Proceedings style),Ó in Proc. 4th Annu. Allerton Conf. Circuits and Systems Theory, New York, 1994, pp. 8Ð16.
-% \bibitem{c14} G. R. Faulhaber, ÒDesign of service systems with priority reservation,Ó in Conf. Rec. 1995 IEEE Int. Conf. Communications, pp. 3Ð8.
-% \bibitem{c15} W. D. Doyle, ÒMagnetization reversal in films with biaxial anisotropy,Ó in 1987 Proc. INTERMAG Conf., pp. 2.2-1Ð2.2-6.
-% \bibitem{c16} G. W. Juette and L. E. Zeffanella, ÒRadio noise currents n short sections on bundle conductors (Presented Conference Paper style),Ó presented at the IEEE Summer power Meeting, Dallas, TX, June 22Ð27, 1990, Paper 90 SM 690-0 PWRS.
-% \bibitem{c17} J. G. Kreifeldt, ÒAn analysis of surface-detected EMG as an amplitude-modulated noise,Ó presented at the 1989 Int. Conf. Medicine and Biological Engineering, Chicago, IL.
-% \bibitem{c18} J. Williams, ÒNarrow-band analyzer (Thesis or Dissertation style),Ó Ph.D. dissertation, Dept. Elect. Eng., Harvard Univ., Cambridge, MA, 1993. 
-% \bibitem{c19} N. Kawasaki, ÒParametric study of thermal and chemical nonequilibrium nozzle flow,Ó M.S. thesis, Dept. Electron. Eng., Osaka Univ., Osaka, Japan, 1993.
-% \bibitem{c20} J. P. Wilkinson, ÒNonlinear resonant circuit devices (Patent style),Ó U.S. Patent 3 624 12, July 16, 1990. 
+\bibitem{Linux} Lawrence Gray Thomas, "An Analysis of Software Quality and Maintainability Metrics with an Application to a Longitudinal Sudy of the Linux Kernel". Dissertation Submitted to the Faculty of the Graduate School of Vanderbilt University in partial fulfillment of the requirements for the degree of
+Doctor of Philosophy in Computer Science, August, 2008.\\
 
 
 
+
+\bibitem{HALS} Rafa E. Al Qutaish, Alain Abran, "An Analysis of the Design and Definitions of Halstead’s Metrics". Proceedings of the 15th International Workshop on Software Measurement, September 12-14, 2005, Montreal, Canada. pp. 337-352. \\
+
+\bibitem{SPAG} Marwen Abbes, Foutse Khomh, Yann-Gaël Guéhéneuc, Giuliano Antoniol, "An Empirical Study of the Impact of Two Antipatterns, Blob and Spaghetti Code, On Program Comprehension". 15th European Conference on Software Maintenance and Reengineering, 2011. \\
+
+\bibitem{Freevo} Dischi, "Freevo Website".\\
+ \url{http://www.freevo.org}.
+Last Accessed 18 April 2018. 
 
 
 \end{thebibliography}
+
+\onecolumn
+\appendix
+
+
+\lstinputlisting[caption=Author's code base to validate metric generation tools. ,language=python,numbers=left]{Algorithm1.py}
+
+
+
+
 
 	% This is how you define a table: the [!hbt] means that LaTeX is forced (by the !) to place the table exactly here (by h), or if that doesnt work because of a pagebreak or so, it tries to place the table to the bottom of the page (by b) or the top (by t).
 

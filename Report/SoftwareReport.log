@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.27)  15 APR 2018 22:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.27)  18 APR 2018 19:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -496,13 +496,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 185--187
  []
 
 LaTeX Font Info:    Calculating math sizes for size <11> on input line 197.
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+) (./dog.py
 [1{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
-]
-(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2015/06/04 1.6 listings language file
-) (./dog.py)
+])
 Underfull \hbox (badness 10000) in paragraph at lines 237--239
 
  []
@@ -517,19 +517,144 @@ Overfull \hbox (6.0238pt too wide) detected at line 256
 []
  []
 
-[2] (./SoftwareReport.aux) )
+
+Underfull \hbox (badness 10000) in paragraph at lines 256--258
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 264--266
+
+ []
+
+
+Underfull \hbox (badness 2103) in paragraph at lines 267--269
+\OT1/ptm/m/n/11 code as the ar-gu-ment then the cov-er-age re-turned
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 267--269
+
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 300--301
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 314--316
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 321--323
+
+ []
+
+[3]
+Underfull \hbox (badness 1668) in paragraph at lines 346--348
+\OT1/ptm/m/n/11 The sort-byJ and map-per meth-ods are anal-ysed to
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 346--348
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 395--396
+[]\OT1/ptm/m/n/9 Thomas J. Mc-Cabe, "A Com-plex-ity Mea-sure". IEEE
+ []
+
+
+Underfull \hbox (badness 4556) in paragraph at lines 395--396
+\OT1/ptm/m/n/9 Trans-ac-tions on Soft-ware En-gi-neer-ing, Vol. SE-2, No.4,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 395--396
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 398--399
+\OT1/ptm/m/n/9 Met-rics to Eval-u-ate Soft-ware Sys-tem Main-tain-abil-ity".
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 398--399
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 403--405
+
+ []
+
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ô in font ptmr7t!
+
+Underfull \hbox (badness 10000) in paragraph at lines 409--410
+
+ []
+
+Missing character: There is no Ã in font ptmr7t!
+Missing character: There is no à in font ptmr7t!
+Missing character: There is no Ã in font ptmr7t!
+Missing character: There is no Å in font ptmr7t!
+Missing character: There is no Ã in font ptmr7t!
+Missing character: There is no Å in font ptmr7t!
+
+Underfull \hbox (badness 10000) in paragraph at lines 411--412
+[]\OT1/ptm/m/n/9 Marwen Abbes, Foutse Khomh, Yann-Gael Gue-heneuc,
+ []
+
+
+Underfull \hbox (badness 1590) in paragraph at lines 411--412
+\OT1/ptm/m/n/9 Two An-tipat-terns, Blob and Spaghetti Code, On Pro-gram
+ []
+
+
+Underfull \hbox (badness 4291) in paragraph at lines 411--412
+\OT1/ptm/m/n/9 Com-pre-hen-sion". 15th Eu-ro-pean Con-fer-ence on Soft-ware
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 411--412
+
+ []
+
+[5
+
+] (./Algorithm1.py
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 45.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/it' in size <11> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 45.
+ [6
+
+]
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <11> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 49.
+ [7])
+[8] (./SoftwareReport.aux) )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 5976 strings out of 493014
- 90582 string characters out of 6133351
- 205556 words of memory out of 5000000
- 9432 multiletter control sequences out of 15000+600000
+ 6072 strings out of 493014
+ 91783 string characters out of 6133351
+ 307663 words of memory out of 5000000
+ 9522 multiletter control sequences out of 15000+600000
  46286 words of font info for 89 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,7n,43p,891b,3284s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,7n,43p,1055b,3873s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc
 }</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></
@@ -541,10 +666,10 @@ l/texlive/2016/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/
 2016/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2016/texm
 f-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fon
 ts/type1/urw/times/utmri8a.pfb>
-Output written on SoftwareReport.pdf (2 pages, 102466 bytes).
+Output written on SoftwareReport.pdf (8 pages, 128753 bytes).
 PDF statistics:
- 52 PDF objects out of 1000 (max. 8388607)
- 37 compressed objects within 1 object stream
+ 72 PDF objects out of 1000 (max. 8388607)
+ 51 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
