@@ -1,6 +1,3 @@
-from pynocle import Monocle
-
-a = Monocle("isPrime.py","/home/darren/Desktop/Software/test/","/home/darren/Desktop/Software/MyOwnCode/ELEN4020-Group-ADJU-Lab-3/")
 
 num = 407
 

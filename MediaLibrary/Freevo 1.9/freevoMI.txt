@@ -379,10 +379,6 @@ freevo-1.9.0/Docs/plugin_writing/code/item.py - A (66.39)
 freevo-1.9.0/Docs/plugin_writing/code/daemon_action.py - A (96.09)
 freevo-1.9.0/Docs/plugin_writing/code/menu_fullexample.py - A (95.41)
 freevo-1.9.0/Docs/plugin_writing/code/menu_MenuItem.py - A (100.00)
-freevo-1.9.0/Docs/plugin_writing/code/daemon.py
-    ERROR: invalid syntax (<unknown>, line 15)
-freevo-1.9.0/Docs/plugin_writing/code/menu_Item.py
-    ERROR: expected an indented block (<unknown>, line 15)
 freevo-1.9.0/Docs/plugin_writing/code/parameter.py - A (100.00)
 freevo-1.9.0/Docs/plugin_writing/code/i18n.py - A (100.00)
 freevo-1.9.0/Docs/plugin_writing/code/MainMenuPlugin.py - A (76.48)
