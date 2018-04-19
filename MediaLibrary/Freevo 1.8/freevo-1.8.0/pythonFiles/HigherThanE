@@ -1,0 +1,68 @@
+skin_utils.py
+    F 57:0 format_image - F (47)
+tvlisting_area.py
+    M 153:4 TVListing_Area.update_content - F (45)
+encodingcore.py
+    M 357:4 EncodingJob._GCLMVideopass - E (37)
+    M 485:4 EncodingJob._CropDetectParse - E (33)
+marmalade.py
+    M 147:4 DOMUnjellier.unjellyNode - E (38)
+    M 283:4 DOMJellier.jellyToNode - E (33)
+mplayer.py
+    M 116:4 MPlayer.play - F (64)
+area.py
+    M 118:4 Skin_Area.draw - E (39)
+item.py
+    M 442:4 Item.__getitem__ - E (31)
+rom_drives.py
+    M 510:4 Identify_Thread.identify - F (70)
+    M 313:4 RemovableMedia.log_capabilities - F (43)
+feedparser.py
+    F 2450:0 parse - F (51)
+    M 602:4 _FeedParserMixin.pop - E (36)
+    F 2243:0 _getCharacterEncoding - E (34)
+xine.py
+    M 251:4 Xine.eventhandler - E (36)
+coversearch.py
+    M 116:4 PluginInterface.actions - E (37)
+viewer.py
+    M 96:4 ImageViewer.view - F (45)
+epg_xmltv.py
+    F 150:0 load_guide - E (39)
+vfd.py
+    M 783:4 PluginInterface.eventhandler - F (43)
+    M 584:4 PluginInterface.draw - E (37)
+    M 433:4 PluginInterface.widget_set - E (34)
+fxdhandler.py
+    F 35:0 parse_movie - F (41)
+edit_favorite.py
+    M 208:4 EditFavorite.eventhandler - F (53)
+linkbrowser.py
+    M 129:4 Link.cwd - F (47)
+listing_area.py
+    M 195:4 Listing_Area.update_content - F (88)
+    C 39:0 Listing_Area - E (31)
+lcd.py
+    M 853:4 PluginInterface.draw - E (36)
+cdbackup.py
+    M 281:4 main_backup_thread.cd_backup_threaded - E (38)
+directory.py
+    M 559:4 DirItem.build - F (70)
+osd.py
+    M 980:4 OSD.drawstringframed - F (65)
+menu_Item.py
+    ERROR: expected an indented block (<unknown>, line 15)
+cd_burn.py
+    M 805:4 PluginInterface.fill_menu - E (40)
+menu.py
+    M 439:4 MenuWidget.eventhandler - F (116)
+textentry_screen.py
+    M 41:4 TextEntryScreen.__init__ - E (34)
+distribution.py
+    M 219:4 i18n.run - E (31)
+xmltv.py
+    M 404:4 Writer.addProgramme - F (45)
+strptime.py
+    F 450:0 strptime - F (41)
+info_area.py
+    M 296:4 Info_Area.return_formatedtext - E (35)

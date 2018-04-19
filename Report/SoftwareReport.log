@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.27)  18 APR 2018 22:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.27)  19 APR 2018 09:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -600,26 +600,80 @@ Underfull \hbox (badness 10000) in paragraph at lines 418--420
 <CCcomp.png, id=42, 738.76pt x 588.1975pt>
 File: CCcomp.png Graphic file (type png)
  <use CCcomp.png>
-Package pdftex.def Info: CCcomp.png used on input line 427.
+Package pdftex.def Info: CCcomp.png used on input line 428.
 (pdftex.def)             Requested size: 252.0pt x 200.63968pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 448--449
+Underfull \vbox (badness 3679) has occurred while \output is active []
+
+
+<17Full.pdf, id=44, 597.50786pt x 845.04686pt>
+File: 17Full.pdf Graphic file (type pdf)
+ <use 17Full.pdf>
+Package pdftex.def Info: 17Full.pdf used on input line 489.
+(pdftex.def)             Requested size: 252.0pt x 356.40012pt.
+
+<18full.pdf, id=45, 597.50786pt x 845.04686pt>
+File: 18full.pdf Graphic file (type pdf)
+ <use 18full.pdf>
+Package pdftex.def Info: 18full.pdf used on input line 501.
+(pdftex.def)             Requested size: 252.0pt x 356.40012pt.
+ [5 <./CCcomp.png> <./17Full.pdf>]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 512.
+
+<19Full.pdf, id=66, 597.50786pt x 845.04686pt>
+File: 19Full.pdf Graphic file (type pdf)
+ <use 19Full.pdf>
+Package pdftex.def Info: 19Full.pdf used on input line 514.
+(pdftex.def)             Requested size: 252.0pt x 356.40012pt.
+
+<freevo17less.pdf, id=67, 597.50786pt x 845.04686pt>
+File: freevo17less.pdf Graphic file (type pdf)
+ <use freevo17less.pdf>
+Package pdftex.def Info: freevo17less.pdf used on input line 531.
+(pdftex.def)             Requested size: 252.0pt x 356.40012pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \vbox (77.26428pt too high) has occurred while \output is active []
+
+
+[6 <./18full.pdf> <./19Full.pdf> <./freevo17less.pdf>]
+<freevo18less.pdf, id=119, 597.50786pt x 845.04686pt>
+File: freevo18less.pdf Graphic file (type pdf)
+ <use freevo18less.pdf>
+Package pdftex.def Info: freevo18less.pdf used on input line 543.
+(pdftex.def)             Requested size: 252.0pt x 356.40012pt.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 554.
+
+<freevo19less.pdf, id=120, 597.50786pt x 845.04686pt>
+File: freevo19less.pdf Graphic file (type pdf)
+ <use freevo19less.pdf>
+Package pdftex.def Info: freevo19less.pdf used on input line 556.
+(pdftex.def)             Requested size: 252.0pt x 356.40012pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 583--584
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 451--452
+Underfull \hbox (badness 10000) in paragraph at lines 586--587
 
  []
 
 
-Underfull \hbox (badness 2409) in paragraph at lines 456--458
+Underfull \hbox (badness 2409) in paragraph at lines 591--593
 []\OT1/ptm/m/n/8 Lawrence Gray Thomas, "An Anal-y-sis of Soft-ware Qual-ity and
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 456--458
+Underfull \hbox (badness 10000) in paragraph at lines 591--593
 
  []
 
@@ -627,7 +681,7 @@ Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ô in font ptmr7t!
 
-Underfull \hbox (badness 10000) in paragraph at lines 462--463
+Underfull \hbox (badness 10000) in paragraph at lines 597--598
 
  []
 
@@ -638,16 +692,16 @@ Missing character: There is no Å in font ptmr7t!
 Missing character: There is no Ã in font ptmr7t!
 Missing character: There is no Å in font ptmr7t!
 
-Underfull \hbox (badness 3826) in paragraph at lines 464--465
+Underfull \hbox (badness 3826) in paragraph at lines 599--600
 []\OT1/ptm/m/n/8 Marwen Abbes, Foutse Khomh, Yann-Gael Gue-heneuc, Giu-liano
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 464--465
+Underfull \hbox (badness 10000) in paragraph at lines 599--600
 
  []
 
-[5 <./CCcomp.png>] (./Algorithm1.py
+[7 <./freevo18less.pdf> <./freevo19less.pdf>] (./Algorithm1.py
 LaTeX Font Info:    Try loading font information for OMS+ptm on input line 45.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/omsptm.fd
@@ -657,22 +711,22 @@ LaTeX Font Info:    Font shape `OMS/ptm/m/it' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 45.
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 49.
- [6
+ [8
 
-]) [7]
+]) [9]
 (./SoftwareReport.aux) )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 6072 strings out of 493014
- 91744 string characters out of 6133351
+ 6102 strings out of 493014
+ 92248 string characters out of 6133351
  323623 words of memory out of 5000000
- 9523 multiletter control sequences out of 15000+600000
+ 9547 multiletter control sequences out of 15000+600000
  42924 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,7n,43p,1055b,3843s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,7n,43p,1055b,3927s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc
 }</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></
@@ -684,10 +738,10 @@ l/texlive/2016/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/
 2016/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2016/texm
 f-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fon
 ts/type1/urw/times/utmri8a.pfb>
-Output written on SoftwareReport.pdf (7 pages, 214570 bytes).
+Output written on SoftwareReport.pdf (9 pages, 1805506 bytes).
 PDF statistics:
- 89 PDF objects out of 1000 (max. 8388607)
- 64 compressed objects within 1 object stream
+ 198 PDF objects out of 1000 (max. 8388607)
+ 152 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

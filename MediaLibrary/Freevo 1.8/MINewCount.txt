@@ -1,0 +1,29 @@
+1.8
+MI Summary Less than 20 
+freevo-1.8.0/src/config.py - B (13.61)
+
+freevo-1.8.0/src/directory.py - B (11.29)
+
+freevo-1.8.0/src/osd.py - C (2.26)
+
+freevo-1.8.0/src/menu.py - C (8.90)
+
+freevo-1.8.0/src/plugins/rom_drives.py - B (14.39)
+
+freevo-1.8.0/src/plugins/vfd.py - B (16.02)
+
+freevo-1.8.0/src/plugins/cd_burn.py - A (19.72)
+
+freevo-1.8.0/src/skins/main/xml_skin.py - C (5.72)
+
+freevo-1.8.0/src/helpers/plugins.py - B (16.77)
+
+freevo-1.8.0/src/helpers/recordserver.py - C (0.00)
+
+freevo-1.8.0/src/util/Rendezvous.py - C (6.41)
+
+freevo-1.8.0/src/util/feedparser.py - C (0.00)
+
+freevo-1.8.0/src/util/fxdimdb.py - B (11.66)
+
+Number Of Files with MI less than 20 = 13

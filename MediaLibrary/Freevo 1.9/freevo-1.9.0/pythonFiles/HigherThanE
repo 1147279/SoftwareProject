@@ -1,0 +1,82 @@
+skin_utils.py
+    F 62:0 format_image - F (50)
+tvlisting_area.py
+    M 153:4 TVListing_Area.update_content - F (45)
+encodingcore.py
+    M 726:4 EncodingJob._GCLMVideopass - E (38)
+    M 554:4 EncodingJob._cropdetect_parse - E (32)
+marmalade.py
+    M 147:4 DOMUnjellier.unjellyNode - E (38)
+    M 283:4 DOMJellier.jellyToNode - E (33)
+mplayer.py
+    M 110:4 MPlayer.play - F (73)
+    M 393:4 MPlayer.eventhandler - E (34)
+area.py
+    M 118:4 Skin_Area.draw - E (39)
+vpodcast.py
+    M 173:4 VPodcastMainMenuItem.create_podcast_submenu - E (37)
+item.py
+    M 499:4 Item.__getitem__ - E (31)
+rom_drives.py
+    M 580:4 Identify_Thread.identify - F (70)
+    M 336:4 RemovableMedia.capabilities_text - F (43)
+ivtv_xine_tv.py
+    M 460:4 XineIvtv.eventhandler - E (38)
+feedparser.py
+    M 692:4 _FeedParserMixin.pop - F (71)
+    M 1881:4 _MicroformatsParser.getPropertyValue - F (57)
+    F 3357:0 parse - F (55)
+    F 3132:0 _getCharacterEncoding - E (35)
+    M 476:4 _FeedParserMixin.unknown_starttag - E (35)
+xine.py
+    M 273:4 Xine.eventhandler - E (40)
+coversearch.py
+    M 118:4 PluginInterface.actions - E (34)
+viewer.py
+    M 97:4 ImageViewer.view - F (47)
+epg_xmltv.py
+    F 148:0 load_guide - E (39)
+vfd.py
+    M 783:4 PluginInterface.eventhandler - F (43)
+    M 583:4 PluginInterface.draw - E (37)
+    M 432:4 PluginInterface.widget_set - E (34)
+fxdhandler.py
+    F 38:0 parse_movie - F (42)
+edit_favorite.py
+    M 211:4 EditFavorite.eventhandler - F (53)
+linkbrowser.py
+    M 128:4 Link.cwd - F (47)
+listing_area.py
+    M 195:4 Listing_Area.update_content - F (88)
+    C 39:0 Listing_Area - E (31)
+lcd.py
+    M 634:4 PluginInterface.draw - E (37)
+cdbackup.py
+    M 277:4 main_backup_thread.cd_backup_threaded - E (38)
+directory.py
+    M 586:4 DirItem.__build - F (63)
+osd.py
+    M 1165:4 OSD.drawstringframed - F (65)
+    M 501:4 OSD._cb - F (61)
+lcd2.py
+    M 161:4 PluginInterface.draw - E (31)
+menu_Item.py
+    ERROR: expected an indented block (<unknown>, line 15)
+cd_burn.py
+    M 850:4 PluginInterface.fill_menu - E (40)
+menu.py
+    M 723:4 MenuWidget.eventhandler - F (55)
+textentry_screen.py
+    M 41:4 TextEntryScreen.__init__ - E (34)
+distribution.py
+    M 219:4 i18n.run - E (31)
+recordserver.py
+    M 877:4 RecordServer.check_to_record - E (32)
+xmltv.py
+    M 409:4 Writer.addProgramme - F (44)
+strptime.py
+    F 408:0 strptime - F (41)
+info_area.py
+    M 296:4 Info_Area.return_formatedtext - E (35)
+applelib.py
+    M 166:4 Trailers._parse_trailer_page - E (31)

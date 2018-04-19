@@ -1,0 +1,19 @@
+1.7
+MI Summary Less than 20 
+freevo-1.7.0/src/directory.py - B (12.34)
+
+freevo-1.7.0/src/osd.py - C (4.04)
+
+freevo-1.7.0/src/menu.py - B (12.09)
+
+freevo-1.7.0/src/plugins/vfd.py - B (15.78)
+
+freevo-1.7.0/src/skins/main/xml_skin.py - C (5.36)
+
+freevo-1.7.0/src/helpers/recordserver.py - C (0.00)
+
+freevo-1.7.0/src/util/Rendezvous.py - C (6.41)
+
+freevo-1.7.0/src/util/fxdimdb.py - B (14.60)
+
+Number Of Files with MI less than 20 = 8

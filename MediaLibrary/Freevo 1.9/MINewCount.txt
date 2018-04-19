@@ -1,0 +1,39 @@
+1.9
+MI Summary Less than 20 
+freevo-1.9.0/src/encodingcore.py - B (18.02)
+
+freevo-1.9.0/src/config.py - B (12.14)
+
+freevo-1.9.0/src/directory.py - B (10.21)
+
+freevo-1.9.0/src/osd.py - C (0.00)
+
+freevo-1.9.0/src/menu.py - C (6.96)
+
+freevo-1.9.0/src/plugins/rom_drives.py - B (9.27)
+
+freevo-1.9.0/src/plugins/vfd.py - B (15.95)
+
+freevo-1.9.0/src/plugins/cd_burn.py - A (19.93)
+
+freevo-1.9.0/src/skins/main/xml_skin.py - C (5.89)
+
+freevo-1.9.0/src/skins/osd/designer.py - B (15.03)
+
+freevo-1.9.0/src/helpers/osddesigner.py - C (0.00)
+
+freevo-1.9.0/src/helpers/cache.py - A (19.55)
+
+freevo-1.9.0/src/helpers/plugins.py - B (18.42)
+
+freevo-1.9.0/src/helpers/recordserver.py - C (0.00)
+
+freevo-1.9.0/src/util/Rendezvous.py - C (6.41)
+
+freevo-1.9.0/src/util/feedparser.py - C (0.00)
+
+freevo-1.9.0/src/util/fxdimdb.py - C (8.47)
+
+freevo-1.9.0/src/video/plugins/mplayer.py - B (18.42)
+
+Number Of Files with MI less than 20 = 18
