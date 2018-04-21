@@ -194,6 +194,7 @@ The Chosen Metrics section details which metrics have been selected to allow for
 \noindent
 The metrics being used in this project are the following:
 \begin{itemize}
+\item Linoes Of Code
 \item Cyclomatic Complexity
 \item Maintainability Index
 \item Coverage
@@ -202,6 +203,10 @@ The metrics being used in this project are the following:
 \end{itemize}
 \noindent
 The tools used to calculate these metrics are Radon, Pylint, Graphviz, Webdot and Snakefood. Each of these metrics used are explained in the subsections below.
+
+\subsection{Lines Of Code}
+\noindent
+The lines of code metric simply measures the number of lines in a block of code. This metric was calculated using Radon. This metric is not very useful as an indicator of whether or not the code being analysed follows good programming practices. 
 
 \subsection{Cyclomatic Complexity}
 \noindent
@@ -331,6 +336,12 @@ This section covers the analysis of four code bases. The first being the authors
 \noindent
 The code in listing 2 is the authors code base. The purpose of this code is to use mapReduce to implement matrix multiplication of two matrices given in matrix market format in files outA1.list and outB1.list. The code reads the files and uses the indices and values given in the files to generate key, value pairs which are then used to map the inputs. These key value pairs are then used to reduce the entries and do the multiplication. The output of this code is a file with the resultant matrix in matrix market format. The code base depends on the MRJob, os and time libraries. The metrics are addressed in the sections below. 
 
+
+\subsubsection{Lines Of Code}
+\noindent
+Running Radon for lines of code gives an output of 110. When examining the listing in the appendix it can be seen that this value is correct, proving that the radon tool returns the correct result.
+
+
 \subsubsection{Cyclomatic Complexity}
 \noindent
 The results of running Radon for cyclomatic complexity gives this as an output:
@@ -402,7 +413,13 @@ This proves that the dependency metric behaves as it should.
 
 \subsection{Freevo Code Base Analysis} 
 \noindent
-What follows is the analysis using the chosen metrics of three major releases of the Freevo Media Center application. For each metric a summary output is given and any interesting points are elaborated upon. 
+What follows is the analysis using the chosen metrics of three major releases of the Freevo Media Center application. For each metric a summary output is given and any interesting points are elaborated upon. Freevo is currently in a dormant state \cite{Freevo}. The reason for this is said to be because too many changes needed to be made to get the next version to work and because of errors made in the past. This analysis is done using the three latest versions available. These versions were chosen to determine whether or not the program could have been saved if the developers at Freevo had used these metrics to analyse their own code. This is discussed in the points of interest section.  
+
+\subsubsection{Lines Of Code}
+\noindent
+Version 1.7 of Freevo contains a total of 76196 lines of code, version 1.8 of Freevo contains a total of 98718 lines of code and version 1.9 of Freevo contains a total of 121728 lines of code. A graph showing how the number of lines of code increases with each release is shown below. 
+
+
 
 \subsubsection{Cyclomatic Complexity}
 
@@ -438,13 +455,23 @@ A graph showing  both the number of very high error prone unstable blocks (i.e. 
 
 \subsubsection{Maintainability Index}
 
+\noindent
+The maintainability index metric calculated using the Radon tool gives a maintainability index value for each python file. The average of these values was then calculated. Furthermore the names of the files with a maintainability index of less than 20 were written to a text file to compare for each release how the files that have low maintainability indexes developed throughout the releases.  
 \paragraph{Freevo 1.7}
+\noindent
+The average maintainability index for version 1.7 was 61 which as Radon states is very high and so should mean that the code is easily maintained. Upon further analysis when counting the number of files with a maintainability index of less than 20 (Medium to low maintainability index relating to code that is hard to maintain) it is seen that there are eight files in this category. With a total of 270 files this means the percentage that are difficult to maintain is 2.96\% which is reasonable.
 
 
 \paragraph{Freevo 1.8}
+\noindent
+The average maintainability index for version 1.8 was 60 which shows that there has been a very small decrease in the maintainability index however as Radon states this is still high means that the code is easily maintained. Once again however, upon further analysis when counting the number of files with a maintainability index of less than 20 i.e hard to maintain it is revealed that there are 13 files in this category. With a total of 329 files this means the percentage of files that are difficult to maintain is 3.95\% which is once again reasonable however it is important to note that this has risen by 1\% from version 1.7 to version 1.8 indicating that files that are originally hard to maintain only become harder to maintain as time goes by and changes to these files are made.
 
 
-\paragraph{Freevo 1.8}
+
+\paragraph{Freevo 1.9}
+\noindent
+The average maintainability index for version 1.9 was 59. The overall maintainability index continues to decrease with no indication that it will ever turn which suggests that this program is not sustainable unless significant work and effort is put in to redesign the problematic files. For this release the number of files with a maintainability index of less than 20 is 18. With a total of 385 files this means the percentage of files that are difficult to maintain is 4.67\%. This percentage has once again risen from the previous version. 
+
 
 
 
@@ -462,16 +489,122 @@ A graph showing  both the number of very high error prone unstable blocks (i.e. 
 
 
 
-\subsubsection{Halstead Effort and Difficulty Metrics}
+\subsubsection{Halstead Metrics}
+\noindent
+The Halstead metrics were calculated using Radon. Each files Halstead metrics were calculated individually and then averages were taken. The table below shows the Halstead metrics for each release.
 
-\paragraph{Freevo 1.7}
+\begin{table}[]
+\centering
+\caption{Table showing Halstead Metrics for the different releases of Freevo}
+\label{my-label}
+\begin{tabular}{|l|l|l|l|}
+\hline
+Freevo Version    & 1.7    & 1.8     & 1.9      \\ \hline
+n1                & 7.536  & 7.619   & 7.932    \\ \hline
+n2                & 69.74  & 76.23   & 81.43    \\ \hline
+N1                & 47.02  & 50.60   & 54.19    \\ \hline
+N2                & 90.41  & 97.37   & 104.63   \\ \hline
+Vocabulary        & 77.28  & 83.85   & 89.36    \\ \hline
+Length            & 137.44 & 147.97  & 158.82   \\ \hline
+Calculated Length & 510.12 & 567.35  & 617.52   \\ \hline
+Volume            & 981.68 & 1076.28 & 1176.96  \\ \hline
+Difficulty        & 4.831  & 4.85    & 5.089    \\ \hline
+Effort            & 8195.5 & 8949.78 & 10356.41 \\ \hline
+Time              & 455.30 & 497.21  & 575.35   \\ \hline
+Bugs              & 0.3272 & 0.3587  & 0.3923   \\ \hline
+\end{tabular}
+\end{table}
+
+\noindent
+The table shows that with each successive release all the metrics increased. The metrics of interest in this report are the difficulty and effort metrics. The difficulty of the authors code base was 2.76. The average difficulty of all files in version 1.7 is 1.75x the difficulty of the authors code. The average difficulty of all files in version 1.8 is 1.76x the difficulty of the authors code. The average difficulty of all files in version 1.9 is 1.84x the difficulty of the authors code. This suggests that the code is notably difficult to read and understand and also that it is prone to errors. The difficulty increases with each release. This is to be expected as with a high initial difficulty it only becomes harder to interpret and more error prone when more code is added. This level of difficulty also suggests that there could be spaghetti code in a number of these files. \\
+
+\noindent
+The error metric is above 8000 for all three releases. This is high and indicates that this code required many elementary mental discriminations and will require many more elementary mental discriminations if any additional functionality is to be implemented as can be seen by the significant increase in effort over the three releases. There were 754 more elementary mental discriminations in release 1.8 than 1.7 and there were 1407 more elementary mental discriminations in release 1.9 than there were in 1.8. This increase should and does result in the increase in difficulty shown in the table. \\
+
+\noindent
+The increase in Halstead metrics while expected is in some cases like effort and volume quite high which leads to the conclusion that this code is and will continue to be difficult to understand and maintain. 
+ 
+
+\subsubsection{Dependencies}
+\noindent
+The dependencies were calculated using the Pylint tool. The Pylint tool prints out the names of the files/libraries that each python file depends on. Code was written that then counts the number of dependencies for each file. A table showing the number of dependencies for each release is shown below. 
+
+\begin{table}[H]
+\centering
+\caption{Table showing how number of dependencies changed over time}
+\label{my-label}
+\begin{tabular}{|l|l|l|l|}
+\hline
+Freevo Version      & 1.7 & 1.8 & 1.9 \\ \hline
+No. of Dependencies & 201 & 227 & 312 \\ \hline
+\end{tabular}
+\end{table}
 
 
-\paragraph{Freevo 1.8}
 
 
-\paragraph{Freevo 1.8}
+\noindent
+This table shows that as the program advanced the number of dependencies increased quite significantly. In the appendix graphs of the dependencies for each release are shown which show just how complicated the relationships between the files are. 
 
+
+\section{Points Of Interest}
+\noindent
+This section deals with a number of key points that stand out and could have been used to help the developers at Freevo address issues that eventually led to the current dormant state of Freevo. The first point of interest is that there are a large number of blocks of code with cyclomatic complexities higher than 31 which means that a large percentage of the code is alarmingly complex. Having such complex code means that the chance of having errors is larger and noticing this early on perhaps in version 1.7 would have meant that the developers could have put effort into finding the errors and reducing the cyclomatic complexity. \\
+
+\noindent 
+The second point of interest is the number of classes with a maintainability index of less than 20 which relates to code that is notably hard to maintain. It makes sense that code that is initially hard to maintain remains hard to maintain and becomes more and more difficult to maintain as time goes by. Files that had high initial maintainability indexes saw a climb in maintainability index with each successive release. If this was noticed by the developers they would have been able to identify the problematic files and address them in a way that made them more maintainable.\\
+
+\noindent
+The third point of interest is the effort metric calculated as part of the Halstead metrics. The average value for effort over each successive release was extremely high which means that anyone who tries to view and understand and change this code in future would have to make many elementary mental discriminations. This means that future development of the code is very difficult especially if its new developers coming in that are not familiar with the code. \\
+
+\noindent
+These are all the reasons that have led to Freevo being dormant. Its high cyclomatic complexity means potential for many bugs that would be very difficult to find and fix. Its number of classes with low maintainability index means that the code gets harder and harder to maintain and develop as time goes by and new releases are made eventually leading to code that is no longer maintainable and therefore ends up in a dormant state as has happened with Freevo. Having high effort metrics also means that anybody who would have been interested in continuing the Freevo program would experience extreme difficulty in trying to understand the code and add to it. If these metrics were measured at all steps along the way from the beginning of Freevo then it would have been easier to make sure that the code was held to certain standards that would have increased its lifespan and made it a better program all around.  
+
+
+
+\section{Conclusion}
+
+% \begin{figure}[H]
+% \centering 
+% \includegraphics[width=\columnwidth]{warehouse1}
+% \centering 
+%  \caption {Lighting design for Sasol wax warehouse storage area using first set of lights }
+% \end{figure}
+
+
+
+
+\begin{thebibliography}{5}
+
+
+  
+\bibitem{mcCabe} Thomas J. McCabe, "A Complexity Measure". IEEE Transactions on Software Engineering, Vol. SE-2, No.4, December 1976. \\
+
+
+\bibitem{MI1} Don Coleman, Dan Ash, Bruce Lowther, Paul Oman, "Using Metrics to Evaluate Software System Maintainability". Computing Practices, August 1994. \\
+
+
+
+
+\bibitem{Linux} Lawrence Gray Thomas, "An Analysis of Software Quality and Maintainability Metrics with an Application to a Longitudinal Sudy of the Linux Kernel". Dissertation Submitted to the Faculty of the Graduate School of Vanderbilt University in partial fulfillment of the requirements for the degree of
+Doctor of Philosophy in Computer Science, August, 2008.\\
+
+
+
+
+\bibitem{HALS} Rafa E. Al Qutaish, Alain Abran, "An Analysis of the Design and Definitions of Halstead’s Metrics". Proceedings of the 15th International Workshop on Software Measurement, September 12-14, 2005, Montreal, Canada. pp. 337-352. \\
+
+\bibitem{SPAG} Marwen Abbes, Foutse Khomh, Yann-Gaël Guéhéneuc, Giuliano Antoniol, "An Empirical Study of the Impact of Two Antipatterns, Blob and Spaghetti Code, On Program Comprehension". 15th European Conference on Software Maintenance and Reengineering, 2011. \\
+
+\bibitem{Freevo} Dischi, "Freevo Website".\\
+ \url{http://www.freevo.org}.
+Last Accessed 18 April 2018. 
+
+
+\end{thebibliography}
+
+\onecolumn
+\appendix
 
 
 \subsubsection{Dependencies}
@@ -521,7 +654,7 @@ The dependency graph for Freevo 1.9 is shown in figure 5.
  
  
  
-\paragraph{Freevo 1.7 Without Follow}
+\paragraph{Freevo 1.7 Without Internal}
 \noindent
 
 The dependency graph for Freevo 1.7 is shown in figure 3.
@@ -534,7 +667,7 @@ The dependency graph for Freevo 1.7 is shown in figure 3.
  \end{figure}
 
 
-\paragraph{Freevo 1.8 Without Follow}
+\paragraph{Freevo 1.8 Without Internal}
 \noindent
 The dependency graph for Freevo 1.8 is shown in figure 4.
 
@@ -547,7 +680,7 @@ The dependency graph for Freevo 1.8 is shown in figure 4.
 
 
 
-\paragraph{Freevo 1.9 Without Follow}
+\paragraph{Freevo 1.9 Without Internal}
 \noindent
 The dependency graph for Freevo 1.9 is shown in figure 5.
 
@@ -558,55 +691,6 @@ The dependency graph for Freevo 1.9 is shown in figure 5.
   \caption {Dependency Graph. }
  \end{figure}
 
-
-
-\section{Additional Points of Interest}
-
-
-
-\section{Conclusion}
-
-% \begin{figure}[H]
-% \centering 
-% \includegraphics[width=\columnwidth]{warehouse1}
-% \centering 
-%  \caption {Lighting design for Sasol wax warehouse storage area using first set of lights }
-% \end{figure}
-
-
-
-
-\begin{thebibliography}{5}
-
-
-  
-\bibitem{mcCabe} Thomas J. McCabe, "A Complexity Measure". IEEE Transactions on Software Engineering, Vol. SE-2, No.4, December 1976. \\
-
-
-\bibitem{MI1} Don Coleman, Dan Ash, Bruce Lowther, Paul Oman, "Using Metrics to Evaluate Software System Maintainability". Computing Practices, August 1994. \\
-
-
-
-
-\bibitem{Linux} Lawrence Gray Thomas, "An Analysis of Software Quality and Maintainability Metrics with an Application to a Longitudinal Sudy of the Linux Kernel". Dissertation Submitted to the Faculty of the Graduate School of Vanderbilt University in partial fulfillment of the requirements for the degree of
-Doctor of Philosophy in Computer Science, August, 2008.\\
-
-
-
-
-\bibitem{HALS} Rafa E. Al Qutaish, Alain Abran, "An Analysis of the Design and Definitions of Halstead’s Metrics". Proceedings of the 15th International Workshop on Software Measurement, September 12-14, 2005, Montreal, Canada. pp. 337-352. \\
-
-\bibitem{SPAG} Marwen Abbes, Foutse Khomh, Yann-Gaël Guéhéneuc, Giuliano Antoniol, "An Empirical Study of the Impact of Two Antipatterns, Blob and Spaghetti Code, On Program Comprehension". 15th European Conference on Software Maintenance and Reengineering, 2011. \\
-
-\bibitem{Freevo} Dischi, "Freevo Website".\\
- \url{http://www.freevo.org}.
-Last Accessed 18 April 2018. 
-
-
-\end{thebibliography}
-
-\onecolumn
-\appendix
 
 
 \lstinputlisting[caption=Author's code base to validate metric generation tools. ,language=python,numbers=left]{Algorithm1.py}

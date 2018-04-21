@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.27)  19 APR 2018 09:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.27)  21 APR 2018 18:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -409,7 +409,14 @@ Package: listings 2015/06/04 1.6 (Carsten Heinz)
 LaTeX Warning: Unused global option(s):
     [10.5pt].
 
-(./SoftwareReport.aux)
+(./SoftwareReport.aux
+
+LaTeX Warning: Label `my-label' multiply defined.
+
+
+LaTeX Warning: Label `my-label' multiply defined.
+
+)
 \openout1 = `SoftwareReport.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 163.
@@ -502,11 +509,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 185--187
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 ) (./dog.py)
-Underfull \hbox (badness 10000) in paragraph at lines 237--239
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 242--244
 
  []
@@ -515,165 +517,156 @@ Underfull \hbox (badness 10000) in paragraph at lines 242--244
 
 
 ]
-Overfull \hbox (6.01982pt too wide) detected at line 256
+Underfull \hbox (badness 10000) in paragraph at lines 247--249
+
+ []
+
+
+Overfull \hbox (6.01982pt too wide) detected at line 261
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 256--258
+Underfull \hbox (badness 10000) in paragraph at lines 261--263
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 264--266
+Underfull \hbox (badness 10000) in paragraph at lines 269--271
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 267--269
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 299--300
+Underfull \hbox (badness 10000) in paragraph at lines 272--274
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 313--315
+Underfull \hbox (badness 10000) in paragraph at lines 304--305
 
  []
 
 
-Underfull \hbox (badness 3158) in paragraph at lines 320--322
+Underfull \hbox (badness 10000) in paragraph at lines 318--320
+
+ []
+
+
+Underfull \hbox (badness 3158) in paragraph at lines 325--327
 \OT1/ptm/m/n/10 Run-ning the com-mand with-out the --follow in-struc-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 320--322
+Underfull \hbox (badness 10000) in paragraph at lines 325--327
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 345--347
+Underfull \hbox (badness 10000) in paragraph at lines 356--358
 
  []
 
 [3] <Algo1.pdf, id=22, 597.50786pt x 845.04686pt>
 File: Algo1.pdf Graphic file (type pdf)
  <use Algo1.pdf>
-Package pdftex.def Info: Algo1.pdf used on input line 393.
+Package pdftex.def Info: Algo1.pdf used on input line 404.
 (pdftex.def)             Requested size: 252.0pt x 356.40012pt.
-
-Underfull \vbox (badness 3068) has occurred while \output is active []
-
-
-Underfull \hbox (badness 1442) in paragraph at lines 410--412
+ [4 <./Algo1.pdf>]
+Underfull \hbox (badness 1442) in paragraph at lines 427--429
 \OT1/ptm/m/n/10 and func-tions in all of the python files in the source
  []
 
 
-Underfull \hbox (badness 3471) in paragraph at lines 410--412
+Underfull \hbox (badness 3471) in paragraph at lines 427--429
 \OT1/ptm/m/n/10 cy-clo-matic com-plex-ity. This av-er-age re-sult how-ever is
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--412
+Underfull \hbox (badness 10000) in paragraph at lines 427--429
 
  []
 
-[4 <./Algo1.pdf>]
-Underfull \hbox (badness 1442) in paragraph at lines 418--420
+
+Underfull \hbox (badness 1442) in paragraph at lines 435--437
 \OT1/ptm/m/n/10 and func-tions in all of the python files in the source
  []
 
 
-Underfull \hbox (badness 4505) in paragraph at lines 418--420
+Underfull \hbox (badness 4505) in paragraph at lines 435--437
 \OT1/ptm/m/n/10 com-plex-ity over-all has de-creased which im-plies good
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 418--420
+Underfull \hbox (badness 10000) in paragraph at lines 435--437
 
  []
 
 <CCcomp.png, id=42, 738.76pt x 588.1975pt>
 File: CCcomp.png Graphic file (type png)
  <use CCcomp.png>
-Package pdftex.def Info: CCcomp.png used on input line 428.
+Package pdftex.def Info: CCcomp.png used on input line 445.
 (pdftex.def)             Requested size: 252.0pt x 200.63968pt.
 
-Underfull \vbox (badness 3679) has occurred while \output is active []
+Underfull \vbox (badness 5519) has occurred while \output is active []
 
-
-<17Full.pdf, id=44, 597.50786pt x 845.04686pt>
-File: 17Full.pdf Graphic file (type pdf)
- <use 17Full.pdf>
-Package pdftex.def Info: 17Full.pdf used on input line 489.
-(pdftex.def)             Requested size: 252.0pt x 356.40012pt.
-
-<18full.pdf, id=45, 597.50786pt x 845.04686pt>
-File: 18full.pdf Graphic file (type pdf)
- <use 18full.pdf>
-Package pdftex.def Info: 18full.pdf used on input line 501.
-(pdftex.def)             Requested size: 252.0pt x 356.40012pt.
- [5 <./CCcomp.png> <./17Full.pdf>]
+ [5 <./CCcomp.png>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 512.
-
-<19Full.pdf, id=66, 597.50786pt x 845.04686pt>
-File: 19Full.pdf Graphic file (type pdf)
- <use 19Full.pdf>
-Package pdftex.def Info: 19Full.pdf used on input line 514.
-(pdftex.def)             Requested size: 252.0pt x 356.40012pt.
-
-<freevo17less.pdf, id=67, 597.50786pt x 845.04686pt>
-File: freevo17less.pdf Graphic file (type pdf)
- <use freevo17less.pdf>
-Package pdftex.def Info: freevo17less.pdf used on input line 531.
-(pdftex.def)             Requested size: 252.0pt x 356.40012pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+               Default added (so using `tbp') on input line 496.
 
 
-Overfull \vbox (77.26428pt too high) has occurred while \output is active []
-
-
-[6 <./18full.pdf> <./19Full.pdf> <./freevo17less.pdf>]
-<freevo18less.pdf, id=119, 597.50786pt x 845.04686pt>
-File: freevo18less.pdf Graphic file (type pdf)
- <use freevo18less.pdf>
-Package pdftex.def Info: freevo18less.pdf used on input line 543.
-(pdftex.def)             Requested size: 252.0pt x 356.40012pt.
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 554.
-
-<freevo19less.pdf, id=120, 597.50786pt x 845.04686pt>
-File: freevo19less.pdf Graphic file (type pdf)
- <use freevo19less.pdf>
-Package pdftex.def Info: freevo19less.pdf used on input line 556.
-(pdftex.def)             Requested size: 252.0pt x 356.40012pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 583--584
+Underfull \hbox (badness 10000) in paragraph at lines 518--520
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 586--587
+Underfull \hbox (badness 1584) in paragraph at lines 521--523
+\OT1/ptm/m/n/10 The er-ror met-ric is above 8000 for all three re-leases.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 521--523
 
  []
 
 
-Underfull \hbox (badness 2409) in paragraph at lines 591--593
+Underfull \hbox (badness 1728) in paragraph at lines 551--553
+\OT1/ptm/m/n/10 com-plex-i-ties higher than 31 which means that a large
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 551--553
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 554--556
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 557--559
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 581--582
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 584--585
+
+ []
+
+
+Underfull \hbox (badness 2409) in paragraph at lines 589--591
 []\OT1/ptm/m/n/8 Lawrence Gray Thomas, "An Anal-y-sis of Soft-ware Qual-ity and
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 591--593
+Underfull \hbox (badness 10000) in paragraph at lines 589--591
 
  []
 
@@ -681,7 +674,7 @@ Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ô in font ptmr7t!
 
-Underfull \hbox (badness 10000) in paragraph at lines 597--598
+Underfull \hbox (badness 10000) in paragraph at lines 595--596
 
  []
 
@@ -692,29 +685,112 @@ Missing character: There is no Å in font ptmr7t!
 Missing character: There is no Ã in font ptmr7t!
 Missing character: There is no Å in font ptmr7t!
 
-Underfull \hbox (badness 3826) in paragraph at lines 599--600
+Underfull \hbox (badness 3826) in paragraph at lines 597--598
 []\OT1/ptm/m/n/8 Marwen Abbes, Foutse Khomh, Yann-Gael Gue-heneuc, Giu-liano
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 599--600
+Underfull \hbox (badness 10000) in paragraph at lines 597--598
 
  []
 
-[7 <./freevo18less.pdf> <./freevo19less.pdf>] (./Algorithm1.py
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 45.
+[7
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/omsptm.fd
+] <17Full.pdf, id=55, 597.50786pt x 845.04686pt>
+File: 17Full.pdf Graphic file (type pdf)
+ <use 17Full.pdf>
+Package pdftex.def Info: 17Full.pdf used on input line 622.
+(pdftex.def)             Requested size: 516.0pt x 729.76921pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8
+
+]
+Overfull \vbox (57.10118pt too high) has occurred while \output is active []
+
+
+[9 <./17Full.pdf>] <18full.pdf, id=78, 597.50786pt x 845.04686pt>
+File: 18full.pdf Graphic file (type pdf)
+
+<use 18full.pdf>
+Package pdftex.def Info: 18full.pdf used on input line 634.
+(pdftex.def)             Requested size: 516.0pt x 729.76921pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [10]
+Overfull \vbox (57.10118pt too high) has occurred while \output is active []
+
+
+[11 <./18full.pdf>]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 645.
+
+<19Full.pdf, id=101, 597.50786pt x 845.04686pt>
+File: 19Full.pdf Graphic file (type pdf)
+ <use 19Full.pdf>
+Package pdftex.def Info: 19Full.pdf used on input line 647.
+(pdftex.def)             Requested size: 516.0pt x 729.76921pt.
+
+
+LaTeX Warning: Float too large for page by 57.10118pt on input line 650.
+
+<freevo17less.pdf, id=102, 597.50786pt x 845.04686pt>
+File: freevo17less.pdf Graphic file (type pdf)
+ <use freevo17less.pdf>
+Package pdftex.def Info: freevo17less.pdf used on input line 664.
+(pdftex.def)             Requested size: 516.0pt x 729.76921pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [12]
+[13 <./19Full.pdf>]
+Overfull \vbox (57.10118pt too high) has occurred while \output is active []
+
+
+[14 <./freevo17less.pdf>]
+<freevo18less.pdf, id=145, 597.50786pt x 845.04686pt>
+File: freevo18less.pdf Graphic file (type pdf)
+ <use freevo18less.pdf>
+Package pdftex.def Info: freevo18less.pdf used on input line 676.
+(pdftex.def)             Requested size: 516.0pt x 729.76921pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [15]
+Overfull \vbox (57.10118pt too high) has occurred while \output is active []
+
+
+[16 <./freevo18less.pdf>]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 687.
+
+<freevo19less.pdf, id=169, 597.50786pt x 845.04686pt>
+File: freevo19less.pdf Graphic file (type pdf)
+ <use freevo19less.pdf>
+Package pdftex.def Info: freevo19less.pdf used on input line 689.
+(pdftex.def)             Requested size: 516.0pt x 729.76921pt.
+
+
+LaTeX Warning: Float too large for page by 57.10118pt on input line 692.
+
+(./Algorithm1.py
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 45.
+ (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/it' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 45.
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 49.
- [8
+ [17] [18 <./freevo19less.pdf>]) [19] [20] (./SoftwareReport.aux)
 
-]) [9]
-(./SoftwareReport.aux) )
+LaTeX Warning: There were multiply-defined labels.
+
+ )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 1061 ({)
@@ -722,11 +798,11 @@ LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
 Here is how much of TeX's memory you used:
  6102 strings out of 493014
  92248 string characters out of 6133351
- 323623 words of memory out of 5000000
+ 324957 words of memory out of 5000000
  9547 multiletter control sequences out of 15000+600000
  42924 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,7n,43p,1055b,3927s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,7n,43p,1055b,3933s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc
 }</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></
@@ -738,10 +814,10 @@ l/texlive/2016/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/
 2016/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2016/texm
 f-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fon
 ts/type1/urw/times/utmri8a.pfb>
-Output written on SoftwareReport.pdf (9 pages, 1805506 bytes).
+Output written on SoftwareReport.pdf (20 pages, 1816437 bytes).
 PDF statistics:
- 198 PDF objects out of 1000 (max. 8388607)
- 152 compressed objects within 2 object streams
+ 233 PDF objects out of 1000 (max. 8388607)
+ 176 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
