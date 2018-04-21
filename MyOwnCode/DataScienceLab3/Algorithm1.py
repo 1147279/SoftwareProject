@@ -108,13 +108,3 @@ if __name__ == '__main__':
 	outputFile.close()
 	matrixM.close()
 	matrixN.close()
-	
-
-
-
-
-
-
-
-
-

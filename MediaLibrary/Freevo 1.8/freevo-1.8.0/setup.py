@@ -18,12 +18,7 @@ from distutils import core
 
 libs_to_check = [
     ('xml.utils.qp_xml', 'http://pyxml.sourceforge.net/'),
-    ('kaa', '\"svn co svn://svn.freevo.org/kaa/trunk/ kaa\"' ),
-    ('kaa.metadata', '\"svn co svn://svn.freevo.org/kaa/trunk/ kaa\"' ),
-    ('kaa.imlib2', '\"svn co svn://svn.freevo.org/kaa/trunk/ kaa\"' ),
-    ('BeautifulSoup', 'http://www.crummy.com/software/BeautifulSoup/' ),
     ('pygame', 'http://www.pygame.org'),
-    ('Image', 'http://www.pythonware.com/products/pil/'),
     ('twisted', 'http://www.twistedmatrix.com/'),
     ('twisted.web.microdom', 'http://www.twistedmatrix.com/'),
 ]
